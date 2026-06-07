@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISS — ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ.</title>
+<style>
+  :root{
+    --blue-900:#0a2540;--blue-800:#103a66;--blue-700:#1559a3;--blue-600:#1f6fd1;
+    --blue-500:#2f86e0;--blue-100:#e8f1fb;--blue-50:#f4f8fd;--ink:#1a2430;
+    --muted:#5a6b7d;--line:#e2e8f0;--white:#fff;
+    --shadow:0 4px 24px rgba(16,58,102,.08);--shadow-lg:0 12px 40px rgba(16,58,102,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Sarabun","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  svg{display:block}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  section{scroll-margin-top:80px}
+  .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;z-index:1}
+  .ph.on{opacity:1}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--blue-900)}
+  .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue-600),var(--blue-800));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.5px;box-shadow:var(--shadow)}
+  .logo svg{width:32px;height:32px}
+  .brand small{display:block;font-weight:500;font-size:11.5px;color:var(--muted);letter-spacing:.3px}
+  .menu{display:flex;align-items:center;gap:6px;list-style:none}
+  .menu a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--ink);font-weight:500;transition:.2s}
+  .menu a:hover{background:var(--blue-100);color:var(--blue-700)}
+  .btn{display:inline-block;padding:11px 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:.25s;cursor:pointer;border:none}
+  .btn-primary{background:var(--blue-600);color:#fff;box-shadow:0 4px 14px rgba(31,111,209,.3)}
+  .btn-primary:hover{background:var(--blue-700);transform:translateY(-2px);box-shadow:0 8px 22px rgba(31,111,209,.38)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+  .btn-ghost:hover{background:rgba(255,255,255,.15)}
+  .nav .btn{padding:10px 20px}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2.5px;background:var(--blue-800);border-radius:2px;transition:.3s}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:96px 0 104px;color:#fff;background:linear-gradient(160deg,var(--blue-800),var(--blue-900))}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg svg{width:100%;height:100%}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(120deg,rgba(10,37,64,.86) 0%,rgba(16,58,102,.66) 55%,rgba(31,111,209,.4) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:780px}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);color:#fff;padding:7px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2)}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:#7fc0ff}
+  .hero h1{font-size:clamp(30px,5vw,50px);line-height:1.22;font-weight:800;letter-spacing:-.5px;margin-bottom:20px}
+  .hero p.lead{font-size:clamp(16px,2.2vw,19px);color:rgba(255,255,255,.88);max-width:660px;margin-bottom:34px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-actions .btn{padding:14px 28px;font-size:15.5px}
+  .hero-actions .btn-primary{background:#fff;color:var(--blue-700)}
+  .hero-actions .btn-primary:hover{background:#eaf2fc}
+  .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:54px;position:relative;z-index:2}
+  .stat{background:rgba(255,255,255,.12);border-radius:14px;padding:20px 24px;flex:1;min-width:150px;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px)}
+  .stat b{display:block;font-size:26px;color:#fff;font-weight:800}
+  .stat span{font-size:13.5px;color:rgba(255,255,255,.8)}
+
+  .sec{padding:84px 0}
+  .sec-head{max-width:680px;margin:0 auto 52px;text-align:center}
+  .eyebrow{color:var(--blue-600);font-weight:700;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+  .sec-head h2{font-size:clamp(26px,3.5vw,36px);color:var(--blue-900);font-weight:800;letter-spacing:-.4px;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:16px}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .about-text p{color:var(--muted);margin-bottom:18px;font-size:15.5px}
+  .about-text strong{color:var(--ink)}
+  .feature-list{list-style:none;margin-top:24px;display:grid;gap:14px}
+  .feature-list li{display:flex;gap:13px;align-items:flex-start;font-size:15px}
+  .check{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:var(--blue-100);color:var(--blue-700);display:grid;place-items:center;font-weight:800;font-size:13px;margin-top:2px}
+  .about-card{background:linear-gradient(150deg,var(--blue-700),var(--blue-900));border-radius:22px;padding:40px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+  .about-card::after{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
+  .about-card h3{font-size:22px;margin-bottom:18px;position:relative}
+  .about-card .mini{display:flex;gap:14px;margin-bottom:18px;position:relative}
+  .about-card .mini .ic{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.14);display:grid;place-items:center;flex-shrink:0;font-size:18px}
+  .about-card .mini b{display:block;font-size:15px}
+  .about-card .mini span{font-size:13px;color:rgba(255,255,255,.75)}
+
+  .services{background:var(--blue-50)}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .card{background:#fff;border-radius:18px;padding:34px;box-shadow:var(--shadow);border:1px solid var(--line);transition:.3s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--blue-100)}
+  .card .ic-lg{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--blue-500),var(--blue-700));display:grid;place-items:center;color:#fff;font-size:26px;margin-bottom:20px}
+  .card h3{font-size:20px;color:var(--blue-900);margin-bottom:8px;font-weight:700}
+  .card .sub{color:var(--blue-600);font-weight:600;font-size:13.5px;margin-bottom:16px}
+  .card p{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:var(--blue-100);color:var(--blue-700);padding:6px 13px;border-radius:50px;font-size:12.5px;font-weight:600}
+
+  .process{background:#fff}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:46px}
+  .step{text-align:center;padding:30px 22px;border-radius:16px;background:var(--blue-50);border:1px solid var(--line)}
+  .step .num{width:46px;height:46px;border-radius:50%;background:var(--blue-600);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;margin:0 auto 16px}
+  .step h4{color:var(--blue-900);font-size:17px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:14px}
+  .criteria{background:linear-gradient(135deg,var(--blue-700),var(--blue-900));border-radius:20px;padding:40px;display:flex;flex-wrap:wrap;gap:30px;justify-content:space-around;align-items:center;color:#fff;box-shadow:var(--shadow-lg)}
+  .criteria .ct{text-align:center}
+  .criteria .ct b{display:block;font-size:42px;font-weight:800;line-height:1}
+  .criteria .ct span{font-size:14px;color:rgba(255,255,255,.8)}
+  .criteria .divider{width:1px;height:60px;background:rgba(255,255,255,.2)}
+
+  .portfolio{background:var(--blue-50)}
+  .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pf-card{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#fff;border:1px solid var(--line);transition:.3s}
+  .pf-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .pf-media{height:200px;position:relative;overflow:hidden}
+  .pf-media svg{position:absolute;inset:0;width:100%;height:100%}
+  .pf-badge{position:absolute;top:14px;left:14px;z-index:3;background:rgba(10,37,64,.82);color:#fff;padding:5px 13px;border-radius:50px;font-size:12px;font-weight:600;backdrop-filter:blur(4px)}
+  .pf-body{padding:22px 24px}
+  .pf-body h4{font-size:16.5px;color:var(--blue-900);margin-bottom:8px;line-height:1.45;font-weight:700}
+  .pf-body p{color:var(--muted);font-size:13.5px}
+  .pf-feature{grid-column:span 3;display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff;margin-bottom:4px}
+  .pf-feature .pf-media{height:auto;min-height:300px}
+  .pf-feature .pf-body{padding:38px;display:flex;flex-direction:column;justify-content:center}
+  .pf-feature .pf-body h4{font-size:23px;margin-bottom:14px}
+  .pf-feature .pf-body p{font-size:15px}
+
+  .gallery{background:#fff}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:14px}
+  .gal-item{border-radius:14px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+  .gal-item svg{position:absolute;inset:0;width:100%;height:100%}
+  .gal-item.tall{grid-row:span 2}
+  .gal-item.wide{grid-column:span 2}
+  .gal-cap{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(transparent,rgba(10,37,64,.85));color:#fff;font-size:13px;font-weight:600;z-index:3}
+
+  .cta{padding:72px 0}
+  .cta-box{background:linear-gradient(135deg,var(--blue-600),var(--blue-900));border-radius:26px;padding:56px 40px;text-align:center;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+  .cta-box::before{content:"";position:absolute;top:-80px;left:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%}
+  .cta-box h2{font-size:clamp(24px,3.5vw,32px);margin-bottom:14px;position:relative}
+  .cta-box p{color:rgba(255,255,255,.85);max-width:540px;margin:0 auto 28px;position:relative}
+  .cta-box .btn{background:#fff;color:var(--blue-700);position:relative;padding:14px 32px;font-size:15.5px}
+  .cta-box .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.2)}
+
+  .contact{background:var(--blue-50)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+  .contact-info{display:grid;gap:18px}
+  .ci-item{display:flex;gap:16px;align-items:flex-start;padding:18px;border-radius:14px;background:#fff;border:1px solid var(--line);transition:.25s}
+  .ci-item:hover{border-color:var(--blue-100);background:var(--blue-100)}
+  .ci-item .ic{width:46px;height:46px;border-radius:11px;background:var(--blue-600);color:#fff;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+  .ci-item b{display:block;color:var(--blue-900);font-size:15px;margin-bottom:2px}
+  .ci-item span{color:var(--muted);font-size:14px}
+  .map-box{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);min-height:340px}
+  .map-box iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+
+  footer{background:var(--blue-900);color:rgba(255,255,255,.75);padding:54px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  .foot-brand .logo{margin-bottom:16px}
+  .foot-brand p{font-size:14px;max-width:340px;line-height:1.8}
+  .foot-col h5{color:#fff;font-size:15px;margin-bottom:16px;font-weight:700}
+  .foot-col a{display:block;font-size:14px;padding:6px 0;color:rgba(255,255,255,.7);transition:.2s}
+  .foot-col a:hover{color:#fff;padding-left:5px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center;font-size:13px;color:rgba(255,255,255,.55)}
+
+  /* IMAGE MANAGER */
+  .mng-btn{position:fixed;right:20px;bottom:20px;z-index:200;background:var(--blue-600);color:#fff;border:none;border-radius:50px;padding:13px 20px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 24px rgba(16,58,102,.35);display:flex;align-items:center;gap:8px;transition:.25s}
+  .mng-btn:hover{background:var(--blue-700);transform:translateY(-2px)}
+  .modal{position:fixed;inset:0;z-index:300;background:rgba(10,37,64,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:20px;width:100%;max-width:560px;max-height:86vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-lg)}
+  .modal-head{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .modal-head h3{color:var(--blue-900);font-size:18px}
+  .modal-head .x{background:var(--blue-50);border:none;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:18px;color:var(--blue-700)}
+  .modal-hint{padding:14px 24px;background:var(--blue-50);color:var(--muted);font-size:13px;border-bottom:1px solid var(--line)}
+  .slots{overflow-y:auto;padding:14px 24px}
+  .slot{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .slot:last-child{border-bottom:none}
+  .slot-thumb{width:64px;height:48px;border-radius:8px;background:var(--blue-100);flex-shrink:0;overflow:hidden;display:grid;place-items:center;color:var(--blue-600);font-weight:800;font-size:13px}
+  .slot-thumb img{width:100%;height:100%;object-fit:cover}
+  .slot-info{flex:1;min-width:0}
+  .slot-info b{display:block;font-size:14px;color:var(--blue-900)}
+  .slot-info span{font-size:12.5px;color:var(--muted)}
+  .slot label{flex-shrink:0;background:var(--blue-600);color:#fff;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:8px;cursor:pointer;transition:.2s}
+  .slot label:hover{background:var(--blue-700)}
+  .slot input{display:none}
+  .modal-foot{padding:16px 24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .modal-foot button{font-family:inherit;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:9px;cursor:pointer;border:none}
+  .btn-clear{background:#fff;color:#c0392b;border:1.5px solid #e6c4c0}
+  .btn-done{background:var(--blue-600);color:#fff}
+
+  @media(max-width:880px){
+    .menu,.nav .btn-primary{display:none}
+    .burger{display:flex}
+    .menu.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;padding:16px;gap:4px;box-shadow:var(--shadow-lg);border-bottom:1px solid var(--line)}
+    .menu.open a{padding:13px 14px}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
+    .cards,.steps{grid-template-columns:1fr}
+    .pf-grid{grid-template-columns:1fr}
+    .pf-feature{grid-template-columns:1fr;grid-column:span 1}
+    .pf-feature .pf-media{min-height:220px}
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
+    .gal-item.wide{grid-column:span 2}
+    .foot-grid{grid-template-columns:1fr;gap:30px}
+    .criteria .divider{display:none}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 18px}.hero{padding:64px 0 74px}.sec{padding:60px 0}
+    .about-card,.cta-box,.criteria{padding:30px 24px}.card{padding:26px}
+    .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:120px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85"/>
+          <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
+          <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
+          <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9"/>
+          <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
+        </svg>
+      </div>
+      <div>CISS<small>Space Innovation · Communications · Digital · Certification</small></div>
+    </a>
+    <nav>
+      <ul class="menu" id="menu">
+        <li><a href="#home">หน้าแรก</a></li>
+        <li><a href="#about">เกี่ยวกับเรา</a></li>
+        <li><a href="#services">บริการรับรอง</a></li>
+        <li><a href="#process">การประเมิน</a></li>
+        <li><a href="#portfolio">ผลงานที่ผ่านมา</a></li>
+        <li><a href="#contact">ติดต่อเรา</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn btn-primary">สมัครประเมิน</a>
+    <button class="burger" id="burger" aria-label="เมนู"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#7fc0ff" stroke-width="1.4" opacity="0.45">
+        <line x1="100" y1="90" x2="260" y2="180"/><line x1="260" y1="180" x2="180" y2="330"/>
+        <line x1="260" y1="180" x2="420" y2="120"/><line x1="180" y1="330" x2="360" y2="420"/>
+        <line x1="420" y1="120" x2="560" y2="260"/><line x1="360" y1="420" x2="520" y2="460"/>
+        <line x1="560" y1="260" x2="520" y2="460"/><line x1="560" y1="260" x2="700" y2="150"/>
+        <line x1="700" y1="150" x2="760" y2="360"/><line x1="760" y1="360" x2="900" y2="250"/>
+        <line x1="700" y1="150" x2="1040" y2="140"/><line x1="900" y1="250" x2="1040" y2="140"/>
+        <line x1="900" y1="250" x2="1080" y2="400"/><line x1="760" y1="360" x2="980" y2="480"/>
+        <line x1="1080" y1="400" x2="1150" y2="300"/><line x1="1080" y1="400" x2="980" y2="480"/>
+        <line x1="1040" y1="140" x2="1150" y2="300"/>
+      </g>
+      <g fill="#bfe0ff">
+        <circle cx="100" cy="90" r="5"/><circle cx="260" cy="180" r="7"/><circle cx="180" cy="330" r="5"/>
+        <circle cx="360" cy="420" r="6"/><circle cx="420" cy="120" r="5"/><circle cx="560" cy="260" r="8"/>
+        <circle cx="520" cy="460" r="5"/><circle cx="700" cy="150" r="7"/><circle cx="760" cy="360" r="6"/>
+        <circle cx="900" cy="250" r="8"/><circle cx="1040" cy="140" r="6"/><circle cx="1080" cy="400" r="7"/>
+        <circle cx="980" cy="480" r="5"/><circle cx="1150" cy="300" r="6"/>
+      </g>
+    </svg>
+    <img class="ph" id="ph-hero" alt="">
+  </div>
+  <div class="wrap hero-inner">
+    <span class="pill"><span class="dot"></span>องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล</span>
+    <h1>ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล</h1>
+    <p class="lead">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">สมัครประเมินสมรรถนะ</a>
+      <a href="#services" class="btn btn-ghost">ดูบริการทั้งหมด</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2</b><span>สาขาวิชาชีพที่ให้การรับรอง</span></div>
+      <div class="stat"><b>3</b><span>อาชีพรับรองคุณวุฒิ</span></div>
+      <div class="stat"><b>70–80%</b><span>เกณฑ์ผ่านการประเมิน</span></div>
+      <div class="stat"><b>RESK</b><span>เทียบโอนประสบการณ์ได้</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="eyebrow">เกี่ยวกับเรา</div>
+        <h2 style="font-size:clamp(24px,3.4vw,34px);color:var(--blue-900);font-weight:800;margin-bottom:18px;letter-spacing:-.4px">องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ</h2>
+        <p>ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร สังกัด<strong>สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี มจธ.</strong> ทำหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ในสาขาวิชาชีพอุตสาหกรรมดิจิทัล</p>
+        <p>เราดำเนินงานร่วมกับ<strong>สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</strong> เพื่อยกระดับความสามารถของบุคลากร และการันตีความเป็นมืออาชีพให้กับบุคคลและองค์กร</p>
+        <ul class="feature-list">
+          <li><span class="check">✓</span><span>รับรองตามมาตรฐานอาชีพและคุณวุฒิวิชาชีพระดับชาติ (ISO/IEC 17024)</span></li>
+          <li><span class="check">✓</span><span>ประเมินทั้งวิธีทดสอบปกติ และเทียบโอนประสบการณ์ (RESK)</span></li>
+          <li><span class="check">✓</span><span>เจ้าหน้าที่สอบผ่านการอบรมมาตรฐานจากสถาบันคุณวุฒิวิชาชีพ</span></li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h3>วิสัยทัศน์ของศูนย์ฯ</h3>
+        <div class="mini"><div class="ic">🎯</div><div><b>มาตรฐานสากล</b><span>ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)</span></div></div>
+        <div class="mini"><div class="ic">🤝</div><div><b>พันธมิตรภาครัฐ</b><span>ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</span></div></div>
+        <div class="mini"><div class="ic">📈</div><div><b>พัฒนากำลังคน</b><span>ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">บริการรับรอง</div>
+      <h2>สาขาวิชาชีพที่เปิดให้การรับรอง</h2>
+      <p>ศูนย์ฯ ให้บริการรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล จำนวน 2 สาขา</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic-lg">💻</div>
+        <h3>สาขาซอฟต์แวร์และการประยุกต์</h3>
+        <div class="sub">Software and Applications</div>
+        <p>รับรองคุณวุฒิวิชาชีพสำหรับผู้ปฏิบัติงานด้านการวิเคราะห์และพัฒนาซอฟต์แวร์</p>
+        <div class="tags"><span class="tag">นักวิเคราะห์ความต้องการทางธุรกิจ</span><span class="tag">ระดับ 3</span></div>
+      </div>
+      <div class="card">
+        <div class="ic-lg">📡</div>
+        <h3>สาขาการสื่อสารโทรคมนาคม</h3>
+        <div class="sub">Telecommunication</div>
+        <p>รับรองคุณวุฒิวิชาชีพสำหรับช่างและบุคลากรด้านเครือข่ายสื่อสารโทรคมนาคม</p>
+        <div class="tags"><span class="tag">ช่างสื่อสัญญาณโทรคมนาคม</span><span class="tag">ช่างโครงข่าย FTTx</span><span class="tag">ระดับ 2–3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">การประเมิน</div>
+      <h2>ขั้นตอนและเกณฑ์การประเมิน</h2>
+      <p>ผู้เข้ารับการประเมินต้องผ่านทุกเครื่องมือการประเมินตามขั้นตอนของสาขาวิชาชีพ จึงจะถือว่าผ่านการรับรอง</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h4>สมัครและตรวจคุณสมบัติ</h4><p>ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ</p></div>
+      <div class="step"><div class="num">2</div><h4>สอบภาคทฤษฎี</h4><p>ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที</p></div>
+      <div class="step"><div class="num">3</div><h4>สอบภาคปฏิบัติ</h4><p>ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที</p></div>
+    </div>
+    <div class="criteria">
+      <div class="ct"><b>≥70%</b><span>เกณฑ์ผ่านภาคทฤษฎี</span></div>
+      <div class="divider"></div>
+      <div class="ct"><b>≥80%</b><span>เกณฑ์ผ่านภาคปฏิบัติ</span></div>
+      <div class="divider"></div>
+      <div class="ct"><b>RESK</b><span>เทียบโอนประสบการณ์การทำงาน</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="sec portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">ผลงานที่ผ่านมา</div>
+      <h2>กิจกรรมและผลงานของศูนย์ฯ</h2>
+      <p>รวบรวมการจัดสอบ การอบรม การตรวจประเมินมาตรฐาน และความสำเร็จที่ผ่านมาของ CISS</p>
+    </div>
+    <div class="pf-grid">
+
+      <div class="pf-feature">
+        <div class="pf-media">
+          <span class="pf-badge">รางวัลยอดเยี่ยม 2565</span>
+          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ilq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
+            <rect width="400" height="320" fill="url(#ilq)"/>
+            <circle cx="60" cy="60" r="40" fill="#fff" opacity="0.06"/><circle cx="350" cy="270" r="60" fill="#fff" opacity="0.05"/>
+            <path d="M200 70 L262 98 L262 162 C262 210 234 240 200 256 C166 240 138 210 138 162 L138 98 Z" fill="#fff" opacity="0.96"/>
+            <path d="M172 162 l20 22 l40 -50" fill="none" stroke="#1f6fd1" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="200" cy="163" r="78" fill="none" stroke="#bfe0ff" stroke-width="3" opacity="0.8"/>
+            <text x="200" y="298" text-anchor="middle" fill="#dcebfb" font-family="Sarabun,sans-serif" font-size="18" font-weight="700" opacity="0.9">ISO/IEC 17024</text>
+          </svg>
+          <img class="ph" id="ph-feat" alt="">
+        </div>
+        <div class="pf-body">
+          <h4>รับรางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565</h4>
+          <p>ศูนย์ฯ ได้รับรางวัลยอดเยี่ยมด้านการพัฒนาองค์กรไปสู่มาตรฐานระดับสากล ISO/IEC 17024 ในฐานะองค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สะท้อนความมุ่งมั่นในการรักษาคุณภาพการให้บริการ</p>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-media">
+          <span class="pf-badge">การจัดสอบ</span>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="iln" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
+            <rect width="400" height="220" fill="url(#iln)"/>
+            <g stroke="#7fc0ff" stroke-width="2.5" opacity="0.75" fill="none"><path d="M200 110 C140 60 90 60 60 70"/><path d="M200 110 C150 160 100 165 70 160"/><path d="M200 110 C270 60 320 60 350 72"/><path d="M200 110 C280 160 320 165 345 158"/></g>
+            <g fill="#bfe0ff"><circle cx="60" cy="70" r="9"/><circle cx="70" cy="160" r="9"/><circle cx="350" cy="72" r="9"/><circle cx="345" cy="158" r="9"/></g>
+            <rect x="168" y="86" width="64" height="48" rx="10" fill="#fff"/><rect x="180" y="100" width="40" height="6" rx="3" fill="#1f6fd1"/><circle cx="186" cy="120" r="4" fill="#2f86e0"/><circle cx="200" cy="120" r="4" fill="#2f86e0"/>
+          </svg>
+          <img class="ph" id="ph-fttx" alt="">
+        </div>
+        <div class="pf-body"><h4>ประเมินสมรรถนะ FTTx ระดับ 2–3</h4><p>จัดการประเมินผู้ปฏิบัติงานด้านโครงข่ายใยแก้วนำแสง ทั้งช่างเดินสาย ช่างเทคนิค หัวหน้างาน และวิศวกร</p></div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-media">
+          <span class="pf-badge">ภาคปฏิบัติ</span>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ilr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient></defs>
+            <rect width="400" height="220" fill="url(#ilr)"/>
+            <path d="M60 150 C160 150 160 80 260 80" fill="none" stroke="#bfe0ff" stroke-width="7" stroke-linecap="round"/>
+            <rect x="256" y="68" width="56" height="24" rx="6" fill="#fff"/><circle cx="260" cy="80" r="6" fill="#1f6fd1"/>
+            <g stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.85"><path d="M266 50 l-6 -14"/><path d="M286 54 l4 -14"/></g>
+          </svg>
+          <img class="ph" id="ph-resk" alt="">
+        </div>
+        <div class="pf-body"><h4>การทดสอบภาคปฏิบัติด้านไฟเบอร์ออปติก</h4><p>ผู้เข้ารับการประเมินลงมือปฏิบัติจริงด้านการเข้าหัว เชื่อมต่อ และทดสอบสายใยแก้วนำแสงตามมาตรฐานอาชีพ</p></div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-media">
+          <span class="pf-badge">ภาคทฤษฎี</span>
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ila" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
+            <rect width="400" height="220" fill="url(#ila)"/>
+            <rect x="150" y="50" width="100" height="120" rx="10" fill="#fff"/>
+            <g fill="#cfe3fa"><rect x="166" y="70" width="68" height="8" rx="4"/><rect x="166" y="88" width="68" height="8" rx="4"/><rect x="166" y="106" width="48" height="8" rx="4"/></g>
+            <circle cx="232" cy="150" r="20" fill="#0a2540"/><path d="M223 150 l6 7 l12 -14" fill="none" stroke="#7fc0ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <img class="ph" id="ph-exam" alt="">
+        </div>
+        <div class="pf-body"><h4>การสอบภาคทฤษฎีในศูนย์สอบ</h4><p>ผู้เข้ารับการประเมินทำข้อสอบปรนัยภายใต้การกำกับของเจ้าหน้าที่สอบที่ผ่านการรับรองมาตรฐาน</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">ภาพกิจกรรม</div>
+      <h2>การอบรม จัดสอบ และพิธีรับรางวัล</h2>
+      <p>บรรยากาศกิจกรรมของศูนย์ฯ ทั้งการฝึกอบรม การทดสอบ และความสำเร็จที่ผ่านมา</p>
+    </div>
+    <div class="gal-grid">
+
+      <div class="gal-item wide tall">
+        <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
+          <rect width="600" height="340" fill="url(#ilm)"/>
+          <g fill="#bfe0ff" opacity="0.9"><circle cx="180" cy="150" r="26"/><circle cx="300" cy="135" r="30"/><circle cx="420" cy="150" r="26"/></g>
+          <g fill="#fff"><path d="M140 250 a40 40 0 0 1 80 0 z"/><path d="M255 235 a45 45 0 0 1 90 0 z"/><path d="M380 250 a40 40 0 0 1 80 0 z"/></g>
+        </svg>
+        <img class="ph" id="ph-g1" alt="">
+        <div class="gal-cap">ภาพหมู่ผู้เข้าร่วมการประเมินและรับใบประกาศ</div>
+      </div>
+
+      <div class="gal-item">
+        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#ilt)"/><rect x="60" y="40" width="180" height="100" rx="8" fill="#fff"/>
+          <g fill="#2f86e0"><rect x="80" y="98" width="18" height="24"/><rect x="106" y="82" width="18" height="40"/><rect x="132" y="68" width="18" height="54"/></g>
+        </svg>
+        <img class="ph" id="ph-g2" alt="">
+        <div class="gal-cap">อบรมเชิงปฏิบัติการไฟเบอร์ออปติก</div>
+      </div>
+
+      <div class="gal-item">
+        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#ilg)"/><circle cx="150" cy="78" r="30" fill="#fff"/><path d="M104 160 a46 46 0 0 1 92 0 z" fill="#fff"/>
+        </svg>
+        <img class="ph" id="ph-g3" alt="">
+        <div class="gal-cap">ผู้เข้ารับการทดสอบภาคปฏิบัติ</div>
+      </div>
+
+      <div class="gal-item">
+        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#ilf)"/><path d="M30 150 C110 150 110 70 190 70" fill="none" stroke="#bfe0ff" stroke-width="7" stroke-linecap="round"/><rect x="186" y="58" width="56" height="24" rx="6" fill="#fff"/>
+        </svg>
+        <img class="ph" id="ph-g4" alt="">
+        <div class="gal-cap">ทดสอบการเข้าหัวสายไฟเบอร์</div>
+      </div>
+
+      <div class="gal-item">
+        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#ilp)"/><rect x="70" y="120" width="50" height="40" fill="#bfe0ff"/><rect x="125" y="95" width="50" height="65" fill="#fff"/><rect x="180" y="70" width="50" height="90" fill="#7fc0ff"/>
+        </svg>
+        <img class="ph" id="ph-g5" alt="">
+        <div class="gal-cap">เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”</div>
+      </div>
+
+      <div class="gal-item">
+        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
+          <rect width="300" height="200" fill="url(#ilw)"/><path d="M120 60 h60 v18 a30 30 0 0 1 -60 0 z" fill="#fff"/><rect x="142" y="96" width="16" height="20" fill="#fff"/><rect x="120" y="116" width="60" height="14" rx="5" fill="#bfe0ff"/>
+        </svg>
+        <img class="ph" id="ph-g6" alt="">
+        <div class="gal-cap">รับมอบรางวัลร่วมกับทีมงาน</div>
+      </div>
+
+      <div class="gal-item wide">
+        <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ilc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
+          <rect width="600" height="200" fill="url(#ilc)"/>
+          <path d="M270 36 L330 36 L348 100 L300 170 L252 100 Z" fill="#fff"/>
+          <path d="M285 70 h30 M278 88 h44 M285 106 h30" stroke="#bfe0ff" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <img class="ph" id="ph-g7" alt="">
+        <div class="gal-cap">โล่ประกาศเกียรติคุณมาตรฐาน ISO/IEC 17024</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>พร้อมยกระดับสู่มืออาชีพแล้วหรือยัง?</h2>
+      <p>สมัครเข้ารับการประเมินสมรรถนะตามมาตรฐานอาชีพ เพื่อการันตีความสามารถของคุณและองค์กร</p>
+      <a href="#contact" class="btn">ติดต่อสมัครประเมิน</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">ติดต่อเรา</div>
+      <h2>สอบถามข้อมูลและขอใบสมัคร</h2>
+      <p>ติดต่อศูนย์ฯ ได้ทุกวันจันทร์–ศุกร์ เวลา 8.30–16.30 น.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item"><div class="ic">📞</div><div><b>โทรศัพท์ / โทรสาร</b><span>โทร. 02-470-9629 · โทรสาร 02-470-9628</span></div></div>
+        <div class="ci-item"><div class="ic">✉️</div><div><b>อีเมล</b><span>ciss@mail.kmutt.ac.th</span></div></div>
+        <div class="ci-item"><div class="ic">📘</div><div><b>Facebook</b><span>CISS</span></div></div>
+        <div class="ci-item"><div class="ic">📍</div><div><b>ที่อยู่</b><span>126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140</span></div></div>
+        <div class="ci-item"><div class="ic">👤</div><div><b>ฝ่ายทดสอบและประเมิน</b><span>นายอุทัย ละไม · โทร. 092-321-2123</span></div></div>
+      </div>
+      <div class="map-box">
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี&z=15&output=embed" title="แผนที่ มจธ."></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85"/>
+            <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
+            <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
+            <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9"/>
+            <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
+          </svg>
+        </div>
+        <p>CISS — ศูนย์ที่มุ่งเน้นนวัตกรรมอวกาศ การสื่อสาร เทคโนโลยีดิจิทัล และการรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</p>
+      </div>
+      <div class="foot-col">
+        <h5>เมนูหลัก</h5>
+        <a href="#about">เกี่ยวกับเรา</a><a href="#services">บริการรับรอง</a><a href="#process">การประเมิน</a><a href="#portfolio">ผลงานที่ผ่านมา</a>
+      </div>
+      <div class="foot-col">
+        <h5>ติดต่อ</h5>
+        <a href="tel:024709629">02-470-9629</a><a href="mailto:ciss@mail.kmutt.ac.th">ciss@mail.kmutt.ac.th</a><a href="#contact">ที่อยู่ศูนย์ฯ</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</div>
+  </div>
+</footer>
+
+<!-- IMAGE MANAGER -->
+<button class="mng-btn" id="mngBtn">📷 ใส่รูปภาพจริง</button>
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h3>ใส่รูปภาพจริงของศูนย์ฯ</h3><button class="x" id="closeX">✕</button></div>
+    <div class="modal-hint">เลือกรูปจากเครื่องของคุณให้แต่ละช่อง รูปจะแสดงในเว็บทันทีและถูกบันทึกอัตโนมัติ (จำได้แม้รีเฟรชหน้า) — ดูเลขรูปที่แนะนำในวงเล็บ</div>
+    <div class="slots" id="slots"></div>
+    <div class="modal-foot">
+      <button class="btn-clear" id="clearBtn">ล้างรูปทั้งหมด</button>
+      <button class="btn-done" id="doneBtn">เสร็จสิ้น</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // mobile menu
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+  // image slots config
+  const SLOTS=[
+    {k:'hero',label:'Hero – แบนเนอร์/อาคารศูนย์ฯ',hint:'แนะนำรูป 12'},
+    {k:'feat',label:'ผลงานเด่น – พิธีรับรางวัล ISO',hint:'แนะนำรูป 5'},
+    {k:'fttx',label:'การ์ด – ประเมิน FTTx',hint:'แนะนำรูป 4'},
+    {k:'resk',label:'การ์ด – ทดสอบภาคปฏิบัติ',hint:'แนะนำรูป 3'},
+    {k:'exam',label:'การ์ด – สอบภาคทฤษฎี',hint:'แนะนำรูป 1'},
+    {k:'g1',label:'แกลเลอรี (ภาพใหญ่) – ภาพหมู่',hint:'แนะนำรูป 10'},
+    {k:'g2',label:'แกลเลอรี – อบรมไฟเบอร์',hint:'แนะนำรูป 9'},
+    {k:'g3',label:'แกลเลอรี – ผู้เข้าทดสอบ',hint:'แนะนำรูป 11'},
+    {k:'g4',label:'แกลเลอรี – ทดสอบเข้าหัวสาย',hint:'แนะนำรูป 2'},
+    {k:'g5',label:'แกลเลอรี – เวทีเสวนา ISO',hint:'แนะนำรูป 6'},
+    {k:'g6',label:'แกลเลอรี – รับรางวัลกับทีม',hint:'แนะนำรูป 7'},
+    {k:'g7',label:'แกลเลอรี – โล่ประกาศเกียรติคุณ',hint:'แนะนำรูป 8'}
+  ];
+
+  function setImg(k,url){const img=document.getElementById('ph-'+k);if(img){img.src=url;img.classList.add('on');}}
+
+  async function saveImg(k,url){try{await window.storage.set('ciss-img:'+k,url,false);}catch(e){}}
+  async function loadImg(k){try{const r=await window.storage.get('ciss-img:'+k);if(r&&r.value)return r.value;}catch(e){}return null;}
+
+  // downscale to keep storage small
+  function processFile(file,maxW){return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>{const im=new Image();im.onload=()=>{
+      let w=im.width,h=im.height;if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}
+      const c=document.createElement('canvas');c.width=w;c.height=h;
+      c.getContext('2d').drawImage(im,0,0,w,h);
+      res(c.toDataURL('image/jpeg',0.82));
+    };im.onerror=rej;im.src=r.result;};
+    r.onerror=rej;r.readAsDataURL(file);
+  });}
+
+  // build modal rows
+  const slotsEl=document.getElementById('slots');
+  SLOTS.forEach((s,i)=>{
+    const row=document.createElement('div');row.className='slot';
+    row.innerHTML=`<div class="slot-thumb" id="th-${s.k}">${i+1}</div>
+      <div class="slot-info"><b>${s.label}</b><span>${s.hint}</span></div>
+      <label>เลือกรูป<input type="file" accept="image/*" data-k="${s.k}"></label>`;
+    slotsEl.appendChild(row);
+  });
+
+  slotsEl.querySelectorAll('input[type=file]').forEach(inp=>{
+    inp.addEventListener('change',async e=>{
+      const f=e.target.files[0];if(!f)return;const k=inp.dataset.k;
+      const max=(k==='hero'||k==='g1')?1600:1100;
+      try{
+        const url=await processFile(f,max);
+        setImg(k,url);await saveImg(k,url);
+        const th=document.getElementById('th-'+k);th.innerHTML=`<img src="${url}" alt="">`;
+      }catch(err){alert('ไม่สามารถอ่านไฟล์รูปได้ ลองไฟล์อื่นนะครับ');}
+    });
+  });
+
+  // restore saved images on load
+  (async()=>{for(const s of SLOTS){const u=await loadImg(s.k);if(u){setImg(s.k,u);const th=document.getElementById('th-'+s.k);if(th)th.innerHTML=`<img src="${u}" alt="">`;}}})();
+
+  // modal controls
+  const modal=document.getElementById('modal');
+  document.getElementById('mngBtn').addEventListener('click',()=>modal.classList.add('open'));
+  document.getElementById('closeX').addEventListener('click',()=>modal.classList.remove('open'));
+  document.getElementById('doneBtn').addEventListener('click',()=>modal.classList.remove('open'));
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+  document.getElementById('clearBtn').addEventListener('click',async()=>{
+    if(!confirm('ลบรูปที่ใส่ไว้ทั้งหมด?'))return;
+    for(const s of SLOTS){try{await window.storage.delete('ciss-img:'+s.k,false);}catch(e){}
+      const img=document.getElementById('ph-'+s.k);if(img){img.classList.remove('on');img.removeAttribute('src');}
+      const th=document.getElementById('th-'+s.k);if(th)th.innerHTML=SLOTS.indexOf(s)+1;}
+  });
+</script>
+</body>
+</html>
