@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISS Hub — ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ.</title>
+<style>
+  :root{
+    --bg:#070f20;--bg2:#0b1a36;--panel:rgba(255,255,255,.045);--panel-bd:rgba(255,255,255,.1);
+    --text:#e8eef9;--muted:#90a2c0;--blue:#2f86e0;--blue-d:#1559a3;
+    --space1:#7c4dff;--space2:#5b8def;
+    --pq1:#f5a623;--pq2:#f7c948;
+    --dig1:#06b6d4;--dig2:#3b82f6;
+    --shadow:0 20px 60px rgba(0,0,0,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Sarabun","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  svg{display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @keyframes dash{to{stroke-dashoffset:-40}}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.06);opacity:.9}}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(7,15,32,.7);backdrop-filter:blur(14px);border-bottom:1px solid var(--panel-bd)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:13px;font-weight:800;color:#fff;letter-spacing:.5px}
+  .logo-box{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--blue-d));display:grid;place-items:center;box-shadow:0 6px 20px rgba(47,134,224,.4)}
+  .logo-box svg{width:34px;height:34px}
+  .brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-links{display:flex;gap:8px;align-items:center;list-style:none}
+  .nav-links a{padding:9px 15px;border-radius:9px;font-size:14px;color:var(--muted);font-weight:500;transition:.2s}
+  .nav-links a:hover{color:#fff;background:var(--panel)}
+  .lang-tog{display:flex;border:1px solid var(--panel-bd);border-radius:50px;overflow:hidden;background:var(--panel)}
+  .lang-tog button{background:none;border:none;color:var(--muted);font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 13px;cursor:pointer;transition:.2s}
+  .lang-tog button.active{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2.5px;background:#fff;border-radius:2px}
+
+  .hero{position:relative;overflow:hidden;padding:90px 0 80px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#13294f 0%,var(--bg) 60%)}
+  .hero-bg{position:absolute;inset:0;z-index:0;opacity:.9}
+  .hero-bg svg{width:100%;height:100%}
+  .orbits{transform-origin:600px 300px;animation:spin 90s linear infinite}
+  .hero-inner{position:relative;z-index:2}
+  .hero-logo{width:118px;height:118px;border-radius:30px;margin:0 auto 30px;background:linear-gradient(135deg,var(--blue),var(--blue-d));display:grid;place-items:center;box-shadow:0 20px 50px rgba(47,134,224,.45);animation:float 6s ease-in-out infinite;position:relative}
+  .hero-logo::after{content:"";position:absolute;inset:-14px;border-radius:40px;border:1px solid rgba(127,192,255,.25);animation:pulse 4s ease-in-out infinite}
+  .hero-logo svg{width:86px;height:86px}
+  .hero h1{font-size:clamp(30px,5.5vw,54px);font-weight:800;letter-spacing:-.5px;line-height:1.15;margin-bottom:8px;background:linear-gradient(90deg,#fff,#bcd6f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub-th{font-size:clamp(15px,2.4vw,19px);color:#cdd9ee;font-weight:600;margin-bottom:18px}
+  .hero p.lead{font-size:clamp(15px,2vw,17px);color:var(--muted);max-width:640px;margin:0 auto 30px}
+  .hero-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .hpill{padding:8px 18px;border-radius:50px;font-size:13.5px;font-weight:600;border:1px solid var(--panel-bd);background:var(--panel);backdrop-filter:blur(6px)}
+  .hpill.s{color:#c3b0ff;border-color:rgba(124,77,255,.4)}
+  .hpill.q{color:#ffd98a;border-color:rgba(245,166,35,.4)}
+  .hpill.d{color:#8fe3f5;border-color:rgba(6,182,212,.4)}
+
+  .eco{padding:80px 0 40px}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 50px}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+  .sec-head h2{font-size:clamp(24px,3.6vw,36px);font-weight:800;letter-spacing:-.3px;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:15.5px}
+  .diagram{width:100%;max-width:1000px;margin:0 auto}
+  .diagram svg{width:100%;height:auto}
+
+  .missions{padding:50px 0 90px}
+  .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .m-card{position:relative;border-radius:22px;background:var(--panel);border:1px solid var(--panel-bd);padding:34px 30px 30px;overflow:hidden;transition:.35s;backdrop-filter:blur(8px)}
+  .m-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--a1),var(--a2))}
+  .m-card::after{content:"";position:absolute;top:-60px;right:-60px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%);opacity:.5;transition:.35s}
+  .m-card:hover{transform:translateY(-8px);border-color:var(--a2);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .m-card:hover::after{opacity:.9}
+  .m-ico{width:64px;height:64px;border-radius:17px;background:linear-gradient(135deg,var(--a1),var(--a2));display:grid;place-items:center;margin-bottom:22px;position:relative;box-shadow:0 10px 26px var(--glow)}
+  .m-ico svg{width:36px;height:36px}
+  .m-tag{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--a2);margin-bottom:6px}
+  .m-card h3{font-size:21px;font-weight:800;margin-bottom:6px;line-height:1.3;position:relative}
+  .m-card .h-th{font-size:14px;color:var(--muted);font-weight:600;margin-bottom:16px}
+  .m-card p{color:var(--muted);font-size:14px;margin-bottom:18px;position:relative}
+  .m-list{list-style:none;display:grid;gap:9px;margin-bottom:26px;position:relative}
+  .m-list li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#cdd9ee}
+  .m-list .dot{width:7px;height:7px;border-radius:50%;background:var(--a2);margin-top:7px;flex-shrink:0}
+  .m-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:12px;font-weight:700;font-size:14.5px;color:#fff;background:linear-gradient(135deg,var(--a1),var(--a2));transition:.25s;cursor:pointer;position:relative}
+  .m-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px var(--glow)}
+  .m-btn .arr{transition:.25s}.m-btn:hover .arr{transform:translateX(4px)}
+  .m-note{text-align:center;font-size:11.5px;color:var(--muted);margin-top:10px;opacity:.7}
+
+  .m-space{--a1:var(--space1);--a2:var(--space2);--glow:rgba(124,77,255,.35)}
+  .m-pq{--a1:var(--pq1);--a2:var(--pq2);--glow:rgba(245,166,35,.32)}
+  .m-digital{--a1:var(--dig1);--a2:var(--dig2);--glow:rgba(6,182,212,.32)}
+
+  footer{border-top:1px solid var(--panel-bd);padding:46px 0 30px;background:var(--bg2)}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;margin-bottom:30px}
+  .foot-brand{display:flex;align-items:center;gap:13px}
+  .foot-contact{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--muted)}
+  .foot-bottom{border-top:1px solid var(--panel-bd);padding-top:22px;text-align:center;font-size:12.5px;color:var(--muted)}
+
+  .set-btn{position:fixed;right:20px;bottom:20px;z-index:200;background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;border:none;border-radius:50px;padding:13px 20px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.45);display:flex;gap:8px;align-items:center;transition:.25s}
+  .set-btn:hover{transform:translateY(-2px)}
+  .modal{position:fixed;inset:0;z-index:300;background:rgba(3,8,18,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:#0d1b35;border:1px solid var(--panel-bd);border-radius:20px;width:100%;max-width:520px;box-shadow:var(--shadow);overflow:hidden}
+  .modal-head{padding:22px 24px;border-bottom:1px solid var(--panel-bd);display:flex;justify-content:space-between;align-items:center}
+  .modal-head h3{font-size:18px}
+  .modal-head .x{background:var(--panel);border:none;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:17px;color:#fff}
+  .modal-body{padding:22px 24px;display:grid;gap:18px}
+  .fld label{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:700;margin-bottom:8px}
+  .fld .chip{width:11px;height:11px;border-radius:3px}
+  .fld input{width:100%;padding:12px 14px;border-radius:11px;border:1px solid var(--panel-bd);background:#0a1730;color:#fff;font-family:inherit;font-size:14px;outline:none;transition:.2s}
+  .fld input:focus{border-color:var(--blue)}
+  .modal-foot{padding:18px 24px;border-top:1px solid var(--panel-bd);display:flex;justify-content:flex-end;gap:10px}
+  .modal-foot button{font-family:inherit;font-weight:700;font-size:14px;padding:11px 22px;border-radius:11px;cursor:pointer;border:none}
+  .b-save{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff}
+
+  @media(max-width:880px){
+    .nav-links{display:none}.burger{display:flex}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#0a1730;padding:14px;border-bottom:1px solid var(--panel-bd)}
+    .m-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <div class="logo-box" id="navlogo"></div>
+      <div>CISS<small>Center of Excellence</small></div>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links" id="navlinks">
+        <li><a href="#missions" data-th="ภารกิจ" data-en="Missions">ภารกิจ</a></li>
+        <li><a href="#space">Space Innovation</a></li>
+        <li><a href="#pq">Professional Qualification</a></li>
+        <li><a href="#digital">Digital &amp; Communications</a></li>
+      </ul>
+      <div class="lang-tog">
+        <button id="lang-th" class="active">TH</button>
+        <button id="lang-en">EN</button>
+      </div>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#7fc0ff">
+        <circle cx="120" cy="90" r="1.6"/><circle cx="300" cy="60" r="2.2" opacity=".7"/><circle cx="520" cy="120" r="1.4"/>
+        <circle cx="760" cy="80" r="2"/><circle cx="980" cy="140" r="1.6" opacity=".6"/><circle cx="1100" cy="70" r="2.2"/>
+        <circle cx="200" cy="300" r="1.5"/><circle cx="1050" cy="330" r="1.8" opacity=".7"/><circle cx="90" cy="460" r="2"/>
+        <circle cx="430" cy="500" r="1.5" opacity=".6"/><circle cx="700" cy="520" r="2.1"/><circle cx="950" cy="500" r="1.5"/>
+        <circle cx="640" cy="40" r="1.4"/><circle cx="850" cy="260" r="1.6" opacity=".7"/><circle cx="350" cy="200" r="1.4"/>
+      </g>
+      <g class="orbits" fill="none" stroke="#3b82f6" opacity=".35">
+        <ellipse cx="600" cy="300" rx="430" ry="150" stroke-width="1.2"/>
+        <ellipse cx="600" cy="300" rx="300" ry="260" stroke-width="1" transform="rotate(35 600 300)"/>
+        <circle cx="170" cy="300" r="4" fill="#7c4dff" stroke="none"/>
+        <circle cx="1030" cy="300" r="3" fill="#06b6d4" stroke="none"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-logo" id="herologo"></div>
+    <h1>CISS Center of Excellence</h1>
+    <div class="sub-th" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ." data-en="Communications &amp; Integrated Services Study Center · KMUTT">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</div>
+    <p class="lead" data-th="ศูนย์กลางที่เชื่อมโยง 3 ภารกิจหลัก ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร เข้าสู่แต่ละภารกิจได้จากที่เดียว" data-en="A central hub connecting three core missions — space innovation, professional qualification, and digital technology &amp; communications. Reach every mission from one place.">ศูนย์กลางที่เชื่อมโยง 3 ภารกิจหลัก ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร เข้าสู่แต่ละภารกิจได้จากที่เดียว</p>
+    <div class="hero-pills">
+      <span class="hpill s">🛰️ Space Innovation</span>
+      <span class="hpill q">🎓 Professional Qualification</span>
+      <span class="hpill d">📡 Digital &amp; Communications</span>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="eco" id="missions">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Ecosystem</div>
+      <h2 data-th="หนึ่งศูนย์กลาง สามภารกิจ" data-en="One Hub, Three Missions">หนึ่งศูนย์กลาง สามภารกิจ</h2>
+      <p data-th="CISS ทำหน้าที่เป็นแกนกลางที่เชื่อมต่อและขับเคลื่อนทั้งสามภารกิจให้ทำงานร่วมกันอย่างไร้รอยต่อ" data-en="CISS acts as the central core that connects and drives all three missions to work together seamlessly.">CISS ทำหน้าที่เป็นแกนกลางที่เชื่อมต่อและขับเคลื่อนทั้งสามภารกิจให้ทำงานร่วมกันอย่างไร้รอยต่อ</p>
+    </div>
+    <div class="diagram">
+      <svg viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c4dff"/><stop offset="1" stop-color="#5b8def"/></linearGradient>
+          <linearGradient id="gq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a623"/><stop offset="1" stop-color="#f7c948"/></linearGradient>
+          <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+          <linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient>
+        </defs>
+        <g stroke-width="2.5" fill="none" stroke-dasharray="6 8" opacity="0.8" style="animation:dash 2s linear infinite">
+          <path d="M500 190 L180 300" stroke="#7c4dff"/>
+          <path d="M500 190 L500 320" stroke="#f5a623"/>
+          <path d="M500 190 L820 300" stroke="#06b6d4"/>
+        </g>
+        <circle cx="500" cy="190" r="64" fill="url(#gc)"/>
+        <circle cx="500" cy="190" r="76" fill="none" stroke="#2f86e0" stroke-width="1.5" opacity="0.4"/>
+        <text x="500" y="184" text-anchor="middle" fill="#fff" font-family="Sarabun,sans-serif" font-size="30" font-weight="800">CISS</text>
+        <text x="500" y="206" text-anchor="middle" fill="#cfe3fa" font-family="Sarabun,sans-serif" font-size="11">Center of Excellence</text>
+        <circle cx="180" cy="300" r="48" fill="url(#gs)"/>
+        <text x="180" y="296" text-anchor="middle" font-size="24">🛰️</text>
+        <text x="180" y="368" text-anchor="middle" fill="#c3b0ff" font-family="Sarabun,sans-serif" font-size="16" font-weight="700">Space Innovation</text>
+        <circle cx="500" cy="320" r="48" fill="url(#gq)"/>
+        <text x="500" y="316" text-anchor="middle" font-size="24">🎓</text>
+        <text x="500" y="388" text-anchor="middle" fill="#ffd98a" font-family="Sarabun,sans-serif" font-size="16" font-weight="700">Professional Qualification</text>
+        <circle cx="820" cy="300" r="48" fill="url(#gd)"/>
+        <text x="820" y="296" text-anchor="middle" font-size="24">📡</text>
+        <text x="820" y="368" text-anchor="middle" fill="#8fe3f5" font-family="Sarabun,sans-serif" font-size="16" font-weight="700">Digital &amp; Communications</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- MISSIONS -->
+<section class="missions">
+  <div class="wrap">
+    <div class="m-grid">
+
+      <div class="m-card m-space" id="space">
+        <div class="m-ico">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-25 20 20)" stroke="#fff" stroke-width="1.6" opacity=".85"/>
+            <circle cx="20" cy="20" r="6" fill="#fff"/><circle cx="31" cy="10" r="2.6" fill="#fff"/>
+            <path d="M9 31 l1.4 -3 l3 -1.4 l-3 -1.4 l-1.4 -3 l-1.4 3 l-3 1.4 l3 1.4 z" fill="#fff" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="m-tag">Mission 01</div>
+        <h3>Thonburi Space Innovation Hub</h3>
+        <div class="h-th" data-th="ศูนย์นวัตกรรมอวกาศธนบุรี" data-en="Thonburi Space Innovation Centre">ศูนย์นวัตกรรมอวกาศธนบุรี</div>
+        <p data-th="ขับเคลื่อนงานวิจัยและพัฒนาเทคโนโลยีอวกาศ ดาวเทียมขนาดเล็ก และสถานีภาคพื้นดิน พร้อมบ่มเพาะกำลังคนด้านอวกาศของประเทศ" data-en="Driving research and development in space technology, small satellites, and ground stations, while cultivating the nation's space workforce.">ขับเคลื่อนงานวิจัยและพัฒนาเทคโนโลยีอวกาศ ดาวเทียมขนาดเล็ก และสถานีภาคพื้นดิน พร้อมบ่มเพาะกำลังคนด้านอวกาศของประเทศ</p>
+        <ul class="m-list">
+          <li><span class="dot"></span><span data-th="วิจัยและพัฒนาดาวเทียม CubeSat และระบบภาคพื้นดิน" data-en="R&amp;D on CubeSat satellites and ground systems">วิจัยและพัฒนาดาวเทียม CubeSat และระบบภาคพื้นดิน</span></li>
+          <li><span class="dot"></span><span data-th="ห้องปฏิบัติการและพื้นที่ทดสอบเทคโนโลยีอวกาศ" data-en="Laboratories and space technology test facilities">ห้องปฏิบัติการและพื้นที่ทดสอบเทคโนโลยีอวกาศ</span></li>
+          <li><span class="dot"></span><span data-th="โครงการการศึกษาและบ่มเพาะสตาร์ทอัพด้านอวกาศ" data-en="Education programs and space startup incubation">โครงการการศึกษาและบ่มเพาะสตาร์ทอัพด้านอวกาศ</span></li>
+        </ul>
+        <a class="m-btn" id="go-space" href="#" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
+        <div class="m-note" id="note-space" data-th="ยังไม่ได้ตั้งค่าลิงก์ · กดปุ่ม ⚙️ เพื่อเพิ่ม URL" data-en="No link set · tap ⚙️ to add a URL">ยังไม่ได้ตั้งค่าลิงก์ · กดปุ่ม ⚙️ เพื่อเพิ่ม URL</div>
+      </div>
+
+      <div class="m-card m-pq" id="pq">
+        <div class="m-ico">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6 L31 11 L31 21 C31 29 26 34 20 36 C14 34 9 29 9 21 L9 11 Z" fill="#fff"/>
+            <path d="M15 20 l3.5 3.5 l7 -8" stroke="#f5a623" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="m-tag">Mission 02</div>
+        <h3>Professional Qualification</h3>
+        <div class="h-th" data-th="การรับรองคุณวุฒิวิชาชีพ" data-en="Personnel Certification Body">การรับรองคุณวุฒิวิชาชีพ</div>
+        <p data-th="องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ภายใต้มาตรฐานสากล ISO/IEC 17024 ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="A body certifying individuals' competency against occupational standards under the international ISO/IEC 17024 standard, in partnership with the Thailand Professional Qualification Institute (TPQI).">องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ภายใต้มาตรฐานสากล ISO/IEC 17024 ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
+        <ul class="m-list">
+          <li><span class="dot"></span><span data-th="รับรองช่างโครงข่าย FTTx และช่างสื่อสัญญาณ" data-en="Certifying FTTx network &amp; telecom signal technicians">รับรองช่างโครงข่าย FTTx และช่างสื่อสัญญาณ</span></li>
+          <li><span class="dot"></span><span data-th="นักวิเคราะห์ความต้องการทางธุรกิจ (ซอฟต์แวร์)" data-en="Business requirements analysts (software)">นักวิเคราะห์ความต้องการทางธุรกิจ (ซอฟต์แวร์)</span></li>
+          <li><span class="dot"></span><span data-th="ประเมินด้วยการทดสอบและเทียบโอนประสบการณ์ (RESK)" data-en="Assessment by testing and experience recognition (RESK)">ประเมินด้วยการทดสอบและเทียบโอนประสบการณ์ (RESK)</span></li>
+        </ul>
+        <a class="m-btn" id="go-pq" href="#" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
+        <div class="m-note" id="note-pq" data-th="ยังไม่ได้ตั้งค่าลิงก์ · กดปุ่ม ⚙️ เพื่อเพิ่ม URL" data-en="No link set · tap ⚙️ to add a URL">ยังไม่ได้ตั้งค่าลิงก์ · กดปุ่ม ⚙️ เพื่อเพิ่ม URL</div>
+      </div>
+
+      <div class="m-card m-digital" id="digital">
+        <div class="m-ico">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="13" y="13" width="14" height="14" rx="3" fill="#fff"/>
+            <g stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M20 13 V7"/><path d="M20 33 V27"/><path d="M13 20 H7"/><path d="M33 20 H27"/></g>
+            <g fill="#fff"><circle cx="20" cy="6" r="2.2"/><circle cx="20" cy="34" r="2.2"/><circle cx="6" cy="20" r="2.2"/><circle cx="34" cy="20" r="2.2"/></g>
+          </svg>
+        </div>
+        <div class="m-tag">Mission 03</div>
+        <h3>Digital Technology &amp; Communications</h3>
+        <div class="h-th" data-th="เทคโนโลยีดิจิทัลและการสื่อสาร" data-en="Digital &amp; Telecom Infrastructure">เทคโนโลยีดิจิทัลและการสื่อสาร</div>
+        <p data-th="พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล IoT และซอฟต์แวร์ เพื่อรองรับอุตสาหกรรมดิจิทัล" data-en="Developing infrastructure and talent in telecommunications networks, digital systems, IoT, and software to support the digital industry.">พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล IoT และซอฟต์แวร์ เพื่อรองรับอุตสาหกรรมดิจิทัล</p>
+        <ul class="m-list">
+          <li><span class="dot"></span><span data-th="โครงข่ายใยแก้วนำแสง (FTTx) และระบบสื่อสาร" data-en="Fiber-optic networks (FTTx) and communication systems">โครงข่ายใยแก้วนำแสง (FTTx) และระบบสื่อสาร</span></li>
+          <li><span class="dot"></span><span data-th="อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม" data-en="Hands-on digital and telecom training workshops">อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม</span></li>
+          <li><span class="dot"></span><span data-th="พัฒนาซอฟต์แวร์และโซลูชัน IoT" data-en="Software development and IoT solutions">พัฒนาซอฟต์แวร์และโซลูชัน IoT</span></li>
+        </ul>
+        <a class="m-btn" id="go-digital" href="#" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
+        <div class="m-note" id="note-digital" data-th="ยังไม่ได้ตั้งค่าลิงก์ · กดปุ่ม ⚙️ เพื่อเพิ่ม URL" data-en="No link set · tap ⚙️ to add a URL">ยังไม่ได้ตั้งค่าลิงก์ · กดปุ่ม ⚙️ เพื่อเพิ่ม URL</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="logo-box" id="footlogo"></div>
+        <div><b style="color:#fff">CISS</b><br><span style="font-size:13px;color:var(--muted)" data-th="มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="King Mongkut's University of Technology Thonburi">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</span></div>
+      </div>
+      <div class="foot-contact">
+        <span>📞 02-470-9629</span><span>✉️ ciss@mail.kmutt.ac.th</span><span data-th="📍 ทุ่งครุ กรุงเทพฯ" data-en="📍 Thung Khru, Bangkok">📍 ทุ่งครุ กรุงเทพฯ</span>
+      </div>
+    </div>
+    <div class="foot-bottom" data-th="© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ" data-en="© 2025 Communications and Integrated Services Study Center (CISS) · Central hub connecting three missions">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ</div>
+  </div>
+</footer>
+
+<!-- SETTINGS -->
+<button class="set-btn" id="setBtn"><span data-th="⚙️ ตั้งค่าลิงก์ภารกิจ" data-en="⚙️ Set mission links">⚙️ ตั้งค่าลิงก์ภารกิจ</span></button>
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h3 data-th="ตั้งค่า URL ของแต่ละภารกิจ" data-en="Set each mission's URL">ตั้งค่า URL ของแต่ละภารกิจ</h3><button class="x" id="closeX">✕</button></div>
+    <div class="modal-body">
+      <div class="fld"><label><span class="chip" style="background:var(--space2)"></span>Thonburi Space Innovation Hub</label><input id="url-space" type="url" placeholder="https://..."></div>
+      <div class="fld"><label><span class="chip" style="background:var(--pq1)"></span>Professional Qualification</label><input id="url-pq" type="url" placeholder="https://..."></div>
+      <div class="fld"><label><span class="chip" style="background:var(--dig1)"></span>Digital Technology &amp; Communications</label><input id="url-digital" type="url" placeholder="https://..."></div>
+    </div>
+    <div class="modal-foot"><button class="b-save" id="saveBtn" data-th="บันทึกลิงก์" data-en="Save Links">บันทึกลิงก์</button></div>
+  </div>
+</div>
+
+<script>
+  const EMBLEM=`<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85"/>
+    <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
+    <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
+    <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9"/>
+    <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
+  </svg>`;
+  ['navlogo','herologo','footlogo'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=EMBLEM;});
+
+  document.getElementById('burger').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
+
+  // i18n
+  function setLang(lang){
+    document.documentElement.lang = lang==='en'?'en':'th';
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const v = lang==='en'?el.dataset.en:el.dataset.th;
+      if(v!==undefined) el.innerHTML=v;
+    });
+    document.getElementById('lang-th').classList.toggle('active',lang!=='en');
+    document.getElementById('lang-en').classList.toggle('active',lang==='en');
+    try{window.storage.set('ciss-lang',lang,false);}catch(e){}
+  }
+  document.getElementById('lang-th').addEventListener('click',()=>setLang('th'));
+  document.getElementById('lang-en').addEventListener('click',()=>setLang('en'));
+
+  // link manager
+  const KEYS=['space','pq','digital'];
+  function applyLink(k,url){
+    const a=document.getElementById('go-'+k),note=document.getElementById('note-'+k);
+    if(url){a.href=url;note.style.display='none';}else{a.href='#';note.style.display='block';}
+  }
+  async function save(k,url){try{await window.storage.set('ciss-link:'+k,url,false);}catch(e){}}
+  async function load(k){try{const r=await window.storage.get('ciss-link:'+k);if(r&&r.value)return r.value;}catch(e){}return '';}
+
+  const modal=document.getElementById('modal');
+  document.getElementById('setBtn').addEventListener('click',()=>modal.classList.add('open'));
+  document.getElementById('closeX').addEventListener('click',()=>modal.classList.remove('open'));
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+  document.getElementById('saveBtn').addEventListener('click',async()=>{
+    for(const k of KEYS){const v=document.getElementById('url-'+k).value.trim();applyLink(k,v);await save(k,v);}
+    modal.classList.remove('open');
+  });
+
+  // init
+  (async()=>{
+    let lang='th';try{const r=await window.storage.get('ciss-lang');if(r&&r.value)lang=r.value;}catch(e){}
+    setLang(lang);
+    for(const k of KEYS){const u=await load(k);if(u){document.getElementById('url-'+k).value=u;applyLink(k,u);}}
+  })();
+</script>
+</body>
+</html>
