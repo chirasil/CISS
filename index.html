@@ -22,16 +22,19 @@
   .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;z-index:1}
   .ph.on{opacity:1}
 
-  /* NAV */
   header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--blue-900)}
   .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue-600),var(--blue-800));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.5px;box-shadow:var(--shadow)}
   .logo svg{width:32px;height:32px}
   .brand small{display:block;font-weight:500;font-size:11.5px;color:var(--muted);letter-spacing:.3px}
+  .nav-right{display:flex;align-items:center;gap:14px}
   .menu{display:flex;align-items:center;gap:6px;list-style:none}
   .menu a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--ink);font-weight:500;transition:.2s}
   .menu a:hover{background:var(--blue-100);color:var(--blue-700)}
+  .lang-tog{display:flex;border:1px solid var(--line);border-radius:50px;overflow:hidden;background:#fff}
+  .lang-tog button{background:none;border:none;color:var(--muted);font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;cursor:pointer;transition:.2s}
+  .lang-tog button.active{background:var(--blue-600);color:#fff}
   .btn{display:inline-block;padding:11px 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:.25s;cursor:pointer;border:none}
   .btn-primary{background:var(--blue-600);color:#fff;box-shadow:0 4px 14px rgba(31,111,209,.3)}
   .btn-primary:hover{background:var(--blue-700);transform:translateY(-2px);box-shadow:0 8px 22px rgba(31,111,209,.38)}
@@ -41,7 +44,6 @@
   .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
   .burger span{width:24px;height:2.5px;background:var(--blue-800);border-radius:2px;transition:.3s}
 
-  /* HERO */
   .hero{position:relative;overflow:hidden;padding:96px 0 104px;color:#fff;background:linear-gradient(160deg,var(--blue-800),var(--blue-900))}
   .hero-bg{position:absolute;inset:0;z-index:0}
   .hero-bg svg{width:100%;height:100%}
@@ -155,7 +157,6 @@
   .foot-col a:hover{color:#fff;padding-left:5px}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center;font-size:13px;color:rgba(255,255,255,.55)}
 
-  /* IMAGE MANAGER */
   .mng-btn{position:fixed;right:20px;bottom:20px;z-index:200;background:var(--blue-600);color:#fff;border:none;border-radius:50px;padding:13px 20px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 24px rgba(16,58,102,.35);display:flex;align-items:center;gap:8px;transition:.25s}
   .mng-btn:hover{background:var(--blue-700);transform:translateY(-2px)}
   .modal{position:fixed;inset:0;z-index:300;background:rgba(10,37,64,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
@@ -221,18 +222,21 @@
       </div>
       <div>CISS<small>Space Innovation · Communications · Digital · Certification</small></div>
     </a>
-    <nav>
-      <ul class="menu" id="menu">
-        <li><a href="#home">หน้าแรก</a></li>
-        <li><a href="#about">เกี่ยวกับเรา</a></li>
-        <li><a href="#services">บริการรับรอง</a></li>
-        <li><a href="#process">การประเมิน</a></li>
-        <li><a href="#portfolio">ผลงานที่ผ่านมา</a></li>
-        <li><a href="#contact">ติดต่อเรา</a></li>
-      </ul>
-    </nav>
-    <a href="#contact" class="btn btn-primary">สมัครประเมิน</a>
-    <button class="burger" id="burger" aria-label="เมนู"><span></span><span></span><span></span></button>
+    <div class="nav-right">
+      <nav>
+        <ul class="menu" id="menu">
+          <li><a href="#home" data-th="หน้าแรก" data-en="Home">หน้าแรก</a></li>
+          <li><a href="#about" data-th="เกี่ยวกับเรา" data-en="About">เกี่ยวกับเรา</a></li>
+          <li><a href="#services" data-th="บริการรับรอง" data-en="Certification">บริการรับรอง</a></li>
+          <li><a href="#process" data-th="การประเมิน" data-en="Assessment">การประเมิน</a></li>
+          <li><a href="#portfolio" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</a></li>
+          <li><a href="#contact" data-th="ติดต่อเรา" data-en="Contact">ติดต่อเรา</a></li>
+        </ul>
+      </nav>
+      <div class="lang-tog"><button id="lang-th" class="active">TH</button><button id="lang-en">EN</button></div>
+      <a href="#contact" class="btn btn-primary" data-th="สมัครประเมิน" data-en="Apply">สมัครประเมิน</a>
+      <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -262,18 +266,18 @@
     <img class="ph" id="ph-hero" alt="">
   </div>
   <div class="wrap hero-inner">
-    <span class="pill"><span class="dot"></span>องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล</span>
-    <h1>ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล</h1>
-    <p class="lead">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
+    <span class="pill"><span class="dot"></span><span data-th="องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล" data-en="Professional Qualification Body · Digital Industry Sector">องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล</span></span>
+    <h1 data-th="ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล" data-en="Raising Professional Standards<br>Through Personnel Certification">ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล</h1>
+    <p class="lead" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="The Communications and Integrated Services Study Center (CISS), KMUTT — a body certifying personnel competency to occupational standards, in partnership with the Thailand Professional Qualification Institute (TPQI).">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">สมัครประเมินสมรรถนะ</a>
-      <a href="#services" class="btn btn-ghost">ดูบริการทั้งหมด</a>
+      <a href="#contact" class="btn btn-primary" data-th="สมัครประเมินสมรรถนะ" data-en="Apply for Assessment">สมัครประเมินสมรรถนะ</a>
+      <a href="#services" class="btn btn-ghost" data-th="ดูบริการทั้งหมด" data-en="View All Services">ดูบริการทั้งหมด</a>
     </div>
     <div class="stats">
-      <div class="stat"><b>2</b><span>สาขาวิชาชีพที่ให้การรับรอง</span></div>
-      <div class="stat"><b>3</b><span>อาชีพรับรองคุณวุฒิ</span></div>
-      <div class="stat"><b>70–80%</b><span>เกณฑ์ผ่านการประเมิน</span></div>
-      <div class="stat"><b>RESK</b><span>เทียบโอนประสบการณ์ได้</span></div>
+      <div class="stat"><b>2</b><span data-th="สาขาวิชาชีพที่ให้การรับรอง" data-en="Professional sectors certified">สาขาวิชาชีพที่ให้การรับรอง</span></div>
+      <div class="stat"><b>3</b><span data-th="อาชีพรับรองคุณวุฒิ" data-en="Occupations qualified">อาชีพรับรองคุณวุฒิ</span></div>
+      <div class="stat"><b>70–80%</b><span data-th="เกณฑ์ผ่านการประเมิน" data-en="Assessment pass criteria">เกณฑ์ผ่านการประเมิน</span></div>
+      <div class="stat"><b>RESK</b><span data-th="เทียบโอนประสบการณ์ได้" data-en="Experience recognition">เทียบโอนประสบการณ์ได้</span></div>
     </div>
   </div>
 </section>
@@ -283,21 +287,21 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="about-text">
-        <div class="eyebrow">เกี่ยวกับเรา</div>
-        <h2 style="font-size:clamp(24px,3.4vw,34px);color:var(--blue-900);font-weight:800;margin-bottom:18px;letter-spacing:-.4px">องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ</h2>
-        <p>ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร สังกัด<strong>สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี มจธ.</strong> ทำหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ในสาขาวิชาชีพอุตสาหกรรมดิจิทัล</p>
-        <p>เราดำเนินงานร่วมกับ<strong>สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</strong> เพื่อยกระดับความสามารถของบุคลากร และการันตีความเป็นมืออาชีพให้กับบุคคลและองค์กร</p>
+        <div class="eyebrow" data-th="เกี่ยวกับเรา" data-en="About Us">เกี่ยวกับเรา</div>
+        <h2 style="font-size:clamp(24px,3.4vw,34px);color:var(--blue-900);font-weight:800;margin-bottom:18px;letter-spacing:-.4px" data-th="องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ" data-en="A Body Certifying Personnel Competency to Occupational Standards">องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ</h2>
+        <p data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร สังกัด<strong>สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี มจธ.</strong> ทำหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ในสาขาวิชาชีพอุตสาหกรรมดิจิทัล" data-en="The Communications and Integrated Services Study Center, under the <strong>Science and Technology Research and Service Institute, KMUTT</strong>, certifies personnel competency to occupational standards in the digital industry sector.">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร สังกัด<strong>สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี มจธ.</strong> ทำหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ในสาขาวิชาชีพอุตสาหกรรมดิจิทัล</p>
+        <p data-th="เราดำเนินงานร่วมกับ<strong>สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</strong> เพื่อยกระดับความสามารถของบุคลากร และการันตีความเป็นมืออาชีพให้กับบุคคลและองค์กร" data-en="We operate in partnership with the <strong>Thailand Professional Qualification Institute (TPQI)</strong> to upgrade workforce capability and guarantee professionalism for individuals and organizations.">เราดำเนินงานร่วมกับ<strong>สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</strong> เพื่อยกระดับความสามารถของบุคลากร และการันตีความเป็นมืออาชีพให้กับบุคคลและองค์กร</p>
         <ul class="feature-list">
-          <li><span class="check">✓</span><span>รับรองตามมาตรฐานอาชีพและคุณวุฒิวิชาชีพระดับชาติ (ISO/IEC 17024)</span></li>
-          <li><span class="check">✓</span><span>ประเมินทั้งวิธีทดสอบปกติ และเทียบโอนประสบการณ์ (RESK)</span></li>
-          <li><span class="check">✓</span><span>เจ้าหน้าที่สอบผ่านการอบรมมาตรฐานจากสถาบันคุณวุฒิวิชาชีพ</span></li>
+          <li><span class="check">✓</span><span data-th="รับรองตามมาตรฐานอาชีพและคุณวุฒิวิชาชีพระดับชาติ (ISO/IEC 17024)" data-en="Certified to national occupational standards (ISO/IEC 17024)">รับรองตามมาตรฐานอาชีพและคุณวุฒิวิชาชีพระดับชาติ (ISO/IEC 17024)</span></li>
+          <li><span class="check">✓</span><span data-th="ประเมินทั้งวิธีทดสอบปกติ และเทียบโอนประสบการณ์ (RESK)" data-en="Assessment by standard testing and experience recognition (RESK)">ประเมินทั้งวิธีทดสอบปกติ และเทียบโอนประสบการณ์ (RESK)</span></li>
+          <li><span class="check">✓</span><span data-th="เจ้าหน้าที่สอบผ่านการอบรมมาตรฐานจากสถาบันคุณวุฒิวิชาชีพ" data-en="Assessors trained and certified by the TPQI">เจ้าหน้าที่สอบผ่านการอบรมมาตรฐานจากสถาบันคุณวุฒิวิชาชีพ</span></li>
         </ul>
       </div>
       <div class="about-card">
-        <h3>วิสัยทัศน์ของศูนย์ฯ</h3>
-        <div class="mini"><div class="ic">🎯</div><div><b>มาตรฐานสากล</b><span>ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)</span></div></div>
-        <div class="mini"><div class="ic">🤝</div><div><b>พันธมิตรภาครัฐ</b><span>ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</span></div></div>
-        <div class="mini"><div class="ic">📈</div><div><b>พัฒนากำลังคน</b><span>ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล</span></div></div>
+        <h3 data-th="วิสัยทัศน์ของศูนย์ฯ" data-en="Our Vision">วิสัยทัศน์ของศูนย์ฯ</h3>
+        <div class="mini"><div class="ic">🎯</div><div><b data-th="มาตรฐานสากล" data-en="International Standards">มาตรฐานสากล</b><span data-th="ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)" data-en="Aligned with the Thailand (TPQF) and National (NQF) Qualifications Frameworks">ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)</span></div></div>
+        <div class="mini"><div class="ic">🤝</div><div><b data-th="พันธมิตรภาครัฐ" data-en="Public-Sector Partnership">พันธมิตรภาครัฐ</b><span data-th="ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="Operating with the Thailand Professional Qualification Institute">ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</span></div></div>
+        <div class="mini"><div class="ic">📈</div><div><b data-th="พัฒนากำลังคน" data-en="Workforce Development">พัฒนากำลังคน</b><span data-th="ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล" data-en="Advancing careers in the digital industry">ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล</span></div></div>
       </div>
     </div>
   </div>
@@ -307,24 +311,24 @@
 <section class="sec services" id="services">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">บริการรับรอง</div>
-      <h2>สาขาวิชาชีพที่เปิดให้การรับรอง</h2>
-      <p>ศูนย์ฯ ให้บริการรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล จำนวน 2 สาขา</p>
+      <div class="eyebrow" data-th="บริการรับรอง" data-en="Certification Services">บริการรับรอง</div>
+      <h2 data-th="สาขาวิชาชีพที่เปิดให้การรับรอง" data-en="Professional Sectors We Certify">สาขาวิชาชีพที่เปิดให้การรับรอง</h2>
+      <p data-th="ศูนย์ฯ ให้บริการรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล จำนวน 2 สาขา" data-en="CISS certifies personnel competency to occupational standards across two sectors of the digital industry.">ศูนย์ฯ ให้บริการรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล จำนวน 2 สาขา</p>
     </div>
     <div class="cards">
       <div class="card">
         <div class="ic-lg">💻</div>
-        <h3>สาขาซอฟต์แวร์และการประยุกต์</h3>
+        <h3 data-th="สาขาซอฟต์แวร์และการประยุกต์" data-en="Software and Applications">สาขาซอฟต์แวร์และการประยุกต์</h3>
         <div class="sub">Software and Applications</div>
-        <p>รับรองคุณวุฒิวิชาชีพสำหรับผู้ปฏิบัติงานด้านการวิเคราะห์และพัฒนาซอฟต์แวร์</p>
-        <div class="tags"><span class="tag">นักวิเคราะห์ความต้องการทางธุรกิจ</span><span class="tag">ระดับ 3</span></div>
+        <p data-th="รับรองคุณวุฒิวิชาชีพสำหรับผู้ปฏิบัติงานด้านการวิเคราะห์และพัฒนาซอฟต์แวร์" data-en="Professional qualification for software analysis and development practitioners.">รับรองคุณวุฒิวิชาชีพสำหรับผู้ปฏิบัติงานด้านการวิเคราะห์และพัฒนาซอฟต์แวร์</p>
+        <div class="tags"><span class="tag" data-th="นักวิเคราะห์ความต้องการทางธุรกิจ" data-en="Business Requirements Analyst">นักวิเคราะห์ความต้องการทางธุรกิจ</span><span class="tag" data-th="ระดับ 3" data-en="Level 3">ระดับ 3</span></div>
       </div>
       <div class="card">
         <div class="ic-lg">📡</div>
-        <h3>สาขาการสื่อสารโทรคมนาคม</h3>
+        <h3 data-th="สาขาการสื่อสารโทรคมนาคม" data-en="Telecommunications">สาขาการสื่อสารโทรคมนาคม</h3>
         <div class="sub">Telecommunication</div>
-        <p>รับรองคุณวุฒิวิชาชีพสำหรับช่างและบุคลากรด้านเครือข่ายสื่อสารโทรคมนาคม</p>
-        <div class="tags"><span class="tag">ช่างสื่อสัญญาณโทรคมนาคม</span><span class="tag">ช่างโครงข่าย FTTx</span><span class="tag">ระดับ 2–3</span></div>
+        <p data-th="รับรองคุณวุฒิวิชาชีพสำหรับช่างและบุคลากรด้านเครือข่ายสื่อสารโทรคมนาคม" data-en="Professional qualification for technicians and personnel in telecom networks.">รับรองคุณวุฒิวิชาชีพสำหรับช่างและบุคลากรด้านเครือข่ายสื่อสารโทรคมนาคม</p>
+        <div class="tags"><span class="tag" data-th="ช่างสื่อสัญญาณโทรคมนาคม" data-en="Telecom Signal Technician">ช่างสื่อสัญญาณโทรคมนาคม</span><span class="tag" data-th="ช่างโครงข่าย FTTx" data-en="FTTx Network Technician">ช่างโครงข่าย FTTx</span><span class="tag" data-th="ระดับ 2–3" data-en="Level 2–3">ระดับ 2–3</span></div>
       </div>
     </div>
   </div>
@@ -334,21 +338,21 @@
 <section class="sec process" id="process">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">การประเมิน</div>
-      <h2>ขั้นตอนและเกณฑ์การประเมิน</h2>
-      <p>ผู้เข้ารับการประเมินต้องผ่านทุกเครื่องมือการประเมินตามขั้นตอนของสาขาวิชาชีพ จึงจะถือว่าผ่านการรับรอง</p>
+      <div class="eyebrow" data-th="การประเมิน" data-en="Assessment">การประเมิน</div>
+      <h2 data-th="ขั้นตอนและเกณฑ์การประเมิน" data-en="Assessment Process & Criteria">ขั้นตอนและเกณฑ์การประเมิน</h2>
+      <p data-th="ผู้เข้ารับการประเมินต้องผ่านทุกเครื่องมือการประเมินตามขั้นตอนของสาขาวิชาชีพ จึงจะถือว่าผ่านการรับรอง" data-en="Candidates must pass every assessment instrument required by their professional sector to be certified.">ผู้เข้ารับการประเมินต้องผ่านทุกเครื่องมือการประเมินตามขั้นตอนของสาขาวิชาชีพ จึงจะถือว่าผ่านการรับรอง</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">1</div><h4>สมัครและตรวจคุณสมบัติ</h4><p>ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ</p></div>
-      <div class="step"><div class="num">2</div><h4>สอบภาคทฤษฎี</h4><p>ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที</p></div>
-      <div class="step"><div class="num">3</div><h4>สอบภาคปฏิบัติ</h4><p>ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที</p></div>
+      <div class="step"><div class="num">1</div><h4 data-th="สมัครและตรวจคุณสมบัติ" data-en="Apply & Verify Eligibility">สมัครและตรวจคุณสมบัติ</h4><p data-th="ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ" data-en="Submit your application and verify basic eligibility for the desired occupation and level.">ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ</p></div>
+      <div class="step"><div class="num">2</div><h4 data-th="สอบภาคทฤษฎี" data-en="Theory Examination">สอบภาคทฤษฎี</h4><p data-th="ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที" data-en="Multiple-choice exam (4 options), 45 minutes.">ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที</p></div>
+      <div class="step"><div class="num">3</div><h4 data-th="สอบภาคปฏิบัติ" data-en="Practical Examination">สอบภาคปฏิบัติ</h4><p data-th="ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที" data-en="Applied practical exam, 180 minutes.">ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที</p></div>
     </div>
     <div class="criteria">
-      <div class="ct"><b>≥70%</b><span>เกณฑ์ผ่านภาคทฤษฎี</span></div>
+      <div class="ct"><b>≥70%</b><span data-th="เกณฑ์ผ่านภาคทฤษฎี" data-en="Theory pass criteria">เกณฑ์ผ่านภาคทฤษฎี</span></div>
       <div class="divider"></div>
-      <div class="ct"><b>≥80%</b><span>เกณฑ์ผ่านภาคปฏิบัติ</span></div>
+      <div class="ct"><b>≥80%</b><span data-th="เกณฑ์ผ่านภาคปฏิบัติ" data-en="Practical pass criteria">เกณฑ์ผ่านภาคปฏิบัติ</span></div>
       <div class="divider"></div>
-      <div class="ct"><b>RESK</b><span>เทียบโอนประสบการณ์การทำงาน</span></div>
+      <div class="ct"><b>RESK</b><span data-th="เทียบโอนประสบการณ์การทำงาน" data-en="Work experience recognition">เทียบโอนประสบการณ์การทำงาน</span></div>
     </div>
   </div>
 </section>
@@ -357,15 +361,15 @@
 <section class="sec portfolio" id="portfolio">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">ผลงานที่ผ่านมา</div>
-      <h2>กิจกรรมและผลงานของศูนย์ฯ</h2>
-      <p>รวบรวมการจัดสอบ การอบรม การตรวจประเมินมาตรฐาน และความสำเร็จที่ผ่านมาของ CISS</p>
+      <div class="eyebrow" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</div>
+      <h2 data-th="กิจกรรมและผลงานของศูนย์ฯ" data-en="Our Activities & Achievements">กิจกรรมและผลงานของศูนย์ฯ</h2>
+      <p data-th="รวบรวมการจัดสอบ การอบรม การตรวจประเมินมาตรฐาน และความสำเร็จที่ผ่านมาของ CISS" data-en="A collection of CISS's examinations, training, standard audits, and past achievements.">รวบรวมการจัดสอบ การอบรม การตรวจประเมินมาตรฐาน และความสำเร็จที่ผ่านมาของ CISS</p>
     </div>
     <div class="pf-grid">
 
       <div class="pf-feature">
         <div class="pf-media">
-          <span class="pf-badge">รางวัลยอดเยี่ยม 2565</span>
+          <span class="pf-badge" data-th="รางวัลยอดเยี่ยม 2565" data-en="Excellence Award 2022">รางวัลยอดเยี่ยม 2565</span>
           <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="ilq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
             <rect width="400" height="320" fill="url(#ilq)"/>
@@ -378,14 +382,14 @@
           <img class="ph" id="ph-feat" alt="">
         </div>
         <div class="pf-body">
-          <h4>รับรางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565</h4>
-          <p>ศูนย์ฯ ได้รับรางวัลยอดเยี่ยมด้านการพัฒนาองค์กรไปสู่มาตรฐานระดับสากล ISO/IEC 17024 ในฐานะองค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สะท้อนความมุ่งมั่นในการรักษาคุณภาพการให้บริการ</p>
+          <h4 data-th="รับรางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565" data-en="Awarded Outstanding Certification Body of the Year 2022">รับรางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565</h4>
+          <p data-th="ศูนย์ฯ ได้รับรางวัลยอดเยี่ยมด้านการพัฒนาองค์กรไปสู่มาตรฐานระดับสากล ISO/IEC 17024 ในฐานะองค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สะท้อนความมุ่งมั่นในการรักษาคุณภาพการให้บริการ" data-en="CISS received the excellence award for advancing toward the international ISO/IEC 17024 standard as a personnel certification body, reflecting its commitment to service quality.">ศูนย์ฯ ได้รับรางวัลยอดเยี่ยมด้านการพัฒนาองค์กรไปสู่มาตรฐานระดับสากล ISO/IEC 17024 ในฐานะองค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สะท้อนความมุ่งมั่นในการรักษาคุณภาพการให้บริการ</p>
         </div>
       </div>
 
       <div class="pf-card">
         <div class="pf-media">
-          <span class="pf-badge">การจัดสอบ</span>
+          <span class="pf-badge" data-th="การจัดสอบ" data-en="Examination">การจัดสอบ</span>
           <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="iln" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
             <rect width="400" height="220" fill="url(#iln)"/>
@@ -395,12 +399,12 @@
           </svg>
           <img class="ph" id="ph-fttx" alt="">
         </div>
-        <div class="pf-body"><h4>ประเมินสมรรถนะ FTTx ระดับ 2–3</h4><p>จัดการประเมินผู้ปฏิบัติงานด้านโครงข่ายใยแก้วนำแสง ทั้งช่างเดินสาย ช่างเทคนิค หัวหน้างาน และวิศวกร</p></div>
+        <div class="pf-body"><h4 data-th="ประเมินสมรรถนะ FTTx ระดับ 2–3" data-en="FTTx Competency Assessment, Level 2–3">ประเมินสมรรถนะ FTTx ระดับ 2–3</h4><p data-th="จัดการประเมินผู้ปฏิบัติงานด้านโครงข่ายใยแก้วนำแสง ทั้งช่างเดินสาย ช่างเทคนิค หัวหน้างาน และวิศวกร" data-en="Assessing fiber-optic network practitioners — cabling technicians, technical staff, supervisors, and engineers.">จัดการประเมินผู้ปฏิบัติงานด้านโครงข่ายใยแก้วนำแสง ทั้งช่างเดินสาย ช่างเทคนิค หัวหน้างาน และวิศวกร</p></div>
       </div>
 
       <div class="pf-card">
         <div class="pf-media">
-          <span class="pf-badge">ภาคปฏิบัติ</span>
+          <span class="pf-badge" data-th="ภาคปฏิบัติ" data-en="Practical">ภาคปฏิบัติ</span>
           <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="ilr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient></defs>
             <rect width="400" height="220" fill="url(#ilr)"/>
@@ -410,12 +414,12 @@
           </svg>
           <img class="ph" id="ph-resk" alt="">
         </div>
-        <div class="pf-body"><h4>การทดสอบภาคปฏิบัติด้านไฟเบอร์ออปติก</h4><p>ผู้เข้ารับการประเมินลงมือปฏิบัติจริงด้านการเข้าหัว เชื่อมต่อ และทดสอบสายใยแก้วนำแสงตามมาตรฐานอาชีพ</p></div>
+        <div class="pf-body"><h4 data-th="การทดสอบภาคปฏิบัติด้านไฟเบอร์ออปติก" data-en="Fiber-Optic Practical Testing">การทดสอบภาคปฏิบัติด้านไฟเบอร์ออปติก</h4><p data-th="ผู้เข้ารับการประเมินลงมือปฏิบัติจริงด้านการเข้าหัว เชื่อมต่อ และทดสอบสายใยแก้วนำแสงตามมาตรฐานอาชีพ" data-en="Candidates perform hands-on termination, splicing, and testing of fiber-optic cables to occupational standards.">ผู้เข้ารับการประเมินลงมือปฏิบัติจริงด้านการเข้าหัว เชื่อมต่อ และทดสอบสายใยแก้วนำแสงตามมาตรฐานอาชีพ</p></div>
       </div>
 
       <div class="pf-card">
         <div class="pf-media">
-          <span class="pf-badge">ภาคทฤษฎี</span>
+          <span class="pf-badge" data-th="ภาคทฤษฎี" data-en="Theory">ภาคทฤษฎี</span>
           <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="ila" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
             <rect width="400" height="220" fill="url(#ila)"/>
@@ -425,7 +429,7 @@
           </svg>
           <img class="ph" id="ph-exam" alt="">
         </div>
-        <div class="pf-body"><h4>การสอบภาคทฤษฎีในศูนย์สอบ</h4><p>ผู้เข้ารับการประเมินทำข้อสอบปรนัยภายใต้การกำกับของเจ้าหน้าที่สอบที่ผ่านการรับรองมาตรฐาน</p></div>
+        <div class="pf-body"><h4 data-th="การสอบภาคทฤษฎีในศูนย์สอบ" data-en="Theory Examination at the Test Center">การสอบภาคทฤษฎีในศูนย์สอบ</h4><p data-th="ผู้เข้ารับการประเมินทำข้อสอบปรนัยภายใต้การกำกับของเจ้าหน้าที่สอบที่ผ่านการรับรองมาตรฐาน" data-en="Candidates take the multiple-choice exam under the supervision of certified assessors.">ผู้เข้ารับการประเมินทำข้อสอบปรนัยภายใต้การกำกับของเจ้าหน้าที่สอบที่ผ่านการรับรองมาตรฐาน</p></div>
       </div>
 
     </div>
@@ -436,9 +440,9 @@
 <section class="sec gallery">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">ภาพกิจกรรม</div>
-      <h2>การอบรม จัดสอบ และพิธีรับรางวัล</h2>
-      <p>บรรยากาศกิจกรรมของศูนย์ฯ ทั้งการฝึกอบรม การทดสอบ และความสำเร็จที่ผ่านมา</p>
+      <div class="eyebrow" data-th="ภาพกิจกรรม" data-en="Gallery">ภาพกิจกรรม</div>
+      <h2 data-th="การอบรม จัดสอบ และพิธีรับรางวัล" data-en="Training, Examinations & Award Ceremonies">การอบรม จัดสอบ และพิธีรับรางวัล</h2>
+      <p data-th="บรรยากาศกิจกรรมของศูนย์ฯ ทั้งการฝึกอบรม การทดสอบ และความสำเร็จที่ผ่านมา" data-en="Moments from CISS activities — training, testing, and past achievements.">บรรยากาศกิจกรรมของศูนย์ฯ ทั้งการฝึกอบรม การทดสอบ และความสำเร็จที่ผ่านมา</p>
     </div>
     <div class="gal-grid">
 
@@ -450,7 +454,7 @@
           <g fill="#fff"><path d="M140 250 a40 40 0 0 1 80 0 z"/><path d="M255 235 a45 45 0 0 1 90 0 z"/><path d="M380 250 a40 40 0 0 1 80 0 z"/></g>
         </svg>
         <img class="ph" id="ph-g1" alt="">
-        <div class="gal-cap">ภาพหมู่ผู้เข้าร่วมการประเมินและรับใบประกาศ</div>
+        <div class="gal-cap" data-th="ภาพหมู่ผู้เข้าร่วมการประเมินและรับใบประกาศ" data-en="Group photo of candidates and certificate recipients">ภาพหมู่ผู้เข้าร่วมการประเมินและรับใบประกาศ</div>
       </div>
 
       <div class="gal-item">
@@ -460,7 +464,7 @@
           <g fill="#2f86e0"><rect x="80" y="98" width="18" height="24"/><rect x="106" y="82" width="18" height="40"/><rect x="132" y="68" width="18" height="54"/></g>
         </svg>
         <img class="ph" id="ph-g2" alt="">
-        <div class="gal-cap">อบรมเชิงปฏิบัติการไฟเบอร์ออปติก</div>
+        <div class="gal-cap" data-th="อบรมเชิงปฏิบัติการไฟเบอร์ออปติก" data-en="Fiber-optic hands-on workshop">อบรมเชิงปฏิบัติการไฟเบอร์ออปติก</div>
       </div>
 
       <div class="gal-item">
@@ -469,7 +473,7 @@
           <rect width="300" height="200" fill="url(#ilg)"/><circle cx="150" cy="78" r="30" fill="#fff"/><path d="M104 160 a46 46 0 0 1 92 0 z" fill="#fff"/>
         </svg>
         <img class="ph" id="ph-g3" alt="">
-        <div class="gal-cap">ผู้เข้ารับการทดสอบภาคปฏิบัติ</div>
+        <div class="gal-cap" data-th="ผู้เข้ารับการทดสอบภาคปฏิบัติ" data-en="Candidates in practical testing">ผู้เข้ารับการทดสอบภาคปฏิบัติ</div>
       </div>
 
       <div class="gal-item">
@@ -478,7 +482,7 @@
           <rect width="300" height="200" fill="url(#ilf)"/><path d="M30 150 C110 150 110 70 190 70" fill="none" stroke="#bfe0ff" stroke-width="7" stroke-linecap="round"/><rect x="186" y="58" width="56" height="24" rx="6" fill="#fff"/>
         </svg>
         <img class="ph" id="ph-g4" alt="">
-        <div class="gal-cap">ทดสอบการเข้าหัวสายไฟเบอร์</div>
+        <div class="gal-cap" data-th="ทดสอบการเข้าหัวสายไฟเบอร์" data-en="Fiber cable termination test">ทดสอบการเข้าหัวสายไฟเบอร์</div>
       </div>
 
       <div class="gal-item">
@@ -487,7 +491,7 @@
           <rect width="300" height="200" fill="url(#ilp)"/><rect x="70" y="120" width="50" height="40" fill="#bfe0ff"/><rect x="125" y="95" width="50" height="65" fill="#fff"/><rect x="180" y="70" width="50" height="90" fill="#7fc0ff"/>
         </svg>
         <img class="ph" id="ph-g5" alt="">
-        <div class="gal-cap">เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”</div>
+        <div class="gal-cap" data-th="เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”" data-en="Panel: 'Decoding Success with ISO/IEC 17024'">เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”</div>
       </div>
 
       <div class="gal-item">
@@ -496,7 +500,7 @@
           <rect width="300" height="200" fill="url(#ilw)"/><path d="M120 60 h60 v18 a30 30 0 0 1 -60 0 z" fill="#fff"/><rect x="142" y="96" width="16" height="20" fill="#fff"/><rect x="120" y="116" width="60" height="14" rx="5" fill="#bfe0ff"/>
         </svg>
         <img class="ph" id="ph-g6" alt="">
-        <div class="gal-cap">รับมอบรางวัลร่วมกับทีมงาน</div>
+        <div class="gal-cap" data-th="รับมอบรางวัลร่วมกับทีมงาน" data-en="Receiving the award with the team">รับมอบรางวัลร่วมกับทีมงาน</div>
       </div>
 
       <div class="gal-item wide">
@@ -507,7 +511,7 @@
           <path d="M285 70 h30 M278 88 h44 M285 106 h30" stroke="#bfe0ff" stroke-width="5" stroke-linecap="round"/>
         </svg>
         <img class="ph" id="ph-g7" alt="">
-        <div class="gal-cap">โล่ประกาศเกียรติคุณมาตรฐาน ISO/IEC 17024</div>
+        <div class="gal-cap" data-th="โล่ประกาศเกียรติคุณมาตรฐาน ISO/IEC 17024" data-en="ISO/IEC 17024 plaque of honor">โล่ประกาศเกียรติคุณมาตรฐาน ISO/IEC 17024</div>
       </div>
 
     </div>
@@ -518,9 +522,9 @@
 <section class="cta">
   <div class="wrap">
     <div class="cta-box">
-      <h2>พร้อมยกระดับสู่มืออาชีพแล้วหรือยัง?</h2>
-      <p>สมัครเข้ารับการประเมินสมรรถนะตามมาตรฐานอาชีพ เพื่อการันตีความสามารถของคุณและองค์กร</p>
-      <a href="#contact" class="btn">ติดต่อสมัครประเมิน</a>
+      <h2 data-th="พร้อมยกระดับสู่มืออาชีพแล้วหรือยัง?" data-en="Ready to Step Up as a Professional?">พร้อมยกระดับสู่มืออาชีพแล้วหรือยัง?</h2>
+      <p data-th="สมัครเข้ารับการประเมินสมรรถนะตามมาตรฐานอาชีพ เพื่อการันตีความสามารถของคุณและองค์กร" data-en="Apply for competency assessment to occupational standards and certify your and your organization's capability.">สมัครเข้ารับการประเมินสมรรถนะตามมาตรฐานอาชีพ เพื่อการันตีความสามารถของคุณและองค์กร</p>
+      <a href="#contact" class="btn" data-th="ติดต่อสมัครประเมิน" data-en="Contact to Apply">ติดต่อสมัครประเมิน</a>
     </div>
   </div>
 </section>
@@ -529,20 +533,20 @@
 <section class="sec contact" id="contact">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">ติดต่อเรา</div>
-      <h2>สอบถามข้อมูลและขอใบสมัคร</h2>
-      <p>ติดต่อศูนย์ฯ ได้ทุกวันจันทร์–ศุกร์ เวลา 8.30–16.30 น.</p>
+      <div class="eyebrow" data-th="ติดต่อเรา" data-en="Contact Us">ติดต่อเรา</div>
+      <h2 data-th="สอบถามข้อมูลและขอใบสมัคร" data-en="Inquiries & Application Requests">สอบถามข้อมูลและขอใบสมัคร</h2>
+      <p data-th="ติดต่อศูนย์ฯ ได้ทุกวันจันทร์–ศุกร์ เวลา 8.30–16.30 น." data-en="Contact CISS Monday–Friday, 8:30–16:30.">ติดต่อศูนย์ฯ ได้ทุกวันจันทร์–ศุกร์ เวลา 8.30–16.30 น.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="ci-item"><div class="ic">📞</div><div><b>โทรศัพท์ / โทรสาร</b><span>โทร. 02-470-9629 · โทรสาร 02-470-9628</span></div></div>
-        <div class="ci-item"><div class="ic">✉️</div><div><b>อีเมล</b><span>ciss@mail.kmutt.ac.th</span></div></div>
+        <div class="ci-item"><div class="ic">📞</div><div><b data-th="โทรศัพท์ / โทรสาร" data-en="Phone / Fax">โทรศัพท์ / โทรสาร</b><span data-th="โทร. 02-470-9629 · โทรสาร 02-470-9628" data-en="Tel. 02-470-9629 · Fax 02-470-9628">โทร. 02-470-9629 · โทรสาร 02-470-9628</span></div></div>
+        <div class="ci-item"><div class="ic">✉️</div><div><b data-th="อีเมล" data-en="Email">อีเมล</b><span>ciss@mail.kmutt.ac.th</span></div></div>
         <div class="ci-item"><div class="ic">📘</div><div><b>Facebook</b><span>CISS</span></div></div>
-        <div class="ci-item"><div class="ic">📍</div><div><b>ที่อยู่</b><span>126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140</span></div></div>
-        <div class="ci-item"><div class="ic">👤</div><div><b>ฝ่ายทดสอบและประเมิน</b><span>นายอุทัย ละไม · โทร. 092-321-2123</span></div></div>
+        <div class="ci-item"><div class="ic">📍</div><div><b data-th="ที่อยู่" data-en="Address">ที่อยู่</b><span data-th="126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140" data-en="126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140">126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140</span></div></div>
+        <div class="ci-item"><div class="ic">👤</div><div><b data-th="ฝ่ายทดสอบและประเมิน" data-en="Testing & Assessment Unit">ฝ่ายทดสอบและประเมิน</b><span data-th="นายอุทัย ละไม · โทร. 092-321-2123" data-en="Mr. Uthai Lamai · Tel. 092-321-2123">นายอุทัย ละไม · โทร. 092-321-2123</span></div></div>
       </div>
       <div class="map-box">
-        <iframe loading="lazy" src="https://maps.google.com/maps?q=มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี&z=15&output=embed" title="แผนที่ มจธ."></iframe>
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี&z=15&output=embed" title="KMUTT map"></iframe>
       </div>
     </div>
   </div>
@@ -563,81 +567,90 @@
             <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
           </svg>
         </div>
-        <p>CISS — ศูนย์ที่มุ่งเน้นนวัตกรรมอวกาศ การสื่อสาร เทคโนโลยีดิจิทัล และการรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</p>
+        <p data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล" data-en="The Communications and Integrated Services Study Center, King Mongkut's University of Technology Thonburi — a body certifying personnel competency to occupational standards in the digital industry sector.">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล</p>
       </div>
       <div class="foot-col">
-        <h5>เมนูหลัก</h5>
-        <a href="#about">เกี่ยวกับเรา</a><a href="#services">บริการรับรอง</a><a href="#process">การประเมิน</a><a href="#portfolio">ผลงานที่ผ่านมา</a>
+        <h5 data-th="เมนูหลัก" data-en="Menu">เมนูหลัก</h5>
+        <a href="#about" data-th="เกี่ยวกับเรา" data-en="About">เกี่ยวกับเรา</a><a href="#services" data-th="บริการรับรอง" data-en="Certification">บริการรับรอง</a><a href="#process" data-th="การประเมิน" data-en="Assessment">การประเมิน</a><a href="#portfolio" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</a>
       </div>
       <div class="foot-col">
-        <h5>ติดต่อ</h5>
-        <a href="tel:024709629">02-470-9629</a><a href="mailto:ciss@mail.kmutt.ac.th">ciss@mail.kmutt.ac.th</a><a href="#contact">ที่อยู่ศูนย์ฯ</a>
+        <h5 data-th="ติดต่อ" data-en="Contact">ติดต่อ</h5>
+        <a href="tel:024709629">02-470-9629</a><a href="mailto:ciss@mail.kmutt.ac.th">ciss@mail.kmutt.ac.th</a><a href="#contact" data-th="ที่อยู่ศูนย์ฯ" data-en="Our Address">ที่อยู่ศูนย์ฯ</a>
       </div>
     </div>
-    <div class="foot-bottom">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</div>
+    <div class="foot-bottom" data-th="© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="© 2025 Communications and Integrated Services Study Center (CISS) · King Mongkut's University of Technology Thonburi">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</div>
   </div>
 </footer>
 
 <!-- IMAGE MANAGER -->
-<button class="mng-btn" id="mngBtn">📷 ใส่รูปภาพจริง</button>
+<button class="mng-btn" id="mngBtn" data-th="📷 ใส่รูปภาพจริง" data-en="📷 Add Real Photos">📷 ใส่รูปภาพจริง</button>
 <div class="modal" id="modal">
   <div class="modal-box">
-    <div class="modal-head"><h3>ใส่รูปภาพจริงของศูนย์ฯ</h3><button class="x" id="closeX">✕</button></div>
-    <div class="modal-hint">เลือกรูปจากเครื่องของคุณให้แต่ละช่อง รูปจะแสดงในเว็บทันทีและถูกบันทึกอัตโนมัติ (จำได้แม้รีเฟรชหน้า) — ดูเลขรูปที่แนะนำในวงเล็บ</div>
+    <div class="modal-head"><h3 data-th="ใส่รูปภาพจริงของศูนย์ฯ" data-en="Add CISS's Real Photos">ใส่รูปภาพจริงของศูนย์ฯ</h3><button class="x" id="closeX">✕</button></div>
+    <div class="modal-hint" data-th="เลือกรูปจากเครื่องของคุณให้แต่ละช่อง รูปจะแสดงทันทีและถูกบันทึกอัตโนมัติ (จำได้แม้รีเฟรช) — ดูเลขรูปที่แนะนำในวงเล็บ" data-en="Pick a photo from your device for each slot. It appears immediately and is saved automatically (kept after refresh). Recommended image numbers are in parentheses.">เลือกรูปจากเครื่องของคุณให้แต่ละช่อง รูปจะแสดงทันทีและถูกบันทึกอัตโนมัติ (จำได้แม้รีเฟรช) — ดูเลขรูปที่แนะนำในวงเล็บ</div>
     <div class="slots" id="slots"></div>
     <div class="modal-foot">
-      <button class="btn-clear" id="clearBtn">ล้างรูปทั้งหมด</button>
-      <button class="btn-done" id="doneBtn">เสร็จสิ้น</button>
+      <button class="btn-clear" id="clearBtn" data-th="ล้างรูปทั้งหมด" data-en="Clear All">ล้างรูปทั้งหมด</button>
+      <button class="btn-done" id="doneBtn" data-th="เสร็จสิ้น" data-en="Done">เสร็จสิ้น</button>
     </div>
   </div>
 </div>
 
 <script>
-  // mobile menu
+  let curLang='th';
   const burger=document.getElementById('burger'),menu=document.getElementById('menu');
   burger.addEventListener('click',()=>menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
 
-  // image slots config
+  function setLang(lang){
+    curLang=lang;
+    document.documentElement.lang=lang==='en'?'en':'th';
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const v=lang==='en'?el.dataset.en:el.dataset.th;
+      if(v!==undefined) el.innerHTML=v;
+    });
+    document.getElementById('lang-th').classList.toggle('active',lang!=='en');
+    document.getElementById('lang-en').classList.toggle('active',lang==='en');
+    try{window.storage.set('ciss-lang',lang,false);}catch(e){}
+  }
+  document.getElementById('lang-th').addEventListener('click',()=>setLang('th'));
+  document.getElementById('lang-en').addEventListener('click',()=>setLang('en'));
+
+  // image slots
   const SLOTS=[
-    {k:'hero',label:'Hero – แบนเนอร์/อาคารศูนย์ฯ',hint:'แนะนำรูป 12'},
-    {k:'feat',label:'ผลงานเด่น – พิธีรับรางวัล ISO',hint:'แนะนำรูป 5'},
-    {k:'fttx',label:'การ์ด – ประเมิน FTTx',hint:'แนะนำรูป 4'},
-    {k:'resk',label:'การ์ด – ทดสอบภาคปฏิบัติ',hint:'แนะนำรูป 3'},
-    {k:'exam',label:'การ์ด – สอบภาคทฤษฎี',hint:'แนะนำรูป 1'},
-    {k:'g1',label:'แกลเลอรี (ภาพใหญ่) – ภาพหมู่',hint:'แนะนำรูป 10'},
-    {k:'g2',label:'แกลเลอรี – อบรมไฟเบอร์',hint:'แนะนำรูป 9'},
-    {k:'g3',label:'แกลเลอรี – ผู้เข้าทดสอบ',hint:'แนะนำรูป 11'},
-    {k:'g4',label:'แกลเลอรี – ทดสอบเข้าหัวสาย',hint:'แนะนำรูป 2'},
-    {k:'g5',label:'แกลเลอรี – เวทีเสวนา ISO',hint:'แนะนำรูป 6'},
-    {k:'g6',label:'แกลเลอรี – รับรางวัลกับทีม',hint:'แนะนำรูป 7'},
-    {k:'g7',label:'แกลเลอรี – โล่ประกาศเกียรติคุณ',hint:'แนะนำรูป 8'}
+    {k:'hero',th:'Hero – แบนเนอร์/อาคารศูนย์ฯ',en:'Hero – banner / building',ht:'แนะนำรูป 12',he:'Suggested: image 12'},
+    {k:'feat',th:'ผลงานเด่น – พิธีรับรางวัล ISO',en:'Feature – ISO award ceremony',ht:'แนะนำรูป 5',he:'Suggested: image 5'},
+    {k:'fttx',th:'การ์ด – ประเมิน FTTx',en:'Card – FTTx assessment',ht:'แนะนำรูป 4',he:'Suggested: image 4'},
+    {k:'resk',th:'การ์ด – ทดสอบภาคปฏิบัติ',en:'Card – practical test',ht:'แนะนำรูป 3',he:'Suggested: image 3'},
+    {k:'exam',th:'การ์ด – สอบภาคทฤษฎี',en:'Card – theory exam',ht:'แนะนำรูป 1',he:'Suggested: image 1'},
+    {k:'g1',th:'แกลเลอรี (ภาพใหญ่) – ภาพหมู่',en:'Gallery (large) – group photo',ht:'แนะนำรูป 10',he:'Suggested: image 10'},
+    {k:'g2',th:'แกลเลอรี – อบรมไฟเบอร์',en:'Gallery – fiber training',ht:'แนะนำรูป 9',he:'Suggested: image 9'},
+    {k:'g3',th:'แกลเลอรี – ผู้เข้าทดสอบ',en:'Gallery – candidate',ht:'แนะนำรูป 11',he:'Suggested: image 11'},
+    {k:'g4',th:'แกลเลอรี – ทดสอบเข้าหัวสาย',en:'Gallery – termination test',ht:'แนะนำรูป 2',he:'Suggested: image 2'},
+    {k:'g5',th:'แกลเลอรี – เวทีเสวนา ISO',en:'Gallery – ISO panel',ht:'แนะนำรูป 6',he:'Suggested: image 6'},
+    {k:'g6',th:'แกลเลอรี – รับรางวัลกับทีม',en:'Gallery – award with team',ht:'แนะนำรูป 7',he:'Suggested: image 7'},
+    {k:'g7',th:'แกลเลอรี – โล่ประกาศเกียรติคุณ',en:'Gallery – plaque',ht:'แนะนำรูป 8',he:'Suggested: image 8'}
   ];
 
   function setImg(k,url){const img=document.getElementById('ph-'+k);if(img){img.src=url;img.classList.add('on');}}
-
   async function saveImg(k,url){try{await window.storage.set('ciss-img:'+k,url,false);}catch(e){}}
   async function loadImg(k){try{const r=await window.storage.get('ciss-img:'+k);if(r&&r.value)return r.value;}catch(e){}return null;}
 
-  // downscale to keep storage small
   function processFile(file,maxW){return new Promise((res,rej)=>{
     const r=new FileReader();
     r.onload=()=>{const im=new Image();im.onload=()=>{
       let w=im.width,h=im.height;if(w>maxW){h=Math.round(h*maxW/w);w=maxW;}
       const c=document.createElement('canvas');c.width=w;c.height=h;
-      c.getContext('2d').drawImage(im,0,0,w,h);
-      res(c.toDataURL('image/jpeg',0.82));
-    };im.onerror=rej;im.src=r.result;};
-    r.onerror=rej;r.readAsDataURL(file);
+      c.getContext('2d').drawImage(im,0,0,w,h);res(c.toDataURL('image/jpeg',0.82));
+    };im.onerror=rej;im.src=r.result;};r.onerror=rej;r.readAsDataURL(file);
   });}
 
-  // build modal rows
   const slotsEl=document.getElementById('slots');
   SLOTS.forEach((s,i)=>{
     const row=document.createElement('div');row.className='slot';
     row.innerHTML=`<div class="slot-thumb" id="th-${s.k}">${i+1}</div>
-      <div class="slot-info"><b>${s.label}</b><span>${s.hint}</span></div>
-      <label>เลือกรูป<input type="file" accept="image/*" data-k="${s.k}"></label>`;
+      <div class="slot-info"><b data-th="${s.th}" data-en="${s.en}">${s.th}</b><span data-th="${s.ht}" data-en="${s.he}">${s.ht}</span></div>
+      <label><span data-th="เลือกรูป" data-en="Choose">เลือกรูป</span><input type="file" accept="image/*" data-k="${s.k}"></label>`;
     slotsEl.appendChild(row);
   });
 
@@ -645,29 +658,30 @@
     inp.addEventListener('change',async e=>{
       const f=e.target.files[0];if(!f)return;const k=inp.dataset.k;
       const max=(k==='hero'||k==='g1')?1600:1100;
-      try{
-        const url=await processFile(f,max);
-        setImg(k,url);await saveImg(k,url);
-        const th=document.getElementById('th-'+k);th.innerHTML=`<img src="${url}" alt="">`;
-      }catch(err){alert('ไม่สามารถอ่านไฟล์รูปได้ ลองไฟล์อื่นนะครับ');}
+      try{const url=await processFile(f,max);setImg(k,url);await saveImg(k,url);
+        document.getElementById('th-'+k).innerHTML=`<img src="${url}" alt="">`;
+      }catch(err){alert(curLang==='en'?'Could not read the image file. Try another one.':'ไม่สามารถอ่านไฟล์รูปได้ ลองไฟล์อื่นนะครับ');}
     });
   });
 
-  // restore saved images on load
-  (async()=>{for(const s of SLOTS){const u=await loadImg(s.k);if(u){setImg(s.k,u);const th=document.getElementById('th-'+s.k);if(th)th.innerHTML=`<img src="${u}" alt="">`;}}})();
-
-  // modal controls
   const modal=document.getElementById('modal');
   document.getElementById('mngBtn').addEventListener('click',()=>modal.classList.add('open'));
   document.getElementById('closeX').addEventListener('click',()=>modal.classList.remove('open'));
   document.getElementById('doneBtn').addEventListener('click',()=>modal.classList.remove('open'));
   modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
   document.getElementById('clearBtn').addEventListener('click',async()=>{
-    if(!confirm('ลบรูปที่ใส่ไว้ทั้งหมด?'))return;
+    if(!confirm(curLang==='en'?'Clear all photos you added?':'ลบรูปที่ใส่ไว้ทั้งหมด?'))return;
     for(const s of SLOTS){try{await window.storage.delete('ciss-img:'+s.k,false);}catch(e){}
       const img=document.getElementById('ph-'+s.k);if(img){img.classList.remove('on');img.removeAttribute('src');}
       const th=document.getElementById('th-'+s.k);if(th)th.innerHTML=SLOTS.indexOf(s)+1;}
   });
+
+  // init
+  (async()=>{
+    let lang='th';try{const r=await window.storage.get('ciss-lang');if(r&&r.value)lang=r.value;}catch(e){}
+    setLang(lang);
+    for(const s of SLOTS){const u=await loadImg(s.k);if(u){setImg(s.k,u);const th=document.getElementById('th-'+s.k);if(th)th.innerHTML=`<img src="${u}" alt="">`;}}
+  })();
 </script>
 </body>
 </html>
