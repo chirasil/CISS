@@ -1,0 +1,20 @@
+{
+  "news": [
+    {
+      "date": "15 มิ.ย. 2568",
+      "tag": "กิจกรรม",
+      "titleTh": "เปิดตัว Thonburi Space Innovation Hub",
+      "titleEn": "Launch of the Thonburi Space Innovation Hub",
+      "bodyTh": "CISS ร่วมกับพันธมิตรเปิดศูนย์นวัตกรรมอวกาศธนบุรี เพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็ก",
+      "bodyEn": "CISS and partners open the Thonburi Space Innovation Hub to drive small-satellite research."
+    },
+    {
+      "date": "1 มิ.ย. 2568",
+      "tag": "รับสมัคร",
+      "titleTh": "เปิดรับประเมินสมรรถนะช่างโครงข่าย FTTx รอบใหม่",
+      "titleEn": "New round of FTTx technician assessments",
+      "bodyTh": "องค์กรรับรองสมรรถนะบุคคล สาขา ICT เปิดรับผู้เข้ารับการประเมินตามมาตรฐาน ISO/IEC 17024",
+      "bodyEn": "The ICT certification body opens a new round of ISO/IEC 17024 assessments."
+    }
+  ]
+}
