@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Technology & Communications · CISS</title>
+<style>
+  :root{
+    --bg:#0f1729; --bg2:#1a2740; --card:rgba(255,255,255,.055);
+    --card-bd:rgba(255,255,255,.09); --txt:#e8eef7; --muted:#9fb0c6;
+    --accent:#38bdf8; --accent2:#22d3ee; --accent3:#818cf8;
+    --glow:rgba(56,189,248,.18); --pill:rgba(56,189,248,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1100px 600px at 12% -8%,rgba(56,189,248,.12),transparent 55%),
+      radial-gradient(900px 500px at 92% 8%,rgba(129,140,248,.12),transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    color:var(--txt); font-family:"Segoe UI","Noto Sans Thai",system-ui,-apple-system,sans-serif;
+    line-height:1.65; overflow-x:hidden; min-height:100vh;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .en{display:none}
+  body.lang-en .th{display:none}
+  body.lang-en .en{display:inline}
+  body.lang-en .en.block{display:block}
+  img{max-width:100%;display:block}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:rgba(7,11,20,.72);border-bottom:1px solid var(--card-bd)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
+  .brand .logo{width:40px;height:40px;display:grid;place-items:center}
+  .brand .logo svg{width:100%;height:100%;display:block}
+  .brand small{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.5px}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:.2s}
+  .nav-links a:hover{color:var(--txt)}
+  .toggle{display:flex;border:1px solid var(--card-bd);border-radius:999px;overflow:hidden}
+  .toggle button{background:none;border:none;color:var(--muted);padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600}
+  .toggle button.active{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#04101d}
+  .burger{display:none;background:none;border:1px solid var(--card-bd);color:var(--txt);
+    width:40px;height:40px;border-radius:9px;cursor:pointer;font-size:18px}
+  @media(max-width:860px){
+    .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;
+      background:rgba(7,11,20,.97);padding:14px 22px;border-bottom:1px solid var(--card-bd)}
+    .nav-links.open{display:flex}
+    .burger{display:block}
+  }
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;min-height:80vh;display:flex;align-items:center;
+    text-align:center;padding:90px 0 70px}
+  .hero-bg{position:absolute;inset:0;
+    background:url("https://images.unsplash.com/photo-1758473788048-eda14371fe74?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
+    animation:kenburns 24s ease-in-out infinite alternate;will-change:transform}
+  .hero-overlay{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,16,28,.46),rgba(14,21,37,.62) 55%,rgba(26,39,64,.92));}
+  @keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1.2)}}
+  .hero-content{position:relative;z-index:2;width:100%;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .hero h1{filter:drop-shadow(0 2px 14px rgba(0,0,0,.5))}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;
+    background:var(--pill);border:1px solid var(--card-bd);font-size:13px;color:var(--accent2);
+    font-weight:600;letter-spacing:.5px;margin-bottom:22px;backdrop-filter:blur(4px)}
+  .hero h1{font-size:clamp(30px,5.4vw,54px);line-height:1.18;font-weight:800;
+    background:linear-gradient(120deg,#fff 20%,var(--accent) 70%,var(--accent3));
+    -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+  .hero .sub-en{font-size:clamp(16px,2.6vw,22px);color:var(--muted);font-weight:500;margin-bottom:20px}
+  .hero p.lead{max-width:760px;margin:0 auto 30px;color:#c4d2e6;font-size:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .chip{padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--card-bd);
+    font-size:13px;color:var(--txt);backdrop-filter:blur(4px)}
+  .cta{display:inline-flex;gap:8px;align-items:center;margin-top:30px;padding:13px 26px;border-radius:11px;
+    background:linear-gradient(135deg,var(--accent),var(--accent3));color:#04101d;text-decoration:none;
+    font-weight:700;transition:.25s;box-shadow:0 8px 30px var(--glow);animation:pulse 3s ease-in-out infinite}
+  .cta:hover{transform:translateY(-2px)}
+  @keyframes pulse{0%,100%{box-shadow:0 8px 30px var(--glow)}50%{box-shadow:0 8px 44px rgba(56,189,248,.45)}}
+
+  /* SECTIONS */
+  section{padding:60px 0}
+  .sec-head{text-align:center;margin-bottom:40px}
+  .sec-head .eyebrow{color:var(--accent2);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+  .sec-head h2{font-size:clamp(24px,4vw,36px);font-weight:800;margin:8px 0 6px;line-height:1.3}
+  .sec-head p{color:var(--muted);max-width:680px;margin:0 auto;font-size:15px}
+
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:900px){.g3{grid-template-columns:1fr}}
+
+  .card{background:var(--card);border:1px solid var(--card-bd);border-radius:16px;padding:26px;
+    transition:.28s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-6px);border-color:rgba(56,189,248,.4);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+  .card .ic{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;font-size:24px;
+    background:var(--pill);margin-bottom:16px}
+  .card h3{font-size:18px;margin-bottom:6px}
+  .card .h3-en{font-size:13px;color:var(--accent2);font-weight:600;margin-bottom:10px;display:block}
+  .card ul{list-style:none;margin-top:12px}
+  .card li{position:relative;padding-left:20px;margin-bottom:8px;font-size:14px;color:var(--muted)}
+  .card li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+  /* SHOWCASE (real infra image) */
+  .show-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  @media(max-width:880px){.show-grid{grid-template-columns:1fr;gap:26px}}
+  .show-img{border-radius:18px;overflow:hidden;border:1px solid var(--card-bd);position:relative;
+    box-shadow:0 18px 50px rgba(0,0,0,.4)}
+  .show-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .7s ease}
+  .show-img:hover img{transform:scale(1.07)}
+  .show-img .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:12px;color:#cfe0f5;
+    background:linear-gradient(transparent,rgba(7,11,20,.85))}
+  .show-txt h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;margin-bottom:14px;line-height:1.3}
+  .show-txt p{color:var(--muted);margin-bottom:16px;font-size:15px}
+  .show-txt ul{list-style:none}
+  .show-txt li{position:relative;padding-left:24px;margin-bottom:10px;font-size:14.5px;color:var(--txt)}
+  .show-txt li::before{content:"●";position:absolute;left:0;color:var(--accent);font-size:10px;top:5px}
+
+  /* PARALLAX BAND (bridge to space) */
+  .parallax{position:relative;padding:110px 0;text-align:center;overflow:hidden;
+    background:url("https://images.unsplash.com/photo-1642998188575-3285ae20adda?auto=format&fit=crop&w=1920&q=80") center/cover fixed}
+  .parallax::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(14,21,37,.52),rgba(26,39,64,.74))}
+  .parallax .wrap{text-shadow:0 1px 12px rgba(0,0,0,.45)}
+  .parallax .wrap{position:relative;z-index:2}
+  .parallax .tag{color:var(--accent2);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase}
+  .parallax h2{font-size:clamp(24px,4.4vw,40px);font-weight:800;margin:12px 0 14px;
+    background:linear-gradient(120deg,#fff,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .parallax p{max-width:720px;margin:0 auto;color:#cdd9ec;font-size:16px}
+  @media(max-width:760px){.parallax{background-attachment:scroll;padding:80px 0}}
+
+  /* POLICY */
+  .policy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:820px){.policy-grid{grid-template-columns:1fr}}
+  .policy{background:linear-gradient(160deg,rgba(56,189,248,.06),rgba(129,140,248,.04));
+    border:1px solid var(--card-bd);border-radius:15px;padding:24px;transition:.25s}
+  .policy:hover{border-color:rgba(56,189,248,.35);transform:translateY(-3px)}
+  .policy .org{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;margin-bottom:4px}
+  .policy .yr{font-size:12px;color:var(--accent2);font-weight:600;letter-spacing:.5px}
+  .policy ul{list-style:none;margin-top:12px}
+  .policy li{padding-left:18px;position:relative;font-size:13.5px;color:var(--muted);margin-bottom:7px}
+  .policy li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .flag{font-size:22px}
+
+  /* PROJECTS */
+  .proj-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:820px){.proj-list{grid-template-columns:1fr}}
+  .proj{background:var(--card);border:1px solid var(--card-bd);border-radius:12px;padding:16px 18px;
+    display:flex;gap:13px;align-items:flex-start;transition:.2s}
+  .proj:hover{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.05);transform:translateX(4px)}
+  .proj .dot{flex-shrink:0;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+    background:var(--pill);font-size:16px}
+  .proj b{font-size:14px;display:block;margin-bottom:2px}
+  .proj span{font-size:12.5px;color:var(--muted)}
+
+  /* 6G / SAGIN spotlight */
+  .spotlight{background:
+      radial-gradient(700px 340px at 80% 0%,rgba(129,140,248,.16),transparent 60%),
+      linear-gradient(160deg,rgba(34,211,238,.08),rgba(129,140,248,.05));
+    border:1px solid rgba(56,189,248,.28);border-radius:22px;padding:44px;position:relative;overflow:hidden}
+  .spotlight::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none}
+  .spotlight .tag{color:var(--accent2);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase}
+  .spotlight h2{font-size:clamp(24px,4vw,34px);margin:10px 0 6px;font-weight:800}
+  .spotlight .h2en{color:var(--muted);font-size:16px;margin-bottom:18px}
+  .sagin-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+  @media(max-width:760px){.sagin-layers{grid-template-columns:1fr}}
+  .layer{background:rgba(7,11,20,.5);border:1px solid var(--card-bd);border-radius:13px;padding:18px;text-align:center;transition:.25s}
+  .layer:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.4)}
+  .layer .em{font-size:30px;display:block;margin-bottom:8px}
+  .layer b{font-size:15px}
+  .layer small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+  .bridge-note{background:rgba(7,11,20,.45);border:1px solid var(--card-bd);border-radius:12px;
+    padding:18px 20px;margin-top:8px;font-size:14px;color:var(--muted)}
+  .bridge-note a{color:var(--accent2);text-decoration:none;font-weight:600}
+  .bridge-note a:hover{text-decoration:underline}
+  .research-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+  .rtag{font-size:12.5px;padding:6px 13px;border-radius:999px;background:var(--pill);
+    border:1px solid var(--card-bd);color:var(--txt)}
+
+  /* PUBLICATIONS */
+  .pub-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+  @media(max-width:760px){.pub-stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{text-align:center;background:var(--card);border:1px solid var(--card-bd);border-radius:14px;padding:22px 12px;transition:.25s}
+  .stat:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.4)}
+  .stat .n{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat small{color:var(--muted);font-size:12.5px;display:block;margin-top:4px}
+  .pub-areas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--card-bd);margin-top:10px;padding:42px 0 30px;background:rgba(7,11,20,.55)}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid h4{font-size:14px;margin-bottom:12px;color:var(--accent2);letter-spacing:.5px}
+  .foot-grid a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;margin-bottom:8px;transition:.2s}
+  .foot-grid a:hover{color:var(--txt)}
+  .foot-brand{font-weight:700;font-size:17px;margin-bottom:8px;display:flex;align-items:center}
+  .foot-brand small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:4px}
+  .copy{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px;padding-top:20px;border-top:1px solid var(--card-bd)}
+  .mission-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
+  .mission-links a{padding:8px 16px;border-radius:999px;background:var(--card);border:1px solid var(--card-bd);
+    color:var(--txt);text-decoration:none;font-size:13px;transition:.2s}
+  .mission-links a:hover{border-color:var(--accent);color:var(--accent2)}
+  .credit{text-align:center;color:var(--muted);font-size:11px;margin-top:14px;opacity:.7}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body class="lang-th">
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://chirasil.github.io/CISS/" class="brand" style="text-decoration:none;color:inherit">
+      <span class="logo"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="CISS logo"><defs><linearGradient id="cissBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><rect x="6" y="6" width="88" height="88" rx="22" fill="url(#cissBg)"/><ellipse cx="50" cy="52" rx="40" ry="16" fill="none" stroke="#cfe2fe" stroke-width="2.6" stroke-opacity=".9" transform="rotate(-32 50 52)"/><polygon points="70,52 60,71 40,71 30,52 40,33 60,33" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/><polyline points="40,53 47,61 62,42" fill="none" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="73" cy="30" r="4.6" fill="#ffffff"/><path d="M78 25 a7 7 0 0 1 3 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".9"/><path d="M80 21 a12 12 0 0 1 5 8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".65"/></svg></span>
+      <span>CISS
+        <small class="th">ดิจิทัลและการสื่อสาร</small>
+        <small class="en">Digital &amp; Communications</small>
+      </span>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="#pillars"><span class="th">ความเชี่ยวชาญ</span><span class="en">Expertise</span></a>
+      <a href="#policy"><span class="th">นโยบาย & กรรมาธิการ</span><span class="en">Policy & Parliament</span></a>
+      <a href="#projects"><span class="th">โครงการ</span><span class="en">Projects</span></a>
+      <a href="#future"><span class="th">6G & SAGIN</span><span class="en">6G & SAGIN</span></a>
+      <a href="#pubs"><span class="th">ผลงานตีพิมพ์</span><span class="en">Publications</span></a>
+      <div class="toggle">
+        <button id="bth" class="active" onclick="setLang('th')">TH</button>
+        <button id="ben" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+    <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <span class="badge">📡 Digital Technology &amp; Communications</span>
+    <h1>
+      <span class="th">เทคโนโลยีดิจิทัลและการสื่อสาร</span>
+      <span class="en">Digital Technology &amp; Communications</span>
+    </h1>
+    <div class="sub-en th">Digital Technology &amp; Communications</div>
+    <div class="sub-en en">เทคโนโลยีดิจิทัลและการสื่อสาร</div>
+    <p class="lead">
+      <span class="th">พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล และนโยบาย เชื่อมโยงงานวิจัยขั้นแนวหน้าเข้ากับการกำกับดูแลและการพัฒนาประเทศ — ตั้งแต่โครงข่ายใยแก้วนำแสง 5G ไปจนถึงเทคโนโลยี 6G และโครงข่ายบูรณาการอวกาศ-อากาศ-ภาคพื้นดินแห่งอนาคต</span>
+      <span class="en">Building communications-network infrastructure, digital systems, and policy capability — connecting frontier research with regulation and national development, from fiber and 5G toward 6G and the future Space-Air-Ground Integrated Network.</span>
+    </p>
+    <div class="chips">
+      <span class="chip">📶 5G / 6G</span>
+      <span class="chip">🛰️ Satellite &amp; SAGIN</span>
+      <span class="chip">🔌 FTTx / Optical</span>
+      <span class="chip">⚖️ Spectrum &amp; Policy</span>
+      <span class="chip">🔐 PDPA / Digital</span>
+    </div>
+    <a href="#future" class="cta">
+      <span class="th">สู่อนาคต 6G & SAGIN →</span>
+      <span class="en">Explore 6G &amp; SAGIN →</span>
+    </a>
+  </div>
+</header>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="th">ความเชี่ยวชาญหลักที่ขับเคลื่อนภารกิจด้านเทคโนโลยีดิจิทัลและการสื่อสาร</span><span class="en">Core competencies driving the digital and communications mission</span></h2>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal">
+        <div class="ic">🔌</div>
+        <h3 class="th">โครงข่ายสื่อสาร & ใยแก้วนำแสง</h3>
+        <h3 class="en">Communications Networks &amp; Optical</h3>
+        <span class="h3-en th">Communications Networks &amp; Optical Fiber</span>
+        <span class="h3-en en">โครงข่ายสื่อสารและใยแก้วนำแสง</span>
+        <ul>
+          <li><span class="th">โครงข่ายใยแก้วนำแสง FTTx และระบบสื่อสัญญาณ</span><span class="en">FTTx optical networks and signal-transport systems</span></li>
+          <li><span class="th">การวางแผนและจัดการโครงข่ายโทรคมนาคม</span><span class="en">Telecom network planning and management</span></li>
+          <li><span class="th">ตรวจตราทรัพย์สินโครงสร้างพื้นฐานบรอดแบนด์ (Site Visit)</span><span class="en">Broadband infrastructure asset inspection (Site Visit)</span></li>
+          <li><span class="th">ระบบ IP Multimedia Subsystem (IMS) และสื่อสารยุคใหม่</span><span class="en">IMS deployment and next-generation communications</span></li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic">⚖️</div>
+        <h3 class="th">การกำกับดูแล & นโยบายโทรคมนาคม</h3>
+        <h3 class="en">Telecom Regulation &amp; Policy</h3>
+        <span class="h3-en th">Telecom Regulation &amp; Policy</span>
+        <span class="h3-en en">การกำกับดูแลและนโยบายโทรคมนาคม</span>
+        <ul>
+          <li><span class="th">การจัดสรรคลื่นความถี่และ Spectrum Management (ITU)</span><span class="en">Spectrum allocation and management (ITU)</span></li>
+          <li><span class="th">นิยามตลาดและการกำกับการแข่งขันโทรคมนาคม</span><span class="en">Market definition and competition regulation</span></li>
+          <li><span class="th">แผนแม่บทเทคโนโลยีสารสนเทศและรัฐบาลอิเล็กทรอนิกส์</span><span class="en">ICT master plans and e-government strategy</span></li>
+          <li><span class="th">คุ้มครองข้อมูลส่วนบุคคล (PDPA) และธรรมาภิบาลดิจิทัล</span><span class="en">PDPA and digital governance</span></li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ic">📡</div>
+        <h3 class="th">งานวิจัยสัญญาณ & สื่อสารไร้สาย</h3>
+        <h3 class="en">Signal &amp; Wireless Research</h3>
+        <span class="h3-en th">Signal Processing &amp; Wireless Communications</span>
+        <span class="h3-en en">การประมวลผลสัญญาณและการสื่อสารไร้สาย</span>
+        <ul>
+          <li><span class="th">Diversity combining และ MRC ในช่อง fading</span><span class="en">Diversity combining and MRC in fading channels</span></li>
+          <li><span class="th">ระบบ relay หลายช่วงและการรบกวนร่วมช่อง</span><span class="en">Multihop relay systems and co-channel interference</span></li>
+          <li><span class="th">การใช้คลื่นร่วม 5G–ดาวเทียม และ TV White Space</span><span class="en">5G–satellite coexistence and TV White Space</span></li>
+          <li><span class="th">AI/ML สำหรับตรวจจับการบุกรุกและการสื่อสารด้วยแสง</span><span class="en">AI/ML for intrusion detection and optical sensing</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE: real infrastructure -->
+<section>
+  <div class="wrap show-grid">
+    <div class="show-img reveal">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Network infrastructure cabling">
+      <div class="cap th">โครงข่ายและศูนย์ข้อมูล — รากฐานของบริการสื่อสารยุคใหม่</div>
+      <div class="cap en">Network &amp; data-center infrastructure — the backbone of modern communications</div>
+    </div>
+    <div class="show-txt reveal">
+      <h2><span class="th">จากทฤษฎีสู่โครงสร้างพื้นฐานจริง</span><span class="en">From theory to real-world infrastructure</span></h2>
+      <p>
+        <span class="th">ประสบการณ์ครอบคลุมตั้งแต่การออกแบบ ตรวจสอบ และกำกับดูแลโครงข่ายโทรคมนาคมจริง ไปจนถึงการนำ AI มายกระดับการดำเนินงานเครือข่าย</span>
+        <span class="en">Hands-on experience spanning the design, inspection, and regulation of live telecom networks — through to applying AI that elevates network operations.</span>
+      </p>
+      <ul>
+        <li><span class="th">ตรวจตราทรัพย์สินโครงสร้างพื้นฐานบรอดแบนด์ FTTx (Site Visit)</span><span class="en">FTTx broadband infrastructure asset inspection (Site Visit)</span></li>
+        <li><span class="th">ออกแบบข้อกำหนดและควบคุมการติดตั้งระบบ IMS</span><span class="en">IMS technical specification design and installation oversight</span></li>
+        <li><span class="th">ต้นแบบระบบจัดการเหตุขัดข้องเครือข่ายด้วยปัญญาประดิษฐ์</span><span class="en">AI-based network-fault management prototype</span></li>
+        <li><span class="th">พัฒนากำลังคนผู้ชำนาญการโครงข่ายใยแก้วนำแสง</span><span class="en">Workforce development for fiber-optic network specialists</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX BRIDGE -->
+<section class="parallax">
+  <div class="wrap">
+    <div class="tag">🛰️ Bridge to Space</div>
+    <h2><span class="th">จากโครงข่ายภาคพื้นดิน สู่วงโคจร</span><span class="en">From ground networks to orbit</span></h2>
+    <p>
+      <span class="th">โครงข่ายภาคพื้นดิน คลื่นความถี่ และดาวเทียม กำลังหลอมรวมเป็นเครือข่ายเดียว — รากฐานเดียวกันที่นำไปสู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span>
+      <span class="en">Terrestrial networks, spectrum, and satellites are converging into one fabric — the same foundation that leads to 6G and the Space-Air-Ground Integrated Network.</span>
+    </p>
+  </div>
+</section>
+
+<!-- POLICY & PARLIAMENT -->
+<section id="policy">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow th">นโยบาย & กรรมาธิการ</div>
+      <div class="eyebrow en">Policy &amp; Parliament</div>
+      <h2><span class="th">บทบาทเชิงนโยบายระดับชาติ</span><span class="en">National Policy Leadership</span></h2>
+      <p>
+        <span class="th">ประสบการณ์เชื่อมงานวิชาการเข้ากับการกำหนดนโยบาย การกำกับดูแล และงานนิติบัญญัติด้านดิจิทัลและโทรคมนาคม</span>
+        <span class="en">Bridging academia with policymaking, regulation, and legislation in digital and telecommunications.</span>
+      </p>
+    </div>
+    <div class="policy-grid">
+      <div class="policy reveal">
+        <div class="org"><span class="flag">🏛️</span><span class="th">สภาผู้แทนราษฎร</span><span class="en">House of Representatives</span></div>
+        <div class="yr">2563–2566 · 2020–2023</div>
+        <ul>
+          <li><span class="th">กรรมาธิการ คณะกรรมาธิการวิสามัญพิจารณาร่าง พ.ร.บ. องค์กรจัดสรรคลื่นความถี่และกำกับกิจการวิทยุกระจายเสียง วิทยุโทรทัศน์ และโทรคมนาคม (กสทช.)</span><span class="en">Member, Extraordinary Committee on the draft Act for the spectrum-allocation and broadcasting/telecom regulator (NBTC)</span></li>
+          <li><span class="th">ที่ปรึกษาอนุกรรมาธิการติดตามและตรวจสอบการพัฒนาโครงสร้างพื้นฐานทางดิจิทัลและความมั่นคงปลอดภัยไซเบอร์</span><span class="en">Advisor, Subcommittee on digital infrastructure development and cybersecurity</span></li>
+          <li><span class="th">ที่ปรึกษาอนุกรรมาธิการกิจการอวกาศเพื่อเศรษฐกิจและความมั่นคง</span><span class="en">Advisor, Subcommittee on space affairs for economy and security</span></li>
+        </ul>
+      </div>
+      <div class="policy reveal">
+        <div class="org"><span class="flag">📶</span><span class="th">กสทช. (NBTC)</span><span class="en">NBTC</span></div>
+        <div class="yr"><span class="th">ที่ปรึกษา / นักวิจัยเชิงนโยบาย</span><span class="en">Policy advisor / researcher</span></div>
+        <ul>
+          <li><span class="th">ขับเคลื่อนและติดตามประเมินผลแผนยุทธศาสตร์สำนักงาน กสทช.</span><span class="en">Driving and evaluating NBTC strategic plans</span></li>
+          <li><span class="th">ศึกษาโครงสร้างตลาดและการกำกับการแข่งขันในยุคหลอมรวม (Convergence)</span><span class="en">Market structure and competition regulation in the convergence era</span></li>
+          <li><span class="th">นิยามตลาดโทรคมนาคมและกำกับโครงข่ายวงจรเช่า</span><span class="en">Telecom market definition and leased-circuit network regulation</span></li>
+        </ul>
+      </div>
+      <div class="policy reveal">
+        <div class="org"><span class="flag">⚙️</span><span class="th">สภาวิศวกร & วสท.</span><span class="en">COE &amp; EIT</span></div>
+        <div class="yr"><span class="th">ปัจจุบัน · Present</span><span class="en">Present</span></div>
+        <ul>
+          <li><span class="th">ผู้ทรงคุณวุฒิสาขาวิศวกรรมสารสนเทศ · สภาวิศวกร</span><span class="en">Senior expert, Information Engineering · Council of Engineers</span></li>
+          <li><span class="th">ประธานอนุกรรมการสาขาวิศวกรรมสารสนเทศ · วิศวกรรมสถานแห่งประเทศไทยฯ</span><span class="en">Chair, Information Engineering Subcommittee · Engineering Institute of Thailand</span></li>
+          <li><span class="th">คณะกรรมการแห่งชาติว่าด้วยมาตรฐานเทคนิคทางไฟฟ้าระหว่างประเทศ (กมฟท.)</span><span class="en">National Committee for IEC technical standards</span></li>
+        </ul>
+      </div>
+      <div class="policy reveal">
+        <div class="org"><span class="flag">🛰️</span><span class="th">GISTDA & อวกาศ</span><span class="en">GISTDA &amp; Space</span></div>
+        <div class="yr"><span class="th">ปัจจุบัน · Present</span><span class="en">Present</span></div>
+        <ul>
+          <li><span class="th">ประธานคณะกรรมการจัดตั้ง Space Innovation Hub · GISTDA</span><span class="en">Chair, founding committee for the Space Innovation Hub · GISTDA</span></li>
+          <li><span class="th">คณะทำงานวิเคราะห์นโยบายและพัฒนายุทธศาสตร์เพื่ออนาคต</span><span class="en">Working group on policy analysis and future strategy</span></li>
+          <li><span class="th">เชื่อมนโยบายโทรคมนาคมเข้ากับกิจการอวกาศของประเทศ</span><span class="en">Linking telecom policy with national space affairs</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow th">โครงการเด่น</div>
+      <div class="eyebrow en">Featured Projects</div>
+      <h2><span class="th">โครงการด้านโทรคมนาคมและดิจิทัล</span><span class="en">Telecom &amp; Digital Projects</span></h2>
+      <p>
+        <span class="th">คัดเฉพาะโครงการบริการวิชาการและวิจัยที่เกี่ยวข้องกับเทคโนโลยีดิจิทัลและการสื่อสาร</span>
+        <span class="en">Selected academic-service and research projects in digital technology and communications.</span>
+      </p>
+    </div>
+    <div class="proj-list">
+      <div class="proj reveal"><div class="dot">🔌</div><div><b class="th">โครงข่ายใยแก้วนำแสง FTTx</b><b class="en">FTTx Optical Networks</b><span class="th">บัณฑิตพันธุ์ใหม่ ผู้ชำนาญการโครงข่ายใยแก้วนำแสง · อว.</span><span class="en">New-breed graduate program for fiber-optic specialists · MHESI</span></div></div>
+      <div class="proj reveal"><div class="dot">🤖</div><div><b class="th">AI จัดการเหตุขัดข้องเครือข่าย</b><b class="en">AI Network Fault Management</b><span class="th">ต้นแบบระบบจัดการเหตุขัดข้องอุปกรณ์เครือข่ายด้วย AI · มจธ.</span><span class="en">AI-based network-fault management prototype · KMUTT</span></div></div>
+      <div class="proj reveal"><div class="dot">🚦</div><div><b class="th">AI ควบคุมสัญญาณไฟจราจร</b><b class="en">AI Traffic-Signal Control</b><span class="th">ประเมินประสิทธิภาพ AI และระบบประมวลผลภาพ · มจธ. / FirstTech</span><span class="en">AI and computer-vision evaluation for traffic control · KMUTT / FirstTech</span></div></div>
+      <div class="proj reveal"><div class="dot">📊</div><div><b class="th">นิยามตลาดโทรคมนาคมไทย</b><b class="en">Thai Telecom Market Definition</b><span class="th">นิยามตลาดและกำหนดตลาดบริการโทรคมนาคมแบบใหม่ · กสทช.</span><span class="en">Defining new telecom-service markets · NBTC</span></div></div>
+      <div class="proj reveal"><div class="dot">🔐</div><div><b class="th">PDPA & เจ้าหน้าที่คุ้มครองข้อมูล</b><b class="en">PDPA &amp; Data Protection Officer</b><span class="th">ที่ปรึกษา PDPA และอบรม EXIN Certified DPO · สคส. / ภาครัฐ</span><span class="en">PDPA advisory and EXIN Certified DPO training · PDPC / Gov</span></div></div>
+      <div class="proj reveal"><div class="dot">💡</div><div><b class="th">ที่ปรึกษากลยุทธ์ดิจิทัล</b><b class="en">Digital Strategy Consulting</b><span class="th">พัฒนากลยุทธ์ธุรกิจดิจิทัลและที่ปรึกษาด้านดิจิทัล · depa</span><span class="en">Digital business strategy and advisor development · depa</span></div></div>
+      <div class="proj reveal"><div class="dot">📋</div><div><b class="th">แผนแม่บท ICT ภาครัฐ</b><b class="en">Government ICT Master Plans</b><span class="th">แผนแม่บทสารสนเทศ · สำนักนายกรัฐมนตรี / ศาลยุติธรรม</span><span class="en">ICT master plans · PM Office / Court of Justice</span></div></div>
+      <div class="proj reveal"><div class="dot">📺</div><div><b class="th">ประเมินกิจการกระจายเสียง–โทรทัศน์</b><b class="en">Broadcasting Performance Review</b><span class="th">ประเมินประสิทธิภาพและผลสัมฤทธิ์การประกอบกิจการ · กสทช.</span><span class="en">Performance and outcome assessment of broadcasting · NBTC</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6G & SAGIN SPOTLIGHT -->
+<section id="future">
+  <div class="wrap">
+    <div class="spotlight reveal">
+      <span class="tag">🚀 Future Technology · Bridge to Space</span>
+      <h2><span class="th">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span><span class="en">Toward 6G &amp; the Space-Air-Ground Integrated Network</span></h2>
+      <div class="h2en th">Toward 6G and the Space-Air-Ground Integrated Network (SAGIN)</div>
+      <div class="h2en en">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</div>
+      <p style="color:var(--muted);max-width:760px">
+        <span class="th">วิสัยทัศน์ของ 6G คือการหลอมรวมโครงข่ายภาคพื้นดิน อากาศยาน และดาวเทียม ให้เป็นเครือข่ายเดียวที่ครอบคลุมทั่วโลก — งานวิจัยด้านการสื่อสารไร้สายและการใช้คลื่นร่วม 5G–ดาวเทียมของภารกิจนี้ คือรากฐานทางเทคนิคที่เชื่อมโดยตรงกับ <strong>Mission 01 · อวกาศบางมด</strong></span>
+        <span class="en">The 6G vision fuses terrestrial, aerial, and satellite networks into one globally seamless fabric. This mission's wireless-communications and 5G–satellite coexistence research forms the technical foundation that connects directly to <strong>Mission 01 · Thonburi Space</strong>.</span>
+      </p>
+
+      <div class="sagin-layers">
+        <div class="layer">
+          <span class="em">🛰️</span>
+          <b class="th">ชั้นอวกาศ</b><b class="en">Space Layer</b>
+          <small class="th">ดาวเทียม LEO/GEO · CubeSat · การสื่อสารผ่านดาวเทียม</small>
+          <small class="en">LEO/GEO satellites · CubeSat · satellite communications</small>
+        </div>
+        <div class="layer">
+          <span class="em">✈️</span>
+          <b class="th">ชั้นอากาศ</b><b class="en">Air Layer</b>
+          <small class="th">HAPS · โดรน · สถานีฐานลอยฟ้าและ relay</small>
+          <small class="en">HAPS · drones · aerial base stations and relays</small>
+        </div>
+        <div class="layer">
+          <span class="em">🏙️</span>
+          <b class="th">ชั้นภาคพื้นดิน</b><b class="en">Ground Layer</b>
+          <small class="th">โครงข่าย 5G/6G · FTTx · สถานีภาคพื้นดิน</small>
+          <small class="en">5G/6G networks · FTTx · ground stations</small>
+        </div>
+      </div>
+
+      <div class="bridge-note">
+        <span class="th">🔗 งานวิจัยที่ปูทางสู่ SAGIN — การประเมินการใช้คลื่นร่วมระหว่าง <strong>5G และกิจการดาวเทียมย่าน 28 GHz</strong>, การประยุกต์ <strong>TV White Space</strong>, การวิเคราะห์ <strong>ระบบ relay หลายช่วง</strong> ที่มีการรบกวนร่วมช่อง และ <strong>AI ตรวจจับการบุกรุกด้วย OFDR</strong> ล้วนเป็นองค์ประกอบเชิงเทคนิคของโครงข่ายบูรณาการในอนาคต เชื่อมต่อกับ <a href="https://chirasil.github.io/thonburi-space/" target="_blank">Thonburi Space Innovation Hub →</a></span>
+        <span class="en">🔗 Research paving the way to SAGIN — <strong>5G–satellite coexistence at 28 GHz</strong>, <strong>TV White Space</strong> applications, <strong>multihop relay</strong> analysis under co-channel interference, and <strong>OFDR-based AI intrusion detection</strong> are all technical building blocks of the future integrated network, connecting to <a href="https://chirasil.github.io/thonburi-space/" target="_blank">Thonburi Space Innovation Hub →</a></span>
+      </div>
+
+      <div class="research-tags">
+        <span class="rtag">5G–Satellite Coexistence · 28 GHz</span>
+        <span class="rtag">TV White Space</span>
+        <span class="rtag">Multihop Relay Systems</span>
+        <span class="rtag">OFDR + Neural Network</span>
+        <span class="rtag">Mach-Zehnder ML Sensing</span>
+        <span class="rtag">Spectrum Sharing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="pubs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow th">ผลงานตีพิมพ์</div>
+      <div class="eyebrow en">Publications</div>
+      <h2><span class="th">งานวิจัยระดับนานาชาติ</span><span class="en">International Research</span></h2>
+      <p>
+        <span class="th">ตีพิมพ์ในวารสารและการประชุมวิชาการชั้นนำด้านการสื่อสารไร้สาย</span>
+        <span class="en">Published in leading wireless-communications journals and conferences.</span>
+      </p>
+    </div>
+    <div class="pub-stats">
+      <div class="stat reveal"><div class="n" data-target="40" data-suffix="+">0</div><small class="th">บทความตีพิมพ์</small><small class="en">Publications</small></div>
+      <div class="stat reveal"><div class="n">IEEE</div><small class="th">Trans. & Letters</small><small class="en">Trans. &amp; Letters</small></div>
+      <div class="stat reveal"><div class="n" data-target="25" data-suffix="+">0</div><small class="th">ปีประสบการณ์วิจัย</small><small class="en">Years of research</small></div>
+      <div class="stat reveal"><div class="n" data-target="2026" data-start="2000">2000</div><small class="th">งานวิจัยล่าสุด</small><small class="en">Latest work</small></div>
+    </div>
+    <div class="pub-areas">
+      <span class="chip">Diversity Combining &amp; MRC</span>
+      <span class="chip">Fading Channels</span>
+      <span class="chip">Optimum Combining</span>
+      <span class="chip">Multihop Relay Systems</span>
+      <span class="chip">Co-Channel Interference</span>
+      <span class="chip">Spherically Invariant Fading</span>
+      <span class="chip">Smart Antennas</span>
+      <span class="chip">Geolocation (AOA/TDOA)</span>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-top:22px;max-width:740px;margin-left:auto;margin-right:auto">
+      <span class="th">ตีพิมพ์ใน IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Communications Letters, IEEE Transactions on Vehicular Technology และวารสาร/การประชุมระดับนานาชาติอื่น ๆ</span>
+      <span class="en">Published in IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Communications Letters, IEEE Transactions on Vehicular Technology, and other international journals and conferences.</span>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span style="display:inline-block;width:32px;height:32px;vertical-align:middle;margin-right:9px"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="CISS logo" style="width:100%;height:100%;display:block"><defs><linearGradient id="cissBgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><rect x="6" y="6" width="88" height="88" rx="22" fill="url(#cissBgF)"/><ellipse cx="50" cy="52" rx="40" ry="16" fill="none" stroke="#cfe2fe" stroke-width="2.6" stroke-opacity=".9" transform="rotate(-32 50 52)"/><polygon points="70,52 60,71 40,71 30,52 40,33 60,33" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/><polyline points="40,53 47,61 62,42" fill="none" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="73" cy="30" r="4.6" fill="#ffffff"/><path d="M78 25 a7 7 0 0 1 3 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".9"/><path d="M80 21 a12 12 0 0 1 5 8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".65"/></svg></span><span>CISS Center of Excellence
+          <small class="th">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</small>
+          <small class="en">Communications &amp; Integrated Services Study Center · KMUTT</small></span>
+        </div>
+        <p style="color:var(--muted);font-size:13px;margin-top:6px">
+          <span class="th">เทคโนโลยีดิจิทัลและการสื่อสาร — หนึ่งในภารกิจของศูนย์ความเป็นเลิศ CISS</span>
+          <span class="en">Digital Technology &amp; Communications — one of the CISS missions.</span>
+        </p>
+      </div>
+      <div>
+        <h4><span class="th">ติดต่อ</span><span class="en">Contact</span></h4>
+        <a href="tel:024709629">📞 02-470-9629</a>
+        <a href="mailto:ciss@mail.kmutt.ac.th">✉️ ciss@mail.kmutt.ac.th</a>
+        <a>📍 <span class="th">ทุ่งครุ กรุงเทพฯ</span><span class="en">Thung Khru, Bangkok</span></a>
+      </div>
+      <div>
+        <h4><span class="th">เมนู</span><span class="en">Menu</span></h4>
+        <a href="#pillars"><span class="th">ความเชี่ยวชาญ</span><span class="en">Expertise</span></a>
+        <a href="#policy"><span class="th">นโยบาย & กรรมาธิการ</span><span class="en">Policy &amp; Parliament</span></a>
+        <a href="#future"><span class="th">6G & SAGIN</span><span class="en">6G &amp; SAGIN</span></a>
+        <a href="#pubs"><span class="th">ผลงานตีพิมพ์</span><span class="en">Publications</span></a>
+      </div>
+    </div>
+
+    <div class="mission-links">
+      <a href="https://chirasil.github.io/thonburi-space/" target="_blank">🛰️ Mission 01 · Thonburi Space</a>
+      <a href="https://chirasil.github.io/CISS/ciss" target="_blank">🎓 Mission 02 · Professional Qualification</a>
+      <a href="https://chirasil.github.io/CISS/" target="_blank">📡 Mission 03 · Digital &amp; Communications</a>
+    </div>
+
+    <div class="copy">
+      © 2568 / 2025 <span class="th">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ</span><span class="en">Communications &amp; Integrated Services Study Center (CISS) · linking 3 missions</span>
+    </div>
+    <div class="credit">Photos: Unsplash License — Benedek Dezső, Tommy L, Taylor Vick</div>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.body.className = 'lang-' + l;
+    document.getElementById('bth').classList.toggle('active', l==='th');
+    document.getElementById('ben').classList.toggle('active', l==='en');
+    document.documentElement.lang = l;
+  }
+  // reveal on scroll
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // count-up stats
+  function animateCount(el){
+    const target=+el.dataset.target;
+    const suffix=el.dataset.suffix||'';
+    const start=el.dataset.start?+el.dataset.start:0;
+    const dur=1500, t0=performance.now();
+    function step(now){
+      const p=Math.min((now-t0)/dur,1);
+      const eased=p*(2-p);
+      el.textContent=Math.floor(start+(target-start)*eased)+suffix;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const co = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ animateCount(e.target); co.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.n[data-target]').forEach(el=>co.observe(el));
+</script>
+</body>
+</html>
