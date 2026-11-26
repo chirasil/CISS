@@ -2,199 +2,310 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>CISS — ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ.</title>
+<meta name="description" content="CISS มจธ. องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน) ภายใต้มาตรฐาน ISO/IEC 17024">
+<meta name="theme-color" content="#05110e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Mission 02 · Professional Qualification
+     Dark bands carry mood and capability (hero, technology, process, gallery);
+     paper bands carry the things people scan (about, services, portfolio, contact).
+     Accent: amber = certification, cyan = fibre light, leaf = CISS. */
   :root{
-    --blue-900:#0a2540;--blue-800:#103a66;--blue-700:#1559a3;--blue-600:#1f6fd1;
-    --blue-500:#2f86e0;--blue-100:#e8f1fb;--blue-50:#f4f8fd;--ink:#1a2430;
-    --muted:#5a6b7d;--line:#e2e8f0;--white:#fff;
-    --shadow:0 4px 24px rgba(16,58,102,.08);--shadow-lg:0 12px 40px rgba(16,58,102,.14);
+    --void:#05110e;--deep:#081a15;--deep2:#0c241d;
+    --leaf:#3ddc97;--leaf-d:#12805a;--cyan:#42d3e8;--amber:#f0b445;--amber-d:#b97a12;--violet:#7a9cff;
+    --paper:#f1f3ea;--paper2:#e6ebdd;--ink:#0c1f19;--ink2:#40554c;--rule:rgba(12,31,25,.14);
+    --text:#eaf2ee;--soft:#b9cbc3;--muted:#7f968c;--line:rgba(160,214,190,.16);--line2:rgba(160,214,190,.3);
+    --f-head:"Chakra Petch","IBM Plex Sans Thai",system-ui,sans-serif;
+    --f-body:"IBM Plex Sans Thai","Sarabun",system-ui,sans-serif;
+    --f-mono:"IBM Plex Mono","Chakra Petch",ui-monospace,monospace;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:"Sarabun","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
-  a{text-decoration:none;color:inherit}
-  img{display:block;max-width:100%}
-  svg{display:block}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-  section{scroll-margin-top:80px}
-  .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;z-index:1}
-  .ph.on{opacity:1}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:78px}
+  body{font-family:var(--f-body);background:var(--void);color:var(--text);line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  h1,h2,h3,h4,h5{font-family:var(--f-head);font-weight:600;line-height:1.28}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+  .ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--blue-900)}
-  .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue-600),var(--blue-800));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.5px;box-shadow:var(--shadow)}
-  .logo svg{width:32px;height:32px}
-  .brand small{display:block;font-weight:500;font-size:11.5px;color:var(--muted);letter-spacing:.3px}
+  /* header */
+  header{position:sticky;top:0;z-index:100;background:rgba(5,17,14,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:700;font-size:19px;letter-spacing:1px;color:#fff;line-height:1.15}
+  .brand small{display:block;font-family:var(--f-mono);font-weight:500;font-size:9.5px;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase;margin-top:3px}
+  .logo{width:42px;height:42px;border-radius:6px 16px 6px 16px;background:linear-gradient(135deg,var(--leaf-d),#0b4f5c);display:grid;place-items:center;border:1px solid var(--line2);flex-shrink:0}
+  .logo svg{width:28px;height:28px}
   .nav-right{display:flex;align-items:center;gap:14px}
-  .menu{display:flex;align-items:center;gap:6px;list-style:none}
-  .menu a{padding:9px 13px;border-radius:9px;font-size:14px;color:var(--ink);font-weight:500;transition:.2s}
-  .menu a:hover{background:var(--blue-100);color:var(--blue-700)}
-  .lang-tog{display:flex;border:1px solid var(--line);border-radius:50px;overflow:hidden;background:#fff}
-  .lang-tog button{background:none;border:none;color:var(--muted);font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;cursor:pointer;transition:.2s}
-  .lang-tog button.active{background:var(--blue-600);color:#fff}
-  .btn{display:inline-block;padding:11px 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:.25s;cursor:pointer;border:none}
-  .btn-primary{background:var(--blue-600);color:#fff;box-shadow:0 4px 14px rgba(31,111,209,.3)}
-  .btn-primary:hover{background:var(--blue-700);transform:translateY(-2px);box-shadow:0 8px 22px rgba(31,111,209,.38)}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
-  .btn-ghost:hover{background:rgba(255,255,255,.15)}
-  .nav .btn{padding:10px 20px}
-  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
-  .burger span{width:24px;height:2.5px;background:var(--blue-800);border-radius:2px;transition:.3s}
+  .menu{display:flex;list-style:none;gap:2px}
+  .menu a{font-family:var(--f-head);font-size:13.5px;font-weight:500;color:var(--soft);padding:8px 9px;border-radius:6px;transition:.2s;white-space:nowrap}
+  .menu a:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .lang-tog{display:flex;border:1px solid var(--line2);border-radius:6px;overflow:hidden}
+  .lang-tog button{font-family:var(--f-mono);font-size:11.5px;font-weight:600;background:none;border:0;color:var(--soft);padding:7px 10px;cursor:pointer}
+  .lang-tog button.active{background:var(--leaf);color:#04231a}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-head);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:6px;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--amber);color:#2a1a02}
+  .btn-ghost{border-color:rgba(234,242,238,.35);color:#fff}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  header .btn{padding:9px 16px;font-size:13.5px;white-space:nowrap}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer}
+  .burger span{width:22px;height:2px;background:#fff;border-radius:2px}
 
-  .hero{position:relative;overflow:hidden;padding:96px 0 104px;color:#fff;background:linear-gradient(160deg,var(--blue-800),var(--blue-900))}
-  .hero-bg{position:absolute;inset:0;z-index:0}
-  .hero-bg svg{width:100%;height:100%}
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(120deg,rgba(10,37,64,.86) 0%,rgba(16,58,102,.66) 55%,rgba(31,111,209,.4) 100%)}
-  .hero-inner{position:relative;z-index:2;max-width:780px}
-  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);color:#fff;padding:7px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2)}
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:#7fc0ff}
-  .hero h1{font-size:clamp(30px,5vw,50px);line-height:1.22;font-weight:800;letter-spacing:-.5px;margin-bottom:20px}
-  .hero p.lead{font-size:clamp(16px,2.2vw,19px);color:rgba(255,255,255,.88);max-width:660px;margin-bottom:34px}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
-  .hero-actions .btn{padding:14px 28px;font-size:15.5px}
-  .hero-actions .btn-primary{background:#fff;color:var(--blue-700)}
-  .hero-actions .btn-primary:hover{background:#eaf2fc}
-  .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:54px;position:relative;z-index:2}
-  .stat{background:rgba(255,255,255,.12);border-radius:14px;padding:20px 24px;flex:1;min-width:150px;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px)}
-  .stat b{display:block;font-size:26px;color:#fff;font-weight:800}
-  .stat span{font-size:13.5px;color:rgba(255,255,255,.8)}
+  /* hero */
+  .hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse 90% 70% at 78% 30%,#0f3a35 0%,transparent 62%),linear-gradient(180deg,var(--void),var(--deep))}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse at 30% 40%,#000 0%,transparent 72%);mask-image:radial-gradient(ellipse at 30% 40%,#000 0%,transparent 72%)}
+  .hero-inner{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(48px,7vw,84px) clamp(36px,5vw,56px)}
+  .pill{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;color:var(--amber);border:1px solid rgba(240,180,69,.4);background:rgba(240,180,69,.08);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(240,180,69,.2)}
+  .hero h1{font-size:clamp(26px,3.5vw,44px);color:#fff;letter-spacing:0;margin-bottom:18px;text-wrap:balance}
+  .hero .lead{font-size:clamp(15px,1.5vw,17.5px);color:var(--soft);max-width:36em;margin-bottom:28px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;height:auto;display:block}
+  .hero-photo{position:absolute;left:0;bottom:4%;width:38%;aspect-ratio:4/3;border-radius:6px 28px 6px 6px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 18px 40px rgba(0,0,0,.45);background:var(--deep2)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+  .stat{padding:24px 18px 28px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:0;padding-left:0}
+  .stat b{display:block;font-family:var(--f-mono);font-size:clamp(22px,2.6vw,32px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:6px}
+  .stat span{font-size:13px;color:var(--muted)}
 
-  .sec{padding:84px 0}
-  .sec-head{max-width:680px;margin:0 auto 52px;text-align:center}
-  .eyebrow{color:var(--blue-600);font-weight:700;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
-  .sec-head h2{font-size:clamp(26px,3.5vw,36px);color:var(--blue-900);font-weight:800;letter-spacing:-.4px;margin-bottom:14px}
-  .sec-head p{color:var(--muted);font-size:16px}
+  /* shared section */
+  .sec{padding-block:clamp(60px,8vw,96px)}
+  .paper{background:var(--paper);color:var(--ink)}
+  .paper2{background:var(--paper2);color:var(--ink)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--leaf);margin-bottom:12px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+  .paper .eyebrow,.paper2 .eyebrow{color:var(--leaf-d)}
+  .sec-head{max-width:46em;margin-bottom:38px}
+  .sec-head h2{font-size:clamp(24px,3.3vw,36px);margin-bottom:12px;text-wrap:balance}
+  .sec-head p{color:var(--soft)}
+  .paper .sec-head p,.paper2 .sec-head p{color:var(--ink2)}
 
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-  .about-text p{color:var(--muted);margin-bottom:18px;font-size:15.5px}
-  .about-text strong{color:var(--ink)}
-  .feature-list{list-style:none;margin-top:24px;display:grid;gap:14px}
-  .feature-list li{display:flex;gap:13px;align-items:flex-start;font-size:15px}
-  .check{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:var(--blue-100);color:var(--blue-700);display:grid;place-items:center;font-weight:800;font-size:13px;margin-top:2px}
-  .about-card{background:linear-gradient(150deg,var(--blue-700),var(--blue-900));border-radius:22px;padding:40px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
-  .about-card::after{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);border-radius:50%}
-  .about-card h3{font-size:22px;margin-bottom:18px;position:relative}
-  .about-card .mini{display:flex;gap:14px;margin-bottom:18px;position:relative}
-  .about-card .mini .ic{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.14);display:grid;place-items:center;flex-shrink:0;font-size:18px}
-  .about-card .mini b{display:block;font-size:15px}
-  .about-card .mini span{font-size:13px;color:rgba(255,255,255,.75)}
+  /* about */
+  .about-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:start}
+  .about-text h2{font-size:clamp(24px,3.3vw,34px);margin-bottom:18px;color:var(--ink)}
+  .about-text p{color:var(--ink2);margin-bottom:14px}
+  .about-text strong{color:var(--ink);font-weight:600}
+  .feature-list{list-style:none;margin-top:22px;border-top:1px solid var(--rule)}
+  .feature-list li{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--rule);color:var(--ink);font-size:15px}
+  .check{width:22px;height:22px;border-radius:50%;background:var(--leaf-d);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:3px}
+  .about-card{background:var(--deep);color:var(--text);border-radius:6px 44px 6px 6px;padding:30px 28px;border:1px solid var(--line2);position:relative;overflow:hidden}
+  .about-card::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;border:1px solid var(--line2);box-shadow:0 0 0 26px rgba(61,220,151,.05),0 0 0 54px rgba(61,220,151,.03)}
+  .about-card h3{font-size:19px;color:#fff;margin-bottom:8px}
+  .mini{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+  .mini .ic{width:42px;height:42px;border-radius:6px 14px 6px 14px;background:rgba(240,180,69,.12);color:var(--amber);display:grid;place-items:center;flex-shrink:0}
+  .mini b{display:block;font-family:var(--f-head);font-weight:600;color:#fff;font-size:15.5px}
+  .mini span{font-size:13.5px;color:var(--soft);line-height:1.6;display:block}
 
-  .services{background:var(--blue-50)}
-  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
-  .card{background:#fff;border-radius:18px;padding:34px;box-shadow:var(--shadow);border:1px solid var(--line);transition:.3s}
-  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--blue-100)}
-  .card .ic-lg{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--blue-500),var(--blue-700));display:grid;place-items:center;color:#fff;font-size:26px;margin-bottom:20px}
-  .card h3{font-size:20px;color:var(--blue-900);margin-bottom:8px;font-weight:700}
-  .card .sub{color:var(--blue-600);font-weight:600;font-size:13.5px;margin-bottom:16px}
-  .card p{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+  /* technology */
+  .tech{background:linear-gradient(180deg,var(--deep),var(--void))}
+  .tech-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .tcard{--c:var(--leaf);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+  .tcard:hover{border-color:var(--c);transform:translateY(-4px)}
+  .tcard.t-ai{--c:var(--violet)} .tcard.t-fo{--c:var(--cyan)} .tcard.t-leo{--c:var(--amber)}
+  .tcard figure{background:radial-gradient(ellipse at 50% 60%,rgba(255,255,255,.06),transparent 70%);border-bottom:1px solid var(--line)}
+  .tcard figure svg{width:100%;height:auto;display:block}
+  .tbody{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .tkick{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+  .tcard h3{font-size:20px;color:#fff}
+  .tcard p{font-size:14.5px;color:var(--soft)}
+  .tlist{list-style:none;display:grid;gap:7px;margin-top:2px}
+  .tlist li{position:relative;padding-left:16px;font-size:13.8px;color:var(--text)}
+  .tlist li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1.5px;background:var(--c)}
+  .tstat{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:12.8px;color:var(--soft);display:flex;gap:9px;align-items:flex-start}
+  .tstat i{width:8px;height:8px;border-radius:50%;background:var(--c);margin-top:.5em;flex-shrink:0}
+  .flow{margin-top:44px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.02);padding:clamp(18px,3vw,30px)}
+  .flow h3{font-size:clamp(18px,2.2vw,23px);color:#fff;margin-bottom:6px}
+  .flow>p{color:var(--soft);font-size:14.5px;max-width:48em}
+  .flow svg{width:100%;height:auto;display:block;margin:18px 0 8px}
+  .legend{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:lg}
+  .legend li{counter-increment:lg;font-size:13px;color:var(--soft);line-height:1.55;padding-top:12px;border-top:1px solid var(--line)}
+  .legend li::before{content:counter(lg);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid var(--amber);color:var(--amber);font-family:var(--f-mono);font-size:11.5px;margin-bottom:6px}
+  .legend b{display:block;font-family:var(--f-head);font-weight:600;color:#fff;font-size:14px}
+  .dash{stroke-dasharray:5 9;animation:dash 2.4s linear infinite}
+  .pulse{stroke-dasharray:3 46;animation:dash2 2.8s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-56}}
+  @keyframes dash2{to{stroke-dashoffset:-98}}
+  .blink{animation:blink 2.6s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
+
+  /* services */
+  .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .card{background:#fff;border:1px solid var(--rule);border-radius:6px 44px 6px 6px;padding:30px 28px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(12,31,25,.12)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--amber),var(--leaf-d))}
+  .ic-lg{width:60px;height:60px;border-radius:6px 20px 6px 20px;background:var(--deep);color:var(--amber);display:grid;place-items:center;margin-bottom:18px}
+  .ic-lg .ico{width:30px;height:30px}
+  .card h3{font-size:21px;color:var(--ink)}
+  .card .sub{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf-d);margin:4px 0 12px}
+  .card p{color:var(--ink2);font-size:15px;margin-bottom:16px}
   .tags{display:flex;flex-wrap:wrap;gap:8px}
-  .tag{background:var(--blue-100);color:var(--blue-700);padding:6px 13px;border-radius:50px;font-size:12.5px;font-weight:600}
+  .tag{font-size:13px;font-weight:500;padding:5px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--rule);color:var(--ink)}
 
-  .process{background:#fff}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:46px}
-  .step{text-align:center;padding:30px 22px;border-radius:16px;background:var(--blue-50);border:1px solid var(--line)}
-  .step .num{width:46px;height:46px;border-radius:50%;background:var(--blue-600);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;margin:0 auto 16px}
-  .step h4{color:var(--blue-900);font-size:17px;margin-bottom:8px}
-  .step p{color:var(--muted);font-size:14px}
-  .criteria{background:linear-gradient(135deg,var(--blue-700),var(--blue-900));border-radius:20px;padding:40px;display:flex;flex-wrap:wrap;gap:30px;justify-content:space-around;align-items:center;color:#fff;box-shadow:var(--shadow-lg)}
-  .criteria .ct{text-align:center}
-  .criteria .ct b{display:block;font-size:42px;font-weight:800;line-height:1}
-  .criteria .ct span{font-size:14px;color:rgba(255,255,255,.8)}
-  .criteria .divider{width:1px;height:60px;background:rgba(255,255,255,.2)}
+  /* process */
+  .process{background:var(--deep)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;position:relative}
+  .step{position:relative;border:1px solid var(--line);border-radius:6px;padding:26px 24px 24px;background:rgba(255,255,255,.03)}
+  .step .num{font-family:var(--f-mono);font-size:13px;font-weight:600;color:#2a1a02;background:var(--amber);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px}
+  .step .sico{position:absolute;right:20px;top:22px;color:var(--line2)}
+  .step .sico .ico{width:38px;height:38px;stroke-width:1.3}
+  .step h4{font-size:18px;color:#fff;margin-bottom:8px}
+  .step p{font-size:14.5px;color:var(--soft)}
+  .criteria{margin-top:26px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;border:1px solid var(--line2);border-radius:6px;background:linear-gradient(135deg,rgba(240,180,69,.08),rgba(61,220,151,.05));padding:22px}
+  .ct{display:flex;align-items:center;gap:16px;justify-content:center}
+  .ct svg{width:74px;height:74px;flex-shrink:0}
+  .ct b{display:block;font-family:var(--f-mono);font-size:clamp(22px,2.6vw,30px);color:#fff;line-height:1.1}
+  .ct span{font-size:13.5px;color:var(--soft)}
+  .divider{width:1px;height:56px;background:var(--line2)}
 
-  .portfolio{background:var(--blue-50)}
-  .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .pf-card{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#fff;border:1px solid var(--line);transition:.3s}
-  .pf-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-  .pf-media{height:200px;position:relative;overflow:hidden}
-  .pf-media svg{position:absolute;inset:0;width:100%;height:100%}
-  .pf-badge{position:absolute;top:14px;left:14px;z-index:3;background:rgba(10,37,64,.82);color:#fff;padding:5px 13px;border-radius:50px;font-size:12px;font-weight:600;backdrop-filter:blur(4px)}
-  .pf-body{padding:22px 24px}
-  .pf-body h4{font-size:16.5px;color:var(--blue-900);margin-bottom:8px;line-height:1.45;font-weight:700}
-  .pf-body p{color:var(--muted);font-size:13.5px}
-  .pf-feature{grid-column:span 3;display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff;margin-bottom:4px}
-  .pf-feature .pf-media{height:auto;min-height:300px}
-  .pf-feature .pf-body{padding:38px;display:flex;flex-direction:column;justify-content:center}
-  .pf-feature .pf-body h4{font-size:23px;margin-bottom:14px}
-  .pf-feature .pf-body p{font-size:15px}
+  /* portfolio */
+  .pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .pf-feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);background:var(--deep);color:var(--text);border-radius:6px;overflow:hidden;border:1px solid var(--rule)}
+  .pf-card{background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s}
+  .pf-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(12,31,25,.12)}
+  .pf-media{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,var(--leaf-d),var(--deep));overflow:hidden}
+  .pf-feature .pf-media{aspect-ratio:auto;min-height:300px}
+  .pf-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pf-media img:not(.on){display:none}
+  .pf-badge{position:absolute;left:14px;top:14px;z-index:2;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;background:var(--amber);color:#2a1a02;padding:5px 11px;border-radius:999px}
+  .pf-body{padding:22px 22px 24px}
+  .pf-feature .pf-body{padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .pf-body h4{font-size:18px;color:var(--ink);margin-bottom:8px}
+  .pf-feature h4{font-size:clamp(20px,2.4vw,26px);color:#fff;margin:0}
+  .pf-body p{font-size:14.5px;color:var(--ink2)}
+  .pf-feature p{color:var(--soft);font-size:15px}
+  .seal{display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--amber)}
+  .seal svg{width:44px;height:44px}
 
-  .gallery{background:#fff}
-  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:14px}
-  .gal-item{border-radius:14px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
-  .gal-item svg{position:absolute;inset:0;width:100%;height:100%}
-  .gal-item.tall{grid-row:span 2}
+  /* gallery */
+  .gallery{background:var(--void)}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;gap:14px}
+  .gal-item{position:relative;border-radius:6px;overflow:hidden;background:linear-gradient(135deg,var(--leaf-d),var(--deep));border:1px solid var(--line)}
   .gal-item.wide{grid-column:span 2}
-  .gal-cap{position:absolute;left:0;right:0;bottom:0;padding:14px;background:linear-gradient(transparent,rgba(10,37,64,.85));color:#fff;font-size:13px;font-weight:600;z-index:3}
+  .gal-item.tall{grid-row:span 2}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .gal-item img:not(.on){display:none}
+  .gal-item:hover img{transform:scale(1.05)}
+  .gal-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(5,17,14,.88))}
 
-  .cta{padding:72px 0}
-  .cta-box{background:linear-gradient(135deg,var(--blue-600),var(--blue-900));border-radius:26px;padding:56px 40px;text-align:center;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
-  .cta-box::before{content:"";position:absolute;top:-80px;left:-40px;width:260px;height:260px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%}
-  .cta-box h2{font-size:clamp(24px,3.5vw,32px);margin-bottom:14px;position:relative}
-  .cta-box p{color:rgba(255,255,255,.85);max-width:540px;margin:0 auto 28px;position:relative}
-  .cta-box .btn{background:#fff;color:var(--blue-700);position:relative;padding:14px 32px;font-size:15.5px}
-  .cta-box .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.2)}
+  /* cta */
+  .cta{background:var(--void);padding-bottom:clamp(60px,8vw,96px)}
+  .cta-box{position:relative;overflow:hidden;border-radius:6px 64px 6px 6px;padding:clamp(32px,5vw,56px);background:linear-gradient(120deg,#12805a 0%,#0b4f5c 60%,#0c241d 100%);border:1px solid var(--line2)}
+  .cta-box svg.deco{position:absolute;right:-10px;bottom:-20px;width:min(420px,60%);opacity:.5;pointer-events:none}
+  .cta-box h2{font-size:clamp(24px,3.4vw,36px);color:#fff;margin-bottom:10px;position:relative}
+  .cta-box p{color:#d8ece4;max-width:38em;margin-bottom:24px;position:relative}
+  .cta-box .btn{background:var(--amber);color:#2a1a02;position:relative}
 
-  .contact{background:var(--blue-50)}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
-  .contact-info{display:grid;gap:18px}
-  .ci-item{display:flex;gap:16px;align-items:flex-start;padding:18px;border-radius:14px;background:#fff;border:1px solid var(--line);transition:.25s}
-  .ci-item:hover{border-color:var(--blue-100);background:var(--blue-100)}
-  .ci-item .ic{width:46px;height:46px;border-radius:11px;background:var(--blue-600);color:#fff;display:grid;place-items:center;font-size:20px;flex-shrink:0}
-  .ci-item b{display:block;color:var(--blue-900);font-size:15px;margin-bottom:2px}
-  .ci-item span{color:var(--muted);font-size:14px}
-  .map-box{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);min-height:340px}
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:stretch}
+  .contact-info{display:grid;gap:12px}
+  .ci-item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:16px 18px}
+  .ci-item .ic{width:42px;height:42px;border-radius:6px 14px 6px 14px;background:var(--deep);color:var(--amber);display:grid;place-items:center;flex-shrink:0}
+  .ci-item b{display:block;font-family:var(--f-head);font-weight:600;color:var(--ink);font-size:15px}
+  .ci-item span{font-size:14.5px;color:var(--ink2);overflow-wrap:anywhere}
+  .map-box{border-radius:6px;overflow:hidden;border:1px solid var(--rule);min-height:340px;background:var(--paper2)}
   .map-box iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
 
-  footer{background:var(--blue-900);color:rgba(255,255,255,.75);padding:54px 0 28px}
-  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-  .foot-brand .logo{margin-bottom:16px}
-  .foot-brand p{font-size:14px;max-width:340px;line-height:1.8}
-  .foot-col h5{color:#fff;font-size:15px;margin-bottom:16px;font-weight:700}
-  .foot-col a{display:block;font-size:14px;padding:6px 0;color:rgba(255,255,255,.7);transition:.2s}
-  .foot-col a:hover{color:#fff;padding-left:5px}
-  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center;font-size:13px;color:rgba(255,255,255,.55)}
+  /* footer */
+  footer{background:var(--void);border-top:1px solid var(--line);padding-block:48px 34px}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:36px;margin-bottom:30px}
+  .foot-brand p{font-size:14px;color:var(--soft);margin-top:16px;max-width:34em}
+  .foot-col h5{font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px}
+  .foot-col a{display:block;font-size:14.5px;color:var(--soft);padding:4px 0}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:12.5px;color:var(--muted)}
+  .foot-credit{font-size:11.5px;color:#6d8379;margin-top:8px}
 
-  @media(max-width:880px){
-    .menu,.nav .btn-primary{display:none}
+  @media(max-width:1240px){.brand small{display:none}}
+  @media(max-width:1060px){.menu a{padding:8px 6px;font-size:12.5px} .nav-right{gap:10px}}
+  @media(max-width:960px){
+    .menu{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:var(--void);border-bottom:1px solid var(--line);padding:10px 20px 18px}
+    .menu.open{display:flex}
+    .menu a{display:block;padding:12px 4px;font-size:15px;border-bottom:1px solid var(--line)}
     .burger{display:flex}
-    .menu.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;padding:16px;gap:4px;box-shadow:var(--shadow-lg);border-bottom:1px solid var(--line)}
-    .menu.open a{padding:13px 14px}
-    .about-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
-    .cards,.steps{grid-template-columns:1fr}
-    .pf-grid{grid-template-columns:1fr}
-    .pf-feature{grid-template-columns:1fr;grid-column:span 1}
-    .pf-feature .pf-media{min-height:220px}
-    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
-    .gal-item.wide{grid-column:span 2}
-    .foot-grid{grid-template-columns:1fr;gap:30px}
-    .criteria .divider{display:none}
+    .hero-inner{grid-template-columns:1fr}
+    .hero-art{max-width:520px;margin-inline:auto;width:100%}
+    .about-grid,.contact-grid{grid-template-columns:1fr}
+    .tech-grid{grid-template-columns:1fr}
+    .tcard{flex-direction:row}
+    .tcard figure{width:40%;border-bottom:0;border-right:1px solid var(--line);display:grid;place-items:center}
+    .legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:1fr}
+    .pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .pf-feature{grid-template-columns:1fr}
+    .pf-feature .pf-media{min-height:0;aspect-ratio:16/10}
+    .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:170px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-brand{grid-column:1/-1}
   }
-  @media(max-width:520px){
-    .wrap{padding:0 18px}.hero{padding:64px 0 74px}.sec{padding:60px 0}
-    .about-card,.cta-box,.criteria{padding:30px 24px}.card{padding:26px}
-    .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:120px}
+  @media(max-width:620px){
+    header .btn{display:none}
+    .brand small{display:none}
+    .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .stat{padding:18px 14px 20px}
+    .stat:nth-child(odd){border-left:0;padding-left:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--line)}
+    .cards{grid-template-columns:1fr}
+    .tcard{flex-direction:column}
+    .tcard figure{width:100%;border-right:0;border-bottom:1px solid var(--line)}
+    .legend{grid-template-columns:1fr}
+    .criteria{grid-template-columns:1fr;gap:16px}
+    .ct{justify-content:flex-start}
+    .divider{width:100%;height:1px}
+    .pf-grid{grid-template-columns:1fr}
+    .gal-grid{grid-auto-rows:150px;gap:10px}
+    .gal-cap{font-size:12px;padding:20px 10px 9px}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .dash,.pulse,.blink{animation:none}
+    .btn,.card,.pf-card,.tcard,.gal-item img{transition:none}
   }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+  <symbol id="i-hands" viewBox="0 0 24 24"><path d="M3 11l4-4 4 2 2-2 4 1 4 4"/><path d="M3 11v5l5 4 3-1 3 1 7-5v-4"/><path d="M11 9l-2 3 2 1 2-2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M7 15l4-4 3 3 5-7"/><path d="M16 7h3v3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9.5 8.5L7 10.5l2.5 2"/><path d="M14.5 8.5l2.5 2-2.5 2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol>
+  <symbol id="i-tower" viewBox="0 0 24 24"><path d="M12 9v12"/><path d="M8 21l4-12 4 12"/><path d="M9.5 16.5h5"/><circle cx="12" cy="7" r="1.6"/><path d="M7.5 3.5a6.4 6.4 0 000 7"/><path d="M16.5 3.5a6.4 6.4 0 010 7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M13 21v-8h2.5l.5-3H13V8.5c0-1 .5-1.5 1.5-1.5H16"/><path d="M10.5 13H13"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h3"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 21V5"/><path d="M9 8h6"/><path d="M9 12h4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.500 6a4 4 0 005.2 3.800L21 11l-9.500 9.500a2.100 2.100 0 01-3-3L18 8"/><path d="M14.500 6L11 2.500 8.500 5 12 8.500"/></symbol>
+  <symbol id="logo" viewBox="0 0 40 40">
+    <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85" fill="none"/>
+    <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
+    <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
+    <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9" fill="none"/>
+    <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65" fill="none"/>
+  </symbol>
+  <symbol id="sat" viewBox="-16 -9 32 18">
+    <rect x="-4.5" y="-4" width="9" height="8" rx="1.5" fill="#eaf2ee"/>
+    <rect x="-15" y="-3" width="9" height="6" rx="1" fill="#42d3e8"/><rect x="6" y="-3" width="9" height="6" rx="1" fill="#42d3e8"/>
+    <path d="M-10.500 -3v6M10.500 -3v6" stroke="#05110e" stroke-width=".8"/>
+  </symbol>
+</svg>
+
 <!-- NAV -->
 <header>
   <div class="wrap nav">
     <a href="#home" class="brand">
-      <div class="logo">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85"/>
-          <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
-          <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
-          <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9"/>
-          <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
-        </svg>
-      </div>
+      <div class="logo"><svg aria-hidden="true"><use href="#logo"/></svg></div>
       <div>CISS<small>Space Innovation · Communications · Digital · Certification</small></div>
     </a>
     <div class="nav-right">
@@ -202,6 +313,7 @@
         <ul class="menu" id="menu">
           <li><a href="#home" data-th="หน้าแรก" data-en="Home">หน้าแรก</a></li>
           <li><a href="#about" data-th="เกี่ยวกับเรา" data-en="About">เกี่ยวกับเรา</a></li>
+          <li><a href="#tech" data-th="เทคโนโลยี" data-en="Technology">เทคโนโลยี</a></li>
           <li><a href="#services" data-th="บริการรับรอง" data-en="Certification">บริการรับรอง</a></li>
           <li><a href="#process" data-th="การประเมิน" data-en="Assessment">การประเมิน</a></li>
           <li><a href="#portfolio" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</a></li>
@@ -217,37 +329,81 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg">
-    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <g stroke="#7fc0ff" stroke-width="1.4" opacity="0.45">
-        <line x1="100" y1="90" x2="260" y2="180"/><line x1="260" y1="180" x2="180" y2="330"/>
-        <line x1="260" y1="180" x2="420" y2="120"/><line x1="180" y1="330" x2="360" y2="420"/>
-        <line x1="420" y1="120" x2="560" y2="260"/><line x1="360" y1="420" x2="520" y2="460"/>
-        <line x1="560" y1="260" x2="520" y2="460"/><line x1="560" y1="260" x2="700" y2="150"/>
-        <line x1="700" y1="150" x2="760" y2="360"/><line x1="760" y1="360" x2="900" y2="250"/>
-        <line x1="700" y1="150" x2="1040" y2="140"/><line x1="900" y1="250" x2="1040" y2="140"/>
-        <line x1="900" y1="250" x2="1080" y2="400"/><line x1="760" y1="360" x2="980" y2="480"/>
-        <line x1="1080" y1="400" x2="1150" y2="300"/><line x1="1080" y1="400" x2="980" y2="480"/>
-        <line x1="1040" y1="140" x2="1150" y2="300"/>
-      </g>
-      <g fill="#bfe0ff">
-        <circle cx="100" cy="90" r="5"/><circle cx="260" cy="180" r="7"/><circle cx="180" cy="330" r="5"/>
-        <circle cx="360" cy="420" r="6"/><circle cx="420" cy="120" r="5"/><circle cx="560" cy="260" r="8"/>
-        <circle cx="520" cy="460" r="5"/><circle cx="700" cy="150" r="7"/><circle cx="760" cy="360" r="6"/>
-        <circle cx="900" cy="250" r="8"/><circle cx="1040" cy="140" r="6"/><circle cx="1080" cy="400" r="7"/>
-        <circle cx="980" cy="480" r="5"/><circle cx="1150" cy="300" r="6"/>
-      </g>
-    </svg>
-    <img class="ph on" id="ph-hero" src="images/12.jpg" alt="CISS" onerror="this.classList.remove('on')">
-  </div>
   <div class="wrap hero-inner">
-    <span class="pill"><span class="dot"></span><span data-th="องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล" data-en="Professional Qualification Body · Digital Industry Sector">องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล</span></span>
-    <h1 data-th="ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล" data-en="Raising Professional Standards<br>Through Personnel Certification">ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล</h1>
-    <p class="lead" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="The Communications and Integrated Services Study Center (CISS), KMUTT — a body certifying personnel competency to occupational standards, in partnership with the Thailand Professional Qualification Institute (TPQI).">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary" data-th="สมัครประเมินสมรรถนะ" data-en="Apply for Assessment">สมัครประเมินสมรรถนะ</a>
-      <a href="#services" class="btn btn-ghost" data-th="ดูบริการทั้งหมด" data-en="View All Services">ดูบริการทั้งหมด</a>
+    <div>
+      <span class="pill"><span class="dot"></span><span data-th="องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล" data-en="Professional Qualification Body · Digital Industry Sector">องค์กรรับรองคุณวุฒิวิชาชีพ · สาขาอุตสาหกรรมดิจิทัล</span></span>
+      <h1 data-th="ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล" data-en="Raising Professional Standards<br>Through Personnel Certification">ยกระดับมาตรฐานวิชาชีพ<br>ด้วยการรับรองสมรรถนะบุคคล</h1>
+      <p class="lead" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="The Communications and Integrated Services Study Center (CISS), KMUTT — a body certifying personnel competency to occupational standards, in partnership with the Thailand Professional Qualification Institute (TPQI).">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) มจธ. องค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary" data-th="สมัครประเมินสมรรถนะ" data-en="Apply for Assessment">สมัครประเมินสมรรถนะ</a>
+        <a href="#services" class="btn btn-ghost" data-th="ดูบริการทั้งหมด" data-en="View All Services">ดูบริการทั้งหมด</a>
+      </div>
     </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hg" cx="50%" cy="46%" r="55%"><stop offset="0" stop-color="#17524a" stop-opacity=".9"/><stop offset="1" stop-color="#05110e" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hEarth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#05110e"/></linearGradient>
+          <linearGradient id="hPanel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7f5"/><stop offset="1" stop-color="#9fb4ab"/></linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="560" height="500" fill="url(#hg)"/>
+        <!-- LEO orbit and satellites -->
+        <path d="M10 138 Q280 6 550 138" fill="none" stroke="#42d3e8" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="2 7"/>
+        <use href="#sat" x="112" y="96" width="34" height="19" transform="rotate(-18 129 105)"/>
+        <use href="#sat" x="262" y="62" width="38" height="21"/>
+        <use href="#sat" x="414" y="96" width="34" height="19" transform="rotate(18 431 105)"/>
+        <text x="280" y="44" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#42d3e8">LEO SATELLITES</text>
+        <!-- beams to the user terminal -->
+        <g fill="none" stroke-linecap="round" filter="url(#glow)">
+          <path class="dash" d="M281 84 L421 300" stroke="#f0b445" stroke-width="2"/>
+          <path class="dash" d="M431 116 L424 298" stroke="#f0b445" stroke-width="1.4" opacity=".6"/>
+        </g>
+        <!-- ground -->
+        <path d="M-20 430 Q280 372 580 430 L580 520 L-20 520Z" fill="url(#hEarth)" opacity=".9"/>
+        <path d="M-20 430 Q280 372 580 430" fill="none" stroke="#3ddc97" stroke-opacity=".55" stroke-width="1.2"/>
+        <!-- house with flat-panel user terminal -->
+        <g>
+          <path d="M360 372 L424 328 L488 372Z" fill="#0c241d" stroke="#a0d6be" stroke-opacity=".5" stroke-width="1.4"/>
+          <rect x="372" y="372" width="104" height="52" fill="#081a15" stroke="#a0d6be" stroke-opacity=".5" stroke-width="1.4"/>
+          <rect x="388" y="386" width="22" height="22" fill="#f0b445" opacity=".85"/><rect x="438" y="386" width="22" height="38" fill="#12805a"/>
+          <path d="M452 349 L452 332" stroke="#eaf2ee" stroke-width="3" stroke-linecap="round"/>
+          <g transform="rotate(-28 440 314)">
+            <rect x="404" y="302" width="72" height="24" rx="4" fill="url(#hPanel)" stroke="#fff" stroke-width="1"/>
+            <g fill="#12805a"><circle cx="416" cy="310" r="1.6"/><circle cx="428" cy="310" r="1.6"/><circle cx="440" cy="310" r="1.6"/><circle cx="452" cy="310" r="1.6"/><circle cx="464" cy="310" r="1.6"/><circle cx="416" cy="318" r="1.6"/><circle cx="428" cy="318" r="1.6"/><circle cx="440" cy="318" r="1.6"/><circle cx="452" cy="318" r="1.6"/><circle cx="464" cy="318" r="1.6"/></g>
+          </g>
+          <text x="424" y="452" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.6" fill="#f0b445">USER TERMINAL</text>
+        </g>
+        <!-- fibre strands -->
+        <g fill="none" stroke-linecap="round">
+          <path id="f1" d="M-10 404 C120 404 150 300 250 300 S330 398 372 398" stroke="#42d3e8" stroke-width="3" opacity=".9" filter="url(#glow)"/>
+          <path id="f2" d="M-10 416 C130 416 160 316 250 316 S330 408 372 408" stroke="#3ddc97" stroke-width="3" opacity=".85"/>
+          <path id="f3" d="M-10 428 C140 428 170 332 250 332 S330 418 372 418" stroke="#7a9cff" stroke-width="3" opacity=".8"/>
+          <path class="pulse" d="M-10 404 C120 404 150 300 250 300 S330 398 372 398" stroke="#fff" stroke-width="3.4"/>
+          <path class="pulse" d="M-10 428 C140 428 170 332 250 332 S330 418 372 418" stroke="#fff" stroke-width="3.4" style="animation-delay:-1.3s"/>
+        </g>
+        <text x="60" y="462" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.6" fill="#42d3e8">FIBER OPTICS</text>
+        <!-- AI chip -->
+        <g transform="translate(70 196)">
+          <g stroke="#7a9cff" stroke-width="2" stroke-linecap="round"><path d="M18 -8v-12M42 -8v-12M66 -8v-12M18 92v12M42 92v12M66 92v12M-8 18h-12M-8 42h-12M-8 66h-12M92 18h12M92 42h12M92 66h12"/></g>
+          <rect x="-8" y="-8" width="100" height="100" rx="12" fill="#0c1a35" stroke="#7a9cff" stroke-width="1.6"/>
+          <g stroke="#7a9cff" stroke-opacity=".7" stroke-width="1.1"><path d="M14 22L42 12M14 22L42 42M14 62L42 42M14 62L42 72M42 12L70 30M42 42L70 30M42 42L70 56M42 72L70 56"/></g>
+          <g fill="#eaf2ee"><circle cx="14" cy="22" r="4.500"/><circle cx="14" cy="62" r="4.500"/><circle class="blink" cx="42" cy="12" r="4.500"/><circle cx="42" cy="42" r="5.500" fill="#f0b445"/><circle class="blink" cx="42" cy="72" r="4.500" style="animation-delay:-1.2s"/><circle cx="70" cy="30" r="4.500"/><circle cx="70" cy="56" r="4.500"/></g>
+          <text x="42" y="124" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#7a9cff">AI</text>
+        </g>
+        <path class="dash" d="M174 258 C205 258 210 300 250 300" fill="none" stroke="#7a9cff" stroke-width="1.500" opacity=".8"/>
+        <!-- certification seal -->
+        <g transform="translate(280 214)">
+          <circle r="58" fill="#05110e" stroke="#f0b445" stroke-width="1.4"/>
+          <circle r="66" fill="none" stroke="#f0b445" stroke-opacity=".35" stroke-dasharray="2 6"/>
+          <path d="M0 -34 L26 -22 L26 4 C26 22 14 34 0 40 C-14 34 -26 22 -26 4 L-26 -22Z" fill="#f0b445"/>
+          <path d="M-11 3 l8 9 l15 -19" fill="none" stroke="#2a1a02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="wrap">
     <div class="stats">
       <div class="stat"><b>2</b><span data-th="สาขาวิชาชีพที่ให้การรับรอง" data-en="Professional sectors certified">สาขาวิชาชีพที่ให้การรับรอง</span></div>
       <div class="stat"><b>3</b><span data-th="อาชีพรับรองคุณวุฒิ" data-en="Occupations qualified">อาชีพรับรองคุณวุฒิ</span></div>
@@ -258,12 +414,12 @@
 </section>
 
 <!-- ABOUT -->
-<section class="sec about" id="about">
+<section class="sec paper about" id="about">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-text">
         <div class="eyebrow" data-th="เกี่ยวกับเรา" data-en="About Us">เกี่ยวกับเรา</div>
-        <h2 style="font-size:clamp(24px,3.4vw,34px);color:var(--blue-900);font-weight:800;margin-bottom:18px;letter-spacing:-.4px" data-th="องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ" data-en="A Body Certifying Personnel Competency to Occupational Standards">องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ</h2>
+        <h2 data-th="องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ" data-en="A Body Certifying Personnel Competency to Occupational Standards">องค์กรรับรองสมรรถนะบุคคลตามมาตรฐานอาชีพ</h2>
         <p data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร สังกัด<strong>สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี มจธ.</strong> ทำหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ในสาขาวิชาชีพอุตสาหกรรมดิจิทัล" data-en="The Communications and Integrated Services Study Center, under the <strong>Science and Technology Research and Service Institute, KMUTT</strong>, certifies personnel competency to occupational standards in the digital industry sector.">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร สังกัด<strong>สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี มจธ.</strong> ทำหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ในสาขาวิชาชีพอุตสาหกรรมดิจิทัล</p>
         <p data-th="เราดำเนินงานร่วมกับ<strong>สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</strong> เพื่อยกระดับความสามารถของบุคลากร และการันตีความเป็นมืออาชีพให้กับบุคคลและองค์กร" data-en="We operate in partnership with the <strong>Thailand Professional Qualification Institute (TPQI)</strong> to upgrade workforce capability and guarantee professionalism for individuals and organizations.">เราดำเนินงานร่วมกับ<strong>สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</strong> เพื่อยกระดับความสามารถของบุคลากร และการันตีความเป็นมืออาชีพให้กับบุคคลและองค์กร</p>
         <ul class="feature-list">
@@ -274,16 +430,197 @@
       </div>
       <div class="about-card">
         <h3 data-th="วิสัยทัศน์ของศูนย์ฯ" data-en="Our Vision">วิสัยทัศน์ของศูนย์ฯ</h3>
-        <div class="mini"><div class="ic">🎯</div><div><b data-th="มาตรฐานสากล" data-en="International Standards">มาตรฐานสากล</b><span data-th="ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)" data-en="Aligned with the Thailand (TPQF) and National (NQF) Qualifications Frameworks">ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)</span></div></div>
-        <div class="mini"><div class="ic">🤝</div><div><b data-th="พันธมิตรภาครัฐ" data-en="Public-Sector Partnership">พันธมิตรภาครัฐ</b><span data-th="ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="Operating with the Thailand Professional Qualification Institute">ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</span></div></div>
-        <div class="mini"><div class="ic">📈</div><div><b data-th="พัฒนากำลังคน" data-en="Workforce Development">พัฒนากำลังคน</b><span data-th="ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล" data-en="Advancing careers in the digital industry">ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล</span></div></div>
+        <div class="mini"><div class="ic"><svg class="ico"><use href="#i-target"/></svg></div><div><b data-th="มาตรฐานสากล" data-en="International Standards">มาตรฐานสากล</b><span data-th="ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)" data-en="Aligned with the Thailand (TPQF) and National (NQF) Qualifications Frameworks">ยึดกรอบคุณวุฒิวิชาชีพ (TPQF) สอดคล้องกรอบคุณวุฒิแห่งชาติ (NQF)</span></div></div>
+        <div class="mini"><div class="ic"><svg class="ico"><use href="#i-hands"/></svg></div><div><b data-th="พันธมิตรภาครัฐ" data-en="Public-Sector Partnership">พันธมิตรภาครัฐ</b><span data-th="ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="Operating with the Thailand Professional Qualification Institute">ดำเนินงานร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</span></div></div>
+        <div class="mini"><div class="ic"><svg class="ico"><use href="#i-chart"/></svg></div><div><b data-th="พัฒนากำลังคน" data-en="Workforce Development">พัฒนากำลังคน</b><span data-th="ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล" data-en="Advancing careers in the digital industry">ส่งเสริมความก้าวหน้าในอาชีพด้านอุตสาหกรรมดิจิทัล</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TECHNOLOGY (new) -->
+<section class="sec tech" id="tech">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-th="เทคโนโลยีกับวิชาชีพ" data-en="Technology &amp; the Profession">เทคโนโลยีกับวิชาชีพ</div>
+      <h2 data-th="สามเทคโนโลยีที่กำหนดทักษะของมืออาชีพดิจิทัล" data-en="Three technologies shaping the digital professional">สามเทคโนโลยีที่กำหนดทักษะของมืออาชีพดิจิทัล</h2>
+      <p data-th="งานในอุตสาหกรรมดิจิทัลวันนี้เชื่อมถึงกันตั้งแต่ซอฟต์แวร์ที่ใช้ AI สายใยแก้วนำแสงที่ส่งข้อมูล ไปจนถึงจานรับสัญญาณดาวเทียมที่ปลายทางของผู้ใช้ มาตรฐานอาชีพทำให้ทักษะเหล่านี้วัดและรับรองได้" data-en="Work in the digital industry is now connected end to end: software that uses AI, the optical fibre that carries the data, and the satellite antenna at the user's premises. Occupational standards make these skills measurable and certifiable.">งานในอุตสาหกรรมดิจิทัลวันนี้เชื่อมถึงกันตั้งแต่ซอฟต์แวร์ที่ใช้ AI สายใยแก้วนำแสงที่ส่งข้อมูล ไปจนถึงจานรับสัญญาณดาวเทียมที่ปลายทางของผู้ใช้ มาตรฐานอาชีพทำให้ทักษะเหล่านี้วัดและรับรองได้</p>
+    </div>
+
+    <div class="tech-grid">
+      <article class="tcard t-ai">
+        <figure aria-hidden="true">
+          <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#7a9cff" stroke-opacity=".55" stroke-width="1.2">
+              <path d="M54 50L130 34M54 50L130 78M54 50L130 122M54 96L130 34M54 96L130 78M54 96L130 122M54 96L130 158M54 142L130 78M54 142L130 122M54 142L130 158"/>
+              <path d="M130 34L206 58M130 78L206 58M130 78L206 104M130 122L206 104M130 122L206 142M130 158L206 142M130 34L206 104M130 158L206 104"/>
+              <path d="M206 58L270 96M206 104L270 96M206 142L270 96"/>
+            </g>
+            <g class="dash" fill="none" stroke="#fff" stroke-width="1.6"><path d="M54 96L130 78L206 104L270 96"/></g>
+            <g fill="#0c1a35" stroke="#7a9cff" stroke-width="1.6"><circle cx="54" cy="50" r="8"/><circle cx="54" cy="96" r="8"/><circle cx="54" cy="142" r="8"/><circle cx="130" cy="34" r="8"/><circle cx="130" cy="78" r="8"/><circle cx="130" cy="122" r="8"/><circle cx="130" cy="158" r="8"/><circle cx="206" cy="58" r="8"/><circle cx="206" cy="104" r="8"/><circle cx="206" cy="142" r="8"/></g>
+            <g fill="#7a9cff"><circle class="blink" cx="130" cy="78" r="3.500"/><circle class="blink" cx="206" cy="104" r="3.500" style="animation-delay:-.9s"/><circle cx="54" cy="96" r="3.500"/></g>
+            <circle cx="270" cy="96" r="15" fill="#f0b445"/><path d="M263 96l5 6 9-11" fill="none" stroke="#2a1a02" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <g font-family="IBM Plex Mono,monospace" font-size="9.500" fill="#7f968c" letter-spacing="1"><text x="54" y="178" text-anchor="middle">DATA</text><text x="168" y="16" text-anchor="middle">MODEL</text><text x="270" y="128" text-anchor="middle">DECISION</text></g>
+          </svg>
+        </figure>
+        <div class="tbody">
+          <span class="tkick">01 · Artificial Intelligence</span>
+          <h3 data-th="ปัญญาประดิษฐ์ (AI)" data-en="Artificial Intelligence (AI)">ปัญญาประดิษฐ์ (AI)</h3>
+          <p data-th="AI เปลี่ยนวิธีวิเคราะห์ความต้องการ พัฒนาซอฟต์แวร์ และตัดสินใจจากข้อมูล บุคลากรสายซอฟต์แวร์จึงต้องเข้าใจทั้งข้อมูลนำเข้า แบบจำลอง และการตรวจสอบผลลัพธ์" data-en="AI is changing how requirements are analysed, how software is built and how decisions are drawn from data. Software professionals need to understand the input data, the model and how to check its output.">AI เปลี่ยนวิธีวิเคราะห์ความต้องการ พัฒนาซอฟต์แวร์ และตัดสินใจจากข้อมูล บุคลากรสายซอฟต์แวร์จึงต้องเข้าใจทั้งข้อมูลนำเข้า แบบจำลอง และการตรวจสอบผลลัพธ์</p>
+          <ul class="tlist">
+            <li data-th="เกี่ยวข้องกับสาขาซอฟต์แวร์และการประยุกต์ ที่ศูนย์ฯ ให้การรับรอง" data-en="Related to the Software and Applications sector that CISS certifies">เกี่ยวข้องกับสาขาซอฟต์แวร์และการประยุกต์ ที่ศูนย์ฯ ให้การรับรอง</li>
+            <li data-th="อาชีพที่รับรอง: นักวิเคราะห์ความต้องการทางธุรกิจ ระดับ 3" data-en="Certified occupation: Business Requirements Analyst, Level 3">อาชีพที่รับรอง: นักวิเคราะห์ความต้องการทางธุรกิจ ระดับ 3</li>
+          </ul>
+          <div class="tstat"><i></i><span data-th="ปี 2569 CISS จัดอบรม AI 5 หลักสูตร ภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค" data-en="In 2026 CISS ran five AI courses under the Regional Science Park Frontier Technology programme">ปี 2569 CISS จัดอบรม AI 5 หลักสูตร ภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค</span></div>
+        </div>
+      </article>
+
+      <article class="tcard t-fo">
+        <figure aria-hidden="true">
+          <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="core" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#42d3e8"/><stop offset="1" stop-color="#42d3e8" stop-opacity="0"/></radialGradient></defs>
+            <!-- cable cross-section -->
+            <g transform="translate(74 96)">
+              <circle r="52" fill="#0c241d" stroke="#a0d6be" stroke-opacity=".45" stroke-width="1.4"/>
+              <circle r="38" fill="#081a15" stroke="#42d3e8" stroke-opacity=".6" stroke-width="1.2"/>
+              <circle r="22" fill="#0b4f5c"/>
+              <circle class="blink" r="13" fill="url(#core)"/>
+              <circle r="4" fill="#fff"/>
+            </g>
+            <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#7f968c" letter-spacing=".8"><text x="12" y="176">CORE · CLADDING · COATING</text></g>
+            <!-- strands fanning out -->
+            <g fill="none" stroke-linecap="round" stroke-width="2.600">
+              <path d="M126 96 C180 96 200 34 300 30" stroke="#42d3e8"/>
+              <path d="M126 96 C190 96 210 66 300 64" stroke="#3ddc97"/>
+              <path d="M126 96 L300 96" stroke="#f0b445"/>
+              <path d="M126 96 C190 96 210 126 300 128" stroke="#7a9cff"/>
+              <path d="M126 96 C180 96 200 158 300 162" stroke="#eaf2ee"/>
+            </g>
+            <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+              <path class="pulse" d="M126 96 C180 96 200 34 300 30"/>
+              <path class="pulse" d="M126 96 L300 96" style="animation-delay:-.9s"/>
+              <path class="pulse" d="M126 96 C180 96 200 158 300 162" style="animation-delay:-1.800s"/>
+            </g>
+            <g fill="#fff"><circle cx="300" cy="30" r="3.500"/><circle cx="300" cy="64" r="3.500"/><circle cx="300" cy="96" r="3.500"/><circle cx="300" cy="128" r="3.500"/><circle cx="300" cy="162" r="3.500"/></g>
+          </svg>
+        </figure>
+        <div class="tbody">
+          <span class="tkick">02 · Fiber Optics</span>
+          <h3 data-th="ใยแก้วนำแสง" data-en="Fiber Optics">ใยแก้วนำแสง</h3>
+          <p data-th="ข้อมูลเดินทางเป็นแสงในแกนแก้วที่เล็กกว่าเส้นผม งานติดตั้งที่ได้มาตรฐานตั้งแต่การเดินสาย การเข้าหัว การเชื่อมต่อ จนถึงการทดสอบ คือสิ่งที่ทำให้โครงข่าย FTTx ถึงบ้านและอาคารได้อย่างมีคุณภาพ" data-en="Data travels as light through a glass core thinner than a hair. Installation done to standard, from cabling and termination to splicing and testing, is what brings a quality FTTx network to homes and buildings.">ข้อมูลเดินทางเป็นแสงในแกนแก้วที่เล็กกว่าเส้นผม งานติดตั้งที่ได้มาตรฐานตั้งแต่การเดินสาย การเข้าหัว การเชื่อมต่อ จนถึงการทดสอบ คือสิ่งที่ทำให้โครงข่าย FTTx ถึงบ้านและอาคารได้อย่างมีคุณภาพ</p>
+          <ul class="tlist">
+            <li data-th="เกี่ยวข้องกับสาขาการสื่อสารโทรคมนาคม ที่ศูนย์ฯ ให้การรับรอง" data-en="Related to the Telecommunications sector that CISS certifies">เกี่ยวข้องกับสาขาการสื่อสารโทรคมนาคม ที่ศูนย์ฯ ให้การรับรอง</li>
+            <li data-th="อาชีพที่รับรอง: ช่างโครงข่าย FTTx และช่างสื่อสัญญาณโทรคมนาคม ระดับ 2–3" data-en="Certified occupations: FTTx Network Technician and Telecom Signal Technician, Level 2–3">อาชีพที่รับรอง: ช่างโครงข่าย FTTx และช่างสื่อสัญญาณโทรคมนาคม ระดับ 2–3</li>
+          </ul>
+          <div class="tstat"><i></i><span data-th="เปิดรับประเมินสมรรถนะแล้ว ทั้งภาคทฤษฎีและภาคปฏิบัติ" data-en="Competency assessment is open, covering theory and practical examinations">เปิดรับประเมินสมรรถนะแล้ว ทั้งภาคทฤษฎีและภาคปฏิบัติ</span></div>
+        </div>
+      </article>
+
+      <article class="tcard t-leo">
+        <figure aria-hidden="true">
+          <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="pnl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7f5"/><stop offset="1" stop-color="#9fb4ab"/></linearGradient></defs>
+            <path d="M-10 46 Q160 -18 330 46" fill="none" stroke="#42d3e8" stroke-opacity=".5" stroke-dasharray="2 7"/>
+            <use href="#sat" x="52" y="24" width="30" height="17" transform="rotate(-16 67 32)"/>
+            <use href="#sat" x="146" y="6" width="34" height="19"/>
+            <use href="#sat" x="240" y="24" width="30" height="17" transform="rotate(16 255 32)"/>
+            <!-- steerable beam -->
+            <path d="M160 118 L124 24 L204 24Z" fill="#f0b445" opacity=".12"/>
+            <g fill="none" stroke="#f0b445" stroke-linecap="round"><path class="dash" d="M160 116 L163 28" stroke-width="2"/><path d="M160 116 L70 38" stroke-width="1" opacity=".45" stroke-dasharray="3 6"/><path d="M160 116 L252 38" stroke-width="1" opacity=".45" stroke-dasharray="3 6"/></g>
+            <!-- flat panel antenna on mast -->
+            <path d="M160 132 L160 166" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+            <path d="M136 172 L184 172" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+            <g transform="rotate(-8 160 122)">
+              <rect x="106" y="108" width="108" height="26" rx="5" fill="url(#pnl)" stroke="#fff" stroke-width="1"/>
+              <g fill="#12805a"><circle cx="120" cy="116" r="2"/><circle cx="134" cy="116" r="2"/><circle cx="148" cy="116" r="2"/><circle cx="162" cy="116" r="2"/><circle cx="176" cy="116" r="2"/><circle cx="190" cy="116" r="2"/><circle cx="204" cy="116" r="2"/><circle cx="120" cy="126" r="2"/><circle cx="134" cy="126" r="2"/><circle cx="148" cy="126" r="2"/><circle cx="162" cy="126" r="2"/><circle cx="176" cy="126" r="2"/><circle cx="190" cy="126" r="2"/><circle cx="204" cy="126" r="2"/></g>
+            </g>
+            <path d="M-10 182 Q160 160 330 182 L330 200 L-10 200Z" fill="#12805a" opacity=".5"/>
+            <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#7f968c" letter-spacing=".8"><text x="262" y="150" text-anchor="middle">PHASED ARRAY</text><text x="46" y="150" text-anchor="middle">CLEAR SKY VIEW</text></g>
+          </svg>
+        </figure>
+        <div class="tbody">
+          <span class="tkick">03 · LEO User Terminal</span>
+          <h3 data-th="จานรับสัญญาณดาวเทียม LEO สำหรับผู้ใช้ปลายทาง" data-en="LEO Satellite Antenna for End Users">จานรับสัญญาณดาวเทียม LEO สำหรับผู้ใช้ปลายทาง</h3>
+          <p data-th="ดาวเทียมวงโคจรต่ำ (LEO) เคลื่อนผ่านท้องฟ้าตลอดเวลา จานของผู้ใช้จึงเป็นสายอากาศแผ่นเรียบที่ปรับทิศลำคลื่นด้วยอิเล็กทรอนิกส์เพื่อตามดาวเทียม ใช้เชื่อมอินเทอร์เน็ตในพื้นที่ที่สายใยแก้วยังไปไม่ถึง" data-en="Low Earth orbit (LEO) satellites are always moving across the sky, so the user's dish is a flat-panel antenna that steers its beam electronically to follow them. It connects places that fibre has not yet reached.">ดาวเทียมวงโคจรต่ำ (LEO) เคลื่อนผ่านท้องฟ้าตลอดเวลา จานของผู้ใช้จึงเป็นสายอากาศแผ่นเรียบที่ปรับทิศลำคลื่นด้วยอิเล็กทรอนิกส์เพื่อตามดาวเทียม ใช้เชื่อมอินเทอร์เน็ตในพื้นที่ที่สายใยแก้วยังไปไม่ถึง</p>
+          <ul class="tlist">
+            <li data-th="งานติดตั้งต้องเลือกตำแหน่งที่มองเห็นท้องฟ้าโล่ง ยึดจานให้มั่นคง และเดินสายเข้าอาคาร" data-en="Installation means choosing a spot with a clear view of the sky, mounting the dish securely and cabling into the building">งานติดตั้งต้องเลือกตำแหน่งที่มองเห็นท้องฟ้าโล่ง ยึดจานให้มั่นคง และเดินสายเข้าอาคาร</li>
+            <li data-th="ทักษะต่อยอดจากงานช่างโครงข่ายและช่างสื่อสัญญาณ" data-en="Skills that build on network and signal technician work">ทักษะต่อยอดจากงานช่างโครงข่ายและช่างสื่อสัญญาณ</li>
+          </ul>
+          <div class="tstat"><i></i><span data-th="ทักษะใหม่ของอุตสาหกรรม ปัจจุบันศูนย์ฯ ยังไม่ได้เปิดรับรองคุณวุฒิในอาชีพนี้" data-en="An emerging industry skill. CISS does not yet certify an occupation in this area">ทักษะใหม่ของอุตสาหกรรม ปัจจุบันศูนย์ฯ ยังไม่ได้เปิดรับรองคุณวุฒิในอาชีพนี้</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="flow">
+      <h3 data-th="จากศูนย์ข้อมูลถึงมือผู้ใช้: ทุกช่วงต้องมีมืออาชีพ" data-en="From data centre to end user: every link needs a professional">จากศูนย์ข้อมูลถึงมือผู้ใช้: ทุกช่วงต้องมีมืออาชีพ</h3>
+      <p data-th="ภาพรวมของเส้นทางข้อมูลที่เทคโนโลยีทั้งสามทำงานร่วมกัน" data-en="How the three technologies work together along the path of the data.">ภาพรวมของเส้นทางข้อมูลที่เทคโนโลยีทั้งสามทำงานร่วมกัน</p>
+      <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI data centre, fibre backbone, FTTx to buildings, LEO gateway and satellite, user terminal">
+        <defs><linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12805a" stop-opacity=".55"/><stop offset="1" stop-color="#05110e" stop-opacity="0"/></linearGradient></defs>
+        <path d="M0 236 H1000 V300 H0Z" fill="url(#gnd)"/><path d="M0 236 H1000" stroke="#3ddc97" stroke-opacity=".5"/>
+        <!-- orbit -->
+        <path d="M500 60 Q730 -6 990 70" fill="none" stroke="#42d3e8" stroke-opacity=".5" stroke-dasharray="2 8"/>
+        <use href="#sat" x="700" y="18" width="52" height="29"/>
+        <use href="#sat" x="880" y="34" width="40" height="22" transform="rotate(14 900 45)" opacity=".7"/>
+        <!-- 1 data centre with AI -->
+        <g transform="translate(40 150)">
+          <rect width="96" height="86" rx="4" fill="#0c1a35" stroke="#7a9cff" stroke-width="1.6"/>
+          <g fill="#7a9cff"><rect x="12" y="12" width="72" height="8" rx="2"/><rect x="12" y="28" width="72" height="8" rx="2" opacity=".7"/><rect x="12" y="44" width="72" height="8" rx="2" opacity=".5"/></g>
+          <g fill="#fff"><circle class="blink" cx="20" cy="16" r="2"/><circle cx="20" cy="32" r="2"/><circle class="blink" cx="20" cy="48" r="2" style="animation-delay:-1s"/></g>
+          <text x="48" y="74" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="15" font-weight="600" fill="#7a9cff" letter-spacing="2">AI</text>
+        </g>
+        <!-- 2 fibre backbone -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M136 206 H420" stroke="#42d3e8" stroke-width="5"/>
+          <path d="M136 216 H420" stroke="#3ddc97" stroke-width="5" opacity=".8"/>
+          <path class="pulse" d="M136 206 H420" stroke="#fff" stroke-width="5"/>
+          <path class="pulse" d="M136 216 H420" stroke="#fff" stroke-width="5" style="animation-delay:-1.4s"/>
+        </g>
+        <!-- cabinet -->
+        <rect x="412" y="176" width="44" height="60" rx="4" fill="#081a15" stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.6"/>
+        <g fill="#42d3e8"><circle cx="426" cy="192" r="3"/><circle cx="442" cy="192" r="3"/><circle cx="426" cy="206" r="3"/><circle cx="442" cy="206" r="3"/></g>
+        <!-- 3 FTTx to buildings -->
+        <g fill="none" stroke="#42d3e8" stroke-width="2.600" stroke-linecap="round"><path d="M456 210 C500 210 500 196 530 196"/><path d="M456 218 C520 218 540 222 590 222"/></g>
+        <g stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.600">
+          <path d="M522 182 L548 162 L574 182Z" fill="#0c241d"/><rect x="528" y="182" width="40" height="54" fill="#081a15"/>
+          <rect x="590" y="150" width="46" height="86" fill="#081a15"/>
+        </g>
+        <g fill="#f0b445" opacity=".85"><rect x="536" y="194" width="10" height="10"/><rect x="598" y="160" width="9" height="9"/><rect x="618" y="160" width="9" height="9"/><rect x="598" y="180" width="9" height="9"/><rect x="618" y="180" width="9" height="9"/><rect x="598" y="200" width="9" height="9"/></g>
+        <!-- 4 gateway dish and LEO -->
+        <path d="M456 200 C470 150 500 250 668 232" fill="none" stroke="#3ddc97" stroke-width="2" stroke-dasharray="4 6" opacity=".7"/>
+        <g transform="translate(690 196)">
+          <path d="M0 40 L0 12" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+          <path d="M-16 40 H16" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+          <path d="M-26 -6 A30 30 0 0 0 26 14" fill="#eaf2ee" stroke="#fff" stroke-width="1" transform="rotate(-30)"/>
+        </g>
+        <path class="dash" d="M700 178 L724 52" fill="none" stroke="#f0b445" stroke-width="2.400" stroke-linecap="round"/>
+        <!-- 5 user terminal at remote house -->
+        <path class="dash" d="M740 50 L862 172" fill="none" stroke="#f0b445" stroke-width="2.400" stroke-linecap="round"/>
+        <g stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.600"><path d="M836 200 L880 170 L924 200Z" fill="#0c241d"/><rect x="846" y="200" width="68" height="36" fill="#081a15"/></g>
+        <rect x="858" y="210" width="12" height="12" fill="#f0b445" opacity=".85"/>
+        <g transform="rotate(-36 866 176)"><rect x="844" y="168" width="44" height="13" rx="3" fill="#eaf2ee" stroke="#fff"/></g>
+        <g fill="#12805a" opacity=".75"><path d="M950 236 l10 -34 l10 34Z"/><path d="M968 236 l8 -24 l8 24Z"/></g>
+        <!-- numbered markers -->
+        <g font-family="IBM Plex Mono,monospace" font-size="20" font-weight="600" text-anchor="middle">
+          <g><circle cx="88" cy="118" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="88" y="125" fill="#f0b445">1</text></g>
+          <g><circle cx="278" cy="170" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="278" y="177" fill="#f0b445">2</text></g>
+          <g><circle cx="580" cy="118" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="580" y="125" fill="#f0b445">3</text></g>
+          <g><circle cx="664" cy="110" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="664" y="117" fill="#f0b445">4</text></g>
+          <g><circle cx="900" cy="136" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="900" y="143" fill="#f0b445">5</text></g>
+        </g>
+      </svg>
+      <ol class="legend">
+        <li><b data-th="ศูนย์ข้อมูลและ AI" data-en="Data centre and AI">ศูนย์ข้อมูลและ AI</b><span data-th="ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน" data-en="Processes data and serves applications">ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน</span></li>
+        <li><b data-th="โครงข่ายใยแก้วหลัก" data-en="Fibre backbone">โครงข่ายใยแก้วหลัก</b><span data-th="ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล" data-en="Carries high-speed data over long distances">ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล</span></li>
+        <li><b data-th="FTTx ถึงบ้านและอาคาร" data-en="FTTx to homes and buildings">FTTx ถึงบ้านและอาคาร</b><span data-th="งานของช่างโครงข่าย FTTx ที่ศูนย์ฯ รับรอง" data-en="The work of the FTTx technicians CISS certifies">งานของช่างโครงข่าย FTTx ที่ศูนย์ฯ รับรอง</span></li>
+        <li><b data-th="สถานีเกตเวย์และดาวเทียม LEO" data-en="Gateway and LEO satellites">สถานีเกตเวย์และดาวเทียม LEO</b><span data-th="ส่งสัญญาณขึ้นสู่ดาวเทียมวงโคจรต่ำ" data-en="Sends the signal up to low Earth orbit">ส่งสัญญาณขึ้นสู่ดาวเทียมวงโคจรต่ำ</span></li>
+        <li><b data-th="จานของผู้ใช้ปลายทาง" data-en="End-user antenna">จานของผู้ใช้ปลายทาง</b><span data-th="รับส่งสัญญาณกับดาวเทียมโดยตรงในพื้นที่ห่างไกล" data-en="Links directly with the satellite in remote areas">รับส่งสัญญาณกับดาวเทียมโดยตรงในพื้นที่ห่างไกล</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
-<section class="sec services" id="services">
+<section class="sec paper services" id="services">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow" data-th="บริการรับรอง" data-en="Certification Services">บริการรับรอง</div>
@@ -292,14 +629,14 @@
     </div>
     <div class="cards">
       <div class="card">
-        <div class="ic-lg">💻</div>
+        <div class="ic-lg"><svg class="ico"><use href="#i-code"/></svg></div>
         <h3 data-th="สาขาซอฟต์แวร์และการประยุกต์" data-en="Software and Applications">สาขาซอฟต์แวร์และการประยุกต์</h3>
         <div class="sub">Software and Applications</div>
         <p data-th="รับรองคุณวุฒิวิชาชีพสำหรับผู้ปฏิบัติงานด้านการวิเคราะห์และพัฒนาซอฟต์แวร์" data-en="Professional qualification for software analysis and development practitioners.">รับรองคุณวุฒิวิชาชีพสำหรับผู้ปฏิบัติงานด้านการวิเคราะห์และพัฒนาซอฟต์แวร์</p>
         <div class="tags"><span class="tag" data-th="นักวิเคราะห์ความต้องการทางธุรกิจ" data-en="Business Requirements Analyst">นักวิเคราะห์ความต้องการทางธุรกิจ</span><span class="tag" data-th="ระดับ 3" data-en="Level 3">ระดับ 3</span></div>
       </div>
       <div class="card">
-        <div class="ic-lg">📡</div>
+        <div class="ic-lg"><svg class="ico"><use href="#i-tower"/></svg></div>
         <h3 data-th="สาขาการสื่อสารโทรคมนาคม" data-en="Telecommunications">สาขาการสื่อสารโทรคมนาคม</h3>
         <div class="sub">Telecommunication</div>
         <p data-th="รับรองคุณวุฒิวิชาชีพสำหรับช่างและบุคลากรด้านเครือข่ายสื่อสารโทรคมนาคม" data-en="Professional qualification for technicians and personnel in telecom networks.">รับรองคุณวุฒิวิชาชีพสำหรับช่างและบุคลากรด้านเครือข่ายสื่อสารโทรคมนาคม</p>
@@ -318,22 +655,31 @@
       <p data-th="ผู้เข้ารับการประเมินต้องผ่านทุกเครื่องมือการประเมินตามขั้นตอนของสาขาวิชาชีพ จึงจะถือว่าผ่านการรับรอง" data-en="Candidates must pass every assessment instrument required by their professional sector to be certified.">ผู้เข้ารับการประเมินต้องผ่านทุกเครื่องมือการประเมินตามขั้นตอนของสาขาวิชาชีพ จึงจะถือว่าผ่านการรับรอง</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">1</div><h4 data-th="สมัครและตรวจคุณสมบัติ" data-en="Apply & Verify Eligibility">สมัครและตรวจคุณสมบัติ</h4><p data-th="ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ" data-en="Submit your application and verify basic eligibility for the desired occupation and level.">ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ</p></div>
-      <div class="step"><div class="num">2</div><h4 data-th="สอบภาคทฤษฎี" data-en="Theory Examination">สอบภาคทฤษฎี</h4><p data-th="ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที" data-en="Multiple-choice exam (4 options), 45 minutes.">ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที</p></div>
-      <div class="step"><div class="num">3</div><h4 data-th="สอบภาคปฏิบัติ" data-en="Practical Examination">สอบภาคปฏิบัติ</h4><p data-th="ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที" data-en="Applied practical exam, 180 minutes.">ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที</p></div>
+      <div class="step"><div class="sico"><svg class="ico"><use href="#i-form"/></svg></div><div class="num">1</div><h4 data-th="สมัครและตรวจคุณสมบัติ" data-en="Apply & Verify Eligibility">สมัครและตรวจคุณสมบัติ</h4><p data-th="ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ" data-en="Submit your application and verify basic eligibility for the desired occupation and level.">ยื่นใบสมัครและตรวจสอบคุณสมบัติเบื้องต้นตามอาชีพและระดับชั้นที่ต้องการ</p></div>
+      <div class="step"><div class="sico"><svg class="ico"><use href="#i-book"/></svg></div><div class="num">2</div><h4 data-th="สอบภาคทฤษฎี" data-en="Theory Examination">สอบภาคทฤษฎี</h4><p data-th="ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที" data-en="Multiple-choice exam (4 options), 45 minutes.">ข้อสอบปรนัย 4 ตัวเลือก ระยะเวลา 45 นาที</p></div>
+      <div class="step"><div class="sico"><svg class="ico"><use href="#i-tool"/></svg></div><div class="num">3</div><h4 data-th="สอบภาคปฏิบัติ" data-en="Practical Examination">สอบภาคปฏิบัติ</h4><p data-th="ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที" data-en="Applied practical exam, 180 minutes.">ข้อสอบทฤษฎีเชิงปฏิบัติ ระยะเวลา 180 นาที</p></div>
     </div>
     <div class="criteria">
-      <div class="ct"><b>≥70%</b><span data-th="เกณฑ์ผ่านภาคทฤษฎี" data-en="Theory pass criteria">เกณฑ์ผ่านภาคทฤษฎี</span></div>
+      <div class="ct">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(160,214,190,.2)" stroke-width="7"/><circle cx="40" cy="40" r="32" fill="none" stroke="#42d3e8" stroke-width="7" stroke-linecap="round" stroke-dasharray="140.700 201.100" transform="rotate(-90 40 40)"/></svg>
+        <div><b>≥70%</b><span data-th="เกณฑ์ผ่านภาคทฤษฎี" data-en="Theory pass criteria">เกณฑ์ผ่านภาคทฤษฎี</span></div>
+      </div>
       <div class="divider"></div>
-      <div class="ct"><b>≥80%</b><span data-th="เกณฑ์ผ่านภาคปฏิบัติ" data-en="Practical pass criteria">เกณฑ์ผ่านภาคปฏิบัติ</span></div>
+      <div class="ct">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(160,214,190,.2)" stroke-width="7"/><circle cx="40" cy="40" r="32" fill="none" stroke="#f0b445" stroke-width="7" stroke-linecap="round" stroke-dasharray="160.800 201.100" transform="rotate(-90 40 40)"/></svg>
+        <div><b>≥80%</b><span data-th="เกณฑ์ผ่านภาคปฏิบัติ" data-en="Practical pass criteria">เกณฑ์ผ่านภาคปฏิบัติ</span></div>
+      </div>
       <div class="divider"></div>
-      <div class="ct"><b>RESK</b><span data-th="เทียบโอนประสบการณ์การทำงาน" data-en="Work experience recognition">เทียบโอนประสบการณ์การทำงาน</span></div>
+      <div class="ct">
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="32" fill="none" stroke="#3ddc97" stroke-width="2" stroke-dasharray="3 6"/><path d="M26 44a14 14 0 0124-9" fill="none" stroke="#3ddc97" stroke-width="4" stroke-linecap="round"/><path d="M51 27v9h-9" fill="none" stroke="#3ddc97" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M54 40a14 14 0 01-24 9" fill="none" stroke="#3ddc97" stroke-width="4" stroke-linecap="round" opacity=".55"/></svg>
+        <div><b>RESK</b><span data-th="เทียบโอนประสบการณ์การทำงาน" data-en="Work experience recognition">เทียบโอนประสบการณ์การทำงาน</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PORTFOLIO -->
-<section class="sec portfolio" id="portfolio">
+<section class="sec paper portfolio" id="portfolio">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</div>
@@ -345,18 +691,13 @@
       <div class="pf-feature">
         <div class="pf-media">
           <span class="pf-badge" data-th="รางวัลยอดเยี่ยม 2565" data-en="Excellence Award 2022">รางวัลยอดเยี่ยม 2565</span>
-          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="ilq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
-            <rect width="400" height="320" fill="url(#ilq)"/>
-            <circle cx="60" cy="60" r="40" fill="#fff" opacity="0.06"/><circle cx="350" cy="270" r="60" fill="#fff" opacity="0.05"/>
-            <path d="M200 70 L262 98 L262 162 C262 210 234 240 200 256 C166 240 138 210 138 162 L138 98 Z" fill="#fff" opacity="0.96"/>
-            <path d="M172 162 l20 22 l40 -50" fill="none" stroke="#1f6fd1" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="200" cy="163" r="78" fill="none" stroke="#bfe0ff" stroke-width="3" opacity="0.8"/>
-            <text x="200" y="298" text-anchor="middle" fill="#dcebfb" font-family="Sarabun,sans-serif" font-size="18" font-weight="700" opacity="0.9">ISO/IEC 17024</text>
-          </svg>
           <img class="ph on" id="ph-feat" src="images/5.jpg" alt="" onerror="this.classList.remove('on')">
         </div>
         <div class="pf-body">
+          <div class="seal">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="#f0b445" stroke-width="1.400" stroke-dasharray="2 4"/><path d="M24 9 L36 14.500 L36 26 C36 34 30.500 39.500 24 42 C17.500 39.500 12 34 12 26 L12 14.500Z" fill="#f0b445"/><path d="M18.500 25.500l4 4.500 7.500-9.500" fill="none" stroke="#2a1a02" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>ISO/IEC 17024</span>
+          </div>
           <h4 data-th="รับรางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565" data-en="Awarded Outstanding Certification Body of the Year 2022">รับรางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565</h4>
           <p data-th="ศูนย์ฯ ได้รับรางวัลยอดเยี่ยมด้านการพัฒนาองค์กรไปสู่มาตรฐานระดับสากล ISO/IEC 17024 ในฐานะองค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สะท้อนความมุ่งมั่นในการรักษาคุณภาพการให้บริการ" data-en="CISS received the excellence award for advancing toward the international ISO/IEC 17024 standard as a personnel certification body, reflecting its commitment to service quality.">ศูนย์ฯ ได้รับรางวัลยอดเยี่ยมด้านการพัฒนาองค์กรไปสู่มาตรฐานระดับสากล ISO/IEC 17024 ในฐานะองค์กรที่มีหน้าที่รับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สะท้อนความมุ่งมั่นในการรักษาคุณภาพการให้บริการ</p>
         </div>
@@ -365,14 +706,7 @@
       <div class="pf-card">
         <div class="pf-media">
           <span class="pf-badge" data-th="การจัดสอบ" data-en="Examination">การจัดสอบ</span>
-          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="iln" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
-            <rect width="400" height="220" fill="url(#iln)"/>
-            <g stroke="#7fc0ff" stroke-width="2.5" opacity="0.75" fill="none"><path d="M200 110 C140 60 90 60 60 70"/><path d="M200 110 C150 160 100 165 70 160"/><path d="M200 110 C270 60 320 60 350 72"/><path d="M200 110 C280 160 320 165 345 158"/></g>
-            <g fill="#bfe0ff"><circle cx="60" cy="70" r="9"/><circle cx="70" cy="160" r="9"/><circle cx="350" cy="72" r="9"/><circle cx="345" cy="158" r="9"/></g>
-            <rect x="168" y="86" width="64" height="48" rx="10" fill="#fff"/><rect x="180" y="100" width="40" height="6" rx="3" fill="#1f6fd1"/><circle cx="186" cy="120" r="4" fill="#2f86e0"/><circle cx="200" cy="120" r="4" fill="#2f86e0"/>
-          </svg>
-          <img class="ph on" id="ph-fttx" src="images/4.jpg" alt="" onerror="this.classList.remove('on')">
+          <img class="ph on" id="ph-fttx" src="images/4.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
         </div>
         <div class="pf-body"><h4 data-th="ประเมินสมรรถนะ FTTx ระดับ 2–3" data-en="FTTx Competency Assessment, Level 2–3">ประเมินสมรรถนะ FTTx ระดับ 2–3</h4><p data-th="จัดการประเมินผู้ปฏิบัติงานด้านโครงข่ายใยแก้วนำแสง ทั้งช่างเดินสาย ช่างเทคนิค หัวหน้างาน และวิศวกร" data-en="Assessing fiber-optic network practitioners — cabling technicians, technical staff, supervisors, and engineers.">จัดการประเมินผู้ปฏิบัติงานด้านโครงข่ายใยแก้วนำแสง ทั้งช่างเดินสาย ช่างเทคนิค หัวหน้างาน และวิศวกร</p></div>
       </div>
@@ -380,14 +714,7 @@
       <div class="pf-card">
         <div class="pf-media">
           <span class="pf-badge" data-th="ภาคปฏิบัติ" data-en="Practical">ภาคปฏิบัติ</span>
-          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="ilr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient></defs>
-            <rect width="400" height="220" fill="url(#ilr)"/>
-            <path d="M60 150 C160 150 160 80 260 80" fill="none" stroke="#bfe0ff" stroke-width="7" stroke-linecap="round"/>
-            <rect x="256" y="68" width="56" height="24" rx="6" fill="#fff"/><circle cx="260" cy="80" r="6" fill="#1f6fd1"/>
-            <g stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.85"><path d="M266 50 l-6 -14"/><path d="M286 54 l4 -14"/></g>
-          </svg>
-          <img class="ph on" id="ph-resk" src="images/3.jpg" alt="" onerror="this.classList.remove('on')">
+          <img class="ph on" id="ph-resk" src="images/3.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
         </div>
         <div class="pf-body"><h4 data-th="การทดสอบภาคปฏิบัติด้านไฟเบอร์ออปติก" data-en="Fiber-Optic Practical Testing">การทดสอบภาคปฏิบัติด้านไฟเบอร์ออปติก</h4><p data-th="ผู้เข้ารับการประเมินลงมือปฏิบัติจริงด้านการเข้าหัว เชื่อมต่อ และทดสอบสายใยแก้วนำแสงตามมาตรฐานอาชีพ" data-en="Candidates perform hands-on termination, splicing, and testing of fiber-optic cables to occupational standards.">ผู้เข้ารับการประเมินลงมือปฏิบัติจริงด้านการเข้าหัว เชื่อมต่อ และทดสอบสายใยแก้วนำแสงตามมาตรฐานอาชีพ</p></div>
       </div>
@@ -395,14 +722,7 @@
       <div class="pf-card">
         <div class="pf-media">
           <span class="pf-badge" data-th="ภาคทฤษฎี" data-en="Theory">ภาคทฤษฎี</span>
-          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="ila" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
-            <rect width="400" height="220" fill="url(#ila)"/>
-            <rect x="150" y="50" width="100" height="120" rx="10" fill="#fff"/>
-            <g fill="#cfe3fa"><rect x="166" y="70" width="68" height="8" rx="4"/><rect x="166" y="88" width="68" height="8" rx="4"/><rect x="166" y="106" width="48" height="8" rx="4"/></g>
-            <circle cx="232" cy="150" r="20" fill="#0a2540"/><path d="M223 150 l6 7 l12 -14" fill="none" stroke="#7fc0ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <img class="ph on" id="ph-exam" src="images/1.jpg" alt="" onerror="this.classList.remove('on')">
+          <img class="ph on" id="ph-exam" src="images/1.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
         </div>
         <div class="pf-body"><h4 data-th="การสอบภาคทฤษฎีในศูนย์สอบ" data-en="Theory Examination at the Test Center">การสอบภาคทฤษฎีในศูนย์สอบ</h4><p data-th="ผู้เข้ารับการประเมินทำข้อสอบปรนัยภายใต้การกำกับของเจ้าหน้าที่สอบที่ผ่านการรับรองมาตรฐาน" data-en="Candidates take the multiple-choice exam under the supervision of certified assessors.">ผู้เข้ารับการประเมินทำข้อสอบปรนัยภายใต้การกำกับของเจ้าหน้าที่สอบที่ผ่านการรับรองมาตรฐาน</p></div>
       </div>
@@ -420,75 +740,34 @@
       <p data-th="บรรยากาศกิจกรรมของศูนย์ฯ ทั้งการฝึกอบรม การทดสอบ และความสำเร็จที่ผ่านมา" data-en="Moments from CISS activities — training, testing, and past achievements.">บรรยากาศกิจกรรมของศูนย์ฯ ทั้งการฝึกอบรม การทดสอบ และความสำเร็จที่ผ่านมา</p>
     </div>
     <div class="gal-grid">
-
       <div class="gal-item wide tall">
-        <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
-          <rect width="600" height="340" fill="url(#ilm)"/>
-          <g fill="#bfe0ff" opacity="0.9"><circle cx="180" cy="150" r="26"/><circle cx="300" cy="135" r="30"/><circle cx="420" cy="150" r="26"/></g>
-          <g fill="#fff"><path d="M140 250 a40 40 0 0 1 80 0 z"/><path d="M255 235 a45 45 0 0 1 90 0 z"/><path d="M380 250 a40 40 0 0 1 80 0 z"/></g>
-        </svg>
-        <img class="ph on" id="ph-g1" src="images/10.jpg" alt="" onerror="this.classList.remove('on')">
+        <img class="ph on" id="ph-g1" src="images/10.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
         <div class="gal-cap" data-th="ภาพหมู่ผู้เข้าร่วมการประเมินและรับใบประกาศ" data-en="Group photo of candidates and certificate recipients">ภาพหมู่ผู้เข้าร่วมการประเมินและรับใบประกาศ</div>
       </div>
-
-      <div class="gal-item">
-        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
-          <rect width="300" height="200" fill="url(#ilt)"/><rect x="60" y="40" width="180" height="100" rx="8" fill="#fff"/>
-          <g fill="#2f86e0"><rect x="80" y="98" width="18" height="24"/><rect x="106" y="82" width="18" height="40"/><rect x="132" y="68" width="18" height="54"/></g>
-        </svg>
-        <img class="ph on" id="ph-g2" src="images/9.jpg" alt="" onerror="this.classList.remove('on')">
-        <div class="gal-cap" data-th="อบรมเชิงปฏิบัติการไฟเบอร์ออปติก" data-en="Fiber-optic hands-on workshop">อบรมเชิงปฏิบัติการไฟเบอร์ออปติก</div>
-      </div>
-
-      <div class="gal-item">
-        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
-          <rect width="300" height="200" fill="url(#ilg)"/><circle cx="150" cy="78" r="30" fill="#fff"/><path d="M104 160 a46 46 0 0 1 92 0 z" fill="#fff"/>
-        </svg>
-        <img class="ph on" id="ph-g3" src="images/11.jpg" alt="" onerror="this.classList.remove('on')">
-        <div class="gal-cap" data-th="ผู้เข้ารับการทดสอบภาคปฏิบัติ" data-en="Candidates in practical testing">ผู้เข้ารับการทดสอบภาคปฏิบัติ</div>
-      </div>
-
-      <div class="gal-item">
-        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient></defs>
-          <rect width="300" height="200" fill="url(#ilf)"/><path d="M30 150 C110 150 110 70 190 70" fill="none" stroke="#bfe0ff" stroke-width="7" stroke-linecap="round"/><rect x="186" y="58" width="56" height="24" rx="6" fill="#fff"/>
-        </svg>
-        <img class="ph on" id="ph-g4" src="images/2.jpg" alt="" onerror="this.classList.remove('on')">
-        <div class="gal-cap" data-th="ทดสอบการเข้าหัวสายไฟเบอร์" data-en="Fiber cable termination test">ทดสอบการเข้าหัวสายไฟเบอร์</div>
-      </div>
-
-      <div class="gal-item">
-        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#103a66"/></linearGradient></defs>
-          <rect width="300" height="200" fill="url(#ilp)"/><rect x="70" y="120" width="50" height="40" fill="#bfe0ff"/><rect x="125" y="95" width="50" height="65" fill="#fff"/><rect x="180" y="70" width="50" height="90" fill="#7fc0ff"/>
-        </svg>
-        <img class="ph on" id="ph-g5" src="images/6.jpg" alt="" onerror="this.classList.remove('on')">
-        <div class="gal-cap" data-th="เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”" data-en="Panel: 'Decoding Success with ISO/IEC 17024'">เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”</div>
-      </div>
-
-      <div class="gal-item">
-        <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
-          <rect width="300" height="200" fill="url(#ilw)"/><path d="M120 60 h60 v18 a30 30 0 0 1 -60 0 z" fill="#fff"/><rect x="142" y="96" width="16" height="20" fill="#fff"/><rect x="120" y="116" width="60" height="14" rx="5" fill="#bfe0ff"/>
-        </svg>
-        <img class="ph on" id="ph-g6" src="images/7.jpg" alt="" onerror="this.classList.remove('on')">
+      <div class="gal-item tall">
+        <img class="ph on" id="ph-g6" src="images/7.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
         <div class="gal-cap" data-th="รับมอบรางวัลร่วมกับทีมงาน" data-en="Receiving the award with the team">รับมอบรางวัลร่วมกับทีมงาน</div>
       </div>
-
-      <div class="gal-item wide">
-        <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ilc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f6fd1"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
-          <rect width="600" height="200" fill="url(#ilc)"/>
-          <path d="M270 36 L330 36 L348 100 L300 170 L252 100 Z" fill="#fff"/>
-          <path d="M285 70 h30 M278 88 h44 M285 106 h30" stroke="#bfe0ff" stroke-width="5" stroke-linecap="round"/>
-        </svg>
-        <img class="ph on" id="ph-g7" src="images/8.jpg" alt="" onerror="this.classList.remove('on')">
+      <div class="gal-item tall">
+        <img class="ph on" id="ph-g7" src="images/8.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
         <div class="gal-cap" data-th="โล่ประกาศเกียรติคุณมาตรฐาน ISO/IEC 17024" data-en="ISO/IEC 17024 plaque of honor">โล่ประกาศเกียรติคุณมาตรฐาน ISO/IEC 17024</div>
       </div>
-
+      <div class="gal-item">
+        <img class="ph on" id="ph-g2" src="images/9.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
+        <div class="gal-cap" data-th="อบรมเชิงปฏิบัติการไฟเบอร์ออปติก" data-en="Fiber-optic hands-on workshop">อบรมเชิงปฏิบัติการไฟเบอร์ออปติก</div>
+      </div>
+      <div class="gal-item">
+        <img class="ph on" id="ph-g3" src="images/11.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
+        <div class="gal-cap" data-th="ผู้เข้ารับการทดสอบภาคปฏิบัติ" data-en="Candidates in practical testing">ผู้เข้ารับการทดสอบภาคปฏิบัติ</div>
+      </div>
+      <div class="gal-item">
+        <img class="ph on" id="ph-g4" src="images/2.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
+        <div class="gal-cap" data-th="ทดสอบการเข้าหัวสายไฟเบอร์" data-en="Fiber cable termination test">ทดสอบการเข้าหัวสายไฟเบอร์</div>
+      </div>
+      <div class="gal-item">
+        <img class="ph on" id="ph-g5" src="images/6.jpg" alt="" loading="lazy" onerror="this.classList.remove('on')">
+        <div class="gal-cap" data-th="เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”" data-en="Panel: 'Decoding Success with ISO/IEC 17024'">เวทีเสวนา “ถอดรหัสความสำเร็จ ISO/IEC 17024”</div>
+      </div>
     </div>
   </div>
 </section>
@@ -497,6 +776,7 @@
 <section class="cta">
   <div class="wrap">
     <div class="cta-box">
+      <svg class="deco" viewBox="0 0 420 220" aria-hidden="true" fill="none" stroke-linecap="round"><path d="M0 200 C120 200 150 60 420 40" stroke="#42d3e8" stroke-width="3"/><path d="M0 212 C140 212 170 90 420 76" stroke="#3ddc97" stroke-width="3"/><path d="M0 224 C160 224 190 120 420 112" stroke="#f0b445" stroke-width="3"/><path class="pulse" d="M0 200 C120 200 150 60 420 40" stroke="#fff" stroke-width="3"/></svg>
       <h2 data-th="พร้อมยกระดับสู่มืออาชีพแล้วหรือยัง?" data-en="Ready to Step Up as a Professional?">พร้อมยกระดับสู่มืออาชีพแล้วหรือยัง?</h2>
       <p data-th="สมัครเข้ารับการประเมินสมรรถนะตามมาตรฐานอาชีพ เพื่อการันตีความสามารถของคุณและองค์กร" data-en="Apply for competency assessment to occupational standards and certify your and your organization's capability.">สมัครเข้ารับการประเมินสมรรถนะตามมาตรฐานอาชีพ เพื่อการันตีความสามารถของคุณและองค์กร</p>
       <a href="#contact" class="btn" data-th="ติดต่อสมัครประเมิน" data-en="Contact to Apply">ติดต่อสมัครประเมิน</a>
@@ -505,7 +785,7 @@
 </section>
 
 <!-- CONTACT -->
-<section class="sec contact" id="contact">
+<section class="sec paper contact" id="contact">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow" data-th="ติดต่อเรา" data-en="Contact Us">ติดต่อเรา</div>
@@ -514,11 +794,11 @@
     </div>
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="ci-item"><div class="ic">📞</div><div><b data-th="โทรศัพท์ / โทรสาร" data-en="Phone / Fax">โทรศัพท์ / โทรสาร</b><span data-th="โทร. 02-470-9629 · โทรสาร 02-470-9628" data-en="Tel. 02-470-9629 · Fax 02-470-9628">โทร. 02-470-9629 · โทรสาร 02-470-9628</span></div></div>
-        <div class="ci-item"><div class="ic">✉️</div><div><b data-th="อีเมล" data-en="Email">อีเมล</b><span>ciss@mail.kmutt.ac.th</span></div></div>
-        <div class="ci-item"><div class="ic">📘</div><div><b>Facebook</b><span>CISS</span></div></div>
-        <div class="ci-item"><div class="ic">📍</div><div><b data-th="ที่อยู่" data-en="Address">ที่อยู่</b><span data-th="126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140" data-en="126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140">126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140</span></div></div>
-        <div class="ci-item"><div class="ic">👤</div><div><b data-th="ฝ่ายทดสอบและประเมิน" data-en="Testing & Assessment Unit">ฝ่ายทดสอบและประเมิน</b><span data-th="นายอุทัย ละไม · โทร. 092-321-2123" data-en="Mr. Uthai Lamai · Tel. 092-321-2123">นายอุทัย ละไม · โทร. 092-321-2123</span></div></div>
+        <div class="ci-item"><div class="ic"><svg class="ico"><use href="#i-phone"/></svg></div><div><b data-th="โทรศัพท์ / โทรสาร" data-en="Phone / Fax">โทรศัพท์ / โทรสาร</b><span data-th="โทร. 02-470-9629 · โทรสาร 02-470-9628" data-en="Tel. 02-470-9629 · Fax 02-470-9628">โทร. 02-470-9629 · โทรสาร 02-470-9628</span></div></div>
+        <div class="ci-item"><div class="ic"><svg class="ico"><use href="#i-mail"/></svg></div><div><b data-th="อีเมล" data-en="Email">อีเมล</b><span>ciss@mail.kmutt.ac.th</span></div></div>
+        <div class="ci-item"><div class="ic"><svg class="ico"><use href="#i-fb"/></svg></div><div><b>Facebook</b><span>CISS</span></div></div>
+        <div class="ci-item"><div class="ic"><svg class="ico"><use href="#i-pin"/></svg></div><div><b data-th="ที่อยู่" data-en="Address">ที่อยู่</b><span data-th="126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140" data-en="126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140">126 ถ.ประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140</span></div></div>
+        <div class="ci-item"><div class="ic"><svg class="ico"><use href="#i-user"/></svg></div><div><b data-th="ฝ่ายทดสอบและประเมิน" data-en="Testing & Assessment Unit">ฝ่ายทดสอบและประเมิน</b><span data-th="นายอุทัย ละไม · โทร. 092-321-2123" data-en="Mr. Uthai Lamai · Tel. 092-321-2123">นายอุทัย ละไม · โทร. 092-321-2123</span></div></div>
       </div>
       <div class="map-box">
         <iframe loading="lazy" src="https://maps.google.com/maps?q=มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี&z=15&output=embed" title="KMUTT map"></iframe>
@@ -532,32 +812,31 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="logo">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85"/>
-            <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
-            <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
-            <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9"/>
-            <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
-          </svg>
-        </div>
+        <div class="logo"><svg aria-hidden="true"><use href="#logo"/></svg></div>
         <p data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล" data-en="The Communications and Integrated Services Study Center, King Mongkut's University of Technology Thonburi — a body certifying personnel competency to occupational standards in the digital industry sector.">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ สาขาวิชาชีพอุตสาหกรรมดิจิทัล</p>
       </div>
       <div class="foot-col">
         <h5 data-th="เมนูหลัก" data-en="Menu">เมนูหลัก</h5>
-        <a href="#about" data-th="เกี่ยวกับเรา" data-en="About">เกี่ยวกับเรา</a><a href="#services" data-th="บริการรับรอง" data-en="Certification">บริการรับรอง</a><a href="#process" data-th="การประเมิน" data-en="Assessment">การประเมิน</a><a href="#portfolio" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</a>
+        <a href="#about" data-th="เกี่ยวกับเรา" data-en="About">เกี่ยวกับเรา</a><a href="#tech" data-th="เทคโนโลยี" data-en="Technology">เทคโนโลยี</a><a href="#services" data-th="บริการรับรอง" data-en="Certification">บริการรับรอง</a><a href="#process" data-th="การประเมิน" data-en="Assessment">การประเมิน</a><a href="#portfolio" data-th="ผลงานที่ผ่านมา" data-en="Our Work">ผลงานที่ผ่านมา</a>
       </div>
       <div class="foot-col">
         <h5 data-th="ติดต่อ" data-en="Contact">ติดต่อ</h5>
-        <a href="tel:024709629">02-470-9629</a><a href="mailto:ciss@mail.kmutt.ac.th">ciss@mail.kmutt.ac.th</a><a href="#contact" data-th="ที่อยู่ศูนย์ฯ" data-en="Our Address">ที่อยู่ศูนย์ฯ</a>
+        <a href="tel:024709629">02-470-9629</a><a href="mailto:ciss@mail.kmutt.ac.th">ciss@mail.kmutt.ac.th</a><a href="#contact" data-th="ที่อยู่ศูนย์ฯ" data-en="Our Address">ที่อยู่ศูนย์ฯ</a><a href="https://chirasil.github.io/CISS/" data-th="กลับสู่ CISS Hub" data-en="Back to CISS Hub">กลับสู่ CISS Hub</a>
       </div>
     </div>
     <div class="foot-bottom" data-th="© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="© 2025 Communications and Integrated Services Study Center (CISS) · King Mongkut's University of Technology Thonburi">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</div>
+    <div class="foot-credit" data-th="ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพกราฟิก AI ใยแก้วนำแสง และจานดาวเทียม LEO เป็นภาพประกอบ ไม่ใช่อุปกรณ์ของศูนย์" data-en="Activity photos are CISS's own · The AI, fibre-optic and LEO antenna graphics are illustrations, not the centre's equipment">ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพกราฟิก AI ใยแก้วนำแสง และจานดาวเทียม LEO เป็นภาพประกอบ ไม่ใช่อุปกรณ์ของศูนย์</div>
   </div>
 </footer>
 
 <script>
+  /* language is stored in the browser so it carries over from the CISS hub page */
+  if(!window.storage){
+    window.storage={
+      async get(k){try{const v=localStorage.getItem(k);return v===null?null:{value:v};}catch(e){return null;}},
+      async set(k,v){try{localStorage.setItem(k,v);return true;}catch(e){return false;}}
+    };
+  }
   const burger=document.getElementById('burger'),menu=document.getElementById('menu');
   burger.addEventListener('click',()=>menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
