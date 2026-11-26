@@ -1,4 +1,5 @@
 {
+  "_comment": "ไฟล์ข่าวกลางของ CISS: ทุกหน้าอ่านจากไฟล์นี้ missions = space (ภารกิจ 01), pq (02), digital (03); เว้นว่าง [] = ข่าวของศูนย์ฯ โดยรวม แสดงเฉพาะหน้าหลัก; iso = วันที่แบบ YYYY-MM-DD ใช้เรียงลำดับ",
   "news": [
     {
       "date": "6 มิ.ย. 2569",
@@ -9,7 +10,11 @@
       "titleEn": "PMUC funds a Thai-built HAPS prototype",
       "bodyTh": "CISS ร่วมกับภาควิชาวิศวกรรมเครื่องกล ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ. และบริษัท เอแอลที เทเลคอม จำกัด (มหาชน)",
       "bodyEn": "CISS with KMUTT's Mechanical and Electronic and Telecommunication Engineering departments and ALT Telecom.",
-      "link": "https://chirasil.github.io/thonburi-space/"
+      "link": "https://chirasil.github.io/thonburi-space/",
+      "missions": [
+        "space"
+      ],
+      "iso": "2026-06-06"
     },
     {
       "date": "12 พ.ค. 2569",
@@ -20,7 +25,11 @@
       "titleEn": "Thonburi Space presented to KMUTT leadership",
       "bodyTh": "เปิดตัวทีมงานด้านอวกาศเพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและเศรษฐกิจอวกาศ",
       "bodyEn": "The space team was introduced to drive small-satellite research and the space economy.",
-      "link": "https://chirasil.github.io/thonburi-space/"
+      "link": "https://chirasil.github.io/thonburi-space/",
+      "missions": [
+        "space"
+      ],
+      "iso": "2026-05-12"
     },
     {
       "date": "1 มี.ค. 2569",
@@ -30,7 +39,12 @@
       "titleTh": "โครงการยกระดับศักยภาพการแข่งขันทางเทคโนโลยีและนวัตกรรมขั้นแนวหน้า (Frontier Technology) ประจำปีงบประมาณ พ.ศ. 2569",
       "titleEn": "Frontier Technology for Competitiveness by Regional Science Park Consortium 2026",
       "bodyTh": "เพื่อบรรลุภารกิจด้าน Professional Qualification, Digital Technology and Communications CISS ได้รับความไว้วางใจให้จัดอบรมหลักสูตรภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค ปี 2569 จำนวน 125 คน 5 หลักสูตรคือ 1. AI for CEO, 2. AI for Finance, 3.AI for Robotics, 4. AI for Data Analytic และ 5. AI for Coding สำหรับ SME ในภูมิภาคภาคกลาง",
-      "bodyEn": "To serve the Professional Qualification and Digital Technology and Communications missions, CISS, funded by the Regional Science Park Consortium in 2026, runs five workshops for 125 participants: 1. AI for CEO, 2. AI for Finance, 3. AI for Robotics, 4. AI for Data Analytic and 5. AI for Coding, for SMEs in Thailand's central region."
+      "bodyEn": "To serve the Professional Qualification and Digital Technology and Communications missions, CISS, funded by the Regional Science Park Consortium in 2026, runs five workshops for 125 participants: 1. AI for CEO, 2. AI for Finance, 3. AI for Robotics, 4. AI for Data Analytic and 5. AI for Coding, for SMEs in Thailand's central region.",
+      "missions": [
+        "pq",
+        "digital"
+      ],
+      "iso": "2026-03-01"
     },
     {
       "date": "18 ก.ค. 2568",
@@ -41,7 +55,11 @@
       "titleEn": "Opening the door to the space industry",
       "bodyTh": "เวิร์กช็อปพบผู้เชี่ยวชาญและเครือข่ายภาครัฐ–เอกชน ที่ มจธ. บางมด",
       "bodyEn": "A workshop with experts and the public–private network at KMUTT Bang Mod.",
-      "link": "https://chirasil.github.io/thonburi-space/"
+      "link": "https://chirasil.github.io/thonburi-space/",
+      "missions": [
+        "space"
+      ],
+      "iso": "2025-07-18"
     }
   ]
 }
