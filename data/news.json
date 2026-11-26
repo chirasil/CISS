@@ -1,28 +1,47 @@
 {
   "news": [
     {
-      "date": "12 พ.ค. 2569",
-      "tag": "กิจกรรม",
-      "titleTh": "เปิดตัว Thonburi Space Innovation Hub",
-      "titleEn": "Launch of the Thonburi Space Innovation Hub",
-      "bodyTh": "CISS ร่วมกับพันธมิตรนำเสนอผู้บริหารมจธ.เปิดตัวทีมงานด้านอวกาศของมจธ. ในนามอวกาศธนบุรี เพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็ก และเศรษฐกิจอวกาศ มุ่งมั่นปั้นระบบนิเวศอวกาศในไทย",
-      "bodyEn": "CISS and partners presented KMUTT executives the Thonburi Space Innovation Hub to drive small-satellite research and space economy aiming to built a space ecosystem in Thailand."
+      "date": "6 มิ.ย. 2569",
+      "dateEn": "6 Jun 2026",
+      "tag": "ทุนวิจัย",
+      "tagEn": "Grant",
+      "titleTh": "ได้รับทุน บพข. พัฒนา HAPS ต้นแบบสัญชาติไทย",
+      "titleEn": "PMUC funds a Thai-built HAPS prototype",
+      "bodyTh": "CISS ร่วมกับภาควิชาวิศวกรรมเครื่องกล ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ. และบริษัท เอแอลที เทเลคอม จำกัด (มหาชน)",
+      "bodyEn": "CISS with KMUTT's Mechanical and Electronic and Telecommunication Engineering departments and ALT Telecom.",
+      "link": "https://chirasil.github.io/thonburi-space/"
     },
     {
-      "date": "6 มิ.ย. 2569",
-      "tag": "ข่าวประชาสัมพันธ์",
-      "titleTh": "CISS ได้รับทุนบพข ทำ HAPS",
-      "titleEn": "HAPS by CISS sponsored by PMUC",
-      "bodyTh": "เพื่อบรรลุภารกิจด้าน Space Innovation CISS ร่วมกับ วิศวกรรมเครื่องกล และวิศวกรรมอิเล็กทรอนิกส์ฯ มจธ ได้รับทุนบพข.ผลิตต้นแบบ High Altitude Platform Stations สัญชาติไทย ร่วมกับบริษัทเอแอลทีเทเลคอม จำกัด มหาชน",
-      "bodyEn": " To serve Space Innovation Mission, CISS together with Mechanical Engineering, Electronics and Telecommunication Engineering Department and ALT Telecom co.Ltd. announces a funding by PMUC to research a HAPS prototype"
+      "date": "12 พ.ค. 2569",
+      "dateEn": "12 May 2026",
+      "tag": "เปิดตัว",
+      "tagEn": "Launch",
+      "titleTh": "นำเสนออวกาศบางมดต่อผู้บริหาร มจธ.",
+      "titleEn": "Thonburi Space presented to KMUTT leadership",
+      "bodyTh": "เปิดตัวทีมงานด้านอวกาศเพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและเศรษฐกิจอวกาศ",
+      "bodyEn": "The space team was introduced to drive small-satellite research and the space economy.",
+      "link": "https://chirasil.github.io/thonburi-space/"
     },
     {
       "date": "1 มี.ค. 2569",
+      "dateEn": "1 Mar 2026",
       "tag": "ข่าวประชาสัมพันธ์",
+      "tagEn": "Announcement",
       "titleTh": "โครงการยกระดับศักยภาพการแข่งขันทางเทคโนโลยีและนวัตกรรมขั้นแนวหน้า (Frontier Technology) ประจำปีงบประมาณ พ.ศ. 2569",
       "titleEn": "Frontier Technology for Competitiveness by Regional Science Park Consortium 2026",
       "bodyTh": "เพื่อบรรลุภารกิจด้าน Professional Qualification, Digital Technology and Communications CISS ได้รับความไว้วางใจให้จัดอบรมหลักสูตรภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค ปี 2569 จำนวน 125 คน 5 หลักสูตรคือ 1. AI for CEO, 2. AI for Finance, 3.AI for Robotics, 4. AI for Data Analytic และ 5. AI for Coding สำหรับ SME ในภูมิภาคภาคกลาง",
-      "bodyEn": " To serve Professional Qualification, Digital Technology and Communications Mission, CISS funding by Regional Science Park Consortium in 2026 conducts 5 workshops including 1. AI for CEO, 2. AI for Finance, 3.AI for Robotics, 4. AI for Data Analytic และ 5. AI for Coding all for SME in middle region of Thailand to strengthen their capability in AI "
+      "bodyEn": "To serve the Professional Qualification and Digital Technology and Communications missions, CISS, funded by the Regional Science Park Consortium in 2026, runs five workshops for 125 participants: 1. AI for CEO, 2. AI for Finance, 3. AI for Robotics, 4. AI for Data Analytic and 5. AI for Coding, for SMEs in Thailand's central region."
+    },
+    {
+      "date": "18 ก.ค. 2568",
+      "dateEn": "18 Jul 2025",
+      "tag": "Workshop",
+      "tagEn": "Workshop",
+      "titleTh": "เปิดประตูสู่อุตสาหกรรมอวกาศ",
+      "titleEn": "Opening the door to the space industry",
+      "bodyTh": "เวิร์กช็อปพบผู้เชี่ยวชาญและเครือข่ายภาครัฐ–เอกชน ที่ มจธ. บางมด",
+      "bodyEn": "A workshop with experts and the public–private network at KMUTT Bang Mod.",
+      "link": "https://chirasil.github.io/thonburi-space/"
     }
   ]
 }

@@ -1,0 +1,58 @@
+{
+  "articles": [
+    {
+      "mission": "space",
+      "link": "https://chirasil.github.io/thonburi-space/",
+      "image": "images/ts-orbit.jpg",
+      "titleTh": "ดาวเทียม CubeSat กับโอกาสของอุตสาหกรรมอวกาศไทย",
+      "titleEn": "CubeSats and Thailand’s Space Industry Opportunity",
+      "bodyTh": "ทำความรู้จักดาวเทียมขนาดเล็กที่กำลังเปลี่ยนภูมิทัศน์การวิจัยและธุรกิจอวกาศของไทย",
+      "bodyEn": "How small satellites are reshaping Thailand’s space research and business landscape."
+    },
+    {
+      "mission": "pq",
+      "link": "https://chirasil.github.io/CISS/ciss",
+      "image": "images/5.jpg",
+      "titleTh": "มาตรฐาน ISO/IEC 17024 กับการรับรองสมรรถนะบุคคล",
+      "titleEn": "ISO/IEC 17024 and Personnel Certification",
+      "bodyTh": "มาตรฐานสากลที่อยู่เบื้องหลังการรับรองคุณวุฒิวิชาชีพอย่างน่าเชื่อถือ",
+      "bodyEn": "The international standard behind credible professional certification."
+    },
+    {
+      "mission": "digital",
+      "link": "https://chirasil.github.io/CISS/digital",
+      "image": "images/sag-hero-v2.jpg",
+      "titleTh": "6G และ SAGIN: โครงข่ายอวกาศ–อากาศ–ภาคพื้นดิน",
+      "titleEn": "6G and SAGIN: Space–Air–Ground Networks",
+      "bodyTh": "ภาพอนาคตของโครงข่ายสื่อสารไร้รอยต่อที่เชื่อมอวกาศ อากาศ และภาคพื้นดินเข้าด้วยกัน",
+      "bodyEn": "A look at the seamless networks linking space, air, and ground."
+    },
+    {
+      "mission": "space",
+      "link": "https://chirasil.github.io/thonburi-space/",
+      "image": "images/ts-ground-dish.jpg",
+      "titleTh": "ระบบควบคุมทิศทางดาวเทียม (ADCS) ทำงานอย่างไร",
+      "titleEn": "How Satellite Attitude Control (ADCS) Works",
+      "bodyTh": "หลักการควบคุมการทรงตัวและการชี้ทิศของดาวเทียมในวงโคจร พื้นฐานสำคัญของภารกิจอวกาศ",
+      "bodyEn": "The fundamentals of stabilizing and pointing satellites in orbit."
+    },
+    {
+      "mission": "pq",
+      "link": "https://chirasil.github.io/CISS/ciss",
+      "image": "images/3.jpg",
+      "titleTh": "เส้นทางสู่การเป็นช่างโครงข่าย FTTx มืออาชีพ",
+      "titleEn": "Becoming a Professional FTTx Technician",
+      "bodyTh": "ทักษะ การประเมิน และการเทียบโอนประสบการณ์ สู่การรับรองช่างสื่อสัญญาณ",
+      "bodyEn": "Skills, assessment, and experience recognition toward technician certification."
+    },
+    {
+      "mission": "digital",
+      "link": "https://chirasil.github.io/CISS/digital",
+      "image": "images/ts-hero-bangkok.jpg",
+      "titleTh": "การใช้คลื่นความถี่ร่วมระหว่าง 5G และดาวเทียม",
+      "titleEn": "5G–Satellite Spectrum Coexistence",
+      "bodyTh": "ความท้าทายและแนวทางการบริหารคลื่นความถี่เพื่อให้ 5G และดาวเทียมอยู่ร่วมกันได้",
+      "bodyEn": "Challenges and approaches to letting 5G and satellites share spectrum."
+    }
+  ]
+}
