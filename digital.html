@@ -156,6 +156,13 @@
   .spotlight>p{color:var(--soft);max-width:50em}
   .spotlight>p strong{color:#fff;font-weight:600}
   .sagin-svg{width:100%;height:auto;display:block;margin:28px 0 6px;border:1px solid var(--line2);border-radius:6px 48px 6px 6px;background:var(--void)}
+  .sagin-fig{position:relative;width:100%;margin:28px 0 6px;border:1px solid var(--line2);border-radius:6px 48px 6px 6px;overflow:hidden;background:var(--void)}
+  .sagin-fig img{width:100%;height:auto;display:block}
+  .sagin-fx{position:absolute;inset:0;width:100%;height:100%}
+  .sagin-fx .dash{stroke-dasharray:20 22;animation:sdash 1.6s linear infinite}
+  .sagin-fx .pulse{stroke-dasharray:40 460;animation:spulse 3.4s linear infinite}
+  @keyframes sdash{to{stroke-dashoffset:-84}}
+  @keyframes spulse{to{stroke-dashoffset:-500}}
   .sagin-layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
   .layer{--c:var(--violet);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:6px;padding:18px 18px 16px;background:rgba(255,255,255,.03)}
   .layer:nth-child(2){--c:var(--amber)} .layer:nth-child(3){--c:var(--leaf)}
@@ -228,7 +235,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .dash,.pulse,.blink,.ring,.eq,.hero-fx .dash,.hero-fx .pulse{animation:none}
+    .dash,.pulse,.blink,.ring,.eq,.hero-fx .dash,.hero-fx .pulse,.sagin-fx .dash,.sagin-fx .pulse{animation:none}
     .ring{opacity:.4}
     .reveal{transform:none;transition:none}
     .cta,.card,.policy,.proj{transition:none}
@@ -517,7 +524,22 @@
       <div class="h2en"><span class="th">Toward 6G and the Space-Air-Ground Integrated Network (SAGIN)</span><span class="en">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span></div>
       <p><span class="th">วิสัยทัศน์ของ 6G คือการหลอมรวมโครงข่ายภาคพื้นดิน อากาศยาน และดาวเทียม ให้เป็นเครือข่ายเดียวที่ครอบคลุมทั่วโลก — งานวิจัยด้านการสื่อสารไร้สายและการใช้คลื่นร่วม 5G–ดาวเทียมของภารกิจนี้ คือรากฐานทางเทคนิคที่เชื่อมโดยตรงกับ <strong>Mission 01 · อวกาศบางมด</strong></span><span class="en">The 6G vision fuses terrestrial, aerial, and satellite networks into one globally seamless fabric. This mission's wireless-communications and 5G–satellite coexistence research forms the technical foundation that connects directly to <strong>Mission 01 · Thonburi Space</strong>.</span></p>
 
-      <img class="sagin-svg" src="images/dg-sagin.jpg" alt="" loading="lazy" width="2000" height="1000">
+      <figure class="sagin-fig">
+        <img src="images/dg-sagin-base.jpg" alt="" loading="lazy" width="2000" height="1000">
+        <svg class="sagin-fx" viewBox="0 0 2000 1000" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sglow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <g fill="none" stroke-width="4" filter="url(#sglow)"><circle class="ring" cx="210" cy="455" r="150" stroke="#42d3e8" style="animation-delay:-0s"/><circle class="ring" cx="210" cy="455" r="150" stroke="#42d3e8" style="animation-delay:-1s"/><circle class="ring" cx="210" cy="455" r="150" stroke="#42d3e8" style="animation-delay:-2s"/><circle class="ring" cx="735" cy="470" r="120" stroke="#f0b445" style="animation-delay:-0s"/><circle class="ring" cx="735" cy="470" r="120" stroke="#f0b445" style="animation-delay:-1s"/></g>
+          <g fill="none" stroke-linecap="round" filter="url(#sglow)"><path class="dash" d="M1463 278 L735 470" stroke="#9db4ff" stroke-width="5" style="animation-delay:-0s"/><path class="dash" d="M1463 278 L1673 532" stroke="#9db4ff" stroke-width="5" style="animation-delay:-0.4s"/><path class="dash" d="M1463 278 L1345 420" stroke="#9db4ff" stroke-width="4" style="animation-delay:-0.8s"/><path class="dash" d="M735 470 L210 455" stroke="#f0b445" stroke-width="5" style="animation-delay:-0.2s"/><path class="dash" d="M735 470 L1010 650" stroke="#f0b445" stroke-width="5" style="animation-delay:-0.6s"/><path class="dash" d="M1345 420 L1673 532" stroke="#f0b445" stroke-width="4" style="animation-delay:-1s"/></g>
+          <g fill="none" stroke-linecap="round">
+            <path d="M0 952H2000" stroke="#42d3e8" stroke-width="6" filter="url(#sglow)"/>
+            <path d="M0 966H2000" stroke="#3ddc97" stroke-width="4"/>
+            <path class="pulse" d="M0 952H2000" stroke="#fff" stroke-width="7"/>
+            <path class="pulse" d="M2000 966H0" stroke="#fff" stroke-width="5" style="animation-delay:-1.6s"/>
+          </g>
+          <circle cx="1463" cy="278" r="16" fill="none" stroke="#9db4ff" stroke-width="4"/><circle cx="1463" cy="278" r="5" fill="#fff"/><circle cx="735" cy="470" r="16" fill="none" stroke="#f0b445" stroke-width="4"/><circle cx="735" cy="470" r="5" fill="#fff"/><circle cx="1345" cy="420" r="16" fill="none" stroke="#f0b445" stroke-width="4"/><circle cx="1345" cy="420" r="5" fill="#fff"/><circle cx="1673" cy="532" r="16" fill="none" stroke="#9db4ff" stroke-width="4"/><circle cx="1673" cy="532" r="5" fill="#fff"/><circle cx="210" cy="455" r="16" fill="none" stroke="#42d3e8" stroke-width="4"/><circle cx="210" cy="455" r="5" fill="#fff"/><circle cx="1010" cy="650" r="16" fill="none" stroke="#f0b445" stroke-width="4"/><circle cx="1010" cy="650" r="5" fill="#fff"/>
+          <g font-family="IBM Plex Mono,monospace" font-weight="500" letter-spacing="3" paint-order="stroke" stroke="#040c0a" stroke-opacity=".8" stroke-width="4" stroke-linejoin="round"><text x="44" y="100" fill="#9db4ff" text-anchor="start" font-size="32">SPACE</text><text x="44" y="430" fill="#f0b445" text-anchor="start" font-size="32">AIR</text><text x="44" y="730" fill="#3ddc97" text-anchor="start" font-size="32">GROUND</text><text x="1463" y="222" fill="#9db4ff" text-anchor="middle" font-size="22">LEO / GEO · CUBESAT</text><text x="885" y="300" fill="#f0b445" text-anchor="middle" font-size="22">HAPS</text><text x="1345" y="362" fill="#f0b445" text-anchor="middle" font-size="22">DRONE</text><text x="210" y="335" fill="#42d3e8" text-anchor="middle" font-size="22">5G / 6G</text><text x="1713" y="930" fill="#9db4ff" text-anchor="middle" font-size="22">GROUND STATION</text><text x="1000" y="930" fill="#42d3e8" text-anchor="middle" font-size="22">FTTx</text></g>
+        </svg>
+      </figure>
 
       <div class="sagin-layers">
         <div class="layer">
