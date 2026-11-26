@@ -1,5 +1,5 @@
 {
-  "_comment": "ไฟล์ข่าวกลางของ CISS: ทุกหน้าอ่านจากไฟล์นี้ missions = space (ภารกิจ 01), pq (02), digital (03); เว้นว่าง [] = ข่าวของศูนย์ฯ โดยรวม แสดงเฉพาะหน้าหลัก; iso = วันที่แบบ YYYY-MM-DD ใช้เรียงลำดับ",
+  "_comment": "ไฟล์ข่าวกลางของ CISS: ทุกหน้าอ่านจากไฟล์นี้ missions = space (ภารกิจ 01), pq (02), digital (03); เว้นว่าง [] = ข่าวของศูนย์ฯ โดยรวม แสดงเฉพาะหน้าหลัก; iso = วันที่แบบ YYYY-MM-DD ใช้เรียงลำดับ; video/poster = คลิปและภาพปก (path จากโฟลเดอร์ CISS), videoAi = true เมื่อคลิปสร้างด้วย AI จะมีข้อความกำกับใต้คลิป",
   "news": [
     {
       "date": "6 มิ.ย. 2569",
@@ -14,7 +14,10 @@
       "missions": [
         "space"
       ],
-      "iso": "2026-06-06"
+      "iso": "2026-06-06",
+      "video": "media/haps-clip.mp4",
+      "poster": "media/haps-clip.jpg",
+      "videoAi": true
     },
     {
       "date": "12 พ.ค. 2569",
@@ -44,7 +47,10 @@
         "pq",
         "digital"
       ],
-      "iso": "2026-03-01"
+      "iso": "2026-03-01",
+      "video": "media/frontier-clip.mp4",
+      "poster": "media/frontier-clip.jpg",
+      "videoAi": true
     },
     {
       "date": "18 ก.ค. 2568",
