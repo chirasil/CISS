@@ -177,6 +177,8 @@
   .n-img img{width:100%;height:100%;object-fit:cover}
   .n-more{font-family:var(--f-mono);display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--leaf-d);transition:.2s}
   .n-more:hover{gap:10px}
+  .n-ms{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+  .n-ms span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;padding:2px 8px;border-radius:3px;border:1px solid currentColor;opacity:.75}
   .news-empty{grid-column:1/-1;text-align:center;color:var(--ink2);font-size:14px;padding:44px;border:1px dashed var(--rule);border-radius:4px}
 
   /* ---------- ecosystem + missions (dark) ---------- */
@@ -857,6 +859,10 @@
       <input type="text" id="nw-date" placeholder="15 มิ.ย. 2569">
     </div>
     <div class="link-row">
+      <label data-th="ภารกิจที่เกี่ยวข้อง" data-en="Mission">ภารกิจที่เกี่ยวข้อง</label>
+      <select id="nw-mission"><option value="">ศูนย์ฯ โดยรวม / Center-wide</option><option value="space">01 อวกาศบางมด / Thonburi Space</option><option value="pq">02 คุณวุฒิวิชาชีพ / Qualification</option><option value="digital">03 ดิจิทัล / Digital</option></select>
+    </div>
+    <div class="link-row">
       <label data-th="ป้ายหมวด (เช่น กิจกรรม / รับสมัคร)" data-en="Tag (e.g. Event / Enrollment)">ป้ายหมวด</label>
       <input type="text" id="nw-tag" placeholder="ข่าว / กิจกรรม / อบรม">
     </div>
@@ -1204,13 +1210,9 @@
   });
 
   const NEWS_KEY='ciss-news';
-  const NEWS_DEFAULT=[
-    {date:"6 มิ.ย. 2569", dateEn:"6 Jun 2026", tag:"ทุนวิจัย", tagEn:"Grant", titleTh:"ได้รับทุน บพข. พัฒนา HAPS ต้นแบบสัญชาติไทย", titleEn:"PMUC funds a Thai-built HAPS prototype", bodyTh:"CISS ร่วมกับภาควิชาวิศวกรรมเครื่องกล ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ. และบริษัท เอแอลที เทเลคอม จำกัด (มหาชน)", bodyEn:"CISS with KMUTT's Mechanical and Electronic and Telecommunication Engineering departments and ALT Telecom.", link:"https://chirasil.github.io/thonburi-space/"},
-    {date:"12 พ.ค. 2569", dateEn:"12 May 2026", tag:"เปิดตัว", tagEn:"Launch", titleTh:"นำเสนออวกาศบางมดต่อผู้บริหาร มจธ.", titleEn:"Thonburi Space presented to KMUTT leadership", bodyTh:"เปิดตัวทีมงานด้านอวกาศเพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและเศรษฐกิจอวกาศ", bodyEn:"The space team was introduced to drive small-satellite research and the space economy.", link:"https://chirasil.github.io/thonburi-space/"},
-    {date:"1 มี.ค. 2569", dateEn:"1 Mar 2026", tag:"ข่าวประชาสัมพันธ์", tagEn:"Announcement", titleTh:"โครงการยกระดับศักยภาพการแข่งขันทางเทคโนโลยีและนวัตกรรมขั้นแนวหน้า (Frontier Technology) ประจำปีงบประมาณ พ.ศ. 2569", titleEn:"Frontier Technology for Competitiveness by Regional Science Park Consortium 2026", bodyTh:"เพื่อบรรลุภารกิจด้าน Professional Qualification, Digital Technology and Communications CISS ได้รับความไว้วางใจให้จัดอบรมหลักสูตรภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค ปี 2569 จำนวน 125 คน 5 หลักสูตรคือ 1. AI for CEO, 2. AI for Finance, 3.AI for Robotics, 4. AI for Data Analytic และ 5. AI for Coding สำหรับ SME ในภูมิภาคภาคกลาง", bodyEn:"To serve the Professional Qualification and Digital Technology and Communications missions, CISS, funded by the Regional Science Park Consortium in 2026, runs five workshops for 125 participants: 1. AI for CEO, 2. AI for Finance, 3. AI for Robotics, 4. AI for Data Analytic and 5. AI for Coding, for SMEs in Thailand's central region."},
-    {date:"18 ก.ค. 2568", dateEn:"18 Jul 2025", tag:"Workshop", tagEn:"Workshop", titleTh:"เปิดประตูสู่อุตสาหกรรมอวกาศ", titleEn:"Opening the door to the space industry", bodyTh:"เวิร์กช็อปพบผู้เชี่ยวชาญและเครือข่ายภาครัฐ–เอกชน ที่ มจธ. บางมด", bodyEn:"A workshop with experts and the public–private network at KMUTT Bang Mod.", link:"https://chirasil.github.io/thonburi-space/"}
-  ];
+  const NEWS_DEFAULT=[{"date":"6 มิ.ย. 2569","dateEn":"6 Jun 2026","tag":"ทุนวิจัย","tagEn":"Grant","titleTh":"ได้รับทุน บพข. พัฒนา HAPS ต้นแบบสัญชาติไทย","titleEn":"PMUC funds a Thai-built HAPS prototype","bodyTh":"CISS ร่วมกับภาควิชาวิศวกรรมเครื่องกล ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ. และบริษัท เอแอลที เทเลคอม จำกัด (มหาชน)","bodyEn":"CISS with KMUTT's Mechanical and Electronic and Telecommunication Engineering departments and ALT Telecom.","link":"https://chirasil.github.io/thonburi-space/","missions":["space"],"iso":"2026-06-06"},{"date":"12 พ.ค. 2569","dateEn":"12 May 2026","tag":"เปิดตัว","tagEn":"Launch","titleTh":"นำเสนออวกาศบางมดต่อผู้บริหาร มจธ.","titleEn":"Thonburi Space presented to KMUTT leadership","bodyTh":"เปิดตัวทีมงานด้านอวกาศเพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและเศรษฐกิจอวกาศ","bodyEn":"The space team was introduced to drive small-satellite research and the space economy.","link":"https://chirasil.github.io/thonburi-space/","missions":["space"],"iso":"2026-05-12"},{"date":"1 มี.ค. 2569","dateEn":"1 Mar 2026","tag":"ข่าวประชาสัมพันธ์","tagEn":"Announcement","titleTh":"โครงการยกระดับศักยภาพการแข่งขันทางเทคโนโลยีและนวัตกรรมขั้นแนวหน้า (Frontier Technology) ประจำปีงบประมาณ พ.ศ. 2569","titleEn":"Frontier Technology for Competitiveness by Regional Science Park Consortium 2026","bodyTh":"เพื่อบรรลุภารกิจด้าน Professional Qualification, Digital Technology and Communications CISS ได้รับความไว้วางใจให้จัดอบรมหลักสูตรภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค ปี 2569 จำนวน 125 คน 5 หลักสูตรคือ 1. AI for CEO, 2. AI for Finance, 3.AI for Robotics, 4. AI for Data Analytic และ 5. AI for Coding สำหรับ SME ในภูมิภาคภาคกลาง","bodyEn":"To serve the Professional Qualification and Digital Technology and Communications missions, CISS, funded by the Regional Science Park Consortium in 2026, runs five workshops for 125 participants: 1. AI for CEO, 2. AI for Finance, 3. AI for Robotics, 4. AI for Data Analytic and 5. AI for Coding, for SMEs in Thailand's central region.","missions":["pq","digital"],"iso":"2026-03-01"},{"date":"18 ก.ค. 2568","dateEn":"18 Jul 2025","tag":"Workshop","tagEn":"Workshop","titleTh":"เปิดประตูสู่อุตสาหกรรมอวกาศ","titleEn":"Opening the door to the space industry","bodyTh":"เวิร์กช็อปพบผู้เชี่ยวชาญและเครือข่ายภาครัฐ–เอกชน ที่ มจธ. บางมด","bodyEn":"A workshop with experts and the public–private network at KMUTT Bang Mod.","link":"https://chirasil.github.io/thonburi-space/","missions":["space"],"iso":"2025-07-18"}];
   let NEWS=[];
+  const NEWS_MS={space:{th:'ภารกิจ 01 · อวกาศบางมด',en:'Mission 01 · Thonburi Space'},pq:{th:'ภารกิจ 02 · คุณวุฒิวิชาชีพ',en:'Mission 02 · Qualification'},digital:{th:'ภารกิจ 03 · ดิจิทัลและการสื่อสาร',en:'Mission 03 · Digital & Comms'}};
 
   function saveNews(){ try{ window.storage.set(NEWS_KEY, JSON.stringify(NEWS), false); }catch(e){} }
 
@@ -1228,6 +1230,7 @@
         (n.image?'<div class="n-img"><img src="'+esc(n.image)+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>':'')+
         (n.tag?'<span class="n-tag">'+esc(en&&n.tagEn?n.tagEn:n.tag)+'</span>':'')+
         (n.date?'<div class="n-date">📅 '+esc(en&&n.dateEn?n.dateEn:n.date)+'</div>':'')+
+        ((n.missions||[]).length?'<div class="n-ms">'+n.missions.filter(m=>NEWS_MS[m]).map(m=>'<span>'+esc(en?NEWS_MS[m].en:NEWS_MS[m].th)+'</span>').join('')+'</div>':'')+
         '<h3>'+esc(title||'')+'</h3>'+
         (body?'<p>'+esc(body)+'</p>':'')+
         (n.link?'<a class="n-more" href="'+esc(n.link)+'" target="_blank" rel="noopener">'+(en?'Read more':'อ่านต่อ')+' →</a>':'')+
@@ -1262,7 +1265,8 @@
       bodyTh:document.getElementById('nw-body-th').value.trim(),
       bodyEn:document.getElementById('nw-body-en').value.trim(),
       image:document.getElementById('nw-img').value.trim(),
-      link:document.getElementById('nw-link').value.trim()
+      link:document.getElementById('nw-link').value.trim(),
+      missions:(v=>v?[v]:[])(document.getElementById('nw-mission').value)
     };
     if(!item.titleTh && !item.titleEn){ showToast(curLang()==='en'?'Please enter a title':'กรุณาใส่หัวข้อ'); return; }
     NEWS.unshift(item); saveNews(); renderNews(); renderNewsEditor();
