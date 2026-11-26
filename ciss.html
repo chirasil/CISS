@@ -66,7 +66,18 @@
   .hero .lead{font-size:clamp(15px,1.5vw,17.5px);color:var(--soft);max-width:36em;margin-bottom:28px}
   .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
   .hero-art{position:relative}
-  .hero-art svg{width:100%;height:auto;display:block}
+  .hero-art{position:relative;aspect-ratio:1/.9}
+  .hp{position:absolute;margin:0;overflow:hidden;border:1px solid var(--line2);background:var(--deep2);box-shadow:0 22px 46px rgba(0,0,0,.5)}
+  .hp img{width:100%;height:100%;object-fit:cover}
+  .hp figcaption{position:absolute;left:10px;bottom:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(5,17,14,.78);border:1px solid var(--line2);padding:4px 9px;border-radius:999px}
+  .hp-main{left:10%;top:0;width:78%;height:68%;border-radius:6px 110px 6px 6px}
+  .hp-main figcaption{color:var(--cyan);bottom:auto;top:12px;left:12px}
+  .hp-a{left:0;bottom:0;width:47%;aspect-ratio:4/3;border-radius:6px 6px 6px 40px}
+  .hp-a figcaption{color:var(--violet)}
+  .hp-b{right:0;bottom:7%;width:50%;aspect-ratio:4/3;border-radius:6px 40px 6px 6px}
+  .hp-b figcaption{color:var(--amber)}
+  .hp-seal{position:absolute;right:4%;top:6%;width:19%;filter:drop-shadow(0 10px 22px rgba(0,0,0,.55))}
+  .hp-seal svg{width:100%;height:auto;display:block}
   .hero-photo{position:absolute;left:0;bottom:4%;width:38%;aspect-ratio:4/3;border-radius:6px 28px 6px 6px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 18px 40px rgba(0,0,0,.45);background:var(--deep2)}
   .hero-photo img{width:100%;height:100%;object-fit:cover}
   .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
@@ -109,8 +120,10 @@
   .tcard{--c:var(--leaf);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
   .tcard:hover{border-color:var(--c);transform:translateY(-4px)}
   .tcard.t-ai{--c:var(--violet)} .tcard.t-fo{--c:var(--cyan)} .tcard.t-leo{--c:var(--amber)}
-  .tcard figure{background:radial-gradient(ellipse at 50% 60%,rgba(255,255,255,.06),transparent 70%);border-bottom:1px solid var(--line)}
-  .tcard figure svg{width:100%;height:auto;display:block}
+  .tcard figure{position:relative;margin:0;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:var(--deep2)}
+  .tcard figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .tcard:hover figure img{transform:scale(1.05)}
+  .tcard figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 8px;font-size:11px;color:#dfe9e4;background:linear-gradient(transparent,rgba(5,17,14,.9))}
   .tbody{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
   .tkick{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
   .tcard h3{font-size:20px;color:#fff}
@@ -123,10 +136,12 @@
   .flow{margin-top:44px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.02);padding:clamp(18px,3vw,30px)}
   .flow h3{font-size:clamp(18px,2.2vw,23px);color:#fff;margin-bottom:6px}
   .flow>p{color:var(--soft);font-size:14.5px;max-width:48em}
-  .flow svg{width:100%;height:auto;display:block;margin:18px 0 8px}
-  .legend{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:lg}
-  .legend li{counter-increment:lg;font-size:13px;color:var(--soft);line-height:1.55;padding-top:12px;border-top:1px solid var(--line)}
-  .legend li::before{content:counter(lg);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid var(--amber);color:var(--amber);font-family:var(--f-mono);font-size:11.5px;margin-bottom:6px}
+  .legend{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;counter-reset:lg;margin-top:22px}
+  .legend li{counter-increment:lg;position:relative;font-size:13px;color:var(--soft);line-height:1.55}
+  .legend li::before{content:counter(lg);position:absolute;left:8px;top:8px;z-index:2;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--amber);color:#2a1a02;font-family:var(--f-mono);font-size:12.5px;font-weight:600;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+  .legend li:not(:last-child)::after{content:"";position:absolute;right:-13px;top:calc((100% - 0px) * 0 + 12%);width:10px;height:10px;border-top:2px solid var(--amber);border-right:2px solid var(--amber);transform:rotate(45deg);z-index:2}
+  .legend .ph{display:block;aspect-ratio:4/3;border-radius:6px;overflow:hidden;border:1px solid var(--line2);margin-bottom:10px;background:var(--deep2)}
+  .legend .ph img{width:100%;height:100%;object-fit:cover}
   .legend b{display:block;font-family:var(--f-head);font-weight:600;color:#fff;font-size:14px}
   .dash{stroke-dasharray:5 9;animation:dash 2.4s linear infinite}
   .pulse{stroke-dasharray:3 46;animation:dash2 2.8s linear infinite}
@@ -234,8 +249,9 @@
     .about-grid,.contact-grid{grid-template-columns:1fr}
     .tech-grid{grid-template-columns:1fr}
     .tcard{flex-direction:row}
-    .tcard figure{width:40%;border-bottom:0;border-right:1px solid var(--line);display:grid;place-items:center}
+    .tcard figure{width:40%;aspect-ratio:auto;min-height:220px;border-bottom:0;border-right:1px solid var(--line)}
     .legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .legend li::after{display:none}
     .steps{grid-template-columns:1fr}
     .pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .pf-feature{grid-template-columns:1fr}
@@ -253,8 +269,11 @@
     .stat:nth-child(n+3){border-top:1px solid var(--line)}
     .cards{grid-template-columns:1fr}
     .tcard{flex-direction:column}
-    .tcard figure{width:100%;border-right:0;border-bottom:1px solid var(--line)}
+    .tcard figure{width:100%;aspect-ratio:16/10;min-height:0;border-right:0;border-bottom:1px solid var(--line)}
     .legend{grid-template-columns:1fr}
+    .legend li{display:grid;grid-template-columns:118px 1fr;column-gap:14px;align-content:start}
+    .legend .ph{grid-row:span 2;margin-bottom:0}
+    .legend li::after{display:none}
     .criteria{grid-template-columns:1fr;gap:16px}
     .ct{justify-content:flex-start}
     .divider{width:100%;height:1px}
@@ -340,67 +359,11 @@
       </div>
     </div>
 
-    <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="hg" cx="50%" cy="46%" r="55%"><stop offset="0" stop-color="#17524a" stop-opacity=".9"/><stop offset="1" stop-color="#05110e" stop-opacity="0"/></radialGradient>
-          <linearGradient id="hEarth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#05110e"/></linearGradient>
-          <linearGradient id="hPanel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7f5"/><stop offset="1" stop-color="#9fb4ab"/></linearGradient>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <rect width="560" height="500" fill="url(#hg)"/>
-        <!-- LEO orbit and satellites -->
-        <path d="M10 138 Q280 6 550 138" fill="none" stroke="#42d3e8" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="2 7"/>
-        <use href="#sat" x="112" y="96" width="34" height="19" transform="rotate(-18 129 105)"/>
-        <use href="#sat" x="262" y="62" width="38" height="21"/>
-        <use href="#sat" x="414" y="96" width="34" height="19" transform="rotate(18 431 105)"/>
-        <text x="280" y="44" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#42d3e8">LEO SATELLITES</text>
-        <!-- beams to the user terminal -->
-        <g fill="none" stroke-linecap="round" filter="url(#glow)">
-          <path class="dash" d="M281 84 L421 300" stroke="#f0b445" stroke-width="2"/>
-          <path class="dash" d="M431 116 L424 298" stroke="#f0b445" stroke-width="1.4" opacity=".6"/>
-        </g>
-        <!-- ground -->
-        <path d="M-20 430 Q280 372 580 430 L580 520 L-20 520Z" fill="url(#hEarth)" opacity=".9"/>
-        <path d="M-20 430 Q280 372 580 430" fill="none" stroke="#3ddc97" stroke-opacity=".55" stroke-width="1.2"/>
-        <!-- house with flat-panel user terminal -->
-        <g>
-          <path d="M360 372 L424 328 L488 372Z" fill="#0c241d" stroke="#a0d6be" stroke-opacity=".5" stroke-width="1.4"/>
-          <rect x="372" y="372" width="104" height="52" fill="#081a15" stroke="#a0d6be" stroke-opacity=".5" stroke-width="1.4"/>
-          <rect x="388" y="386" width="22" height="22" fill="#f0b445" opacity=".85"/><rect x="438" y="386" width="22" height="38" fill="#12805a"/>
-          <path d="M452 349 L452 332" stroke="#eaf2ee" stroke-width="3" stroke-linecap="round"/>
-          <g transform="rotate(-28 440 314)">
-            <rect x="404" y="302" width="72" height="24" rx="4" fill="url(#hPanel)" stroke="#fff" stroke-width="1"/>
-            <g fill="#12805a"><circle cx="416" cy="310" r="1.6"/><circle cx="428" cy="310" r="1.6"/><circle cx="440" cy="310" r="1.6"/><circle cx="452" cy="310" r="1.6"/><circle cx="464" cy="310" r="1.6"/><circle cx="416" cy="318" r="1.6"/><circle cx="428" cy="318" r="1.6"/><circle cx="440" cy="318" r="1.6"/><circle cx="452" cy="318" r="1.6"/><circle cx="464" cy="318" r="1.6"/></g>
-          </g>
-          <text x="424" y="452" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.6" fill="#f0b445">USER TERMINAL</text>
-        </g>
-        <!-- fibre strands -->
-        <g fill="none" stroke-linecap="round">
-          <path id="f1" d="M-10 404 C120 404 150 300 250 300 S330 398 372 398" stroke="#42d3e8" stroke-width="3" opacity=".9" filter="url(#glow)"/>
-          <path id="f2" d="M-10 416 C130 416 160 316 250 316 S330 408 372 408" stroke="#3ddc97" stroke-width="3" opacity=".85"/>
-          <path id="f3" d="M-10 428 C140 428 170 332 250 332 S330 418 372 418" stroke="#7a9cff" stroke-width="3" opacity=".8"/>
-          <path class="pulse" d="M-10 404 C120 404 150 300 250 300 S330 398 372 398" stroke="#fff" stroke-width="3.4"/>
-          <path class="pulse" d="M-10 428 C140 428 170 332 250 332 S330 418 372 418" stroke="#fff" stroke-width="3.4" style="animation-delay:-1.3s"/>
-        </g>
-        <text x="60" y="462" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.6" fill="#42d3e8">FIBER OPTICS</text>
-        <!-- AI chip -->
-        <g transform="translate(70 196)">
-          <g stroke="#7a9cff" stroke-width="2" stroke-linecap="round"><path d="M18 -8v-12M42 -8v-12M66 -8v-12M18 92v12M42 92v12M66 92v12M-8 18h-12M-8 42h-12M-8 66h-12M92 18h12M92 42h12M92 66h12"/></g>
-          <rect x="-8" y="-8" width="100" height="100" rx="12" fill="#0c1a35" stroke="#7a9cff" stroke-width="1.6"/>
-          <g stroke="#7a9cff" stroke-opacity=".7" stroke-width="1.1"><path d="M14 22L42 12M14 22L42 42M14 62L42 42M14 62L42 72M42 12L70 30M42 42L70 30M42 42L70 56M42 72L70 56"/></g>
-          <g fill="#eaf2ee"><circle cx="14" cy="22" r="4.500"/><circle cx="14" cy="62" r="4.500"/><circle class="blink" cx="42" cy="12" r="4.500"/><circle cx="42" cy="42" r="5.500" fill="#f0b445"/><circle class="blink" cx="42" cy="72" r="4.500" style="animation-delay:-1.2s"/><circle cx="70" cy="30" r="4.500"/><circle cx="70" cy="56" r="4.500"/></g>
-          <text x="42" y="124" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#7a9cff">AI</text>
-        </g>
-        <path class="dash" d="M174 258 C205 258 210 300 250 300" fill="none" stroke="#7a9cff" stroke-width="1.500" opacity=".8"/>
-        <!-- certification seal -->
-        <g transform="translate(280 214)">
-          <circle r="58" fill="#05110e" stroke="#f0b445" stroke-width="1.4"/>
-          <circle r="66" fill="none" stroke="#f0b445" stroke-opacity=".35" stroke-dasharray="2 6"/>
-          <path d="M0 -34 L26 -22 L26 4 C26 22 14 34 0 40 C-14 34 -26 22 -26 4 L-26 -22Z" fill="#f0b445"/>
-          <path d="M-11 3 l8 9 l15 -19" fill="none" stroke="#2a1a02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-      </svg>
+    <div class="hero-art">
+      <figure class="hp hp-main"><img src="images/4.jpg" alt="" onerror="this.parentNode.style.display='none'"><figcaption>Fiber Optics</figcaption></figure>
+      <figure class="hp hp-a"><img src="images/ai-compute.jpg" alt="" onerror="this.parentNode.style.display='none'"><figcaption>AI</figcaption></figure>
+      <figure class="hp hp-b"><img src="images/leo-terminal.jpg" alt="" onerror="this.parentNode.style.display='none'"><figcaption>LEO User Terminal</figcaption></figure>
+      <div class="hp-seal" aria-hidden="true"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="46" fill="#05110e" stroke="#f0b445" stroke-width="1.6"/><circle cx="48" cy="48" r="40" fill="none" stroke="#f0b445" stroke-opacity=".4" stroke-dasharray="2 5"/><path d="M48 20 L70 30 L70 52 C70 66 60 76 48 80 C36 76 26 66 26 52 L26 30Z" fill="#f0b445"/><path d="M38 50 l8 9 l14 -18" fill="none" stroke="#2a1a02" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
   </div>
   <div class="wrap">
@@ -449,20 +412,7 @@
 
     <div class="tech-grid">
       <article class="tcard t-ai">
-        <figure aria-hidden="true">
-          <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#7a9cff" stroke-opacity=".55" stroke-width="1.2">
-              <path d="M54 50L130 34M54 50L130 78M54 50L130 122M54 96L130 34M54 96L130 78M54 96L130 122M54 96L130 158M54 142L130 78M54 142L130 122M54 142L130 158"/>
-              <path d="M130 34L206 58M130 78L206 58M130 78L206 104M130 122L206 104M130 122L206 142M130 158L206 142M130 34L206 104M130 158L206 104"/>
-              <path d="M206 58L270 96M206 104L270 96M206 142L270 96"/>
-            </g>
-            <g class="dash" fill="none" stroke="#fff" stroke-width="1.6"><path d="M54 96L130 78L206 104L270 96"/></g>
-            <g fill="#0c1a35" stroke="#7a9cff" stroke-width="1.6"><circle cx="54" cy="50" r="8"/><circle cx="54" cy="96" r="8"/><circle cx="54" cy="142" r="8"/><circle cx="130" cy="34" r="8"/><circle cx="130" cy="78" r="8"/><circle cx="130" cy="122" r="8"/><circle cx="130" cy="158" r="8"/><circle cx="206" cy="58" r="8"/><circle cx="206" cy="104" r="8"/><circle cx="206" cy="142" r="8"/></g>
-            <g fill="#7a9cff"><circle class="blink" cx="130" cy="78" r="3.500"/><circle class="blink" cx="206" cy="104" r="3.500" style="animation-delay:-.9s"/><circle cx="54" cy="96" r="3.500"/></g>
-            <circle cx="270" cy="96" r="15" fill="#f0b445"/><path d="M263 96l5 6 9-11" fill="none" stroke="#2a1a02" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <g font-family="IBM Plex Mono,monospace" font-size="9.500" fill="#7f968c" letter-spacing="1"><text x="54" y="178" text-anchor="middle">DATA</text><text x="168" y="16" text-anchor="middle">MODEL</text><text x="270" y="128" text-anchor="middle">DECISION</text></g>
-          </svg>
-        </figure>
+        <figure><img src="images/ai-compute.jpg" alt="" loading="lazy"><figcaption data-th="ซูเปอร์คอมพิวเตอร์ Pleiades · NASA Ames (ภาพประกอบ)" data-en="Pleiades supercomputer · NASA Ames (illustrative)">ซูเปอร์คอมพิวเตอร์ Pleiades · NASA Ames (ภาพประกอบ)</figcaption></figure>
         <div class="tbody">
           <span class="tkick">01 · Artificial Intelligence</span>
           <h3 data-th="ปัญญาประดิษฐ์ (AI)" data-en="Artificial Intelligence (AI)">ปัญญาประดิษฐ์ (AI)</h3>
@@ -476,34 +426,7 @@
       </article>
 
       <article class="tcard t-fo">
-        <figure aria-hidden="true">
-          <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
-            <defs><radialGradient id="core" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#42d3e8"/><stop offset="1" stop-color="#42d3e8" stop-opacity="0"/></radialGradient></defs>
-            <!-- cable cross-section -->
-            <g transform="translate(74 96)">
-              <circle r="52" fill="#0c241d" stroke="#a0d6be" stroke-opacity=".45" stroke-width="1.4"/>
-              <circle r="38" fill="#081a15" stroke="#42d3e8" stroke-opacity=".6" stroke-width="1.2"/>
-              <circle r="22" fill="#0b4f5c"/>
-              <circle class="blink" r="13" fill="url(#core)"/>
-              <circle r="4" fill="#fff"/>
-            </g>
-            <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#7f968c" letter-spacing=".8"><text x="12" y="176">CORE · CLADDING · COATING</text></g>
-            <!-- strands fanning out -->
-            <g fill="none" stroke-linecap="round" stroke-width="2.600">
-              <path d="M126 96 C180 96 200 34 300 30" stroke="#42d3e8"/>
-              <path d="M126 96 C190 96 210 66 300 64" stroke="#3ddc97"/>
-              <path d="M126 96 L300 96" stroke="#f0b445"/>
-              <path d="M126 96 C190 96 210 126 300 128" stroke="#7a9cff"/>
-              <path d="M126 96 C180 96 200 158 300 162" stroke="#eaf2ee"/>
-            </g>
-            <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
-              <path class="pulse" d="M126 96 C180 96 200 34 300 30"/>
-              <path class="pulse" d="M126 96 L300 96" style="animation-delay:-.9s"/>
-              <path class="pulse" d="M126 96 C180 96 200 158 300 162" style="animation-delay:-1.800s"/>
-            </g>
-            <g fill="#fff"><circle cx="300" cy="30" r="3.500"/><circle cx="300" cy="64" r="3.500"/><circle cx="300" cy="96" r="3.500"/><circle cx="300" cy="128" r="3.500"/><circle cx="300" cy="162" r="3.500"/></g>
-          </svg>
-        </figure>
+        <figure><img src="images/11.jpg" alt="" loading="lazy"><figcaption data-th="ผู้เข้ารับการทดสอบงานใยแก้วนำแสง · ภาพของศูนย์ CISS" data-en="A candidate at fibre-optic practical testing · CISS photo">ผู้เข้ารับการทดสอบงานใยแก้วนำแสง · ภาพของศูนย์ CISS</figcaption></figure>
         <div class="tbody">
           <span class="tkick">02 · Fiber Optics</span>
           <h3 data-th="ใยแก้วนำแสง" data-en="Fiber Optics">ใยแก้วนำแสง</h3>
@@ -517,27 +440,7 @@
       </article>
 
       <article class="tcard t-leo">
-        <figure aria-hidden="true">
-          <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="pnl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7f5"/><stop offset="1" stop-color="#9fb4ab"/></linearGradient></defs>
-            <path d="M-10 46 Q160 -18 330 46" fill="none" stroke="#42d3e8" stroke-opacity=".5" stroke-dasharray="2 7"/>
-            <use href="#sat" x="52" y="24" width="30" height="17" transform="rotate(-16 67 32)"/>
-            <use href="#sat" x="146" y="6" width="34" height="19"/>
-            <use href="#sat" x="240" y="24" width="30" height="17" transform="rotate(16 255 32)"/>
-            <!-- steerable beam -->
-            <path d="M160 118 L124 24 L204 24Z" fill="#f0b445" opacity=".12"/>
-            <g fill="none" stroke="#f0b445" stroke-linecap="round"><path class="dash" d="M160 116 L163 28" stroke-width="2"/><path d="M160 116 L70 38" stroke-width="1" opacity=".45" stroke-dasharray="3 6"/><path d="M160 116 L252 38" stroke-width="1" opacity=".45" stroke-dasharray="3 6"/></g>
-            <!-- flat panel antenna on mast -->
-            <path d="M160 132 L160 166" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-            <path d="M136 172 L184 172" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-            <g transform="rotate(-8 160 122)">
-              <rect x="106" y="108" width="108" height="26" rx="5" fill="url(#pnl)" stroke="#fff" stroke-width="1"/>
-              <g fill="#12805a"><circle cx="120" cy="116" r="2"/><circle cx="134" cy="116" r="2"/><circle cx="148" cy="116" r="2"/><circle cx="162" cy="116" r="2"/><circle cx="176" cy="116" r="2"/><circle cx="190" cy="116" r="2"/><circle cx="204" cy="116" r="2"/><circle cx="120" cy="126" r="2"/><circle cx="134" cy="126" r="2"/><circle cx="148" cy="126" r="2"/><circle cx="162" cy="126" r="2"/><circle cx="176" cy="126" r="2"/><circle cx="190" cy="126" r="2"/><circle cx="204" cy="126" r="2"/></g>
-            </g>
-            <path d="M-10 182 Q160 160 330 182 L330 200 L-10 200Z" fill="#12805a" opacity=".5"/>
-            <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#7f968c" letter-spacing=".8"><text x="262" y="150" text-anchor="middle">PHASED ARRAY</text><text x="46" y="150" text-anchor="middle">CLEAR SKY VIEW</text></g>
-          </svg>
-        </figure>
+        <figure><img src="images/leo-terminal.jpg" alt="" loading="lazy"><figcaption data-th="จานผู้ใช้ปลายทางแบบแผ่นเรียบ (ภาพประกอบ) · Ka23 13, CC BY 4.0" data-en="Flat-panel user terminals (illustrative) · Ka23 13, CC BY 4.0">จานผู้ใช้ปลายทางแบบแผ่นเรียบ (ภาพประกอบ) · Ka23 13, CC BY 4.0</figcaption></figure>
         <div class="tbody">
           <span class="tkick">03 · LEO User Terminal</span>
           <h3 data-th="จานรับสัญญาณดาวเทียม LEO สำหรับผู้ใช้ปลายทาง" data-en="LEO Satellite Antenna for End Users">จานรับสัญญาณดาวเทียม LEO สำหรับผู้ใช้ปลายทาง</h3>
@@ -554,66 +457,12 @@
     <div class="flow">
       <h3 data-th="จากศูนย์ข้อมูลถึงมือผู้ใช้: ทุกช่วงต้องมีมืออาชีพ" data-en="From data centre to end user: every link needs a professional">จากศูนย์ข้อมูลถึงมือผู้ใช้: ทุกช่วงต้องมีมืออาชีพ</h3>
       <p data-th="ภาพรวมของเส้นทางข้อมูลที่เทคโนโลยีทั้งสามทำงานร่วมกัน" data-en="How the three technologies work together along the path of the data.">ภาพรวมของเส้นทางข้อมูลที่เทคโนโลยีทั้งสามทำงานร่วมกัน</p>
-      <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI data centre, fibre backbone, FTTx to buildings, LEO gateway and satellite, user terminal">
-        <defs><linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12805a" stop-opacity=".55"/><stop offset="1" stop-color="#05110e" stop-opacity="0"/></linearGradient></defs>
-        <path d="M0 236 H1000 V300 H0Z" fill="url(#gnd)"/><path d="M0 236 H1000" stroke="#3ddc97" stroke-opacity=".5"/>
-        <!-- orbit -->
-        <path d="M500 60 Q730 -6 990 70" fill="none" stroke="#42d3e8" stroke-opacity=".5" stroke-dasharray="2 8"/>
-        <use href="#sat" x="700" y="18" width="52" height="29"/>
-        <use href="#sat" x="880" y="34" width="40" height="22" transform="rotate(14 900 45)" opacity=".7"/>
-        <!-- 1 data centre with AI -->
-        <g transform="translate(40 150)">
-          <rect width="96" height="86" rx="4" fill="#0c1a35" stroke="#7a9cff" stroke-width="1.6"/>
-          <g fill="#7a9cff"><rect x="12" y="12" width="72" height="8" rx="2"/><rect x="12" y="28" width="72" height="8" rx="2" opacity=".7"/><rect x="12" y="44" width="72" height="8" rx="2" opacity=".5"/></g>
-          <g fill="#fff"><circle class="blink" cx="20" cy="16" r="2"/><circle cx="20" cy="32" r="2"/><circle class="blink" cx="20" cy="48" r="2" style="animation-delay:-1s"/></g>
-          <text x="48" y="74" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="15" font-weight="600" fill="#7a9cff" letter-spacing="2">AI</text>
-        </g>
-        <!-- 2 fibre backbone -->
-        <g fill="none" stroke-linecap="round">
-          <path d="M136 206 H420" stroke="#42d3e8" stroke-width="5"/>
-          <path d="M136 216 H420" stroke="#3ddc97" stroke-width="5" opacity=".8"/>
-          <path class="pulse" d="M136 206 H420" stroke="#fff" stroke-width="5"/>
-          <path class="pulse" d="M136 216 H420" stroke="#fff" stroke-width="5" style="animation-delay:-1.4s"/>
-        </g>
-        <!-- cabinet -->
-        <rect x="412" y="176" width="44" height="60" rx="4" fill="#081a15" stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.6"/>
-        <g fill="#42d3e8"><circle cx="426" cy="192" r="3"/><circle cx="442" cy="192" r="3"/><circle cx="426" cy="206" r="3"/><circle cx="442" cy="206" r="3"/></g>
-        <!-- 3 FTTx to buildings -->
-        <g fill="none" stroke="#42d3e8" stroke-width="2.600" stroke-linecap="round"><path d="M456 210 C500 210 500 196 530 196"/><path d="M456 218 C520 218 540 222 590 222"/></g>
-        <g stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.600">
-          <path d="M522 182 L548 162 L574 182Z" fill="#0c241d"/><rect x="528" y="182" width="40" height="54" fill="#081a15"/>
-          <rect x="590" y="150" width="46" height="86" fill="#081a15"/>
-        </g>
-        <g fill="#f0b445" opacity=".85"><rect x="536" y="194" width="10" height="10"/><rect x="598" y="160" width="9" height="9"/><rect x="618" y="160" width="9" height="9"/><rect x="598" y="180" width="9" height="9"/><rect x="618" y="180" width="9" height="9"/><rect x="598" y="200" width="9" height="9"/></g>
-        <!-- 4 gateway dish and LEO -->
-        <path d="M456 200 C470 150 500 250 668 232" fill="none" stroke="#3ddc97" stroke-width="2" stroke-dasharray="4 6" opacity=".7"/>
-        <g transform="translate(690 196)">
-          <path d="M0 40 L0 12" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-          <path d="M-16 40 H16" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-          <path d="M-26 -6 A30 30 0 0 0 26 14" fill="#eaf2ee" stroke="#fff" stroke-width="1" transform="rotate(-30)"/>
-        </g>
-        <path class="dash" d="M700 178 L724 52" fill="none" stroke="#f0b445" stroke-width="2.400" stroke-linecap="round"/>
-        <!-- 5 user terminal at remote house -->
-        <path class="dash" d="M740 50 L862 172" fill="none" stroke="#f0b445" stroke-width="2.400" stroke-linecap="round"/>
-        <g stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.600"><path d="M836 200 L880 170 L924 200Z" fill="#0c241d"/><rect x="846" y="200" width="68" height="36" fill="#081a15"/></g>
-        <rect x="858" y="210" width="12" height="12" fill="#f0b445" opacity=".85"/>
-        <g transform="rotate(-36 866 176)"><rect x="844" y="168" width="44" height="13" rx="3" fill="#eaf2ee" stroke="#fff"/></g>
-        <g fill="#12805a" opacity=".75"><path d="M950 236 l10 -34 l10 34Z"/><path d="M968 236 l8 -24 l8 24Z"/></g>
-        <!-- numbered markers -->
-        <g font-family="IBM Plex Mono,monospace" font-size="20" font-weight="600" text-anchor="middle">
-          <g><circle cx="88" cy="118" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="88" y="125" fill="#f0b445">1</text></g>
-          <g><circle cx="278" cy="170" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="278" y="177" fill="#f0b445">2</text></g>
-          <g><circle cx="580" cy="118" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="580" y="125" fill="#f0b445">3</text></g>
-          <g><circle cx="664" cy="110" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="664" y="117" fill="#f0b445">4</text></g>
-          <g><circle cx="900" cy="136" r="19" fill="#05110e" stroke="#f0b445" stroke-width="1.800"/><text x="900" y="143" fill="#f0b445">5</text></g>
-        </g>
-      </svg>
       <ol class="legend">
-        <li><b data-th="ศูนย์ข้อมูลและ AI" data-en="Data centre and AI">ศูนย์ข้อมูลและ AI</b><span data-th="ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน" data-en="Processes data and serves applications">ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน</span></li>
-        <li><b data-th="โครงข่ายใยแก้วหลัก" data-en="Fibre backbone">โครงข่ายใยแก้วหลัก</b><span data-th="ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล" data-en="Carries high-speed data over long distances">ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล</span></li>
-        <li><b data-th="FTTx ถึงบ้านและอาคาร" data-en="FTTx to homes and buildings">FTTx ถึงบ้านและอาคาร</b><span data-th="งานของช่างโครงข่าย FTTx ที่ศูนย์ฯ รับรอง" data-en="The work of the FTTx technicians CISS certifies">งานของช่างโครงข่าย FTTx ที่ศูนย์ฯ รับรอง</span></li>
-        <li><b data-th="สถานีเกตเวย์และดาวเทียม LEO" data-en="Gateway and LEO satellites">สถานีเกตเวย์และดาวเทียม LEO</b><span data-th="ส่งสัญญาณขึ้นสู่ดาวเทียมวงโคจรต่ำ" data-en="Sends the signal up to low Earth orbit">ส่งสัญญาณขึ้นสู่ดาวเทียมวงโคจรต่ำ</span></li>
-        <li><b data-th="จานของผู้ใช้ปลายทาง" data-en="End-user antenna">จานของผู้ใช้ปลายทาง</b><span data-th="รับส่งสัญญาณกับดาวเทียมโดยตรงในพื้นที่ห่างไกล" data-en="Links directly with the satellite in remote areas">รับส่งสัญญาณกับดาวเทียมโดยตรงในพื้นที่ห่างไกล</span></li>
+        <li><span class="ph"><img src="images/ai-compute.jpg" alt="" loading="lazy"></span><b data-th="ศูนย์ข้อมูลและ AI" data-en="Data centre and AI">ศูนย์ข้อมูลและ AI</b><span data-th="ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน" data-en="Processes data and serves applications">ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน</span></li>
+        <li><span class="ph"><img src="images/9.jpg" alt="" loading="lazy"></span><b data-th="โครงข่ายใยแก้วหลัก" data-en="Fibre backbone">โครงข่ายใยแก้วหลัก</b><span data-th="ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล" data-en="Carries high-speed data over long distances">ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล</span></li>
+        <li><span class="ph"><img src="images/3.jpg" alt="" loading="lazy"></span><b data-th="FTTx ถึงบ้านและอาคาร" data-en="FTTx to homes and buildings">FTTx ถึงบ้านและอาคาร</b><span data-th="งานของช่างโครงข่าย FTTx ที่ศูนย์ฯ รับรอง" data-en="The work of the FTTx technicians CISS certifies">งานของช่างโครงข่าย FTTx ที่ศูนย์ฯ รับรอง</span></li>
+        <li><span class="ph"><img src="images/ts-ground-dish.jpg" alt="" loading="lazy"></span><b data-th="สถานีเกตเวย์และดาวเทียม LEO" data-en="Gateway and LEO satellites">สถานีเกตเวย์และดาวเทียม LEO</b><span data-th="ส่งสัญญาณขึ้นสู่ดาวเทียมวงโคจรต่ำ" data-en="Sends the signal up to low Earth orbit">ส่งสัญญาณขึ้นสู่ดาวเทียมวงโคจรต่ำ</span></li>
+        <li><span class="ph"><img src="images/leo-terminal.jpg" alt="" loading="lazy"></span><b data-th="จานของผู้ใช้ปลายทาง" data-en="End-user antenna">จานของผู้ใช้ปลายทาง</b><span data-th="รับส่งสัญญาณกับดาวเทียมโดยตรงในพื้นที่ห่างไกล" data-en="Links directly with the satellite in remote areas">รับส่งสัญญาณกับดาวเทียมโดยตรงในพื้นที่ห่างไกล</span></li>
       </ol>
     </div>
   </div>
@@ -825,7 +674,7 @@
       </div>
     </div>
     <div class="foot-bottom" data-th="© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="© 2025 Communications and Integrated Services Study Center (CISS) · King Mongkut's University of Technology Thonburi">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</div>
-    <div class="foot-credit" data-th="ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพกราฟิก AI ใยแก้วนำแสง และจานดาวเทียม LEO เป็นภาพประกอบ ไม่ใช่อุปกรณ์ของศูนย์" data-en="Activity photos are CISS's own · The AI, fibre-optic and LEO antenna graphics are illustrations, not the centre's equipment">ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพกราฟิก AI ใยแก้วนำแสง และจานดาวเทียม LEO เป็นภาพประกอบ ไม่ใช่อุปกรณ์ของศูนย์</div>
+    <div class="foot-credit" data-th="ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพประกอบที่ไม่ใช่อุปกรณ์ของศูนย์: ซูเปอร์คอมพิวเตอร์ Pleiades โดย NASA Ames (สาธารณสมบัติ) · จานผู้ใช้ปลายทาง Starlink โดย Ka23 13 สัญญาอนุญาต CC BY 4.0 จาก Wikimedia Commons (ตัดขอบภาพ) · จานสายอากาศ DSS-15 โดย NASA/JPL-Caltech (PIA26717)" data-en="Activity photos are CISS's own · Illustrative photos, not the centre's equipment: Pleiades supercomputer by NASA Ames (public domain) · Starlink user terminals by Ka23 13, CC BY 4.0, via Wikimedia Commons (cropped) · DSS-15 antenna by NASA/JPL-Caltech (PIA26717)">ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพประกอบที่ไม่ใช่อุปกรณ์ของศูนย์: ซูเปอร์คอมพิวเตอร์ Pleiades โดย NASA Ames (สาธารณสมบัติ) · จานผู้ใช้ปลายทาง Starlink โดย Ka23 13 สัญญาอนุญาต CC BY 4.0 จาก Wikimedia Commons (ตัดขอบภาพ) · จานสายอากาศ DSS-15 โดย NASA/JPL-Caltech (PIA26717)</div>
   </div>
 </footer>
 
