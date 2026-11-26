@@ -110,7 +110,9 @@
   .hero-logo svg{width:50px;height:50px}
   .hero-eyebrow{font-family:var(--f-head);font-size:clamp(15px,1.7vw,19px);font-weight:600;letter-spacing:.04em;color:#fff;margin-bottom:14px}
   .hero h1{font-family:var(--f-head);font-size:clamp(27px,3.7vw,48px);font-weight:600;letter-spacing:0;line-height:1.28;margin-bottom:18px;color:#fff;text-wrap:balance}
-  html[lang="th"] .hero h1{font-size:clamp(25px,2.8vw,38px)}
+  html[lang="th"] .hero h1{font-size:clamp(25px,2.7vw,34px)}
+  .hero h1 .m-br{display:none}
+  @media (max-width:479px){html[lang="th"] .hero h1{font-size:clamp(21px,6.6vw,25px)} .hero h1 .m-br{display:inline}}
   html[lang="en"] .hero h1{line-height:1.14;letter-spacing:-.01em}
   .hero .sub-th{font-family:var(--f-mono);font-size:clamp(11.5px,1.5vw,13.5px);color:var(--leaf);font-weight:500;letter-spacing:.08em;margin-bottom:20px;text-transform:uppercase;line-height:1.7}
   .hero p.lead{font-size:clamp(16px,1.7vw,18.5px);color:var(--soft);max-width:600px;margin:0 0 28px;line-height:1.75}
@@ -443,7 +445,7 @@
     <div class="hero-copy">
       <div class="hero-logo" id="herologo"></div>
       <div class="hero-eyebrow">CISS Center of Excellence</div>
-      <h1 data-th="จากอวกาศถึงภาคพื้นดิน&lt;br&gt;เราสร้างเทคโนโลยีและกำลังคนให้ประเทศ" data-en="From space to the ground,&lt;br&gt;we build technology and talent for Thailand">จากอวกาศถึงภาคพื้นดิน<br>เราสร้างเทคโนโลยีและกำลังคนให้ประเทศ</h1>
+      <h1 data-th="จากอวกาศถึงภาคพื้นดิน&lt;br&gt;เราสร้างเทคโนโลยี&lt;br class='m-br'&gt;และกำลังคนให้ประเทศ" data-en="From space to the ground,&lt;br&gt;we build technology and talent for Thailand">จากอวกาศถึงภาคพื้นดิน<br>เราสร้างเทคโนโลยี<br class='m-br'>และกำลังคนให้ประเทศ</h1>
       <div class="sub-th" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ." data-en="Communications &amp; Integrated Services Study Center · KMUTT">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</div>
       <p class="lead" data-th="ศูนย์ความเป็นเลิศ ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร ที่มีประสบการณ์กว่า 15 ปี" data-en="A Center of Excellence in space innovation, professional qualification, and digital technology and communications, with more than 15 years of experience.">ศูนย์ความเป็นเลิศ ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร ที่มีประสบการณ์กว่า 15 ปี</p>
       <div class="hero-pills">
