@@ -242,6 +242,8 @@
   }
   .mnews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
   .mn-card{background:#fff;border:1px solid var(--rule);border-radius:6px 44px 6px 6px;padding:26px 26px 28px;display:flex;flex-direction:column;gap:10px;min-width:0;max-width:640px}
+  .mn-vid video{display:block;width:100%;aspect-ratio:16/9;border-radius:4px;background:#000}
+  .mn-vid small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.03em;color:var(--ink2)}
   .mn-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink2)}
   .mn-tag{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:#e3f4ea;color:var(--leaf-d);border:1px solid #bfe3cf}
   .mn-card h3{font-size:19px;line-height:1.4;color:var(--ink)}
@@ -711,7 +713,8 @@
     var a=(d.news||d).filter(function(n){ return (n.missions||[]).indexOf(M)>=0; }).slice(0,3);
     if(!a.length) return;
     grid.innerHTML=a.map(function(n){
-      return '<article class="mn-card"><div class="mn-meta">'+(n.tag?bi('span','mn-tag',n.tag,n.tagEn):'')+(n.date?bi('span','',n.date,n.dateEn):'')+'</div>'+
+      var vid=n.video?'<div class="mn-vid"><video controls preload="none" playsinline'+(n.poster?' poster="'+esc(n.poster)+'"':'')+'><source src="'+esc(n.video)+'" type="video/mp4"></video>'+(n.videoAi?bi('small','','ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง','AI-generated illustration, not actual footage'):'')+'</div>':'';
+      return '<article class="mn-card">'+vid+'<div class="mn-meta">'+(n.tag?bi('span','mn-tag',n.tag,n.tagEn):'')+(n.date?bi('span','',n.date,n.dateEn):'')+'</div>'+
         bi('h3','',n.titleTh||n.titleEn,n.titleEn||n.titleTh)+((n.bodyTh||n.bodyEn)?bi('p','',n.bodyTh||n.bodyEn,n.bodyEn||n.bodyTh):'')+
         (n.link?'<a class="mn-more" href="'+esc(n.link)+'" target="_blank" rel="noopener">'+bi('span','','อ่านต่อ →','Read more →')+'</a>':'')+'</article>';
     }).join('');
