@@ -4,259 +4,404 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISS Hub — ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ.</title>
+<meta name="description" content="CISS ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ. — ศูนย์ความเป็นเลิศด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร">
+<meta name="theme-color" content="#05110e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CISS Center of Excellence">
+<meta property="og:title" content="CISS Hub — ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ.">
+<meta property="og:description" content="CISS ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร มจธ. — ศูนย์ความเป็นเลิศด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร">
+<meta property="og:url" content="https://chirasil.github.io/CISS/">
+<meta property="og:image" content="https://chirasil.github.io/CISS/images/og-ciss-v2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="th_TH">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
+  /* ============================================================
+     THEME — Space · Terrestrial · 6G · Green · Geopolitics · Dual-Use
+     มืด = ฉากอารมณ์ (อวกาศ/ภารกิจ)   สว่าง = ฉากหาข้อมูล (ข่าว/บทความ)
+     ============================================================ */
   :root{
-    --bg:#122243;--bg2:#1a3055;--panel:rgba(255,255,255,.06);--panel-bd:rgba(255,255,255,.13);
-    --text:#e8eef9;--muted:#90a2c0;--blue:#2f86e0;--blue-d:#1559a3;
-    --space1:#7c4dff;--space2:#5b8def;
-    --pq1:#f5a623;--pq2:#f7c948;
-    --dig1:#06b6d4;--dig2:#3b82f6;
-    --shadow:0 20px 60px rgba(0,0,0,.4);
+    /* space / void */
+    --void:#05110e;--deep:#081a15;--deep2:#0c241d;
+    --text:#e9f3ee;--muted:#93aaa0;--soft:#c6d6cd;
+    --line:rgba(140,220,190,.16);--line2:rgba(140,220,190,.34);
+    /* green + 6G spectrum + dual-use steel + terrestrial amber */
+    --leaf:#3ddc97;--leaf-d:#12805a;--cyan:#42d3e8;--steel:#7f93a8;--amber:#f0b445;
+    /* terrestrial chart paper */
+    --paper:#f1f3ea;--paper2:#e6ebdd;--ink:#0c1f19;--ink2:#4a5b51;--rule:#cdd7c7;
+    /* legacy names still referenced by the settings panel / inline styles */
+    --bg:var(--void);--bg2:var(--deep);--panel:rgba(255,255,255,.05);--panel-bd:var(--line);
+    --blue:var(--leaf);--blue-d:var(--leaf-d);--dig1:var(--cyan);--dig2:#2b8fd6;
+    --f-head:"Chakra Petch","IBM Plex Sans Thai",system-ui,sans-serif;
+    --f-body:"IBM Plex Sans Thai","Sarabun",system-ui,sans-serif;
+    --f-mono:"IBM Plex Mono","Chakra Petch",ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:"Sarabun","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{font-family:var(--f-body);background:var(--void);color:var(--text);line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{text-decoration:none;color:inherit}
   svg{display:block}
   img{display:block;max-width:100%}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 28px}
+  section[id],div[id].m-card{scroll-margin-top:84px}
   @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   @keyframes dash{to{stroke-dashoffset:-40}}
-  @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.06);opacity:.9}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes kenburns{0%{transform:scale(1.02) translate(0,0)}100%{transform:scale(1.09) translate(-1%,1.5%)}}
+  @keyframes twinkle{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes ping{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.9)}}
 
-  .progress{position:fixed;top:0;left:0;height:3px;z-index:200;width:0;background:linear-gradient(90deg,var(--space1),var(--blue),var(--dig1));box-shadow:0 0 12px rgba(47,134,224,.6);transition:width .1s linear}
+  .progress{position:fixed;top:0;left:0;height:3px;z-index:200;width:0;background:linear-gradient(90deg,var(--leaf),var(--cyan) 60%,var(--steel));transition:width .1s linear}
 
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-  .reveal.in{opacity:1;transform:none}
+  /* เนื้อหาแสดงตั้งแต่โหลดหน้า — reveal ขยับตำแหน่งเท่านั้น ไม่ซ่อนข้อความ */
+  .reveal{transform:translateY(18px);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
 
-  header{position:sticky;top:0;z-index:100;background:rgba(18,34,67,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--panel-bd)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .brand{display:flex;align-items:center;gap:13px;font-weight:800;color:#fff;letter-spacing:.5px}
-  .logo-box{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--blue-d));display:grid;place-items:center;box-shadow:0 6px 20px rgba(47,134,224,.4)}
-  .logo-box svg{width:34px;height:34px}
-  .brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+  /* seam: แถบสองโทน (เขียว | เหล็ก) = dual-use motif */
+  .seam{height:3px;background:linear-gradient(90deg,var(--leaf) 0 50%,var(--steel) 50% 100%);position:relative}
+  .seam::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:11px;transform:translate(-50%,-50%) rotate(45deg);background:var(--void);border:2px solid var(--leaf);border-right-color:var(--steel);border-bottom-color:var(--steel)}
+
+  /* ---------- section header: หัวเรื่องซ้าย คำอธิบายขวา ---------- */
+  .sec-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:6px 56px;align-items:end;margin-bottom:52px}
+  .eyebrow{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);color:var(--leaf);font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px}
+  .eyebrow::before{content:"";width:9px;height:9px;transform:rotate(45deg);border:1.5px solid currentColor;border-right-color:var(--steel);border-bottom-color:var(--steel)}
+  .sec-head h2{font-family:var(--f-head);font-size:clamp(26px,3.8vw,44px);font-weight:600;line-height:1.22;letter-spacing:0}
+  .sec-head p{color:var(--muted);font-size:16px;max-width:520px;padding-bottom:6px}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:100;background:rgba(5,17,14,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:700;color:#fff;letter-spacing:.06em;line-height:1.25}
+  .logo-box{width:42px;height:42px;border-radius:6px 16px 6px 16px;background:linear-gradient(135deg,var(--leaf-d),#0b4f5c);display:grid;place-items:center;border:1px solid var(--line2)}
+  .logo-box svg{width:31px;height:31px}
+  .brand small{display:block;font-family:var(--f-mono);font-weight:500;font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
   .nav-right{display:flex;align-items:center;gap:14px}
-  .nav-links{display:flex;gap:6px;align-items:center;list-style:none}
-  .nav-links a{padding:9px 13px;border-radius:9px;font-size:13.5px;color:var(--muted);font-weight:500;transition:.2s}
-  .nav-links a:hover{color:#fff;background:var(--panel)}
-  .lang-tog{display:flex;border:1px solid var(--panel-bd);border-radius:50px;overflow:hidden;background:var(--panel)}
-  .lang-tog button{background:none;border:none;color:var(--muted);font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 13px;cursor:pointer;transition:.2s}
-  .lang-tog button.active{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff}
+  .nav-links{display:flex;gap:2px;align-items:center;list-style:none}
+  .nav-links a{font-family:var(--f-head);padding:8px 12px;font-size:13.5px;color:var(--muted);font-weight:500;letter-spacing:.02em;transition:.2s;border-bottom:2px solid transparent}
+  .nav-links a:hover{color:#fff;border-bottom-color:var(--leaf)}
+  .lang-tog{display:flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+  .lang-tog button{background:none;border:none;color:var(--muted);font-family:var(--f-mono);font-weight:600;font-size:12px;padding:7px 12px;cursor:pointer;transition:.2s}
+  .lang-tog button.active{background:var(--leaf);color:#04130e}
   .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
-  .burger span{width:24px;height:2.5px;background:#fff;border-radius:2px}
+  .burger span{width:24px;height:2px;background:#fff}
 
-  .hero{position:relative;overflow:hidden;padding:64px 0 52px;text-align:center}
-  .hero-photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);transition:opacity 1.4s ease,transform 14s ease}
-  .hero-photo.in{opacity:.7;transform:scale(1)}
-  .hero-overlay{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 85% 65% at 50% 16%,rgba(18,34,67,.05) 0%,rgba(18,34,67,.5) 58%,var(--bg) 100%)}
-  .hero-bg{position:absolute;inset:0;z-index:1;opacity:.9}
+  /* ---------- hero: ข้อความซ้าย · ช่องมองทรงโค้งขวา (อวกาศ → ฟ้า → พื้นดิน) ---------- */
+  .hero{position:relative;overflow:hidden;padding:64px 0 0;background:
+    radial-gradient(ellipse 60% 55% at 82% 30%,rgba(61,220,151,.13),transparent 70%),
+    radial-gradient(ellipse 50% 50% at 8% 90%,rgba(66,211,232,.08),transparent 70%),var(--void)}
+  /* graticule = เส้นละติจูด/ลองจิจูดของแผนที่โลก */
+  .hero-grid{position:absolute;inset:-40px 0 0;z-index:0;pointer-events:none;opacity:.7;
+    background-image:linear-gradient(rgba(140,220,190,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(140,220,190,.07) 1px,transparent 1px);background-size:72px 72px;
+    -webkit-mask-image:linear-gradient(90deg,#000 0,transparent 62%);mask-image:linear-gradient(90deg,#000 0,transparent 62%)}
+  .hero .hero-fx{z-index:0}
+  .hero .hero-fx.on{opacity:.8}
+  .hero-scrim{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,17,14,.78) 0%,rgba(5,17,14,.5) 42%,rgba(5,17,14,.12) 75%),linear-gradient(180deg,rgba(5,17,14,.5) 0%,transparent 22%,transparent 70%,rgba(5,17,14,.72) 100%)}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(32px,6vw,88px);align-items:center}
+  .hero-copy{padding:18px 0 34px}
+  .hero-logo{width:68px;height:68px;border-radius:8px 26px 8px 26px;margin:0 0 30px;background:linear-gradient(135deg,var(--leaf-d),#0b4f5c);display:grid;place-items:center;border:1px solid var(--line2);position:relative}
+  .hero-logo::after{content:"";position:absolute;inset:-9px;border-radius:12px 34px 12px 34px;border:1px dashed var(--line2)}
+  .hero-logo svg{width:50px;height:50px}
+  .hero-eyebrow{font-family:var(--f-head);font-size:clamp(15px,1.7vw,19px);font-weight:600;letter-spacing:.04em;color:#fff;margin-bottom:14px}
+  .hero h1{font-family:var(--f-head);font-size:clamp(27px,3.7vw,48px);font-weight:600;letter-spacing:0;line-height:1.28;margin-bottom:18px;color:#fff;text-wrap:balance}
+  html[lang="th"] .hero h1{font-size:clamp(25px,2.8vw,38px)}
+  html[lang="en"] .hero h1{line-height:1.14;letter-spacing:-.01em}
+  .hero .sub-th{font-family:var(--f-mono);font-size:clamp(11.5px,1.5vw,13.5px);color:var(--leaf);font-weight:500;letter-spacing:.08em;margin-bottom:20px;text-transform:uppercase;line-height:1.7}
+  .hero p.lead{font-size:clamp(16px,1.7vw,18.5px);color:var(--soft);max-width:600px;margin:0 0 28px;line-height:1.75}
+  .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+  .hpill{font-family:var(--f-mono);padding:8px 15px;border-radius:4px;font-size:12.5px;font-weight:500;letter-spacing:.03em;border:1px solid var(--line2);background:rgba(255,255,255,.035)}
+  .hpill.s{color:#a9c0ff;border-color:rgba(122,156,255,.5)}
+  .hpill.q{color:#f6d684;border-color:rgba(240,180,69,.5)}
+  .hpill.d{color:#8cf0c4;border-color:rgba(61,220,151,.5)}
+  /* theme rail — หกแกนของธีม */
+  .themes{list-style:none;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);padding-top:16px;max-width:620px}
+  .themes li{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:3px 14px 3px 0;margin-right:14px;border-right:1px solid var(--line);white-space:nowrap;display:flex;align-items:center;gap:8px}
+  .themes li:last-child{border-right:none}
+  .themes i{width:7px;height:7px;transform:rotate(45deg);background:var(--c,var(--leaf));flex-shrink:0}
+  .themes .duo i{background:linear-gradient(135deg,var(--leaf) 0 50%,var(--steel) 50% 100%)}
+
+  .hero-visual{position:relative;justify-self:end;width:100%;max-width:430px;aspect-ratio:4/5;border-radius:999px 999px 10px 10px;overflow:hidden;border:1px solid var(--line2);background:linear-gradient(180deg,#040b12 0%,#0a2a2b 62%,#0f3a26 100%);isolation:isolate}
+  .hero-photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease;will-change:transform}
+  .hero-photo.in{opacity:1;animation:kenburns 32s ease-in-out infinite alternate}
+  .hero-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;pointer-events:none}
+  .hero-video.in{opacity:.9}
+  .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,11,18,.18) 0%,transparent 30%,transparent 78%,rgba(5,17,14,.5) 100%)}
+  .hero-bg{position:absolute;inset:0;z-index:2}
   .hero-bg svg{width:100%;height:100%}
-  .orbits{transform-origin:600px 300px;animation:spin 90s linear infinite}
-  .hero-inner{position:relative;z-index:2;text-shadow:0 2px 18px rgba(6,13,30,.7)}
-  .hero-logo{width:118px;height:118px;border-radius:30px;margin:0 auto 30px;background:linear-gradient(135deg,var(--blue),var(--blue-d));display:grid;place-items:center;box-shadow:0 20px 50px rgba(47,134,224,.45);animation:float 6s ease-in-out infinite;position:relative}
-  .hero-logo::after{content:"";position:absolute;inset:-14px;border-radius:40px;border:1px solid rgba(127,192,255,.25);animation:pulse 4s ease-in-out infinite}
-  .hero-logo svg{width:86px;height:86px}
-  .hero h1{font-size:clamp(30px,5.5vw,54px);font-weight:800;letter-spacing:-.5px;line-height:1.15;margin-bottom:8px;background:linear-gradient(90deg,#fff,#bcd6f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero .sub-th{font-size:clamp(15px,2.4vw,19px);color:#cdd9ee;font-weight:600;margin-bottom:18px}
-  .hero p.lead{font-size:clamp(15px,2vw,17px);color:#d6e1f2;max-width:640px;margin:0 auto 30px}
-  .hero-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-  .hpill{padding:8px 18px;border-radius:50px;font-size:13.5px;font-weight:600;border:1px solid var(--panel-bd);background:var(--panel);backdrop-filter:blur(6px)}
-  .hpill.s{color:#c3b0ff;border-color:rgba(124,77,255,.4)}
-  .hpill.q{color:#ffd98a;border-color:rgba(245,166,35,.4)}
-  .hpill.d{color:#8fe3f5;border-color:rgba(6,182,212,.4)}
+  .hero-bg .stars{animation:twinkle 5.5s ease-in-out infinite}
+  .hero-bg .beam{stroke-dasharray:5 7;animation:dash 2.4s linear infinite}
+  .hero-bg .ping{transform-box:fill-box;transform-origin:center;animation:ping 2.6s ease-out infinite}
+  .hero-bg .rotor{transform-box:fill-box;transform-origin:center;animation:spin 9s linear infinite}
 
-  .eco{padding:80px 0 40px}
-  .sec-head{text-align:center;max-width:660px;margin:0 auto 50px}
-  .eyebrow{color:#5ea2ec;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
-  .sec-head h2{font-size:clamp(24px,3.6vw,36px);font-weight:800;letter-spacing:-.3px;margin-bottom:14px}
-  .sec-head p{color:var(--muted);font-size:15.5px}
-  .diagram{width:100%;max-width:1000px;margin:0 auto}
+  /* ---------- stats: แถบตัวเลขติดขอบล่าง hero ---------- */
+  .stats{position:relative;z-index:2;margin-top:56px;border-top:1px solid var(--line)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:26px 24px 30px 0;position:relative}
+  .stat+.stat{padding-left:24px;border-left:1px solid var(--line)}
+  .stat b{font-family:var(--f-mono);display:block;font-size:clamp(24px,3.2vw,38px);font-weight:500;color:#fff;line-height:1;margin-bottom:10px;letter-spacing:-.02em}
+  .stat:nth-child(1) b{color:var(--leaf)}.stat:nth-child(3) b{color:var(--cyan)}
+  .stat>span{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+
+  /* ---------- paper sections (terrestrial / แผนที่) ---------- */
+  .news,.articles{background-color:var(--paper);color:var(--ink);padding:92px 0 96px;position:relative;
+    background-image:linear-gradient(rgba(12,31,25,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(12,31,25,.045) 1px,transparent 1px);background-size:72px 72px}
+  .articles{background-color:var(--paper2)}
+  .news .eyebrow,.articles .eyebrow{color:var(--leaf-d)}
+  .news .sec-head p,.articles .sec-head p{color:var(--ink2)}
+
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .n-card{position:relative;background:#fff;border:1px solid var(--rule);border-top:3px solid var(--leaf-d);border-radius:4px;padding:24px 26px 26px;transition:.3s;overflow:hidden;animation:fadeUp .6s ease both}
+  .n-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(12,31,25,.12)}
+  /* ข่าวแรก = ข่าวนำ เต็มแถว ตัวใหญ่กว่า */
+  .n-card:first-child{grid-column:1/-1;padding:34px 38px 36px;border-top-color:var(--ink);background:var(--ink);color:#fff;border-color:var(--ink)}
+  .n-card:first-child h3{font-size:clamp(21px,2.8vw,31px);color:#fff;max-width:780px}
+  .n-card:first-child p{color:#bfd0c7;font-size:15.5px;max-width:720px}
+  .n-card:first-child .n-tag{background:var(--leaf);color:#04130e;border-color:var(--leaf)}
+  .n-card:first-child .n-date{color:var(--leaf)}
+  .n-card:first-child .n-more{color:var(--leaf)}
+  .n-tag{font-family:var(--f-mono);display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:#e3f4ea;color:var(--leaf-d);border:1px solid #bfe3cf;margin:0 10px 12px 0}
+  .n-date{font-family:var(--f-mono);display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--ink2);margin-bottom:12px}
+  .n-card h3{font-family:var(--f-head);font-size:17.5px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:8px}
+  .n-card p{font-size:14px;color:var(--ink2);line-height:1.7}
+  .n-img{margin:0 0 16px;border-radius:3px;overflow:hidden;aspect-ratio:16/9;background:var(--paper2)}
+  .n-img img{width:100%;height:100%;object-fit:cover}
+  .n-more{font-family:var(--f-mono);display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--leaf-d);transition:.2s}
+  .n-more:hover{gap:10px}
+  .news-empty{grid-column:1/-1;text-align:center;color:var(--ink2);font-size:14px;padding:44px;border:1px dashed var(--rule);border-radius:4px}
+
+  /* ---------- ecosystem + missions (dark) ---------- */
+  .eco{padding:100px 0 64px;background:linear-gradient(180deg,var(--void),var(--deep));position:relative;overflow:hidden;isolation:isolate}
+  /* พื้นหลังเคลื่อนไหว สลับฉากแบบสุ่ม: จักรวาล / Ground Station as a Service / 6G */
+  .eco-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:0;transition:opacity 1s ease}
+  .eco-bg.on{opacity:1}
+  .eco::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,var(--void) 0,rgba(5,17,14,.55) 16%,rgba(5,17,14,.2) 45%,rgba(8,26,21,.35) 82%,var(--deep) 100%)}
+  .eco-cap{position:absolute;right:28px;bottom:18px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.2em;color:var(--muted);opacity:.75;display:flex;align-items:center;gap:8px}
+  .eco-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf)}
+  .diagram .dg-m{display:none}
+  .diagram{width:100%;max-width:1040px;margin:0 auto}
   .diagram svg{width:100%;height:auto}
 
-  .missions{padding:50px 0 70px}
-  .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .m-card{position:relative;border-radius:22px;background:var(--panel);border:1px solid var(--panel-bd);padding:0 30px 30px;overflow:hidden;transition:.35s;backdrop-filter:blur(8px)}
-  .m-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;z-index:4;background:linear-gradient(90deg,var(--a1),var(--a2))}
-  .m-card::after{content:"";position:absolute;top:90px;right:-60px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%);opacity:.5;transition:.35s;pointer-events:none}
-  .m-card:hover{transform:translateY(-8px);border-color:var(--a2);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-  .m-card:hover::after{opacity:.9}
-  .m-card:hover .m-media img{transform:scale(1.07)}
-  .m-media{height:168px;margin:0 -30px 0;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--a1),var(--a2))}
-  .m-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease,transform .5s ease}
+  .missions{padding:56px 0 120px;background:linear-gradient(180deg,var(--deep),var(--deep2) 55%,var(--void))}
+  .m-grid{display:grid;gap:clamp(64px,9vw,128px);position:relative}
+  /* ลำสัญญาณแนวดิ่งเชื่อมสามภารกิจ (อวกาศ → พื้นดิน) */
+  .m-grid::before{content:"";position:absolute;left:50%;top:-40px;bottom:-40px;width:1px;background:repeating-linear-gradient(180deg,var(--line2) 0 6px,transparent 6px 14px)}
+  .m-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,8vw,128px);align-items:center}
+  .m-card::before{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%) rotate(45deg);background:var(--deep);border:2px solid var(--a2);z-index:2}
+  .m-card:nth-child(even) .m-media{order:2}
+  .m-media{position:relative;aspect-ratio:5/4;overflow:hidden;border-radius:6px 120px 6px 6px;background:linear-gradient(135deg,var(--a1),var(--a2));border:1px solid var(--line2)}
+  .m-card:nth-child(even) .m-media{border-radius:120px 6px 6px 6px}
+  .m-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease,transform .6s ease}
   .m-media img.in{opacity:1}
-  .m-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(13,24,46,.82) 0%,rgba(13,24,46,.06) 42%,transparent 70%)}
-  .m-ico{width:64px;height:64px;border-radius:17px;background:linear-gradient(135deg,var(--a1),var(--a2));display:grid;place-items:center;margin:-32px 0 18px;position:relative;z-index:3;box-shadow:0 10px 26px var(--glow)}
-  .m-ico svg{width:36px;height:36px}
-  .m-tag{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--a2);margin-bottom:6px}
-  .m-card h3{font-size:21px;font-weight:800;margin-bottom:6px;line-height:1.3;position:relative}
-  .m-card .h-th{font-size:14px;color:var(--muted);font-weight:600;margin-bottom:16px}
-  .m-card p{color:var(--muted);font-size:14px;margin-bottom:18px;position:relative}
-  .m-list{list-style:none;display:grid;gap:9px;margin-bottom:26px;position:relative}
-  .m-list li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#cdd9ee}
-  .m-list .dot{width:7px;height:7px;border-radius:50%;background:var(--a2);margin-top:7px;flex-shrink:0}
-  .m-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:12px;font-weight:700;font-size:14.5px;color:#fff;background:linear-gradient(135deg,var(--a1),var(--a2));transition:.25s;cursor:pointer;position:relative}
-  .m-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px var(--glow)}
+  .m-card:hover .m-media img{transform:scale(1.05)}
+  .m-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease;z-index:1}
+  .m-card:hover .m-vid.ready{opacity:1}
+  .m-media::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(5,17,14,.6) 0%,transparent 45%);pointer-events:none}
+  .m-body{position:relative}
+  .m-ico{width:54px;height:54px;border-radius:6px 20px 6px 20px;background:linear-gradient(135deg,var(--a1),var(--a2));display:grid;place-items:center;margin:0 0 22px}
+  .m-ico svg{width:32px;height:32px}
+  .m-tag{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--a2);margin-bottom:10px}
+  .m-card h3{font-family:var(--f-head);font-size:clamp(24px,3vw,36px);font-weight:600;margin-bottom:8px;line-height:1.2;color:#fff}
+  .m-card .h-th{font-size:15.5px;color:var(--soft);font-weight:500;margin-bottom:18px}
+  .m-card p{color:var(--muted);font-size:15.5px;margin-bottom:22px;max-width:500px}
+  .m-proof{display:flex;align-items:center;gap:18px;margin:0 0 24px;padding-left:16px;border-left:2px solid var(--a2);max-width:500px}
+  .m-proof b{font-family:var(--f-mono);font-size:clamp(30px,3.4vw,42px);font-weight:600;line-height:1;color:#fff;white-space:nowrap;flex-shrink:0}
+  .m-proof b small{font-family:var(--f-body,inherit);font-size:.38em;font-weight:500;margin-left:6px;color:var(--a2)}
+  .m-proof span{font-size:13.5px;line-height:1.6;color:var(--soft)}
+  .m-list{list-style:none;display:grid;margin-bottom:30px;border-top:1px solid var(--line);max-width:500px}
+  .m-list li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--soft);padding:11px 0;border-bottom:1px solid var(--line)}
+  .m-list .dot{width:7px;height:7px;transform:rotate(45deg);background:var(--a2);margin-top:9px;flex-shrink:0}
+  .m-btn{font-family:var(--f-head);display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:4px;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#04130e;background:linear-gradient(135deg,var(--a1),var(--a2));transition:.25s;cursor:pointer}
+  .m-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px var(--glow)}
   .m-btn .arr{transition:.25s}.m-btn:hover .arr{transform:translateX(4px)}
 
-  .m-space{--a1:var(--space1);--a2:var(--space2);--glow:rgba(124,77,255,.35)}
-  .m-pq{--a1:var(--pq1);--a2:var(--pq2);--glow:rgba(245,166,35,.32)}
-  .m-digital{--a1:var(--dig1);--a2:var(--dig2);--glow:rgba(6,182,212,.32)}
+  .m-space{--a1:#7a9cff;--a2:#42d3e8;--glow:rgba(66,211,232,.3)}
+  .m-pq{--a1:#f0b445;--a2:#f6d684;--glow:rgba(240,180,69,.3)}
+  .m-digital{--a1:#1fb57c;--a2:#3ddc97;--glow:rgba(61,220,151,.3)}
 
-  /* NEWS */
-  .news{padding:20px 0 40px}
-  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .n-card{position:relative;background:var(--panel);border:1px solid var(--panel-bd);border-radius:18px;padding:24px 24px 24px 28px;backdrop-filter:blur(8px);transition:.3s;overflow:hidden;animation:fadeUp .6s ease both}
-  .n-card:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 20px 46px rgba(0,0,0,.4)}
-  .n-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--blue),var(--dig1))}
-  .n-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 11px;border-radius:50px;background:rgba(47,134,224,.16);color:#9cc8f5;border:1px solid rgba(47,134,224,.32);margin-bottom:11px}
-  .n-date{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#7fc0ff;margin-bottom:9px}
-  .n-card h3{font-size:16.5px;font-weight:800;color:#fff;line-height:1.42;margin-bottom:8px}
-  .n-card p{font-size:13.5px;color:#bccbe2;line-height:1.65}
-  .n-img{margin:0 0 14px;border-radius:11px;overflow:hidden;aspect-ratio:16/9;background:#1a3055}
-  .n-img img{width:100%;height:100%;object-fit:cover}
-  .n-more{display:inline-flex;align-items:center;gap:6px;margin-top:13px;font-size:13px;font-weight:700;color:#7fc0ff;transition:.2s}
-  .n-more:hover{gap:10px;color:#a9d4ff}
-  .news-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:44px;border:1px dashed var(--panel-bd);border-radius:16px}
-
-  /* ACADEMIC ARTICLES */
-  .articles{padding:24px 0 50px}
+  /* ---------- articles carousel (paper) ---------- */
   .art-wrap{position:relative}
-  .art-viewport{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px 12px;scrollbar-width:none}
+  .art-viewport{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px 12px;scrollbar-width:none}
   .art-viewport::-webkit-scrollbar{display:none}
-  .art-card{flex:0 0 calc((100% - 44px)/3);scroll-snap-align:start;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--panel-bd);border-radius:18px;overflow:hidden;transition:.3s;backdrop-filter:blur(8px)}
-  .art-card:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 22px 50px rgba(0,0,0,.42)}
-  .art-thumb{aspect-ratio:16/9;background:#1a3055;overflow:hidden;position:relative}
+  .art-card{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;display:flex;flex-direction:column;background:#fff;border:1px solid var(--rule);border-radius:4px;overflow:hidden;transition:.3s;color:var(--ink)}
+  .art-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(12,31,25,.13)}
+  .art-thumb{aspect-ratio:16/9;background:var(--paper2);overflow:hidden;position:relative}
   .art-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-  .art-card:hover .art-thumb img{transform:scale(1.07)}
+  .art-card:hover .art-thumb img{transform:scale(1.06)}
   .art-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
-  .art-tag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:4px 11px;border-radius:50px;margin-bottom:12px;border:1px solid}
-  .art-tag.space{color:#c3b0ff;border-color:rgba(124,77,255,.45);background:rgba(124,77,255,.12)}
-  .art-tag.pq{color:#ffd98a;border-color:rgba(245,166,35,.45);background:rgba(245,166,35,.12)}
-  .art-tag.digital{color:#8fe3f5;border-color:rgba(6,182,212,.45);background:rgba(6,182,212,.12)}
-  .art-card h3{font-size:16px;font-weight:800;color:#fff;line-height:1.42;margin-bottom:9px}
-  .art-card p{font-size:13px;color:#bccbe2;line-height:1.6;margin-bottom:16px;flex:1}
-  .art-more{font-size:13px;font-weight:700;color:#7fc0ff;display:inline-flex;align-items:center;gap:6px;transition:.2s}
-  .art-card:hover .art-more{gap:10px;color:#a9d4ff}
-  .art-nav{position:absolute;top:calc(50% - 21px);width:42px;height:42px;border-radius:50%;border:1px solid var(--panel-bd);background:rgba(19,36,63,.92);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;z-index:5;transition:.25s;backdrop-filter:blur(6px)}
-  .art-nav:hover{background:var(--blue);border-color:var(--blue)}
-  .art-nav.prev{left:-12px}
-  .art-nav.next{right:-12px}
-  .art-dots{display:flex;gap:8px;justify-content:center;margin-top:18px}
-  .art-dot{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.22);cursor:pointer;transition:.25s;padding:0}
-  .art-dot.active{background:var(--blue);width:24px;border-radius:5px}
-  @media(max-width:980px){.art-card{flex-basis:calc((100% - 22px)/2)}}
+  .art-tag{font-family:var(--f-mono);align-self:flex-start;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:12px;border:1px solid}
+  .art-tag.space{color:#2c4bc4;border-color:#c3cff7;background:#edf1fe}
+  .art-tag.pq{color:#8a5a00;border-color:#efd9a4;background:#fdf5df}
+  .art-tag.digital{color:var(--leaf-d);border-color:#bfe3cf;background:#e3f4ea}
+  .art-card h3{font-family:var(--f-head);font-size:17px;font-weight:600;color:var(--ink);line-height:1.42;margin-bottom:9px}
+  .art-card p{font-size:13.5px;color:var(--ink2);line-height:1.65;margin-bottom:16px;flex:1}
+  .art-more{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--leaf-d);display:inline-flex;align-items:center;gap:6px;transition:.2s}
+  .art-card:hover .art-more{gap:10px}
+  .art-nav{position:absolute;top:calc(50% - 21px);width:42px;height:42px;border-radius:4px;border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;z-index:5;transition:.25s}
+  .art-nav:hover{background:var(--leaf-d);border-color:var(--leaf-d)}
+  .art-nav.prev{left:-14px}
+  .art-nav.next{right:-14px}
+  .art-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+  .art-dot{width:9px;height:9px;border-radius:0;transform:rotate(45deg);border:none;background:rgba(12,31,25,.22);cursor:pointer;transition:.25s;padding:0}
+  .art-dot.active{background:var(--leaf-d);transform:rotate(45deg) scale(1.35)}
+  @media(max-width:980px){.art-card{flex-basis:calc((100% - 20px)/2)}}
   @media(max-width:620px){.art-card{flex-basis:86%}.art-nav{display:none}}
 
-  /* DIRECTOR */
-  .director{padding:30px 0 90px}
-  .dir-card{display:grid;grid-template-columns:300px 1fr;gap:40px;background:var(--panel);border:1px solid var(--panel-bd);border-radius:24px;padding:40px;backdrop-filter:blur(8px)}
-  .dir-aside{text-align:center}
-  .dir-photo{width:100%;max-width:260px;margin:0 auto 20px;border-radius:18px;overflow:hidden;aspect-ratio:1/1;position:relative;background:linear-gradient(135deg,var(--blue),var(--blue-d));box-shadow:0 16px 40px rgba(0,0,0,.45)}
-  .dir-photo .ava{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-size:62px;font-weight:800;color:rgba(255,255,255,.92)}
-  .dir-photo img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;display:none}
-  .photo-upload{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px;background:rgba(7,15,32,.74);color:#cfe3fa;font-size:12px;font-weight:700;cursor:pointer;opacity:0;transition:.25s;backdrop-filter:blur(4px)}
+  /* ---------- director (dark dossier) ---------- */
+  .director{padding:100px 0 110px;background:radial-gradient(ellipse 55% 45% at 12% 22%,rgba(61,220,151,.09),transparent 70%),var(--void)}
+  .dir-card{display:grid;grid-template-columns:330px minmax(0,1fr);gap:clamp(36px,6vw,80px);align-items:start}
+  .dir-aside{position:sticky;top:96px}
+  .dir-photo{width:100%;margin:0 0 22px;border-radius:999px 999px 8px 8px;overflow:hidden;aspect-ratio:4/5;position:relative;background:linear-gradient(160deg,var(--leaf-d),#0b4f5c);border:1px solid var(--line2)}
+  .dir-photo .ava{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-family:var(--f-head);font-size:62px;font-weight:700;color:rgba(255,255,255,.92)}
+  .dir-photo img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;object-position:center top;display:none}
+  .photo-upload{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px;background:rgba(5,17,14,.78);color:var(--soft);font-size:12px;font-weight:600;cursor:pointer;opacity:0;transition:.25s;backdrop-filter:blur(4px)}
   .dir-photo:hover .photo-upload{opacity:1}
   .photo-upload svg{width:15px;height:15px}
-  .dir-aside h3{font-size:21px;color:#fff;margin-bottom:4px;line-height:1.3}
-  .dir-role{color:#7fc0ff;font-weight:700;font-size:13px;margin-bottom:16px}
-  .dir-edu{font-size:12.5px;color:var(--muted);line-height:1.8;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--panel-bd);border-radius:12px;padding:14px 16px}
-  .dir-edu b{color:#cdd9ee;font-weight:700}
-  .dir-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
-  .dir-chip{font-size:11px;font-weight:600;padding:6px 12px;border-radius:50px;background:var(--panel);border:1px solid var(--panel-bd);color:#cdd9ee}
-  .dir-main .bio{color:#cdd9ee;font-size:15px;margin-bottom:22px}
-  .dir-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
-  .dir-stat{background:rgba(255,255,255,.04);border:1px solid var(--panel-bd);border-radius:14px;padding:14px 10px;text-align:center}
-  .dir-stat b{display:block;font-size:19px;color:#fff;font-weight:800;line-height:1.1;margin-bottom:4px}
-  .dir-stat span{font-size:11px;color:var(--muted)}
-  .dir-groups{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .dir-group{background:rgba(255,255,255,.04);border:1px solid var(--panel-bd);border-radius:16px;padding:20px 22px;transition:.3s}
-  .dir-group:hover{border-color:rgba(127,192,255,.35);background:rgba(255,255,255,.06)}
-  .dir-group h4{font-size:14.5px;color:#fff;margin-bottom:13px;display:flex;align-items:center;gap:10px;font-weight:800}
-  .dir-group h4 .gi{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:14px;flex-shrink:0}
-  .dir-group ul{list-style:none;display:grid;gap:9px}
-  .dir-group li{display:flex;gap:9px;font-size:12.8px;color:#bccbe2;align-items:flex-start;line-height:1.55}
-  .dir-group li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:7px;flex-shrink:0}
+  .dir-aside h3{font-family:var(--f-head);font-size:23px;color:#fff;margin-bottom:6px;line-height:1.3;font-weight:600}
+  .dir-role{color:var(--leaf);font-weight:500;font-size:13.5px;margin-bottom:18px;line-height:1.6}
+  .dir-edu{font-size:13px;color:var(--muted);line-height:1.85;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
+  .dir-edu b{color:var(--soft);font-weight:600;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+  .dir-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .dir-chip{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.04em;padding:5px 10px;border-radius:3px;border:1px solid var(--line2);color:var(--soft)}
+  .dir-main .bio{color:var(--soft);font-size:clamp(16px,1.6vw,18.5px);line-height:1.8;margin-bottom:34px}
+  .dir-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:38px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .dir-stat{padding:20px 16px 20px 0}
+  .dir-stat+.dir-stat{padding-left:16px;border-left:1px solid var(--line)}
+  .dir-stat b{font-family:var(--f-mono);display:block;font-size:22px;color:#fff;font-weight:500;line-height:1.1;margin-bottom:7px}
+  .dir-stat>span{font-size:11.5px;color:var(--muted)}
+  .dir-groups{display:grid;grid-template-columns:1fr 1fr;gap:34px 44px}
+  .dir-group h4{font-family:var(--f-head);font-size:15.5px;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:11px;font-weight:600;padding-bottom:12px;border-bottom:1px solid var(--line2)}
+  .dir-group h4 .gi{width:30px;height:30px;border-radius:4px 12px 4px 12px;display:grid;place-items:center;font-size:14px;flex-shrink:0}
+  .dir-group ul{list-style:none;display:grid}
+  .dir-group li{display:flex;gap:11px;font-size:13.5px;color:var(--soft);align-items:flex-start;line-height:1.6;padding:10px 0;border-bottom:1px solid var(--line)}
+  .dir-group li::before{content:"";width:6px;height:6px;transform:rotate(45deg);background:var(--leaf);margin-top:8px;flex-shrink:0}
 
-  footer{border-top:1px solid var(--panel-bd);padding:46px 0 30px;background:var(--bg2)}
+  /* ---------- footer ---------- */
+  footer{padding:50px 0 30px;background:#030b09}
   .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;margin-bottom:30px}
   .foot-brand{display:flex;align-items:center;gap:13px}
   .foot-contact{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--muted)}
-  .foot-bottom{border-top:1px solid var(--panel-bd);padding-top:22px;text-align:center;font-size:12.5px;color:var(--muted)}
-  .foot-credit{font-size:11px;color:#7387a6;margin-top:8px}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:22px;font-size:12.5px;color:var(--muted)}
+  .foot-credit{font-size:11px;color:#6d8379;margin-top:8px}
+  .foot-connect{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;margin-bottom:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .social{display:flex;gap:10px;flex-wrap:wrap}
+  .social a{width:42px;height:42px;border-radius:4px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--soft);transition:.25s}
+  .social a svg{width:20px;height:20px}
+  .social a.on:hover{transform:translateY(-3px);color:#04130e;background:var(--leaf);border-color:var(--leaf)}
+  .social a.off{opacity:.28;pointer-events:none}
+  .qr-box{display:flex;align-items:center;gap:14px}
+  .qr{width:92px;height:92px;border-radius:4px;background:#fff;padding:7px;display:grid;place-items:center;flex-shrink:0}
+  .qr img,.qr canvas,.qr table{width:100%!important;height:100%!important;display:block}
+  .qr-cap{font-family:var(--f-mono);font-size:11px;color:var(--muted);max-width:120px;line-height:1.5}
+  @media(max-width:620px){.foot-connect{flex-direction:column;align-items:flex-start}}
 
-  /* SETTINGS / PANEL */
-  .gear{position:fixed;left:22px;bottom:22px;z-index:300;width:54px;height:54px;border-radius:50%;border:1px solid var(--panel-bd);background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.5);transition:.3s}
-  .gear.locked{background:linear-gradient(135deg,#3a4a66,#26354f)}
-  .lock-dialog{position:fixed;inset:0;z-index:330;display:none;place-items:center;background:rgba(3,7,16,.66);backdrop-filter:blur(4px);padding:20px}
+  /* ---------- admin: gear / lock / settings panel ---------- */
+  .gear{position:fixed;left:22px;bottom:22px;z-index:300;width:50px;height:50px;border-radius:6px 18px 6px 18px;border:1px solid var(--line2);background:linear-gradient(135deg,var(--leaf-d),#0b4f5c);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.5);transition:.3s}
+  .gear.locked{background:linear-gradient(135deg,#2c3d38,#1b2925)}
+  .gear:hover{transform:rotate(45deg) scale(1.06)}
+  .gear svg{width:24px;height:24px}
+  .lock-dialog{position:fixed;inset:0;z-index:330;display:none;place-items:center;background:rgba(2,7,6,.7);backdrop-filter:blur(4px);padding:20px}
   .lock-dialog.open{display:grid}
-  .lock-box{width:340px;max-width:92vw;background:#13243f;border:1px solid var(--panel-bd);border-radius:18px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:fadeUp .4s ease}
-  .lk-ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--blue-d));display:grid;place-items:center;margin:0 auto 16px}
+  .lock-box{width:340px;max-width:92vw;background:var(--deep2);border:1px solid var(--line2);border-radius:6px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.6);animation:fadeUp .4s ease}
+  .lk-ico{width:52px;height:52px;border-radius:6px 18px 6px 18px;background:linear-gradient(135deg,var(--leaf-d),#0b4f5c);display:grid;place-items:center;margin:0 auto 16px}
   .lk-ico svg{width:26px;height:26px}
-  .lock-box h3{text-align:center;font-size:17px;color:#fff;margin-bottom:6px}
+  .lock-box h3{font-family:var(--f-head);text-align:center;font-size:17px;color:#fff;margin-bottom:6px}
   .lock-box p{text-align:center;font-size:12.5px;color:var(--muted);margin-bottom:18px;line-height:1.6}
-  .lock-box input{width:100%;background:#0d1c38;border:1px solid var(--panel-bd);border-radius:10px;color:#fff;font-family:inherit;font-size:15px;padding:12px 14px;text-align:center;letter-spacing:1px}
-  .lock-box input:focus{outline:none;border-color:var(--blue)}
+  .lock-box input{width:100%;background:#04100d;border:1px solid var(--line2);border-radius:4px;color:#fff;font-family:var(--f-mono);font-size:15px;padding:12px 14px;text-align:center;letter-spacing:2px}
+  .lock-box input:focus{outline:none;border-color:var(--leaf)}
   .lock-err{color:#ff9a9a;font-size:12px;text-align:center;height:16px;margin:8px 0}
   .lk-actions{display:flex;gap:10px;margin-top:6px}
-  .lk-actions button{flex:1;padding:11px;border:none;border-radius:10px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer}
-  .lk-go{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff}
-  .lk-cancel{background:var(--panel);border:1px solid var(--panel-bd);color:#cdd9ee}
-  .panel-lock{background:var(--panel);border:1px solid var(--panel-bd);color:#9cc8f5;font-family:inherit;font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:9px;cursor:pointer}
-  .gear:hover{transform:rotate(45deg) scale(1.06)}
-  .gear svg{width:26px;height:26px}
-  .panel-mask{position:fixed;inset:0;z-index:310;background:rgba(3,7,16,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.3s}
+  .lk-actions button{flex:1;padding:11px;border:none;border-radius:4px;font-family:var(--f-head);font-weight:600;font-size:13.5px;cursor:pointer}
+  .lk-go{background:var(--leaf);color:#04130e}
+  .lk-cancel{background:var(--panel);border:1px solid var(--line2)!important;color:var(--soft)}
+  .panel-lock{background:var(--panel);border:1px solid var(--line2);color:var(--leaf);font-family:var(--f-mono);font-size:11px;font-weight:600;padding:7px 12px;border-radius:4px;cursor:pointer}
+  .panel-mask{position:fixed;inset:0;z-index:310;background:rgba(2,7,6,.62);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:.3s}
   .panel-mask.open{opacity:1;pointer-events:auto}
-  .panel{position:fixed;top:0;right:0;bottom:0;z-index:320;width:390px;max-width:92vw;background:#13243f;border-left:1px solid var(--panel-bd);transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.8,.2,1);overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+  .panel{position:fixed;top:0;right:0;bottom:0;z-index:320;width:390px;max-width:92vw;background:var(--deep2);border-left:1px solid var(--line2);transform:translateX(102%);transition:transform .35s cubic-bezier(.2,.8,.2,1);overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
   .panel.open{transform:none}
-  .panel-head{display:flex;align-items:center;justify-content:space-between;padding:22px 22px 16px;border-bottom:1px solid var(--panel-bd);position:sticky;top:0;background:#13243f;z-index:2}
-  .panel-head h3{font-size:17px;font-weight:800;color:#fff}
-  .panel-close{background:var(--panel);border:1px solid var(--panel-bd);color:#fff;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:18px;line-height:1}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;padding:22px 22px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--deep2);z-index:2}
+  .panel-head h3{font-family:var(--f-head);font-size:17px;font-weight:700;color:#fff}
+  .panel-close{background:var(--panel);border:1px solid var(--line2);color:#fff;width:34px;height:34px;border-radius:4px;cursor:pointer;font-size:18px;line-height:1}
   .panel-body{padding:18px 22px 50px}
-  .panel-sec-title{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5ea2ec;margin:22px 0 12px;padding-top:14px;border-top:1px solid var(--panel-bd)}
+  .panel-sec-title{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--leaf);margin:22px 0 12px;padding-top:14px;border-top:1px solid var(--line)}
   .panel-sec-title:first-child{border-top:none;padding-top:0;margin-top:4px}
-  .slot{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--panel-bd);border-radius:13px;padding:11px;margin-bottom:11px}
-  .slot-thumb{width:58px;height:58px;border-radius:9px;flex-shrink:0;background-size:cover;background-position:center;background-color:#1a3055;border:1px solid var(--panel-bd)}
+  .slot{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:11px;margin-bottom:11px}
+  .slot-thumb{width:58px;height:58px;border-radius:3px;flex-shrink:0;background-size:cover;background-position:center;background-color:#123229;border:1px solid var(--line)}
   .slot-info{flex:1;min-width:0}
-  .slot-info b{display:block;font-size:13px;color:#fff;font-weight:700;margin-bottom:6px}
+  .slot-info b{display:block;font-size:13px;color:#fff;font-weight:600;margin-bottom:6px}
   .slot-actions{display:flex;gap:7px}
-  .slot-actions button{font-family:inherit;font-size:11.5px;font-weight:700;padding:6px 11px;border-radius:8px;cursor:pointer;border:1px solid var(--panel-bd);transition:.2s}
-  .btn-up{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;border:none}
-  .btn-up:hover{filter:brightness(1.12)}
+  .slot-actions button{font-family:var(--f-head);font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:3px;cursor:pointer;border:1px solid var(--line2);transition:.2s}
+  .btn-up{background:var(--leaf);color:#04130e;border:none!important}
+  .btn-up:hover{filter:brightness(1.1)}
   .btn-rs{background:transparent;color:var(--muted)}
-  .btn-rs:hover{color:#fff;border-color:var(--blue)}
+  .btn-rs:hover{color:#fff;border-color:var(--leaf)}
   .link-row{margin-bottom:12px}
-  .link-row label{display:block;font-size:12px;color:#cdd9ee;font-weight:700;margin-bottom:6px}
-  .link-row input,.link-row textarea{width:100%;background:#0d1c38;border:1px solid var(--panel-bd);border-radius:9px;color:#fff;font-family:inherit;font-size:12.5px;padding:9px 11px}
+  .link-row label{display:block;font-size:12px;color:var(--soft);font-weight:600;margin-bottom:6px}
+  .link-row input,.link-row textarea{width:100%;background:#04100d;border:1px solid var(--line2);border-radius:4px;color:#fff;font-family:var(--f-body);font-size:12.5px;padding:9px 11px}
   .link-row textarea{resize:vertical;min-height:56px;line-height:1.5}
-  .link-row input:focus,.link-row textarea:focus{outline:none;border-color:var(--blue)}
-  .save-links,.add-news{width:100%;margin-top:4px;padding:11px;border:none;border-radius:10px;color:#fff;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer}
-  .save-links{background:linear-gradient(135deg,var(--dig1),var(--dig2))}
-  .add-news{background:linear-gradient(135deg,var(--blue),var(--blue-d))}
+  .link-row input:focus,.link-row textarea:focus{outline:none;border-color:var(--leaf)}
+  .save-links,.add-news{width:100%;margin-top:4px;padding:11px;border:none;border-radius:4px;color:#04130e;font-family:var(--f-head);font-weight:600;font-size:13.5px;cursor:pointer}
+  .save-links{background:var(--cyan)}
+  .add-news{background:var(--leaf)}
   .news-list{margin-top:14px}
-  .news-li{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--panel-bd);border-radius:11px;padding:9px 12px;margin-bottom:9px}
+  .news-li{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:9px 12px;margin-bottom:9px}
   .news-li-info{flex:1;min-width:0}
-  .news-li-info b{display:block;font-size:12.5px;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .news-li-info span{font-size:11px;color:var(--muted)}
-  .news-del{flex-shrink:0;background:transparent;border:1px solid var(--panel-bd);color:#ff9a9a;border-radius:8px;font-size:11.5px;font-weight:700;padding:6px 11px;cursor:pointer}
+  .news-li-info b{display:block;font-size:12.5px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .news-li-info span{font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+  .news-del{flex-shrink:0;background:transparent;border:1px solid var(--line2);color:#ff9a9a;border-radius:3px;font-size:11.5px;font-weight:600;padding:6px 11px;cursor:pointer}
   .news-del:hover{border-color:#ff9a9a}
-  .panel-note{font-size:11.5px;color:#8295b3;line-height:1.6;margin-top:16px;background:rgba(255,255,255,.04);border:1px solid var(--panel-bd);border-radius:10px;padding:11px 13px}
-  .toast{position:fixed;bottom:88px;right:22px;z-index:340;background:#12331f;border:1px solid #2e7d4f;color:#bff2cf;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:700;opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none}
+  .panel-note{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:11px 13px}
+  .toast{position:fixed;bottom:88px;right:22px;z-index:340;background:#0d2d20;border:1px solid var(--leaf-d);color:#bff2cf;padding:11px 18px;border-radius:4px;font-family:var(--f-head);font-size:13px;font-weight:600;opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none}
   .toast.show{opacity:1;transform:none}
 
-  @media(max-width:980px){.nav-links a{padding:8px 9px;font-size:13px}}
-  @media(max-width:880px){
+  /* ---------- responsive ---------- */
+  @media(max-width:1040px){.nav-links a{padding:8px 8px;font-size:13px}}
+  @media(max-width:920px){
     .nav-links{display:none}.burger{display:flex}
-    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#13243f;padding:14px;border-bottom:1px solid var(--panel-bd)}
-    .m-grid{grid-template-columns:1fr}
-    .news-grid{grid-template-columns:1fr}
-    .dir-card{grid-template-columns:1fr;gap:28px}
+    .nav-links.open{display:flex;flex-direction:column;align-items:stretch;position:absolute;top:68px;left:0;right:0;background:var(--deep2);padding:12px 20px 16px;border-bottom:1px solid var(--line2)}
+    .sec-head{grid-template-columns:1fr;margin-bottom:38px}
+    .hero{padding-top:40px}
+    .hero-inner{grid-template-columns:1fr}
+    .hero-visual{justify-self:start;max-width:340px}
+    .hero-copy{padding-bottom:10px}
+    .m-grid::before,.m-card::before{display:none}
+    .m-card{grid-template-columns:1fr;gap:28px}
+    .m-card:nth-child(even) .m-media{order:0}
+    .m-media,.m-card:nth-child(even) .m-media{border-radius:6px 80px 6px 6px;aspect-ratio:16/10}
+    .dir-card{grid-template-columns:1fr}
+    .dir-aside{position:static;max-width:340px}
     .dir-groups{grid-template-columns:1fr}
-    .dir-stats{grid-template-columns:1fr 1fr}
-    .dir-photo{max-width:220px}
     .photo-upload{opacity:1}
+  }
+  @media(max-width:620px){
+    .wrap{padding:0 20px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .stat{padding:20px 12px 22px 0}
+    .stat+.stat{padding-left:0;border-left:none}
+    .stat:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
+    .stat:nth-child(n+3){border-top:1px solid var(--line)}
+    .dir-stats{grid-template-columns:1fr 1fr}
+    .dir-stat+.dir-stat{padding-left:0;border-left:none}
+    .dir-stat:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+    .dir-stat:nth-child(n+3){border-top:1px solid var(--line)}
+    .news,.articles{padding:64px 0 70px}
+    .n-card:first-child{padding:26px 24px 28px}
+    .eco{padding-top:70px}.missions{padding:40px 0 80px}
+    .diagram .dg-w{display:none}.diagram .dg-m{display:block;max-width:400px;margin:0 auto}
+    .eco-cap{right:20px;bottom:14px;font-size:9.5px}
+    .director{padding:70px 0 80px}
+    .themes li{border-right:none;margin-right:6px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-video{display:none!important}
+    *,*::before,*::after{animation:none!important}
+    html{scroll-behavior:auto}
+    .reveal{transform:none;transition:none}
   }
 </style>
 </head>
@@ -264,7 +409,6 @@
 
 <div class="progress" id="progress"></div>
 
-<!-- NAV -->
 <header>
   <div class="wrap nav">
     <a href="#top" class="brand">
@@ -274,57 +418,72 @@
     <div class="nav-right">
       <ul class="nav-links" id="navlinks">
         <li><a href="#news" data-th="ข่าวสาร" data-en="News">ข่าวสาร</a></li>
-        <li><a href="#articles" data-th="บทความ" data-en="Articles">บทความ</a></li>
         <li><a href="#missions" data-th="ภารกิจ" data-en="Missions">ภารกิจ</a></li>
         <li><a href="#space">Space</a></li>
         <li><a href="#pq">Qualification</a></li>
         <li><a href="#digital">Digital</a></li>
+        <li><a href="#articles" data-th="บทความ" data-en="Articles">บทความ</a></li>
         <li><a href="#director" data-th="ผู้อำนวยการ" data-en="Director">ผู้อำนวยการ</a></li>
       </ul>
       <div class="lang-tog">
         <button id="lang-th" class="active">TH</button>
         <button id="lang-en">EN</button>
       </div>
-      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ============ HERO + STATS ============ -->
 <section class="hero" id="top">
-  <div class="hero-photo" id="heroPhoto"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-bg">
-    <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <g fill="#7fc0ff">
-        <circle cx="120" cy="90" r="1.6"/><circle cx="300" cy="60" r="2.2" opacity=".7"/><circle cx="520" cy="120" r="1.4"/>
-        <circle cx="760" cy="80" r="2"/><circle cx="980" cy="140" r="1.6" opacity=".6"/><circle cx="1100" cy="70" r="2.2"/>
-        <circle cx="200" cy="300" r="1.5"/><circle cx="1050" cy="330" r="1.8" opacity=".7"/><circle cx="90" cy="460" r="2"/>
-        <circle cx="430" cy="500" r="1.5" opacity=".6"/><circle cx="700" cy="520" r="2.1"/><circle cx="950" cy="500" r="1.5"/>
-        <circle cx="640" cy="40" r="1.4"/><circle cx="850" cy="260" r="1.6" opacity=".7"/><circle cx="350" cy="200" r="1.4"/>
-      </g>
-      <g class="orbits" fill="none" stroke="#3b82f6" opacity=".35">
-        <ellipse cx="600" cy="300" rx="430" ry="150" stroke-width="1.2"/>
-        <ellipse cx="600" cy="300" rx="300" ry="260" stroke-width="1" transform="rotate(35 600 300)"/>
-        <circle cx="170" cy="300" r="4" fill="#7c4dff" stroke="none"/>
-        <circle cx="1030" cy="300" r="3" fill="#06b6d4" stroke="none"/>
-      </g>
-    </svg>
-  </div>
+  <canvas class="eco-bg hero-fx" id="heroFx" aria-hidden="true"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="hero-grid"></div>
   <div class="wrap hero-inner">
-    <div class="hero-logo" id="herologo"></div>
-    <h1>CISS Center of Excellence</h1>
-    <div class="sub-th" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ." data-en="Communications &amp; Integrated Services Study Center · KMUTT">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</div>
-    <p class="lead" data-th="ศูนย์ความเป็นเลิศ ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร ที่มีประสบการณ์กว่า 15 ปี" data-en="A Center of Excellence connecting three core missions — space innovation, professional qualification, and digital technology &amp; communications. With 15 Years in Experience and Growing.">ศูนย์ความเป็นเลิศ ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร ที่มีประสบการณ์กว่า 15 ปี</p>
-    <div class="hero-pills">
-      <span class="hpill s">🛰️ Space Innovation</span>
-      <span class="hpill q">🎓 Professional Qualification</span>
-      <span class="hpill d">📡 Digital &amp; Communications</span>
+    <div class="hero-copy">
+      <div class="hero-logo" id="herologo"></div>
+      <div class="hero-eyebrow">CISS Center of Excellence</div>
+      <h1 data-th="จากอวกาศถึงภาคพื้นดิน&lt;br&gt;เราสร้างเทคโนโลยีและกำลังคนให้ประเทศ" data-en="From space to the ground,&lt;br&gt;we build technology and talent for Thailand">จากอวกาศถึงภาคพื้นดิน<br>เราสร้างเทคโนโลยีและกำลังคนให้ประเทศ</h1>
+      <div class="sub-th" data-th="ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ." data-en="Communications &amp; Integrated Services Study Center · KMUTT">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</div>
+      <p class="lead" data-th="ศูนย์ความเป็นเลิศ ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร ที่มีประสบการณ์กว่า 15 ปี" data-en="A Center of Excellence in space innovation, professional qualification, and digital technology and communications, with more than 15 years of experience.">ศูนย์ความเป็นเลิศ ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัลและการสื่อสาร ที่มีประสบการณ์กว่า 15 ปี</p>
+      <div class="hero-pills">
+        <span class="hpill s">🛰️ Space Innovation</span>
+        <span class="hpill q">🎓 Professional Qualification</span>
+        <span class="hpill d">📡 Digital &amp; Communications</span>
+      </div>
+      <!-- theme rail: แกนของธีมการออกแบบ (ลบ <ul> นี้ได้ถ้าไม่ต้องการให้มีข้อความเพิ่ม) -->
+      <ul class="themes" aria-label="Design theme">
+        <li style="--c:#7a9cff"><i></i><span data-th="อวกาศ" data-en="Space">อวกาศ</span></li>
+        <li style="--c:#f0b445"><i></i><span data-th="ภาคพื้นดิน" data-en="Terrestrial">ภาคพื้นดิน</span></li>
+        <li style="--c:#42d3e8"><i></i><span>6G</span></li>
+        <li style="--c:#3ddc97"><i></i><span data-th="กรีน" data-en="Green">กรีน</span></li>
+        <li style="--c:#c6d6cd"><i></i><span data-th="ภูมิรัฐศาสตร์" data-en="Geopolitics">ภูมิรัฐศาสตร์</span></li>
+        <li class="duo"><i></i><span data-th="เทคโนโลยีใช้งานสองทาง" data-en="Dual-Use Technology">เทคโนโลยีใช้งานสองทาง</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-photo" id="heroPhoto"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-bg"></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat"><b><span class="count" data-count="3">0</span></b><span data-th="ภารกิจหลัก" data-en="Core Missions">ภารกิจหลัก</span></div>
+        <div class="stat"><b><span class="count" data-count="15">0</span>+</b><span data-th="ปีประสบการณ์" data-en="Years of Experience">ปีประสบการณ์</span></div>
+        <div class="stat"><b>ISO 17024</b><span data-th="มาตรฐานสากล" data-en="Int'l Standard">มาตรฐานสากล</span></div>
+        <div class="stat"><b><span class="count" data-count="40">0</span>+</b><span data-th="บทความวิชาการ" data-en="Publications">บทความวิชาการ</span></div>
+      </div>
     </div>
   </div>
 </section>
+<div class="seam"></div>
 
-<!-- NEWS / ANNOUNCEMENTS -->
+<!-- ============ NEWS (paper) ============ -->
 <section class="news" id="news">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -335,13 +494,188 @@
     <div class="news-grid" id="newsGrid"></div>
   </div>
 </section>
+<div class="seam"></div>
 
-<!-- ACADEMIC ARTICLES -->
+<!-- ============ ECOSYSTEM + MISSIONS (dark) ============ -->
+<section class="eco" id="missions">
+  <canvas class="eco-bg" id="ecoBg" aria-hidden="true"></canvas>
+  <div class="eco-cap" id="ecoCap" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Ecosystem</div>
+      <h2 data-th="หนึ่งศูนย์กลาง สามภารกิจ" data-en="One Hub, Three Missions">หนึ่งศูนย์กลาง สามภารกิจ</h2>
+      <p data-th="CISS ทำหน้าที่เป็นแกนกลางที่เชื่อมต่อและขับเคลื่อนทั้งสามภารกิจให้ทำงานร่วมกันอย่างไร้รอยต่อ" data-en="CISS acts as the central core that connects and drives all three missions to work together seamlessly.">CISS ทำหน้าที่เป็นแกนกลางที่เชื่อมต่อและขับเคลื่อนทั้งสามภารกิจให้ทำงานร่วมกันอย่างไร้รอยต่อ</p>
+    </div>
+    <div class="diagram reveal d1">
+      <svg class="dg-w" viewBox="0 0 1000 475" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="CISS Center of Excellence — Space Innovation, Professional Qualification, Digital &amp; Communications">
+        <defs>
+          <clipPath id="ecoHub"><circle cx="500" cy="215" r="86"/></clipPath>
+          <clipPath id="ecoS"><circle cx="204" cy="164" r="60"/></clipPath>
+          <clipPath id="ecoQ"><circle cx="500" cy="365" r="60"/></clipPath>
+          <clipPath id="ecoD"><circle cx="796" cy="164" r="60"/></clipPath>
+          <radialGradient id="ecoShade"><stop offset=".55" stop-color="#05110e" stop-opacity="0"/><stop offset="1" stop-color="#05110e" stop-opacity=".55"/></radialGradient>
+          <radialGradient id="ecoHubShade"><stop offset="0" stop-color="#05110e" stop-opacity=".62"/><stop offset="1" stop-color="#05110e" stop-opacity=".3"/></radialGradient>
+        </defs>
+        <!-- one orbit, three links -->
+        <ellipse cx="500" cy="215" rx="315" ry="150" fill="none" stroke="#8cdcbe" stroke-opacity=".22" stroke-width="1"/>
+        <g stroke-width="1.4" fill="none" stroke-dasharray="3 7" stroke-linecap="round" style="animation:dash 2.6s linear infinite">
+          <path d="M500 215 L204 164" stroke="#42d3e8"/>
+          <path d="M500 215 L500 365" stroke="#f0b445"/>
+          <path d="M500 215 L796 164" stroke="#3ddc97"/>
+        </g>
+        <!-- hub: Bangkok at night from orbit -->
+        <circle cx="500" cy="215" r="86" fill="#0b2a22"/>
+        <image href="images/eco-hub.jpg" xlink:href="images/eco-hub.jpg" x="414" y="129" width="172" height="172" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoHub)"/>
+        <circle cx="500" cy="215" r="86" fill="url(#ecoHubShade)"/>
+        <circle cx="500" cy="215" r="86" fill="none" stroke="#3ddc97" stroke-width="1.5"/>
+        <circle cx="500" cy="215" r="97" fill="none" stroke="#3ddc97" stroke-width="1" opacity=".3"/>
+        <text x="500" y="212" text-anchor="middle" fill="#fff" font-family="Chakra Petch,sans-serif" font-size="34" font-weight="700">CISS</text>
+        <text x="500" y="235" text-anchor="middle" fill="#dff5ea" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="1.2">CENTER OF EXCELLENCE</text>
+        <!-- Space -->
+        <circle cx="204" cy="164" r="60" fill="#0b1626"/>
+        <image href="images/eco-space.jpg" xlink:href="images/eco-space.jpg" x="144" y="104" width="120" height="120" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoS)"/>
+        <circle cx="204" cy="164" r="60" fill="url(#ecoShade)"/>
+        <circle cx="204" cy="164" r="60" fill="none" stroke="#42d3e8" stroke-width="1.5"/>
+        <text x="204" y="252" text-anchor="middle" fill="#a9c0ff" font-family="Chakra Petch,sans-serif" font-size="15" font-weight="600">Space Innovation</text>
+        <!-- Professional Qualification -->
+        <circle cx="500" cy="365" r="60" fill="#2a2210"/>
+        <image href="images/eco-pq.jpg" xlink:href="images/eco-pq.jpg" x="440" y="305" width="120" height="120" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoQ)"/>
+        <circle cx="500" cy="365" r="60" fill="url(#ecoShade)"/>
+        <circle cx="500" cy="365" r="60" fill="none" stroke="#f0b445" stroke-width="1.5"/>
+        <text x="500" y="453" text-anchor="middle" fill="#f6d684" font-family="Chakra Petch,sans-serif" font-size="15" font-weight="600">Professional Qualification</text>
+        <!-- Digital & Communications -->
+        <circle cx="796" cy="164" r="60" fill="#0c2a1f"/>
+        <image href="images/eco-digital-v2.jpg" xlink:href="images/eco-digital-v2.jpg" x="736" y="104" width="120" height="120" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoD)"/>
+        <circle cx="796" cy="164" r="60" fill="url(#ecoShade)"/>
+        <circle cx="796" cy="164" r="60" fill="none" stroke="#3ddc97" stroke-width="1.5"/>
+        <text x="796" y="252" text-anchor="middle" fill="#8cf0c4" font-family="Chakra Petch,sans-serif" font-size="15" font-weight="600">Digital &amp; Communications</text>
+      </svg>
+      <!-- แนวตั้งสำหรับมือถือ: ศูนย์กลางอยู่บน สามภารกิจเรียงลงมา ตัวอักษรใหญ่ขึ้น -->
+      <svg class="dg-m" viewBox="0 0 360 572" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="CISS Center of Excellence — Space Innovation, Professional Qualification, Digital &amp; Communications">
+        <defs>
+          <clipPath id="ecoMHub"><circle cx="180" cy="98" r="80"/></clipPath>
+          <clipPath id="ecoMS"><circle cx="66" cy="262" r="48"/></clipPath>
+          <clipPath id="ecoMQ"><circle cx="66" cy="388" r="48"/></clipPath>
+          <clipPath id="ecoMD"><circle cx="66" cy="514" r="48"/></clipPath>
+          <radialGradient id="ecoMShade"><stop offset=".55" stop-color="#05110e" stop-opacity="0"/><stop offset="1" stop-color="#05110e" stop-opacity=".55"/></radialGradient>
+          <radialGradient id="ecoMHubShade"><stop offset="0" stop-color="#05110e" stop-opacity=".62"/><stop offset="1" stop-color="#05110e" stop-opacity=".3"/></radialGradient>
+        </defs>
+        <g stroke-width="1.5" fill="none" stroke-dasharray="3 7" stroke-linecap="round" stroke="#8cdcbe" stroke-opacity=".7" style="animation:dash 2.6s linear infinite">
+          <path d="M180 98 C180 210 66 160 66 262 V514"/>
+        </g>
+        <circle cx="180" cy="98" r="80" fill="#0b2a22"/>
+        <image href="images/eco-hub.jpg" xlink:href="images/eco-hub.jpg" x="100" y="18" width="160" height="160" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoMHub)"/>
+        <circle cx="180" cy="98" r="80" fill="url(#ecoMHubShade)"/>
+        <circle cx="180" cy="98" r="80" fill="none" stroke="#3ddc97" stroke-width="1.5"/>
+        <circle cx="180" cy="98" r="90" fill="none" stroke="#3ddc97" stroke-width="1" opacity=".3"/>
+        <text x="180" y="96" text-anchor="middle" fill="#fff" font-family="Chakra Petch,sans-serif" font-size="34" font-weight="700">CISS</text>
+        <text x="180" y="119" text-anchor="middle" fill="#dff5ea" font-family="IBM Plex Mono,monospace" font-size="9.5" letter-spacing="1">CENTER OF EXCELLENCE</text>
+        <circle cx="66" cy="262" r="48" fill="#0b1626"/>
+        <image href="images/eco-space.jpg" xlink:href="images/eco-space.jpg" x="18" y="214" width="96" height="96" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoMS)"/>
+        <circle cx="66" cy="262" r="48" fill="url(#ecoMShade)"/>
+        <circle cx="66" cy="262" r="48" fill="none" stroke="#42d3e8" stroke-width="1.5"/>
+        <text x="134" text-anchor="start" fill="#a9c0ff" font-family="Chakra Petch,sans-serif" font-size="21" font-weight="600"><tspan x="134" y="259">Space</tspan><tspan x="134" y="285">Innovation</tspan></text>
+        <circle cx="66" cy="388" r="48" fill="#2a2210"/>
+        <image href="images/eco-pq.jpg" xlink:href="images/eco-pq.jpg" x="18" y="340" width="96" height="96" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoMQ)"/>
+        <circle cx="66" cy="388" r="48" fill="url(#ecoMShade)"/>
+        <circle cx="66" cy="388" r="48" fill="none" stroke="#f0b445" stroke-width="1.5"/>
+        <text x="134" text-anchor="start" fill="#f6d684" font-family="Chakra Petch,sans-serif" font-size="21" font-weight="600"><tspan x="134" y="385">Professional</tspan><tspan x="134" y="411">Qualification</tspan></text>
+        <circle cx="66" cy="514" r="48" fill="#0c2a1f"/>
+        <image href="images/eco-digital-v2.jpg" xlink:href="images/eco-digital-v2.jpg" x="18" y="466" width="96" height="96" preserveAspectRatio="xMidYMid slice" clip-path="url(#ecoMD)"/>
+        <circle cx="66" cy="514" r="48" fill="url(#ecoMShade)"/>
+        <circle cx="66" cy="514" r="48" fill="none" stroke="#3ddc97" stroke-width="1.5"/>
+        <text x="134" text-anchor="start" fill="#8cf0c4" font-family="Chakra Petch,sans-serif" font-size="21" font-weight="600"><tspan x="134" y="511">Digital &amp;</tspan><tspan x="134" y="537">Communications</tspan></text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="missions">
+  <div class="wrap">
+    <div class="m-grid">
+
+      <div class="m-card m-space reveal" id="space">
+        <div class="m-media" data-img="space"><img alt="Space innovation"></div>
+        <div class="m-body">
+          <div class="m-ico">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-25 20 20)" stroke="#fff" stroke-width="1.6" opacity=".85"/>
+              <circle cx="20" cy="20" r="6" fill="#fff"/><circle cx="31" cy="10" r="2.6" fill="#fff"/>
+              <path d="M9 31 l1.4 -3 l3 -1.4 l-3 -1.4 l-1.4 -3 l-1.4 3 l-3 1.4 l3 1.4 z" fill="#fff" opacity=".9"/>
+            </svg>
+          </div>
+          <div class="m-tag">Mission 01</div>
+          <h3>Thonburi Space Economy and Engineering Innovation Center</h3>
+          <div class="h-th" data-th="ศูนย์นวัตกรรมเศรษฐกิจและวิศวกรรมอวกาศธนบุรี · อวกาศบางมด" data-en="Thonburi Space">ศูนย์นวัตกรรมเศรษฐกิจและวิศวกรรมอวกาศธนบุรี · อวกาศบางมด</div>
+          <p data-th="ขับเคลื่อนงานวิจัยและพัฒนาเทคโนโลยีอวกาศ ดาวเทียมขนาดเล็ก และสถานีภาคพื้นดิน พร้อมบ่มเพาะกำลังคนด้านอวกาศของประเทศ" data-en="Driving research and development in space technology, small satellites, and ground stations, while cultivating the nation's space workforce.">ขับเคลื่อนงานวิจัยและพัฒนาเทคโนโลยีอวกาศ ดาวเทียมขนาดเล็ก และสถานีภาคพื้นดิน พร้อมบ่มเพาะกำลังคนด้านอวกาศของประเทศ</p>
+          <div class="m-proof"><b>~20<small data-th="กม." data-en="km">กม.</small></b><span data-th="ความสูงปฏิบัติการของ HAPS ต้นแบบสัญชาติไทย · ทุน บพข. 2569 ร่วมกับ ALT Telecom" data-en="Operating altitude of the Thai-built HAPS prototype · PMUC grant 2026 with ALT Telecom">ความสูงปฏิบัติการของ HAPS ต้นแบบสัญชาติไทย · ทุน บพข. 2569 ร่วมกับ ALT Telecom</span></div>
+          <ul class="m-list">
+            <li><span class="dot"></span><span data-th="วิจัยและพัฒนาดาวเทียม CubeSat และระบบภาคพื้นดิน" data-en="R&amp;D on CubeSat satellites and ground systems">วิจัยและพัฒนาดาวเทียม CubeSat และระบบภาคพื้นดิน</span></li>
+            <li><span class="dot"></span><span data-th="ห้องปฏิบัติการและพื้นที่ทดสอบเทคโนโลยีอวกาศ" data-en="Laboratories and space technology test facilities">ห้องปฏิบัติการและพื้นที่ทดสอบเทคโนโลยีอวกาศ</span></li>
+            <li><span class="dot"></span><span data-th="โครงการการศึกษาและบ่มเพาะสตาร์ทอัพด้านอวกาศ" data-en="Education programs and space startup incubation">โครงการการศึกษาและบ่มเพาะสตาร์ทอัพด้านอวกาศ</span></li>
+          </ul>
+          <a class="m-btn" id="go-space" href="https://chirasil.github.io/thonburi-space/" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="m-card m-pq reveal d1" id="pq">
+        <div class="m-media" data-img="pq"><img alt="Professional qualification"></div>
+        <div class="m-body">
+          <div class="m-ico">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6 L31 11 L31 21 C31 29 26 34 20 36 C14 34 9 29 9 21 L9 11 Z" fill="#fff"/>
+              <path d="M15 20 l3.5 3.5 l7 -8" stroke="#f5a623" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="m-tag">Mission 02</div>
+          <h3>Professional Qualification</h3>
+          <div class="h-th" data-th="การรับรองคุณวุฒิวิชาชีพ" data-en="Personnel Certification Body">การรับรองคุณวุฒิวิชาชีพ</div>
+          <p data-th="องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ภายใต้มาตรฐานสากล ISO/IEC 17024 ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="A body certifying individuals' competency against occupational standards under the international ISO/IEC 17024 standard, in partnership with the Thailand Professional Qualification Institute (TPQI).">องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ภายใต้มาตรฐานสากล ISO/IEC 17024 ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
+          <div class="m-proof"><b>2<small data-th="สาขา" data-en="fields">สาขา</small></b><span data-th="สาขาวิชาชีพอุตสาหกรรมดิจิทัลที่เปิดรับรอง · รางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565" data-en="Digital-industry occupations certified · Outstanding Certification Body Award 2022">สาขาวิชาชีพอุตสาหกรรมดิจิทัลที่เปิดรับรอง · รางวัลองค์กรรับรองสมรรถนะยอดเยี่ยม ประจำปี 2565</span></div>
+          <ul class="m-list">
+            <li><span class="dot"></span><span data-th="รับรองช่างโครงข่าย FTTx และช่างสื่อสัญญาณ" data-en="Certifying FTTx network &amp; telecom signal technicians">รับรองช่างโครงข่าย FTTx และช่างสื่อสัญญาณ</span></li>
+            <li><span class="dot"></span><span data-th="นักวิเคราะห์ความต้องการทางธุรกิจ (ซอฟต์แวร์)" data-en="Business requirements analysts (software)">นักวิเคราะห์ความต้องการทางธุรกิจ (ซอฟต์แวร์)</span></li>
+            <li><span class="dot"></span><span data-th="ประเมินด้วยการทดสอบและเทียบโอนประสบการณ์ (RESK)" data-en="Assessment by testing and experience recognition (RESK)">ประเมินด้วยการทดสอบและเทียบโอนประสบการณ์ (RESK)</span></li>
+          </ul>
+          <a class="m-btn" id="go-pq" href="https://chirasil.github.io/CISS/ciss" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <div class="m-card m-digital reveal d2" id="digital">
+        <div class="m-media" data-img="digital"><img alt="Digital and communications"></div>
+        <div class="m-body">
+          <div class="m-ico">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="13" y="13" width="14" height="14" rx="3" fill="#fff"/>
+              <g stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M20 13 V7"/><path d="M20 33 V27"/><path d="M13 20 H7"/><path d="M33 20 H27"/></g>
+              <g fill="#fff"><circle cx="20" cy="6" r="2.2"/><circle cx="20" cy="34" r="2.2"/><circle cx="6" cy="20" r="2.2"/><circle cx="34" cy="20" r="2.2"/></g>
+            </svg>
+          </div>
+          <div class="m-tag">Mission 03</div>
+          <h3>Digital Technology &amp; Communications</h3>
+          <div class="h-th" data-th="เทคโนโลยีดิจิทัลและการสื่อสาร" data-en="Digital &amp; Telecom Infrastructure">เทคโนโลยีดิจิทัลและการสื่อสาร</div>
+          <p data-th="พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล IoT และซอฟต์แวร์ เพื่อรองรับอุตสาหกรรมดิจิทัล" data-en="Developing infrastructure and talent in telecommunications networks, digital systems, IoT, and software to support the digital industry.">พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล IoT และซอฟต์แวร์ เพื่อรองรับอุตสาหกรรมดิจิทัล</p>
+          <div class="m-proof"><b>40+<small data-th="เรื่อง" data-en="papers">เรื่อง</small></b><span data-th="บทความวิชาการตีพิมพ์ · IEEE Transactions &amp;amp; Letters" data-en="Published papers · IEEE Transactions &amp;amp; Letters">บทความวิชาการตีพิมพ์ · IEEE Transactions &amp; Letters</span></div>
+          <ul class="m-list">
+            <li><span class="dot"></span><span data-th="โครงข่ายใยแก้วนำแสง (FTTx) และระบบสื่อสาร" data-en="Fiber-optic networks (FTTx) and communication systems">โครงข่ายใยแก้วนำแสง (FTTx) และระบบสื่อสาร</span></li>
+            <li><span class="dot"></span><span data-th="อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม" data-en="Hands-on digital and telecom training workshops">อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม</span></li>
+            <li><span class="dot"></span><span data-th="พัฒนาซอฟต์แวร์และโซลูชัน IoT" data-en="Software development and IoT solutions">พัฒนาซอฟต์แวร์และโซลูชัน IoT</span></li>
+          </ul>
+          <a class="m-btn" id="go-digital" href="https://chirasil.github.io/CISS/digital" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<div class="seam"></div>
+
+<!-- ============ ARTICLES (paper) ============ -->
 <section class="articles" id="articles">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow" data-th="บทความ & องค์ความรู้" data-en="Articles &amp; Insights">บทความ & องค์ความรู้</div>
-      <h2 data-th="องค์ความรู้จากภารกิจของ CISS" data-en="Knowledge Across CISS Missions">องค์ความรู้จากภารกิจของ CISS</h2>
+      <h2 data-th="องค์ความรู้จากสามภารกิจ" data-en="Knowledge Across Our Three Missions">องค์ความรู้จากสามภารกิจ</h2>
       <p data-th="รวมบทความ งานวิจัย และองค์ความรู้ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัล — คลิกเพื่ออ่านต่อ" data-en="Articles, research and insights across space innovation, professional qualification, and digital technology — click any card to read more.">รวมบทความ งานวิจัย และองค์ความรู้ด้านนวัตกรรมอวกาศ การรับรองคุณวุฒิวิชาชีพ และเทคโนโลยีดิจิทัล — คลิกเพื่ออ่านต่อ</p>
     </div>
     <div class="art-wrap">
@@ -352,123 +686,14 @@
     <div class="art-dots" id="artDots"></div>
   </div>
 </section>
+<div class="seam"></div>
 
-<!-- ECOSYSTEM -->
-<section class="eco" id="missions">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Ecosystem</div>
-      <h2 data-th="หนึ่งศูนย์กลาง สามภารกิจ" data-en="One Hub, Three Missions">หนึ่งศูนย์กลาง สามภารกิจ</h2>
-      <p data-th="CISS ทำหน้าที่เป็นแกนกลางที่เชื่อมต่อและขับเคลื่อนทั้งสามภารกิจให้ทำงานร่วมกันอย่างไร้รอยต่อ" data-en="CISS acts as the central core that connects and drives all three missions to work together seamlessly.">CISS ทำหน้าที่เป็นแกนกลางที่เชื่อมต่อและขับเคลื่อนทั้งสามภารกิจให้ทำงานร่วมกันอย่างไร้รอยต่อ</p>
-    </div>
-    <div class="diagram reveal d1">
-      <svg viewBox="0 0 1000 412" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c4dff"/><stop offset="1" stop-color="#5b8def"/></linearGradient>
-          <linearGradient id="gq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a623"/><stop offset="1" stop-color="#f7c948"/></linearGradient>
-          <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
-          <linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f86e0"/><stop offset="1" stop-color="#1559a3"/></linearGradient>
-        </defs>
-        <g stroke-width="2.5" fill="none" stroke-dasharray="6 8" opacity="0.8" style="animation:dash 2s linear infinite">
-          <path d="M500 190 L180 300" stroke="#7c4dff"/>
-          <path d="M500 190 L500 320" stroke="#f5a623"/>
-          <path d="M500 190 L820 300" stroke="#06b6d4"/>
-        </g>
-        <circle cx="500" cy="190" r="64" fill="url(#gc)"/>
-        <circle cx="500" cy="190" r="76" fill="none" stroke="#2f86e0" stroke-width="1.5" opacity="0.4"/>
-        <text x="500" y="184" text-anchor="middle" fill="#fff" font-family="Sarabun,sans-serif" font-size="30" font-weight="800">CISS</text>
-        <text x="500" y="206" text-anchor="middle" fill="#cfe3fa" font-family="Sarabun,sans-serif" font-size="11">Center of Excellence</text>
-        <circle cx="180" cy="300" r="48" fill="url(#gs)"/>
-        <text x="180" y="296" text-anchor="middle" font-size="24">🛰️</text>
-        <text x="180" y="368" text-anchor="middle" fill="#c3b0ff" font-family="Sarabun,sans-serif" font-size="16" font-weight="700">Space Innovation</text>
-        <circle cx="500" cy="320" r="48" fill="url(#gq)"/>
-        <text x="500" y="316" text-anchor="middle" font-size="24">🎓</text>
-        <text x="500" y="392" text-anchor="middle" fill="#ffd98a" font-family="Sarabun,sans-serif" font-size="16" font-weight="700">Professional Qualification</text>
-        <circle cx="820" cy="300" r="48" fill="url(#gd)"/>
-        <text x="820" y="296" text-anchor="middle" font-size="24">📡</text>
-        <text x="820" y="368" text-anchor="middle" fill="#8fe3f5" font-family="Sarabun,sans-serif" font-size="16" font-weight="700">Digital &amp; Communications</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- MISSIONS -->
-<section class="missions">
-  <div class="wrap">
-    <div class="m-grid">
-
-      <div class="m-card m-space reveal" id="space">
-        <div class="m-media" data-img="space"><img alt="Space innovation"></div>
-        <div class="m-ico">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-25 20 20)" stroke="#fff" stroke-width="1.6" opacity=".85"/>
-            <circle cx="20" cy="20" r="6" fill="#fff"/><circle cx="31" cy="10" r="2.6" fill="#fff"/>
-            <path d="M9 31 l1.4 -3 l3 -1.4 l-3 -1.4 l-1.4 -3 l-1.4 3 l-3 1.4 l3 1.4 z" fill="#fff" opacity=".9"/>
-          </svg>
-        </div>
-        <div class="m-tag">Mission 01</div>
-        <h3>Thonburi Space Innovation Hub</h3>
-        <div class="h-th" data-th="ศูนย์นวัตกรรมอวกาศธนบุรี" data-en="Thonburi Space Innovation Centre">ศูนย์นวัตกรรมอวกาศธนบุรี</div>
-        <p data-th="ขับเคลื่อนงานวิจัยและพัฒนาเทคโนโลยีอวกาศ ดาวเทียมขนาดเล็ก และสถานีภาคพื้นดิน พร้อมบ่มเพาะกำลังคนด้านอวกาศของประเทศ" data-en="Driving research and development in space technology, small satellites, and ground stations, while cultivating the nation's space workforce.">ขับเคลื่อนงานวิจัยและพัฒนาเทคโนโลยีอวกาศ ดาวเทียมขนาดเล็ก และสถานีภาคพื้นดิน พร้อมบ่มเพาะกำลังคนด้านอวกาศของประเทศ</p>
-        <ul class="m-list">
-          <li><span class="dot"></span><span data-th="วิจัยและพัฒนาดาวเทียม CubeSat และระบบภาคพื้นดิน" data-en="R&amp;D on CubeSat satellites and ground systems">วิจัยและพัฒนาดาวเทียม CubeSat และระบบภาคพื้นดิน</span></li>
-          <li><span class="dot"></span><span data-th="ห้องปฏิบัติการและพื้นที่ทดสอบเทคโนโลยีอวกาศ" data-en="Laboratories and space technology test facilities">ห้องปฏิบัติการและพื้นที่ทดสอบเทคโนโลยีอวกาศ</span></li>
-          <li><span class="dot"></span><span data-th="โครงการการศึกษาและบ่มเพาะสตาร์ทอัพด้านอวกาศ" data-en="Education programs and space startup incubation">โครงการการศึกษาและบ่มเพาะสตาร์ทอัพด้านอวกาศ</span></li>
-        </ul>
-        <a class="m-btn" id="go-space" href="https://chirasil.github.io/thonburi-space/" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
-      </div>
-
-      <div class="m-card m-pq reveal d1" id="pq">
-        <div class="m-media" data-img="pq"><img alt="Professional qualification"></div>
-        <div class="m-ico">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 6 L31 11 L31 21 C31 29 26 34 20 36 C14 34 9 29 9 21 L9 11 Z" fill="#fff"/>
-            <path d="M15 20 l3.5 3.5 l7 -8" stroke="#f5a623" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-        <div class="m-tag">Mission 02</div>
-        <h3>Professional Qualification</h3>
-        <div class="h-th" data-th="การรับรองคุณวุฒิวิชาชีพ" data-en="Personnel Certification Body">การรับรองคุณวุฒิวิชาชีพ</div>
-        <p data-th="องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ภายใต้มาตรฐานสากล ISO/IEC 17024 ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)" data-en="A body certifying individuals' competency against occupational standards under the international ISO/IEC 17024 standard, in partnership with the Thailand Professional Qualification Institute (TPQI).">องค์กรรับรองสมรรถนะของบุคคลตามมาตรฐานอาชีพ ภายใต้มาตรฐานสากล ISO/IEC 17024 ร่วมกับสถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)</p>
-        <ul class="m-list">
-          <li><span class="dot"></span><span data-th="รับรองช่างโครงข่าย FTTx และช่างสื่อสัญญาณ" data-en="Certifying FTTx network &amp; telecom signal technicians">รับรองช่างโครงข่าย FTTx และช่างสื่อสัญญาณ</span></li>
-          <li><span class="dot"></span><span data-th="นักวิเคราะห์ความต้องการทางธุรกิจ (ซอฟต์แวร์)" data-en="Business requirements analysts (software)">นักวิเคราะห์ความต้องการทางธุรกิจ (ซอฟต์แวร์)</span></li>
-          <li><span class="dot"></span><span data-th="ประเมินด้วยการทดสอบและเทียบโอนประสบการณ์ (RESK)" data-en="Assessment by testing and experience recognition (RESK)">ประเมินด้วยการทดสอบและเทียบโอนประสบการณ์ (RESK)</span></li>
-        </ul>
-        <a class="m-btn" id="go-pq" href="https://chirasil.github.io/CISS/ciss" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
-      </div>
-
-      <div class="m-card m-digital reveal d2" id="digital">
-        <div class="m-media" data-img="digital"><img alt="Digital and communications"></div>
-        <div class="m-ico">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="13" y="13" width="14" height="14" rx="3" fill="#fff"/>
-            <g stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M20 13 V7"/><path d="M20 33 V27"/><path d="M13 20 H7"/><path d="M33 20 H27"/></g>
-            <g fill="#fff"><circle cx="20" cy="6" r="2.2"/><circle cx="20" cy="34" r="2.2"/><circle cx="6" cy="20" r="2.2"/><circle cx="34" cy="20" r="2.2"/></g>
-          </svg>
-        </div>
-        <div class="m-tag">Mission 03</div>
-        <h3>Digital Technology &amp; Communications</h3>
-        <div class="h-th" data-th="เทคโนโลยีดิจิทัลและการสื่อสาร" data-en="Digital &amp; Telecom Infrastructure">เทคโนโลยีดิจิทัลและการสื่อสาร</div>
-        <p data-th="พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล IoT และซอฟต์แวร์ เพื่อรองรับอุตสาหกรรมดิจิทัล" data-en="Developing infrastructure and talent in telecommunications networks, digital systems, IoT, and software to support the digital industry.">พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล IoT และซอฟต์แวร์ เพื่อรองรับอุตสาหกรรมดิจิทัล</p>
-        <ul class="m-list">
-          <li><span class="dot"></span><span data-th="โครงข่ายใยแก้วนำแสง (FTTx) และระบบสื่อสาร" data-en="Fiber-optic networks (FTTx) and communication systems">โครงข่ายใยแก้วนำแสง (FTTx) และระบบสื่อสาร</span></li>
-          <li><span class="dot"></span><span data-th="อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม" data-en="Hands-on digital and telecom training workshops">อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม</span></li>
-          <li><span class="dot"></span><span data-th="พัฒนาซอฟต์แวร์และโซลูชัน IoT" data-en="Software development and IoT solutions">พัฒนาซอฟต์แวร์และโซลูชัน IoT</span></li>
-        </ul>
-        <a class="m-btn" id="go-digital" href="https://chirasil.github.io/CISS/digital" target="_blank" rel="noopener"><span data-th="เข้าสู่ภารกิจ" data-en="Enter Mission">เข้าสู่ภารกิจ</span> <span class="arr">→</span></a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- DIRECTOR -->
+<!-- ============ DIRECTOR (dark) ============ -->
 <section class="director" id="director">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow" data-th="ศสบ" data-en="CISS">CISS</div>
-      <h2 data-th="ผู้อำนวยการศูนย์" data-en="Director">ผู้อำนวยการศูนย์</h2>
+      <div class="eyebrow" data-th="ผู้อำนวยการศูนย์" data-en="Center Director">ผู้อำนวยการศูนย์</div>
+      <h2 data-th="ผู้นำศูนย์ความเป็นเลิศ" data-en="Leading the Center of Excellence">ผู้นำศูนย์ความเป็นเลิศ</h2>
       <p data-th="ผู้เชี่ยวชาญด้านเศรษฐกิจอวกาศ วิศวกรรมโทรคมนาคม การกำกับดูแลกิจการสื่อสาร และการพัฒนากำลังคนดิจิทัล" data-en="An expert in space economy, telecommunication engineering, communications regulation, and digital workforce development.">ผู้เชี่ยวชาญด้านเศรษฐกิจอวกาศ วิศวกรรมโทรคมนาคม การกำกับดูแลกิจการสื่อสาร และการพัฒนากำลังคนดิจิทัล</p>
     </div>
 
@@ -505,7 +730,7 @@
 
         <div class="dir-groups">
           <div class="dir-group">
-            <h4><span class="gi" style="background:linear-gradient(135deg,#2f86e0,#1559a3)">🎯</span><span data-th="บทบาทปัจจุบัน" data-en="Current Roles">บทบาทปัจจุบัน</span></h4>
+            <h4><span class="gi" style="background:linear-gradient(135deg,#12805a,#0b4f5c)">🎯</span><span data-th="บทบาทปัจจุบัน" data-en="Current Roles">บทบาทปัจจุบัน</span></h4>
             <ul>
               <li data-th="ผู้อำนวยการศูนย์ CISS · องค์กรรับรองสมรรถนะบุคคล สาขา ICT" data-en="Director, CISS · ICT personnel certification body">ผู้อำนวยการศูนย์ CISS · องค์กรรับรองสมรรถนะบุคคล สาขา ICT</li>
               <li data-th="ผู้ช่วยศาสตราจารย์ · ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ." data-en="Assistant Professor · Electronic &amp; Telecommunication Engineering, KMUTT">ผู้ช่วยศาสตราจารย์ · ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ.</li>
@@ -515,7 +740,7 @@
           </div>
 
           <div class="dir-group">
-            <h4><span class="gi" style="background:linear-gradient(135deg,#f5a623,#f7c948)">⚖️</span><span data-th="กรรมการ & ที่ปรึกษา" data-en="Boards &amp; Advisory">กรรมการ & ที่ปรึกษา</span></h4>
+            <h4><span class="gi" style="background:linear-gradient(135deg,#f0b445,#f6d684)">⚖️</span><span data-th="กรรมการ & ที่ปรึกษา" data-en="Boards &amp; Advisory">กรรมการ & ที่ปรึกษา</span></h4>
             <ul>
               <li data-th="กรรมการอิสระ / กรรมการตรวจสอบ · บมจ. เอแอลที เทเลคอม (ALT)" data-en="Independent Director / Audit Committee · ALT Telecom PCL">กรรมการอิสระ / กรรมการตรวจสอบ · บมจ. เอแอลที เทเลคอม (ALT)</li>
               <li data-th="กรรมการอิสระ / กรรมการตรวจสอบ · บมจ. มิสแกรนด์ อินเตอร์เนชั่นแนล (MGI)" data-en="Independent Director / Audit Committee · Miss Grand International PCL">กรรมการอิสระ / กรรมการตรวจสอบ · บมจ. มิสแกรนด์ อินเตอร์เนชั่นแนล (MGI)</li>
@@ -525,7 +750,7 @@
           </div>
 
           <div class="dir-group">
-            <h4><span class="gi" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">🔬</span><span data-th="งานบริการวิชาการ & วิจัย" data-en="Academic Service &amp; Research">งานบริการวิชาการ & วิจัย</span></h4>
+            <h4><span class="gi" style="background:linear-gradient(135deg,#1fb57c,#3ddc97)">🔬</span><span data-th="งานบริการวิชาการ & วิจัย" data-en="Academic Service &amp; Research">งานบริการวิชาการ & วิจัย</span></h4>
             <ul>
               <li data-th="โครงการประเมินสมรรถนะช่างโครงข่ายไฟเบอร์/สื่อสัญญาณ · สถาบันคุณวุฒิวิชาชีพ" data-en="Fiber-optic &amp; telecom technician competency assessments · TPQI">โครงการประเมินสมรรถนะช่างโครงข่ายไฟเบอร์/สื่อสัญญาณ · สถาบันคุณวุฒิวิชาชีพ</li>
               <li data-th="จัดทำเครื่องมือประเมินมาตรฐานอาชีพ สาขา ICT" data-en="Development of ICT occupational-standard assessment tools">จัดทำเครื่องมือประเมินมาตรฐานอาชีพ สาขา ICT</li>
@@ -535,7 +760,7 @@
           </div>
 
           <div class="dir-group">
-            <h4><span class="gi" style="background:linear-gradient(135deg,#7c4dff,#5b8def)">📚</span><span data-th="ผลงานตีพิมพ์" data-en="Publications">ผลงานตีพิมพ์</span></h4>
+            <h4><span class="gi" style="background:linear-gradient(135deg,#7a9cff,#42d3e8)">📚</span><span data-th="ผลงานตีพิมพ์" data-en="Publications">ผลงานตีพิมพ์</span></h4>
             <ul>
               <li data-th="บทความวิชาการระดับนานาชาติกว่า 40 ชิ้น" data-en="Over 40 international publications">บทความวิชาการระดับนานาชาติกว่า 40 ชิ้น</li>
               <li data-th="ตีพิมพ์ในวารสารชั้นนำ IEEE Transactions & Letters" data-en="Published in leading IEEE Transactions &amp; Letters">ตีพิมพ์ในวารสารชั้นนำ IEEE Transactions & Letters</li>
@@ -549,24 +774,29 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
         <div class="logo-box" id="footlogo"></div>
-        <div><b style="color:#fff">CISS</b><br><span style="font-size:13px;color:var(--muted)" data-th="มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="King Mongkut's University of Technology Thonburi">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</span></div>
+        <div><b style="color:#fff;font-family:var(--f-head)">CISS</b><br><span style="font-size:13px;color:var(--muted)" data-th="มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="King Mongkut's University of Technology Thonburi">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</span></div>
       </div>
       <div class="foot-contact">
         <span>📞 02-470-9629</span><span>✉️ ciss@mail.kmutt.ac.th</span><span data-th="📍 ทุ่งครุ กรุงเทพฯ" data-en="📍 Thung Khru, Bangkok">📍 ทุ่งครุ กรุงเทพฯ</span>
       </div>
     </div>
-    <div class="foot-bottom" data-th="© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ" data-en="© 2025 Communications and Integrated Services Study Center (CISS) · Central hub connecting three missions">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ</div>
-    <div class="foot-credit" data-th="ภาพประกอบบางส่วนจาก Unsplash (ใช้ได้ฟรีทั้งเชิงพาณิชย์) · เปลี่ยนรูป/แก้ลิงก์/เพิ่มข่าวได้ที่ปุ่มตั้งค่า ⚙️" data-en="Some imagery via Unsplash (free for commercial use) · Edit images, links &amp; news via the ⚙️ settings button">ภาพประกอบบางส่วนจาก Unsplash (ใช้ได้ฟรีทั้งเชิงพาณิชย์) · เปลี่ยนรูป/แก้ลิงก์/เพิ่มข่าวได้ที่ปุ่มตั้งค่า ⚙️</div>
+    <div class="foot-connect">
+      <div class="social" id="socialRow"></div>
+      <div class="qr-box">
+        <div class="qr" id="qrBox"></div>
+        <span class="qr-cap" data-th="สแกนเพื่อเข้าเว็บ CISS" data-en="Scan to visit CISS">สแกนเพื่อเข้าเว็บ CISS</span>
+      </div>
+    </div>
+    <div class="foot-bottom" data-th="© 2569 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ" data-en="© 2026 Communications and Integrated Services Study Center (CISS) · Central hub connecting three missions">© 2569 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ</div>
+    <div class="foot-credit" data-th="ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพอวกาศเป็นภาพสาธารณสมบัติของ NASA ใช้ประกอบเนื้อหา ไม่ใช่สถานที่หรืออุปกรณ์ของศูนย์ · ภาพ Space–Air–Ground เป็นภาพตัดต่อจากภาพสาธารณสมบัติของ NASA (iss074e0301636, ED03-0152-32) และ NASA/JPL-Caltech (PIA26717) โดยลบเครื่องหมายบนอากาศยานออก · ภาพกรุงเทพฯ ยามค่ำ: NASA (iss064e037842) · เปลี่ยนรูป/แก้ลิงก์/เพิ่มข่าวได้ที่ปุ่มตั้งค่า ⚙️" data-en="Activity photos are CISS's own · Space imagery is NASA public domain, used as illustration and not the centre's facilities or equipment · Space–Air–Ground image is a composite of public-domain photos by NASA (iss074e0301636, ED03-0152-32) and NASA/JPL-Caltech (PIA26717), with the aircraft markings removed · Bangkok at night: NASA (iss064e037842) · Edit images, links &amp; news via the ⚙️ settings button">ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพอวกาศเป็นภาพสาธารณสมบัติของ NASA ใช้ประกอบเนื้อหา ไม่ใช่สถานที่หรืออุปกรณ์ของศูนย์ · ภาพ Space–Air–Ground เป็นภาพตัดต่อจากภาพสาธารณสมบัติของ NASA (iss074e0301636, ED03-0152-32) และ NASA/JPL-Caltech (PIA26717) โดยลบเครื่องหมายบนอากาศยานออก · ภาพกรุงเทพฯ ยามค่ำ: NASA (iss064e037842) · เปลี่ยนรูป/แก้ลิงก์/เพิ่มข่าวได้ที่ปุ่มตั้งค่า ⚙️</div>
   </div>
 </footer>
 
-<!-- SETTINGS BUTTON + PANEL -->
 <button class="gear" id="gearBtn" title="ตั้งค่ารูปภาพ ลิงก์ และข่าว">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
@@ -598,8 +828,8 @@
 
     <div class="panel-sec-title" data-th="ข่าว & ประชาสัมพันธ์" data-en="News &amp; announcements">ข่าว & ประชาสัมพันธ์</div>
     <div class="link-row">
-      <label data-th="วันที่ (เช่น 15 มิ.ย. 2568)" data-en="Date (e.g. 15 Jun 2025)">วันที่ (เช่น 15 มิ.ย. 2568)</label>
-      <input type="text" id="nw-date" placeholder="15 มิ.ย. 2568">
+      <label data-th="วันที่ (เช่น 15 มิ.ย. 2569)" data-en="Date (e.g. 15 Jun 2026)">วันที่ (เช่น 15 มิ.ย. 2569)</label>
+      <input type="text" id="nw-date" placeholder="15 มิ.ย. 2569">
     </div>
     <div class="link-row">
       <label data-th="ป้ายหมวด (เช่น กิจกรรม / รับสมัคร)" data-en="Tag (e.g. Event / Enrollment)">ป้ายหมวด</label>
@@ -634,7 +864,7 @@
 
     <div class="panel-sec-title" data-th="ลิงก์ภารกิจ" data-en="Mission links">ลิงก์ภารกิจ</div>
     <div class="link-row">
-      <label>🛰️ Space Innovation Hub</label>
+      <label>🛰️ Thonburi Space</label>
       <input type="url" id="lk-space" placeholder="https://...">
     </div>
     <div class="link-row">
@@ -647,20 +877,41 @@
     </div>
     <button class="save-links" id="saveLinks" data-th="บันทึกลิงก์" data-en="Save links">บันทึกลิงก์</button>
 
-    <div class="panel-note" data-th="คำแนะนำ: ข่าว รูปภาพ และลิงก์ที่ตั้งค่าจะถูกบันทึกในเบราว์เซอร์นี้โดยอัตโนมัติ (เหมาะกับการแก้ไข/พรีวิว) หากต้องการให้ทุกคนเห็นข่าวเดียวกันบนเว็บจริง แนะนำให้คัดลอกข้อความข่าวไปใส่ในโค้ดส่วน NEWS_DEFAULT แล้ว commit ขึ้น GitHub" data-en="Note: News, images and links are saved in this browser automatically (great for editing/preview). To show the same news to all visitors on the live site, copy the text into the NEWS_DEFAULT array in the code and commit to GitHub.">คำแนะนำ: ข่าว รูปภาพ และลิงก์ที่ตั้งค่าจะถูกบันทึกในเบราว์เซอร์นี้โดยอัตโนมัติ (เหมาะกับการแก้ไข/พรีวิว) หากต้องการให้ทุกคนเห็นข่าวเดียวกันบนเว็บจริง แนะนำให้คัดลอกข้อความข่าวไปใส่ในโค้ดส่วน NEWS_DEFAULT แล้ว commit ขึ้น GitHub</div>
+    <div class="panel-sec-title" data-th="โซเชียล & QR" data-en="Social &amp; QR">โซเชียล & QR</div>
+    <div class="link-row"><label>🟢 LINE</label><input type="url" id="so-line" placeholder="https://line.me/..."></div>
+    <div class="link-row"><label>📘 Facebook</label><input type="url" id="so-fb" placeholder="https://facebook.com/..."></div>
+    <div class="link-row"><label>▶️ YouTube</label><input type="url" id="so-yt" placeholder="https://youtube.com/..."></div>
+    <div class="link-row"><label>📸 Instagram</label><input type="url" id="so-ig" placeholder="https://instagram.com/..."></div>
+    <div class="link-row"><label>✖️ X (Twitter)</label><input type="url" id="so-x" placeholder="https://x.com/..."></div>
+    <div class="link-row"><label data-th="ลิงก์สำหรับ QR (ค่าเริ่มต้น: เว็บ CISS)" data-en="QR target URL (default: CISS site)">ลิงก์สำหรับ QR</label><input type="url" id="so-qr" placeholder="https://chirasil.github.io/CISS/"></div>
+    <button class="save-links" id="saveSocial" data-th="บันทึกโซเชียล & QR" data-en="Save social &amp; QR">บันทึกโซเชียล & QR</button>
+
+    <div class="panel-note" data-th="คำแนะนำ: ข่าว รูปภาพ และลิงก์ที่ตั้งค่าจะถูกบันทึกในเบราว์เซอร์นี้โดยอัตโนมัติ (เหมาะกับการแก้ไข/พรีวิว) หากต้องการให้ทุกคนเห็นข่าวเดียวกันบนเว็บจริง แนะนำให้แก้ที่ไฟล์ data/news.json แล้ว commit ขึ้น GitHub" data-en="Note: News, images and links are saved in this browser automatically (great for editing/preview). To show the same news to all visitors on the live site, edit data/news.json and commit to GitHub.">คำแนะนำ: ข่าว รูปภาพ และลิงก์ที่ตั้งค่าจะถูกบันทึกในเบราว์เซอร์นี้โดยอัตโนมัติ (เหมาะกับการแก้ไข/พรีวิว) หากต้องการให้ทุกคนเห็นข่าวเดียวกันบนเว็บจริง แนะนำให้แก้ที่ไฟล์ data/news.json แล้ว commit ขึ้น GitHub</div>
   </div>
 </aside>
 <input type="file" id="slotFile" accept="image/*" hidden>
 <div class="toast" id="toast"></div>
 
 <script>
+  /* ที่เก็บค่าของหน้า (ภาษา รูป ข่าว ลิงก์ โซเชียล) — เบราว์เซอร์ทั่วไปไม่มี window.storage จึงใช้ localStorage แทน
+     ค่าที่บันทึกอยู่เฉพาะในเบราว์เซอร์เครื่องนี้ */
+  if(!window.storage){
+    window.storage={
+      async get(k){ try{ const v=localStorage.getItem(k); return v===null?null:{value:v}; }catch(e){ return null; } },
+      async set(k,v){ try{ localStorage.setItem(k,String(v)); return true; }
+        catch(e){ const en=document.documentElement.lang==='en';
+          try{ showToast(en?'Could not save — browser storage is full or blocked':'บันทึกไม่ได้ — พื้นที่จัดเก็บของเบราว์เซอร์เต็มหรือถูกปิดไว้'); }catch(_){}
+          return false; } },
+      async delete(k){ try{ localStorage.removeItem(k); }catch(e){} return true; }
+    };
+  }
   const EMBLEM=`<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85"/>
+    <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bff2dc" stroke-width="1.4" opacity="0.85"/>
     <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
     <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
-    <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9"/>
-    <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65"/>
+    <path d="M27.9 9 q3 -2.3 5 0" stroke="#bff2dc" stroke-width="1.2" opacity="0.9"/>
+    <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bff2dc" stroke-width="1.2" opacity="0.65"/>
   </svg>`;
   ['navlogo','herologo','footlogo'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=EMBLEM;});
 
@@ -669,7 +920,6 @@
   function esc(s){ return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
   function curLang(){ return document.documentElement.lang==='en'?'en':'th'; }
 
-  /* ===== Language ===== */
   function setLang(lang){
     document.documentElement.lang = lang==='en'?'en':'th';
     document.querySelectorAll('[data-en]').forEach(el=>{
@@ -684,22 +934,51 @@
   document.getElementById('lang-th').addEventListener('click',()=>setLang('th'));
   document.getElementById('lang-en').addEventListener('click',()=>setLang('en'));
 
-  /* ===== Scroll progress ===== */
   const progress=document.getElementById('progress');
+  const heroBg=document.querySelector('.hero-bg');
+  const heroGrid=document.querySelector('.hero-grid');
   function onScroll(){
     const h=document.documentElement;
     const max=h.scrollHeight-h.clientHeight;
-    progress.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+    const y=h.scrollTop;
+    progress.style.width=(max>0?(y/max*100):0)+'%';
+    if(y<780){
+      if(heroBg) heroBg.style.transform='translateY('+(y*0.12)+'px)';
+      if(heroGrid) heroGrid.style.transform='translateY('+(y*0.07)+'px)';
+    }
   }
   document.addEventListener('scroll',onScroll,{passive:true});
 
-  /* ===== Scroll reveal ===== */
+  const heroVideo=document.getElementById('heroVideo');
+  if(heroVideo){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      heroVideo.removeAttribute('autoplay'); heroVideo.style.display='none';
+    } else {
+      heroVideo.addEventListener('loadeddata',()=>heroVideo.classList.add('in'));
+      heroVideo.addEventListener('error',()=>{ heroVideo.style.display='none'; },true);
+      const pr=heroVideo.play && heroVideo.play(); if(pr && pr.catch) pr.catch(()=>{});
+    }
+  }
+
+  // Mission-card clips: play on hover (lazy, muted loop)
+  const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReduce){
+    document.querySelectorAll('.m-card').forEach(card=>{
+      const v=card.querySelector('.m-vid'); if(!v) return;
+      card.addEventListener('mouseenter',()=>{
+        const pr=v.play && v.play();
+        if(pr && pr.then) pr.then(()=>v.classList.add('ready')).catch(()=>{});
+        else v.classList.add('ready');
+      });
+      card.addEventListener('mouseleave',()=>{ v.classList.remove('ready'); try{v.pause();}catch(e){} });
+    });
+  }
+
   const revObs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target);} });
   },{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-  /* ===== Counters ===== */
   function animateCount(el){
     const target=+el.dataset.count; const dur=1200; const t0=performance.now();
     function step(now){
@@ -714,19 +993,16 @@
   },{threshold:.6});
   document.querySelectorAll('.count').forEach(el=>cntObs.observe(el));
 
-  /* ===== Storage helper ===== */
   async function getStored(key){
     try{ const r=await window.storage.get(key); return (r&&r.value)?r.value:null; }catch(e){ return null; }
   }
 
-  /* ===== IMAGE SYSTEM ===== */
-  const U='https://images.unsplash.com/';
-  const Q='?auto=format&fit=crop&q=70&fm=jpg';
   const IMG_SLOTS=[
-    {key:'ciss-hero-bg',    type:'bg',  th:'พื้นหลัง Hero', en:'Hero background', def:U+'photo-1777047023428-ac55ddb8ba62'+Q+'&w=1600', target:'heroPhoto'},
-    {key:'ciss-space-img',  type:'img', th:'นวัตกรรมอวกาศ', en:'Space Innovation', def:U+'photo-1446776811953-b23d57bd21aa'+Q+'&w=900', selector:'[data-img="space"] img'},
-    {key:'ciss-pq-img',     type:'img', th:'รับรองคุณวุฒิวิชาชีพ', en:'Professional Qualification', def:U+'photo-1522202176988-66273c2fd55f'+Q+'&w=900', selector:'[data-img="pq"] img'},
-    {key:'ciss-digital-img',type:'img', th:'ดิจิทัลและการสื่อสาร', en:'Digital & Communications', def:U+'photo-1544197150-b99a580bb7a8'+Q+'&w=900', selector:'[data-img="digital"] img'},
+    {key:'ciss-hero-bg',    type:'bg',  th:'พื้นหลัง Hero', en:'Hero background', def:'images/sag-hero-v2.jpg', target:'heroPhoto'},
+    {key:'ciss-space-img',  type:'img', th:'นวัตกรรมอวกาศ', en:'Space Innovation', def:'images/ts-orbit.jpg', selector:'[data-img="space"] img'},
+    {key:'ciss-pq-img',     type:'img', th:'รับรองคุณวุฒิวิชาชีพ', en:'Professional Qualification', def:'images/4.jpg', selector:'[data-img="pq"] img',
+     pool:[1,2,3,4,5,6,9,10,11].map(n=>'images/'+n+'.jpg')},
+    {key:'ciss-digital-img',type:'img', th:'ดิจิทัลและการสื่อสาร', en:'Digital & Communications', def:'images/ts-hero-bangkok.jpg', selector:'[data-img="digital"] img'},
     {key:'ciss-director-photo',type:'img', th:'รูปผู้อำนวยการ', en:'Director photo', def:'images/director.jpg', selector:'#dirImg', director:true}
   ];
 
@@ -740,7 +1016,7 @@
     probe.onload=()=>{
       if(slot.type==='bg'){
         const el=document.getElementById(slot.target);
-        if(el){ el.style.backgroundImage=`url("${url}")`; requestAnimationFrame(()=>el.classList.add('in')); }
+        if(el){ el.style.backgroundImage='url("'+url+'")'; requestAnimationFrame(()=>el.classList.add('in')); }
       }else{
         const im=document.querySelector(slot.selector);
         if(im){ im.src=url; im.style.display='block'; requestAnimationFrame(()=>im.classList.add('in')); }
@@ -755,9 +1031,30 @@
   (async()=>{
     for(const slot of IMG_SLOTS){
       const stored=await getStored(slot.key);
-      applyImage(slot, stored || slot.def);
+      if(!stored && slot.pool) rotatePool(slot);
+      else applyImage(slot, stored || slot.def);
     }
   })();
+
+  // ภาพสุ่มจากชุดภาพของศูนย์: สุ่มภาพแรกตอนโหลด แล้วสลับแบบสุ่มทุก 8 วินาที
+  // (หยุดเองเมื่อผู้ดูแลอัปโหลดภาพแทนผ่านแผงตั้งค่า)
+  function rotatePool(slot){
+    const pick=prev=>{ let u; do{ u=slot.pool[Math.floor(Math.random()*slot.pool.length)]; }while(u===prev && slot.pool.length>1); return u; };
+    let cur=pick(null);
+    applyImage(slot,cur);
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(async()=>{
+      if(document.hidden) return;
+      if(await getStored(slot.key)) return;
+      const im=document.querySelector(slot.selector); if(!im) return;
+      const next=pick(cur), probe=new Image();
+      probe.onload=()=>{
+        cur=next; im.classList.remove('in');
+        setTimeout(()=>{ im.src=next; im.style.display='block'; requestAnimationFrame(()=>im.classList.add('in')); },900);
+      };
+      probe.src=next;
+    },8000);
+  }
 
   function fileToDataUrl(file,maxDim,cb){
     const reader=new FileReader();
@@ -776,7 +1073,6 @@
     reader.readAsDataURL(file);
   }
 
-  /* ===== Settings panel ===== */
   const panel=document.getElementById('panel');
   const mask=document.getElementById('panelMask');
   const slotFile=document.getElementById('slotFile');
@@ -785,12 +1081,9 @@
 
   function openPanel(){ panel.classList.add('open'); mask.classList.add('open'); }
   function closePanel(){ panel.classList.remove('open'); mask.classList.remove('open'); }
-  /* ===== ADMIN GATE (edit mode for the director only) ===== */
-  // เปลี่ยนรหัสนี้เป็นของอาจารย์เอง แล้ว commit (วิธีพื้นฐาน)
-  const ADMIN_CODE='CISS@admin2025';
-  // ทางเลือกที่ปลอดภัยกว่า: ใส่ค่า sha256 ลงใน ADMIN_HASH แล้วลบรหัสใน ADMIN_CODE ออก (ตั้งเป็น '')
-  //   วิธีหา hash: เปิด Console พิมพ์  cissMakeHash('รหัสของคุณ')  แล้วคัดลอกค่ามาใส่
-  const ADMIN_HASH='';
+
+  const ADMIN_CODE='';   // ไม่เก็บรหัสเป็นข้อความในหน้าเว็บ — ใช้ค่าแฮชด้านล่างแทน
+  const ADMIN_HASH='0a968c0bc1ab42ffad9cf130b4c18319a3f65dac9a0cb5a7a52cc6ef856d6872';   // เปลี่ยนรหัส: เปิด console แล้วรัน cissMakeHash('รหัสใหม่') นำค่าที่ได้มาวางตรงนี้
   const ADMIN_KEY='ciss-admin-ok';
   let isAdmin=false;
   const gearBtn=document.getElementById('gearBtn');
@@ -806,7 +1099,7 @@
 
   async function checkCode(code){
     if(ADMIN_HASH){ try{ return (await sha256(code))===ADMIN_HASH.toLowerCase(); }catch(e){ return false; } }
-    return code===ADMIN_CODE;
+    return !!ADMIN_CODE && code===ADMIN_CODE;
   }
   function setAdmin(v){
     isAdmin=v;
@@ -844,15 +1137,10 @@
       const url=await thumbUrl(slot);
       const en=curLang()==='en';
       const row=document.createElement('div'); row.className='slot';
-      row.innerHTML=`
-        <div class="slot-thumb" style="${url?`background-image:url('${url}')`:''}"></div>
-        <div class="slot-info">
-          <b>${en?slot.en:slot.th}</b>
-          <div class="slot-actions">
-            <button class="btn-up">${en?'Upload':'อัปโหลด'}</button>
-            <button class="btn-rs">${en?'Default':'ค่าเริ่มต้น'}</button>
-          </div>
-        </div>`;
+      row.innerHTML='<div class="slot-thumb" style="'+(url?"background-image:url('"+url+"')":'')+'"></div>'+
+        '<div class="slot-info"><b>'+(en?slot.en:slot.th)+'</b>'+
+        '<div class="slot-actions"><button class="btn-up">'+(en?'Upload':'อัปโหลด')+'</button>'+
+        '<button class="btn-rs">'+(en?'Default':'ค่าเริ่มต้น')+'</button></div></div>';
       const [upBtn,rsBtn]=row.querySelectorAll('button');
       upBtn.addEventListener('click',()=>{ activeSlot=slot; slotFile.value=''; slotFile.click(); });
       rsBtn.addEventListener('click',async()=>{
@@ -890,25 +1178,12 @@
     });
   });
 
-  /* ===== NEWS / ANNOUNCEMENTS ===== */
   const NEWS_KEY='ciss-news';
-  // ค่าเริ่มต้น (ตัวอย่าง) — แก้ไขตรงนี้แล้ว commit เพื่อให้ทุกคนเห็นบนเว็บจริง
   const NEWS_DEFAULT=[
-    {date:'15 มิ.ย. 2568', tag:'กิจกรรม',
-     titleTh:'เปิดตัว Thonburi Space Innovation Hub',
-     titleEn:'Launch of the Thonburi Space Innovation Hub',
-     bodyTh:'CISS ร่วมกับพันธมิตรเปิดศูนย์นวัตกรรมอวกาศธนบุรี เพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและพัฒนากำลังคนด้านอวกาศของประเทศ',
-     bodyEn:'CISS and partners open the Thonburi Space Innovation Hub to drive small-satellite research and develop the nation\u2019s space workforce.'},
-    {date:'1 มิ.ย. 2568', tag:'รับสมัคร',
-     titleTh:'เปิดรับประเมินสมรรถนะช่างโครงข่าย FTTx รอบใหม่',
-     titleEn:'New round of FTTx technician competency assessments',
-     bodyTh:'องค์กรรับรองสมรรถนะบุคคล สาขา ICT เปิดรับผู้เข้ารับการประเมินตามมาตรฐาน ISO/IEC 17024 ผู้สนใจติดต่อศูนย์ CISS',
-     bodyEn:'The ICT personnel certification body is opening a new round of ISO/IEC 17024 assessments. Contact CISS for details.'},
-    {date:'20 พ.ค. 2568', tag:'อบรม',
-     titleTh:'อบรมเชิงปฏิบัติการด้านดิจิทัลและโทรคมนาคม',
-     titleEn:'Hands-on digital & telecom training workshop',
-     bodyTh:'จัดอบรมเชิงปฏิบัติการสำหรับบุคลากรด้านโครงข่ายสื่อสารและระบบ IoT พร้อมมอบใบรับรองการเข้าร่วม',
-     bodyEn:'A practical workshop for telecom-network and IoT personnel, with certificates of participation provided.'}
+    {date:"6 มิ.ย. 2569", dateEn:"6 Jun 2026", tag:"ทุนวิจัย", tagEn:"Grant", titleTh:"ได้รับทุน บพข. พัฒนา HAPS ต้นแบบสัญชาติไทย", titleEn:"PMUC funds a Thai-built HAPS prototype", bodyTh:"CISS ร่วมกับภาควิชาวิศวกรรมเครื่องกล ภาควิชาวิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม มจธ. และบริษัท เอแอลที เทเลคอม จำกัด (มหาชน)", bodyEn:"CISS with KMUTT's Mechanical and Electronic and Telecommunication Engineering departments and ALT Telecom.", link:"https://chirasil.github.io/thonburi-space/"},
+    {date:"12 พ.ค. 2569", dateEn:"12 May 2026", tag:"เปิดตัว", tagEn:"Launch", titleTh:"นำเสนออวกาศบางมดต่อผู้บริหาร มจธ.", titleEn:"Thonburi Space presented to KMUTT leadership", bodyTh:"เปิดตัวทีมงานด้านอวกาศเพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและเศรษฐกิจอวกาศ", bodyEn:"The space team was introduced to drive small-satellite research and the space economy.", link:"https://chirasil.github.io/thonburi-space/"},
+    {date:"1 มี.ค. 2569", dateEn:"1 Mar 2026", tag:"ข่าวประชาสัมพันธ์", tagEn:"Announcement", titleTh:"โครงการยกระดับศักยภาพการแข่งขันทางเทคโนโลยีและนวัตกรรมขั้นแนวหน้า (Frontier Technology) ประจำปีงบประมาณ พ.ศ. 2569", titleEn:"Frontier Technology for Competitiveness by Regional Science Park Consortium 2026", bodyTh:"เพื่อบรรลุภารกิจด้าน Professional Qualification, Digital Technology and Communications CISS ได้รับความไว้วางใจให้จัดอบรมหลักสูตรภายใต้โครงการ Frontier Technology ของอุทยานวิทยาศาสตร์ภูมิภาค ปี 2569 จำนวน 125 คน 5 หลักสูตรคือ 1. AI for CEO, 2. AI for Finance, 3.AI for Robotics, 4. AI for Data Analytic และ 5. AI for Coding สำหรับ SME ในภูมิภาคภาคกลาง", bodyEn:"To serve the Professional Qualification and Digital Technology and Communications missions, CISS, funded by the Regional Science Park Consortium in 2026, runs five workshops for 125 participants: 1. AI for CEO, 2. AI for Finance, 3. AI for Robotics, 4. AI for Data Analytic and 5. AI for Coding, for SMEs in Thailand's central region."},
+    {date:"18 ก.ค. 2568", dateEn:"18 Jul 2025", tag:"Workshop", tagEn:"Workshop", titleTh:"เปิดประตูสู่อุตสาหกรรมอวกาศ", titleEn:"Opening the door to the space industry", bodyTh:"เวิร์กช็อปพบผู้เชี่ยวชาญและเครือข่ายภาครัฐ–เอกชน ที่ มจธ. บางมด", bodyEn:"A workshop with experts and the public–private network at KMUTT Bang Mod.", link:"https://chirasil.github.io/thonburi-space/"}
   ];
   let NEWS=[];
 
@@ -918,20 +1193,20 @@
     const grid=document.getElementById('newsGrid'); if(!grid) return;
     const en=curLang()==='en';
     if(!NEWS.length){
-      grid.innerHTML=`<div class="news-empty">${en?'No announcements yet':'ยังไม่มีข่าวประชาสัมพันธ์'}</div>`;
+      grid.innerHTML='<div class="news-empty">'+(en?'No announcements yet':'ยังไม่มีข่าวประชาสัมพันธ์')+'</div>';
       return;
     }
     grid.innerHTML=NEWS.map((n,i)=>{
       const title=en?(n.titleEn||n.titleTh):(n.titleTh||n.titleEn);
       const body=en?(n.bodyEn||n.bodyTh):(n.bodyTh||n.bodyEn);
-      return `<article class="n-card" style="animation-delay:${i*0.08}s">
-        ${n.image?`<div class="n-img"><img src="${esc(n.image)}" alt="" loading="lazy" onerror="this.parentNode.style.display='none'"></div>`:''}
-        ${n.tag?`<span class="n-tag">${esc(n.tag)}</span>`:''}
-        ${n.date?`<div class="n-date">📅 ${esc(n.date)}</div>`:''}
-        <h3>${esc(title||'')}</h3>
-        ${body?`<p>${esc(body)}</p>`:''}
-        ${n.link?`<a class="n-more" href="${esc(n.link)}" target="_blank" rel="noopener">${en?'Read more':'อ่านต่อ'} →</a>`:''}
-      </article>`;
+      return '<article class="n-card" style="animation-delay:'+(i*0.08)+'s">'+
+        (n.image?'<div class="n-img"><img src="'+esc(n.image)+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>':'')+
+        (n.tag?'<span class="n-tag">'+esc(en&&n.tagEn?n.tagEn:n.tag)+'</span>':'')+
+        (n.date?'<div class="n-date">📅 '+esc(en&&n.dateEn?n.dateEn:n.date)+'</div>':'')+
+        '<h3>'+esc(title||'')+'</h3>'+
+        (body?'<p>'+esc(body)+'</p>':'')+
+        (n.link?'<a class="n-more" href="'+esc(n.link)+'" target="_blank" rel="noopener">'+(en?'Read more':'อ่านต่อ')+' →</a>':'')+
+      '</article>';
     }).join('');
   }
 
@@ -939,15 +1214,13 @@
     const list=document.getElementById('newsList'); if(!list) return;
     const en=curLang()==='en';
     if(!NEWS.length){
-      list.innerHTML=`<div style="font-size:12px;color:var(--muted);padding:4px 2px">${en?'No news yet':'ยังไม่มีข่าว'}</div>`;
+      list.innerHTML='<div style="font-size:12px;color:var(--muted);padding:4px 2px">'+(en?'No news yet':'ยังไม่มีข่าว')+'</div>';
       return;
     }
     list.innerHTML=NEWS.map((n,i)=>{
       const t=en?(n.titleEn||n.titleTh):(n.titleTh||n.titleEn);
-      return `<div class="news-li">
-        <div class="news-li-info"><b>${esc(t||'(no title)')}</b><span>${esc(n.date||'')}${n.tag?' · '+esc(n.tag):''}</span></div>
-        <button class="news-del" data-i="${i}">${en?'Delete':'ลบ'}</button>
-      </div>`;
+      return '<div class="news-li"><div class="news-li-info"><b>'+esc(t||'(no title)')+'</b><span>'+esc(n.date||'')+(n.tag?' · '+esc(n.tag):'')+'</span></div>'+
+        '<button class="news-del" data-i="'+i+'">'+(en?'Delete':'ลบ')+'</button></div>';
     }).join('');
     list.querySelectorAll('.news-del').forEach(b=>b.addEventListener('click',()=>{
       NEWS.splice(+b.dataset.i,1); saveNews(); renderNews(); renderNewsEditor();
@@ -973,7 +1246,6 @@
   });
 
   async function loadNews(){
-    // 1) แหล่งข้อมูลหลัก: ไฟล์ที่จัดการผ่าน CMS (commit ในรีโป → ทุกคนเห็นตรงกัน)
     try{
       const res=await fetch('data/news.json',{cache:'no-store'});
       if(res.ok){
@@ -982,37 +1254,34 @@
         if(arr&&arr.length){ NEWS=arr; renderNews(); renderNewsEditor(); return; }
       }
     }catch(e){}
-    // 2) สำรอง: ข่าวที่แก้ในเครื่อง (storage) หรือค่าเริ่มต้นในโค้ด
     const stored=await getStored(NEWS_KEY);
     if(stored){ try{ NEWS=JSON.parse(stored); }catch(e){ NEWS=NEWS_DEFAULT.slice(); } }
     else NEWS=NEWS_DEFAULT.slice();
     renderNews(); renderNewsEditor();
   }
 
-  /* ===== ACADEMIC ARTICLES (carousel, 3 at a time) ===== */
   const ART_MISSION={
     space:{th:'นวัตกรรมอวกาศ',en:'Space Innovation'},
     pq:{th:'คุณวุฒิวิชาชีพ',en:'Professional Qualification'},
     digital:{th:'ดิจิทัล & สื่อสาร',en:'Digital & Comms'}
   };
-  // ค่าเริ่มต้น (ตัวอย่าง) — แก้ไข/เพิ่มได้ที่นี่ หรือสร้างไฟล์ data/articles.json
   const ARTICLES_DEFAULT=[
-    {mission:'space', link:'https://chirasil.github.io/CISS/data/HAPSfornontech_en.pdf', image:U+'photo-1446776811953-b23d57bd21aa'+Q+'&w=800',
-     titleTh:'มาทำความรู้จัก HAPS แบบรวดเร็ว', titleEn:'Getting to know HAPS in a minute',
-     bodyTh:'ทำความรู้จักสถานีสัญญาณบนฟ้่าที่กำลังเปลี่ยนภูมิทัศน์การวิจัยและธุรกิจอวกาศของไทย', bodyEn:'High Altitude Platforms are reshaping Thailand\u2019s space research and business landscape.'},
-    {mission:'pq', link:'https://chirasil.github.io/CISS/ciss', image:U+'photo-1522202176988-66273c2fd55f'+Q+'&w=800',
+    {mission:'space', link:'https://chirasil.github.io/thonburi-space/', image:'images/ts-orbit.jpg',
+     titleTh:'ดาวเทียม CubeSat กับโอกาสของอุตสาหกรรมอวกาศไทย', titleEn:'CubeSats and Thailand\u2019s Space Industry Opportunity',
+     bodyTh:'ทำความรู้จักดาวเทียมขนาดเล็กที่กำลังเปลี่ยนภูมิทัศน์การวิจัยและธุรกิจอวกาศของไทย', bodyEn:'How small satellites are reshaping Thailand\u2019s space research and business landscape.'},
+    {mission:'pq', link:'https://chirasil.github.io/CISS/ciss', image:'images/5.jpg',
      titleTh:'มาตรฐาน ISO/IEC 17024 กับการรับรองสมรรถนะบุคคล', titleEn:'ISO/IEC 17024 and Personnel Certification',
      bodyTh:'มาตรฐานสากลที่อยู่เบื้องหลังการรับรองคุณวุฒิวิชาชีพอย่างน่าเชื่อถือ', bodyEn:'The international standard behind credible professional certification.'},
-    {mission:'digital', link:'https://chirasil.github.io/CISS/digital', image:U+'photo-1544197150-b99a580bb7a8'+Q+'&w=800',
+    {mission:'digital', link:'https://chirasil.github.io/CISS/digital', image:'images/sag-hero-v2.jpg',
      titleTh:'6G และ SAGIN: โครงข่ายอวกาศ–อากาศ–ภาคพื้นดิน', titleEn:'6G and SAGIN: Space\u2013Air\u2013Ground Networks',
      bodyTh:'ภาพอนาคตของโครงข่ายสื่อสารไร้รอยต่อที่เชื่อมอวกาศ อากาศ และภาคพื้นดินเข้าด้วยกัน', bodyEn:'A look at the seamless networks linking space, air, and ground.'},
-    {mission:'space', link:'https://chirasil.github.io/thonburi-space/', image:U+'photo-1446776811953-b23d57bd21aa'+Q+'&w=800',
+    {mission:'space', link:'https://chirasil.github.io/thonburi-space/', image:'images/ts-ground-dish.jpg',
      titleTh:'ระบบควบคุมทิศทางดาวเทียม (ADCS) ทำงานอย่างไร', titleEn:'How Satellite Attitude Control (ADCS) Works',
      bodyTh:'หลักการควบคุมการทรงตัวและการชี้ทิศของดาวเทียมในวงโคจร พื้นฐานสำคัญของภารกิจอวกาศ', bodyEn:'The fundamentals of stabilizing and pointing satellites in orbit.'},
-    {mission:'pq', link:'https://chirasil.github.io/CISS/ciss', image:U+'photo-1522202176988-66273c2fd55f'+Q+'&w=800',
+    {mission:'pq', link:'https://chirasil.github.io/CISS/ciss', image:'images/3.jpg',
      titleTh:'เส้นทางสู่การเป็นช่างโครงข่าย FTTx มืออาชีพ', titleEn:'Becoming a Professional FTTx Technician',
      bodyTh:'ทักษะ การประเมิน และการเทียบโอนประสบการณ์ สู่การรับรองช่างสื่อสัญญาณ', bodyEn:'Skills, assessment, and experience recognition toward technician certification.'},
-    {mission:'digital', link:'https://chirasil.github.io/CISS/digital', image:U+'photo-1544197150-b99a580bb7a8'+Q+'&w=800',
+    {mission:'digital', link:'https://chirasil.github.io/CISS/digital', image:'images/ts-hero-bangkok.jpg',
      titleTh:'การใช้คลื่นความถี่ร่วมระหว่าง 5G และดาวเทียม', titleEn:'5G\u2013Satellite Spectrum Coexistence',
      bodyTh:'ความท้าทายและแนวทางการบริหารคลื่นความถี่เพื่อให้ 5G และดาวเทียมอยู่ร่วมกันได้', bodyEn:'Challenges and approaches to letting 5G and satellites share spectrum.'}
   ];
@@ -1028,15 +1297,14 @@
       const body=en?(a.bodyEn||a.bodyTh):(a.bodyTh||a.bodyEn);
       const m=ART_MISSION[a.mission]||{};
       const tagTxt=en?(m.en||''):(m.th||'');
-      return `<a class="art-card" href="${esc(a.link||'#')}" ${a.link?'target="_blank" rel="noopener"':''}>
-        ${a.image?`<div class="art-thumb"><img src="${esc(a.image)}" alt="" loading="lazy" onerror="this.parentNode.style.display='none'"></div>`:''}
-        <div class="art-body">
-          ${tagTxt?`<span class="art-tag ${esc(a.mission||'')}">${esc(tagTxt)}</span>`:''}
-          <h3>${esc(title||'')}</h3>
-          ${body?`<p>${esc(body)}</p>`:''}
-          <span class="art-more">${en?'Read more':'อ่านต่อ'} →</span>
-        </div>
-      </a>`;
+      return '<a class="art-card" href="'+esc(a.link||'#')+'" '+(a.link?'target="_blank" rel="noopener"':'')+'>'+
+        (a.image?'<div class="art-thumb"><img src="'+esc(a.image)+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>':'')+
+        '<div class="art-body">'+
+        (tagTxt?'<span class="art-tag '+esc(a.mission||'')+'">'+esc(tagTxt)+'</span>':'')+
+        '<h3>'+esc(title||'')+'</h3>'+
+        (body?'<p>'+esc(body)+'</p>':'')+
+        '<span class="art-more">'+(en?'Read more':'อ่านต่อ')+' →</span>'+
+        '</div></a>';
     }).join('');
     buildDots();
   }
@@ -1077,7 +1345,6 @@
     renderArticles();
   }
 
-  /* ===== Mission links ===== */
   const LINK_SLOTS=[
     {key:'ciss-link-space',   input:'lk-space',   target:'go-space',   def:'https://chirasil.github.io/thonburi-space/'},
     {key:'ciss-link-pq',      input:'lk-pq',      target:'go-pq',      def:'https://chirasil.github.io/CISS/ciss'},
@@ -1103,7 +1370,56 @@
     closePanel();
   });
 
-  /* ===== Init ===== */
+  /* ===== Social + QR ===== */
+  const IC_LINE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11.1c0 4 3.6 7.4 8.4 8 .3.07.8.22.9.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.02.9.56 1.1-.46 5.9-3.48 8.05-5.96C21.5 14.4 22 12.8 22 11.1 22 6.6 17.5 3 12 3z"/></svg>';
+  const IC_FB='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg>';
+  const IC_YT='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.77-1.77C19.3 5.13 12 5.13 12 5.13s-7.3 0-8.83.4A2.5 2.5 0 001.4 6.3C1 7.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.77 1.77c1.53.4 8.83.4 8.83.4s7.3 0 8.83-.4a2.5 2.5 0 001.77-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>';
+  const IC_IG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>';
+  const IC_X='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8-9.2L1 2h7l4.8 6.3L18.9 2zm-2.4 18h1.9L7.6 3.9H5.6L16.5 20z"/></svg>';
+  const SOCIAL=[
+    {key:'ciss-so-line',input:'so-line',label:'LINE',icon:IC_LINE},
+    {key:'ciss-so-fb',input:'so-fb',label:'Facebook',icon:IC_FB},
+    {key:'ciss-so-yt',input:'so-yt',label:'YouTube',icon:IC_YT},
+    {key:'ciss-so-ig',input:'so-ig',label:'Instagram',icon:IC_IG},
+    {key:'ciss-so-x',input:'so-x',label:'X',icon:IC_X}
+  ];
+  const QR_KEY='ciss-so-qr';
+  const QR_DEFAULT='https://chirasil.github.io/CISS/';
+
+  async function renderSocial(){
+    const row=document.getElementById('socialRow'); if(!row) return;
+    const parts=[];
+    for(const s of SOCIAL){
+      const url=await getStored(s.key);
+      const on=url && url!=='#';
+      parts.push('<a class="'+(on?'on':'off')+'" '+(on?'href="'+esc(url)+'" target="_blank" rel="noopener"':'href="#" onclick="return false"')+' title="'+esc(s.label)+'">'+s.icon+'</a>');
+    }
+    row.innerHTML=parts.join('');
+  }
+  async function renderQR(){
+    const box=document.getElementById('qrBox'); if(!box) return;
+    const url=(await getStored(QR_KEY))||QR_DEFAULT;
+    if(typeof QRCode==='undefined') return;
+    box.innerHTML='';
+    try{ new QRCode(box,{text:url,width:160,height:160,colorDark:'#05110e',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
+  }
+  (async()=>{
+    for(const s of SOCIAL){ const v=await getStored(s.key); const el=document.getElementById(s.input); if(el&&v) el.value=v; }
+    const q=await getStored(QR_KEY); const qel=document.getElementById('so-qr'); if(qel) qel.value=q||QR_DEFAULT;
+    renderSocial(); renderQR();
+    if(typeof QRCode==='undefined') window.addEventListener('load',renderQR,{once:true});
+  })();
+  document.getElementById('saveSocial').addEventListener('click',async()=>{
+    for(const s of SOCIAL){
+      const v=(document.getElementById(s.input).value||'').trim();
+      try{ if(v) await window.storage.set(s.key,v,false); else await window.storage.delete(s.key); }catch(e){}
+    }
+    const q=(document.getElementById('so-qr').value||'').trim();
+    try{ await window.storage.set(QR_KEY,q||QR_DEFAULT,false); }catch(e){}
+    renderSocial(); renderQR();
+    showToast(curLang()==='en'?'Saved':'บันทึกแล้ว');
+  });
+
   (async()=>{
     let lang='th'; const r=await getStored('ciss-lang'); if(r) lang=r;
     document.documentElement.lang=lang==='en'?'en':'th';
@@ -1112,6 +1428,166 @@
     setLang(lang);
     onScroll();
   })();
+</script>
+
+<script>
+/* ===== Ecosystem background: three canvas scenes, switched at random =====
+   UNIVERSE · GROUND STATION AS A SERVICE · 6G  — pure canvas, no external assets */
+function cissMountBg(cv,cap){
+  if(!cv||!cv.getContext) return;
+  const ctx=cv.getContext('2d'), sec=cv.parentNode;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TAU=Math.PI*2, R=(a,b)=>a+Math.random()*(b-a);
+  let W=0,H=0,D=1,cur=-1,t=0,last=0,visible=false,raf=0,timer=0,st={};
+
+  const SCENES=[
+  { name:'UNIVERSE',
+    init(){
+      const n=Math.min(900,Math.round(W*H/1500));
+      st.stars=Array.from({length:n},()=>({x:R(0,W),y:R(0,H),z:R(.15,1),p:R(0,TAU)}));
+      st.neb=[{x:.22,y:.35,r:.55,c:'92,110,255'},{x:.78,y:.6,r:.6,c:'61,220,151'},{x:.55,y:.2,r:.4,c:'66,211,232'},{x:.4,y:.85,r:.45,c:'170,90,220'}];
+      st.shoot=null;
+    },
+    draw(dt){
+      const m=Math.max(W,H);
+      st.neb.forEach((b,i)=>{
+        const x=b.x*W+Math.sin(t*.06+i*2)*W*.05, y=b.y*H+Math.cos(t*.05+i)*H*.06, r=b.r*m*.6;
+        const g=ctx.createRadialGradient(x,y,0,x,y,r);
+        g.addColorStop(0,'rgba('+b.c+',.20)'); g.addColorStop(1,'rgba('+b.c+',0)');
+        ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+      });
+      for(const s of st.stars){
+        s.x-=s.z*7*dt; if(s.x<-2) s.x=W+2;
+        ctx.globalAlpha=(.25+.75*s.z)*(.65+.35*Math.sin(t*1.6+s.p));
+        ctx.fillStyle=s.p>5.9?'#ffe2a8':s.p<.5?'#a9c8ff':'#eaf6f0';
+        ctx.beginPath(); ctx.arc(s.x,s.y,.4+s.z*1.1,0,TAU); ctx.fill();
+      }
+      ctx.globalAlpha=1;
+      if(!st.shoot && Math.random()<dt*.18) st.shoot={x:R(W*.2,W),y:R(0,H*.4),vx:-R(380,560),vy:R(120,220),life:1};
+      const sh=st.shoot;
+      if(sh){
+        sh.x+=sh.vx*dt; sh.y+=sh.vy*dt; sh.life-=dt*1.1;
+        const g=ctx.createLinearGradient(sh.x,sh.y,sh.x-sh.vx*.16,sh.y-sh.vy*.16);
+        g.addColorStop(0,'rgba(255,255,255,'+Math.max(0,sh.life)+')'); g.addColorStop(1,'rgba(255,255,255,0)');
+        ctx.strokeStyle=g; ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(sh.x,sh.y); ctx.lineTo(sh.x-sh.vx*.16,sh.y-sh.vy*.16); ctx.stroke();
+        if(sh.life<=0) st.shoot=null;
+      }
+    }
+  },
+  { name:'GROUND STATION AS A SERVICE',
+    init(){
+      st.Rr=Math.max(W*.95,760); st.cx=W/2; st.cy=H+st.Rr-Math.min(H*.2,150);
+      st.a0=Math.asin(Math.min(.97,(W/2)/st.Rr));
+      st.gs=[-.8,-.42,-.04,.36,.76].map(k=>k*st.a0);
+      const top=Math.min(H*.62,360);
+      st.sats=Array.from({length:6},(_,i)=>({rad:st.Rr+70+top*(i+.6)/6.2, a:R(-st.a0*1.5,st.a0*1.5), w:R(.018,.04)*(i%2?1:-1)*(1.4-i*.1)}));
+      st.stars=Array.from({length:Math.min(260,Math.round(W*H/5200))},()=>({x:R(0,W),y:R(0,H*.85),r:R(.3,1.1),p:R(0,TAU)}));
+    },
+    draw(dt){
+      const {Rr,cx,cy,a0}=st, P=(rad,a)=>[cx+rad*Math.sin(a),cy-rad*Math.cos(a)];
+      for(const s of st.stars){ ctx.globalAlpha=.3+.4*Math.sin(t+s.p)**2; ctx.fillStyle='#dff3ea'; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,TAU); ctx.fill(); }
+      ctx.globalAlpha=1;
+      // Earth limb
+      let g=ctx.createRadialGradient(cx,cy,Rr*.86,cx,cy,Rr);
+      g.addColorStop(0,'rgba(6,30,26,.95)'); g.addColorStop(1,'rgba(14,74,60,.95)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,Rr,0,TAU); ctx.fill();
+      ctx.save(); ctx.shadowColor='#3ddc97'; ctx.shadowBlur=22; ctx.strokeStyle='rgba(120,240,190,.85)'; ctx.lineWidth=1.6;
+      ctx.beginPath(); ctx.arc(cx,cy,Rr,0,TAU); ctx.stroke(); ctx.restore();
+      // orbits
+      ctx.lineWidth=1; ctx.strokeStyle='rgba(140,220,190,.10)';
+      for(const s of st.sats){ ctx.beginPath(); ctx.arc(cx,cy,s.rad,0,TAU); ctx.stroke(); }
+      // satellites + links to the nearest station in view
+      const thr=a0*.5;
+      for(const s of st.sats){
+        s.a+=s.w*dt; if(s.a>a0*1.7) s.a=-a0*1.7; if(s.a<-a0*1.7) s.a=a0*1.7;
+        const [x,y]=P(s.rad,s.a);
+        let best=-1,bd=1e9; st.gs.forEach((ga,i)=>{const d=Math.abs(ga-s.a); if(d<bd){bd=d;best=i;}});
+        if(bd<thr){
+          const [gx,gy]=P(Rr,st.gs[best]), al=1-bd/thr;
+          ctx.save(); ctx.setLineDash([4,7]); ctx.lineDashOffset=-t*26; ctx.lineWidth=1.3;
+          ctx.strokeStyle='rgba(66,211,232,'+(al*.9)+')'; ctx.shadowColor='#42d3e8'; ctx.shadowBlur=8;
+          ctx.beginPath(); ctx.moveTo(gx,gy); ctx.lineTo(x,y); ctx.stroke(); ctx.restore();
+        }
+        ctx.save(); ctx.translate(x,y); ctx.rotate(s.a);
+        ctx.fillStyle='#fff'; ctx.fillRect(-3,-2.5,6,5);
+        ctx.fillStyle='rgba(66,211,232,.9)'; ctx.fillRect(-12,-1.6,7.5,3.2); ctx.fillRect(4.5,-1.6,7.5,3.2);
+        ctx.restore();
+      }
+      // ground stations
+      st.gs.forEach((ga,i)=>{
+        const [x,y]=P(Rr,ga), pr=(((t*16+i*9)%30)+30)%30;
+        ctx.strokeStyle='rgba(61,220,151,'+(1-pr/30)*.8+')'; ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(x,y,pr,Math.PI+ga,TAU+ga); ctx.stroke();
+        ctx.save(); ctx.translate(x,y); ctx.rotate(ga);
+        ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-9); ctx.stroke();
+        ctx.beginPath(); ctx.arc(0,-15,7,.15*Math.PI,.85*Math.PI); ctx.stroke();
+        ctx.fillStyle='#3ddc97'; ctx.beginPath(); ctx.arc(0,-11,2,0,TAU); ctx.fill(); ctx.restore();
+      });
+    }
+  },
+  { name:'6G',
+    init(){
+      const sp=Math.max(84,Math.sqrt(W*H/80)); st.sp=sp; st.nodes=[];
+      for(let y=-sp/2;y<H+sp;y+=sp*.86){ const off=(Math.round(y/(sp*.86))%2)*sp/2;
+        for(let x=-sp/2;x<W+sp;x+=sp) st.nodes.push({x:x+off+R(-sp*.18,sp*.18),y:y+R(-sp*.18,sp*.18),p:R(0,TAU),hub:Math.random()<.11}); }
+      st.links=[];
+      for(let i=0;i<st.nodes.length;i++) for(let j=i+1;j<st.nodes.length;j++){
+        const a=st.nodes[i],b=st.nodes[j]; if(Math.hypot(a.x-b.x,a.y-b.y)<sp*1.28) st.links.push([i,j]); }
+      st.pk=Array.from({length:Math.max(8,Math.round(st.links.length*.16))},()=>({l:(Math.random()*st.links.length)|0,p:Math.random(),v:R(.25,.7),d:Math.random()<.5,c:Math.random()<.5}));
+    },
+    draw(dt){
+      const N=st.nodes, pos=n=>[n.x+Math.sin(t*.35+n.p)*5,n.y+Math.cos(t*.3+n.p)*5];
+      ctx.lineWidth=1; ctx.strokeStyle='rgba(140,220,190,.11)'; ctx.beginPath();
+      for(const [i,j] of st.links){ const a=pos(N[i]),b=pos(N[j]); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); }
+      ctx.stroke();
+      for(const n of N){
+        const [x,y]=pos(n);
+        if(n.hub){
+          for(let k=0;k<3;k++){ const r=(((t*26+k*37+n.p*20)%110)+110)%110; ctx.strokeStyle='rgba(66,211,232,'+(1-r/110)*.4+')'; ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(x,y,r,0,TAU); ctx.stroke(); }
+          ctx.fillStyle='#42d3e8'; ctx.beginPath(); ctx.arc(x,y,3.2,0,TAU); ctx.fill();
+        } else { ctx.fillStyle='rgba(190,240,220,.55)'; ctx.beginPath(); ctx.arc(x,y,1.5,0,TAU); ctx.fill(); }
+      }
+      for(const k of st.pk){
+        k.p+=k.v*dt; if(k.p>1){ k.p=0; k.l=(Math.random()*st.links.length)|0; k.d=Math.random()<.5; }
+        const L=st.links[k.l]; if(!L) continue;
+        const a=pos(N[k.d?L[0]:L[1]]), b=pos(N[k.d?L[1]:L[0]]), q=Math.max(0,k.p-.22);
+        const x=a[0]+(b[0]-a[0])*k.p, y=a[1]+(b[1]-a[1])*k.p, x0=a[0]+(b[0]-a[0])*q, y0=a[1]+(b[1]-a[1])*q;
+        const col=k.c?'61,220,151':'66,211,232', g=ctx.createLinearGradient(x0,y0,x,y);
+        g.addColorStop(0,'rgba('+col+',0)'); g.addColorStop(1,'rgba('+col+',.95)');
+        ctx.strokeStyle=g; ctx.lineWidth=1.8; ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x,y); ctx.stroke();
+        ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(x,y,1.5,0,TAU); ctx.fill();
+      }
+    }
+  }];
+
+  function size(){
+    const r=sec.getBoundingClientRect(); W=Math.max(1,r.width); H=Math.max(1,r.height);
+    D=Math.min(2,window.devicePixelRatio||1); cv.width=Math.round(W*D); cv.height=Math.round(H*D);
+  }
+  function paint(dt){ ctx.setTransform(D,0,0,D,0,0); ctx.clearRect(0,0,W,H); SCENES[cur].draw(dt); }
+  function frame(now){
+    if(!visible) return;
+    const dt=Math.min(.05,(now-last)/1000||0); last=now; t+=dt; paint(dt);
+    raf=requestAnimationFrame(frame);
+  }
+  function show(n){ cur=n; st={}; SCENES[n].init(); if(cap) cap.textContent=SCENES[n].name; cv.classList.add('on'); if(reduce) paint(0); }
+  function next(){                       // random, never the same scene twice in a row
+    let n; do{ n=(Math.random()*SCENES.length)|0; }while(n===cur);
+    if(cur<0||reduce){ show(n); return; }
+    cv.classList.remove('on'); setTimeout(()=>show(n),1000);
+  }
+  size(); next();
+  if(reduce) return;
+  new IntersectionObserver(es=>{
+    visible=es[0].isIntersecting;
+    cancelAnimationFrame(raf); clearInterval(timer);
+    if(visible){ last=performance.now(); raf=requestAnimationFrame(frame); timer=setInterval(next,11000); }
+  },{threshold:0}).observe(sec);
+  let rz; window.addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(()=>{ size(); st={}; SCENES[cur].init(); },200); });
+  return i=>show(((i%SCENES.length)+SCENES.length)%SCENES.length);
+}
+/* each mount picks its own random scene; the returned function previews a scene from the console */
+window.cissEcoScene=cissMountBg(document.getElementById('ecoBg'),document.getElementById('ecoCap'));
+window.cissHeroScene=cissMountBg(document.getElementById('heroFx'),null);
 </script>
 </body>
 </html>
