@@ -136,6 +136,9 @@
   .flow{margin-top:44px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.02);padding:clamp(18px,3vw,30px)}
   .flow h3{font-size:clamp(18px,2.2vw,23px);color:#fff;margin-bottom:6px}
   .flow>p{color:var(--soft);font-size:14.5px;max-width:48em}
+  .flow-pic{margin:20px 0 0;border:1px solid var(--line2);border-radius:6px 48px 6px 6px;overflow:hidden;background:var(--void)}
+  .flow-pic img{width:100%;height:auto;display:block}
+  .flow-pic figcaption{padding:10px 14px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
   .legend{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;counter-reset:lg;margin-top:22px}
   .legend li{counter-increment:lg;position:relative;font-size:13px;color:var(--soft);line-height:1.55}
   .legend li::before{content:counter(lg);position:absolute;left:8px;top:8px;z-index:2;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--amber);color:#2a1a02;font-family:var(--f-mono);font-size:12.5px;font-weight:600;box-shadow:0 4px 10px rgba(0,0,0,.4)}
@@ -457,6 +460,10 @@
     <div class="flow">
       <h3 data-th="จากศูนย์ข้อมูลถึงมือผู้ใช้: ทุกช่วงต้องมีมืออาชีพ" data-en="From data centre to end user: every link needs a professional">จากศูนย์ข้อมูลถึงมือผู้ใช้: ทุกช่วงต้องมีมืออาชีพ</h3>
       <p data-th="ภาพรวมของเส้นทางข้อมูลที่เทคโนโลยีทั้งสามทำงานร่วมกัน" data-en="How the three technologies work together along the path of the data.">ภาพรวมของเส้นทางข้อมูลที่เทคโนโลยีทั้งสามทำงานร่วมกัน</p>
+      <figure class="flow-pic">
+        <img src="images/pq-flow.jpg" alt="" loading="lazy" width="2000" height="900">
+        <figcaption data-th="ภาพตัดต่อจากภาพถ่ายจริง แสดงเส้นทางข้อมูลจากศูนย์ข้อมูล ผ่านใยแก้วนำแสงและสถานีเกตเวย์ ขึ้นสู่ดาวเทียม LEO แล้วลงมาที่จานของผู้ใช้" data-en="A composite of real photographs showing the data path: from the data centre, through optical fibre and the gateway, up to LEO satellites and down to the user's antenna">ภาพตัดต่อจากภาพถ่ายจริง แสดงเส้นทางข้อมูลจากศูนย์ข้อมูล ผ่านใยแก้วนำแสงและสถานีเกตเวย์ ขึ้นสู่ดาวเทียม LEO แล้วลงมาที่จานของผู้ใช้</figcaption>
+      </figure>
       <ol class="legend">
         <li><span class="ph"><img src="images/ai-compute.jpg" alt="" loading="lazy"></span><b data-th="ศูนย์ข้อมูลและ AI" data-en="Data centre and AI">ศูนย์ข้อมูลและ AI</b><span data-th="ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน" data-en="Processes data and serves applications">ประมวลผลข้อมูลและให้บริการแอปพลิเคชัน</span></li>
         <li><span class="ph"><img src="images/9.jpg" alt="" loading="lazy"></span><b data-th="โครงข่ายใยแก้วหลัก" data-en="Fibre backbone">โครงข่ายใยแก้วหลัก</b><span data-th="ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล" data-en="Carries high-speed data over long distances">ส่งข้อมูลความเร็วสูงเป็นระยะทางไกล</span></li>
@@ -674,7 +681,7 @@
       </div>
     </div>
     <div class="foot-bottom" data-th="© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี" data-en="© 2025 Communications and Integrated Services Study Center (CISS) · King Mongkut's University of Technology Thonburi">© 2568 ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</div>
-    <div class="foot-credit" data-th="ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพประกอบที่ไม่ใช่อุปกรณ์ของศูนย์: ซูเปอร์คอมพิวเตอร์ Pleiades โดย NASA Ames (สาธารณสมบัติ) · จานผู้ใช้ปลายทาง Starlink โดย Ka23 13 สัญญาอนุญาต CC BY 4.0 จาก Wikimedia Commons (ตัดขอบภาพ) · จานสายอากาศ DSS-15 โดย NASA/JPL-Caltech (PIA26717)" data-en="Activity photos are CISS's own · Illustrative photos, not the centre's equipment: Pleiades supercomputer by NASA Ames (public domain) · Starlink user terminals by Ka23 13, CC BY 4.0, via Wikimedia Commons (cropped) · DSS-15 antenna by NASA/JPL-Caltech (PIA26717)">ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพประกอบที่ไม่ใช่อุปกรณ์ของศูนย์: ซูเปอร์คอมพิวเตอร์ Pleiades โดย NASA Ames (สาธารณสมบัติ) · จานผู้ใช้ปลายทาง Starlink โดย Ka23 13 สัญญาอนุญาต CC BY 4.0 จาก Wikimedia Commons (ตัดขอบภาพ) · จานสายอากาศ DSS-15 โดย NASA/JPL-Caltech (PIA26717)</div>
+    <div class="foot-credit" data-th="ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพประกอบที่ไม่ใช่อุปกรณ์ของศูนย์: ซูเปอร์คอมพิวเตอร์ Pleiades โดย NASA Ames (สาธารณสมบัติ) · จานผู้ใช้ปลายทาง Starlink โดย Ka23 13 สัญญาอนุญาต CC BY 4.0 จาก Wikimedia Commons (ตัดขอบภาพ) · จานสายอากาศ DSS-15 โดย NASA/JPL-Caltech (PIA26717) · CubeSat ในวงโคจร โดย NASA (iss074e0301636) · ภาพเส้นทางข้อมูลเป็นภาพตัดต่อจากภาพเหล่านี้" data-en="Activity photos are CISS's own · Illustrative photos, not the centre's equipment: Pleiades supercomputer by NASA Ames (public domain) · Starlink user terminals by Ka23 13, CC BY 4.0, via Wikimedia Commons (cropped) · DSS-15 antenna by NASA/JPL-Caltech (PIA26717) · CubeSats in orbit by NASA (iss074e0301636) · The data-path image is a composite of these photos">ภาพกิจกรรมเป็นภาพของศูนย์ CISS · ภาพประกอบที่ไม่ใช่อุปกรณ์ของศูนย์: ซูเปอร์คอมพิวเตอร์ Pleiades โดย NASA Ames (สาธารณสมบัติ) · จานผู้ใช้ปลายทาง Starlink โดย Ka23 13 สัญญาอนุญาต CC BY 4.0 จาก Wikimedia Commons (ตัดขอบภาพ) · จานสายอากาศ DSS-15 โดย NASA/JPL-Caltech (PIA26717) · CubeSat ในวงโคจร โดย NASA (iss074e0301636) · ภาพเส้นทางข้อมูลเป็นภาพตัดต่อจากภาพเหล่านี้</div>
   </div>
 </footer>
 
