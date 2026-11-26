@@ -2,281 +2,378 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Technology & Communications · CISS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CISS — เทคโนโลยีดิจิทัลและการสื่อสาร | Digital Technology & Communications</title>
+<meta name="description" content="ภารกิจเทคโนโลยีดิจิทัลและการสื่อสารของ CISS มจธ. — โครงข่ายสื่อสารและใยแก้วนำแสง การกำกับดูแลและนโยบายโทรคมนาคม งานวิจัยสื่อสารไร้สาย สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน">
+<meta name="theme-color" content="#05110e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Mission 03 · Digital Technology & Communications
+     Dark bands carry mood and capability (hero, bridge, projects, 6G/SAGIN);
+     paper bands carry the things people scan (expertise, policy, publications).
+     Accent: cyan = signal, leaf = CISS, amber = highlights, violet = space. */
   :root{
-    --bg:#0f1729; --bg2:#1a2740; --card:rgba(255,255,255,.055);
-    --card-bd:rgba(255,255,255,.09); --txt:#e8eef7; --muted:#9fb0c6;
-    --accent:#38bdf8; --accent2:#22d3ee; --accent3:#818cf8;
-    --glow:rgba(56,189,248,.18); --pill:rgba(56,189,248,.12);
+    --void:#05110e;--deep:#081a15;--deep2:#0c241d;
+    --leaf:#3ddc97;--leaf-d:#12805a;--cyan:#42d3e8;--cyan-d:#0b6f80;--amber:#f0b445;--violet:#7a9cff;
+    --paper:#f1f3ea;--paper2:#e6ebdd;--ink:#0c1f19;--ink2:#40554c;--rule:rgba(12,31,25,.14);
+    --text:#eaf2ee;--soft:#b9cbc3;--muted:#7f968c;--line:rgba(160,214,190,.16);--line2:rgba(160,214,190,.3);
+    --f-head:"Chakra Petch","IBM Plex Sans Thai",system-ui,sans-serif;
+    --f-body:"IBM Plex Sans Thai","Sarabun",system-ui,sans-serif;
+    --f-mono:"IBM Plex Mono","Chakra Petch",ui-monospace,monospace;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:
-      radial-gradient(1100px 600px at 12% -8%,rgba(56,189,248,.12),transparent 55%),
-      radial-gradient(900px 500px at 92% 8%,rgba(129,140,248,.12),transparent 55%),
-      linear-gradient(180deg,var(--bg),var(--bg2));
-    color:var(--txt); font-family:"Segoe UI","Noto Sans Thai",system-ui,-apple-system,sans-serif;
-    line-height:1.65; overflow-x:hidden; min-height:100vh;
-  }
-  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:78px}
+  body{font-family:var(--f-body);background:var(--void);color:var(--text);line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .en{display:none}
   body.lang-en .th{display:none}
   body.lang-en .en{display:inline}
-  body.lang-en .en.block{display:block}
+  a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
+  h1,h2,h3,h4{font-family:var(--f-head);font-weight:600;line-height:1.28}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+  .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+  .ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-  /* NAV */
-  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
-    background:rgba(7,11,20,.72);border-bottom:1px solid var(--card-bd)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
-  .brand .logo{width:40px;height:40px;display:grid;place-items:center}
-  .brand .logo svg{width:100%;height:100%;display:block}
-  .brand small{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.5px}
-  .nav-links{display:flex;gap:22px;align-items:center}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:.2s}
-  .nav-links a:hover{color:var(--txt)}
-  .toggle{display:flex;border:1px solid var(--card-bd);border-radius:999px;overflow:hidden}
-  .toggle button{background:none;border:none;color:var(--muted);padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600}
-  .toggle button.active{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#04101d}
-  .burger{display:none;background:none;border:1px solid var(--card-bd);color:var(--txt);
-    width:40px;height:40px;border-radius:9px;cursor:pointer;font-size:18px}
-  @media(max-width:860px){
-    .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;
-      background:rgba(7,11,20,.97);padding:14px 22px;border-bottom:1px solid var(--card-bd)}
-    .nav-links.open{display:flex}
-    .burger{display:block}
-  }
+  /* nav */
+  nav.top{position:sticky;top:0;z-index:100;background:rgba(5,17,14,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:700;font-size:19px;letter-spacing:1px;color:#fff;line-height:1.15}
+  .brand small{display:block;font-family:var(--f-mono);font-weight:500;font-size:10px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:3px}
+  .brand small .en,.brand small .th{font:inherit}
+  .logo{width:42px;height:42px;border-radius:6px 16px 6px 16px;background:linear-gradient(135deg,var(--leaf-d),#0b4f5c);display:grid;place-items:center;border:1px solid var(--line2);flex-shrink:0}
+  .logo svg{width:28px;height:28px}
+  .nav-links{display:flex;align-items:center;gap:2px}
+  .nav-links>a{font-family:var(--f-head);font-size:13.5px;font-weight:500;color:var(--soft);padding:8px 10px;border-radius:6px;white-space:nowrap;transition:.2s}
+  .nav-links>a:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .toggle{display:flex;border:1px solid var(--line2);border-radius:6px;overflow:hidden}
+  .toggle button{font-family:var(--f-mono);font-size:11.5px;font-weight:600;background:none;border:0;color:var(--soft);padding:7px 10px;cursor:pointer}
+  .toggle button.active{background:var(--leaf);color:#04231a}
+  .burger{display:none;background:none;border:1px solid var(--line2);color:#fff;font-size:18px;line-height:1;padding:8px 11px;border-radius:6px;cursor:pointer}
 
-  /* HERO */
-  .hero{position:relative;overflow:hidden;min-height:80vh;display:flex;align-items:center;
-    text-align:center;padding:90px 0 70px}
-  .hero-bg{position:absolute;inset:0;
-    background:url("https://images.unsplash.com/photo-1758473788048-eda14371fe74?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat;
-    animation:kenburns 24s ease-in-out infinite alternate;will-change:transform}
-  .hero-overlay{position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(10,16,28,.46),rgba(14,21,37,.62) 55%,rgba(26,39,64,.92));}
-  @keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1.2)}}
-  .hero-content{position:relative;z-index:2;width:100%;text-shadow:0 1px 12px rgba(0,0,0,.5)}
-  .hero h1{filter:drop-shadow(0 2px 14px rgba(0,0,0,.5))}
-  .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;
-    background:var(--pill);border:1px solid var(--card-bd);font-size:13px;color:var(--accent2);
-    font-weight:600;letter-spacing:.5px;margin-bottom:22px;backdrop-filter:blur(4px)}
-  .hero h1{font-size:clamp(30px,5.4vw,54px);line-height:1.18;font-weight:800;
-    background:linear-gradient(120deg,#fff 20%,var(--accent) 70%,var(--accent3));
-    -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
-  .hero .sub-en{font-size:clamp(16px,2.6vw,22px);color:var(--muted);font-weight:500;margin-bottom:20px}
-  .hero p.lead{max-width:760px;margin:0 auto 30px;color:#c4d2e6;font-size:16px}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-  .chip{padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--card-bd);
-    font-size:13px;color:var(--txt);backdrop-filter:blur(4px)}
-  .cta{display:inline-flex;gap:8px;align-items:center;margin-top:30px;padding:13px 26px;border-radius:11px;
-    background:linear-gradient(135deg,var(--accent),var(--accent3));color:#04101d;text-decoration:none;
-    font-weight:700;transition:.25s;box-shadow:0 8px 30px var(--glow);animation:pulse 3s ease-in-out infinite}
+  /* hero */
+  .hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse 90% 70% at 78% 30%,#0d3b44 0%,transparent 62%),linear-gradient(180deg,var(--void),var(--deep))}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;-webkit-mask-image:radial-gradient(ellipse at 30% 40%,#000 0%,transparent 72%);mask-image:radial-gradient(ellipse at 30% 40%,#000 0%,transparent 72%)}
+  .hero-content{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(48px,7vw,88px)}
+  .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;color:var(--cyan);border:1px solid rgba(66,211,232,.4);background:rgba(66,211,232,.08);padding:7px 14px;border-radius:999px;margin-bottom:22px}
+  .badge i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(66,211,232,.2)}
+  .hero h1{font-size:clamp(28px,3.9vw,48px);color:#fff;margin-bottom:8px;text-wrap:balance}
+  .sub-en{font-family:var(--f-mono);font-size:clamp(11.5px,1.4vw,13.5px);letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);margin-bottom:18px}
+  .hero .lead{font-size:clamp(15px,1.5vw,17px);color:var(--soft);max-width:38em;margin-bottom:22px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .chip{font-family:var(--f-mono);font-size:12px;letter-spacing:.03em;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);color:var(--text);background:rgba(255,255,255,.03)}
+  .cta{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-head);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:6px;background:var(--cyan);color:#04262c;transition:transform .2s}
   .cta:hover{transform:translateY(-2px)}
-  @keyframes pulse{0%,100%{box-shadow:0 8px 30px var(--glow)}50%{box-shadow:0 8px 44px rgba(56,189,248,.45)}}
+  .hero-art svg{width:100%;height:auto;display:block}
 
-  /* SECTIONS */
-  section{padding:60px 0}
-  .sec-head{text-align:center;margin-bottom:40px}
-  .sec-head .eyebrow{color:var(--accent2);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
-  .sec-head h2{font-size:clamp(24px,4vw,36px);font-weight:800;margin:8px 0 6px;line-height:1.3}
-  .sec-head p{color:var(--muted);max-width:680px;margin:0 auto;font-size:15px}
+  /* shared */
+  section{position:relative}
+  .sec{padding-block:clamp(60px,8vw,96px)}
+  .paper{background:var(--paper);color:var(--ink)}
+  .paper2{background:var(--paper2);color:var(--ink)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--leaf);margin-bottom:12px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6}
+  .paper .eyebrow,.paper2 .eyebrow{color:var(--leaf-d)}
+  .sec-head{max-width:48em;margin-bottom:38px}
+  .sec-head h2{font-size:clamp(24px,3.2vw,36px);margin-bottom:12px;text-wrap:balance}
+  .sec-head p{color:var(--soft)}
+  .paper .sec-head p,.paper2 .sec-head p{color:var(--ink2)}
+  .reveal{transform:translateY(14px);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{transform:none}
 
-  .grid{display:grid;gap:20px}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:900px){.g3{grid-template-columns:1fr}}
+  /* pillars */
+  .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{--c:var(--cyan-d);background:#fff;border:1px solid var(--rule);border-radius:6px 44px 6px 6px;padding:28px 26px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .card:hover{box-shadow:0 18px 40px rgba(12,31,25,.12)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--c),var(--leaf-d))}
+  .card:nth-child(2){--c:var(--amber)} .card:nth-child(3){--c:var(--violet)}
+  .card .ic{width:58px;height:58px;border-radius:6px 20px 6px 20px;background:var(--deep);color:var(--cyan);display:grid;place-items:center;margin-bottom:18px}
+  .card .ic .ico{width:30px;height:30px}
+  .card h3{font-size:20px;color:var(--ink)}
+  .h3-en{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf-d);margin:5px 0 14px}
+  .card ul,.show-txt ul,.policy ul{list-style:none;display:grid}
+  .card li{position:relative;padding:10px 0 10px 18px;border-top:1px solid var(--rule);font-size:14.5px;color:var(--ink)}
+  .card li::before{content:"";position:absolute;left:0;top:1.35em;width:8px;height:1.5px;background:var(--c)}
 
-  .card{background:var(--card);border:1px solid var(--card-bd);border-radius:16px;padding:26px;
-    transition:.28s;position:relative;overflow:hidden}
-  .card:hover{transform:translateY(-6px);border-color:rgba(56,189,248,.4);box-shadow:0 14px 40px rgba(0,0,0,.4)}
-  .card .ic{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;font-size:24px;
-    background:var(--pill);margin-bottom:16px}
-  .card h3{font-size:18px;margin-bottom:6px}
-  .card .h3-en{font-size:13px;color:var(--accent2);font-weight:600;margin-bottom:10px;display:block}
-  .card ul{list-style:none;margin-top:12px}
-  .card li{position:relative;padding-left:20px;margin-bottom:8px;font-size:14px;color:var(--muted)}
-  .card li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+  /* showcase */
+  .show-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:center}
+  .show-img{position:relative;border-radius:6px 6px 6px 56px;overflow:hidden;border:1px solid var(--rule);background:var(--deep)}
+  .show-img svg{width:100%;height:auto;display:block}
+  .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 18px 14px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(5,17,14,.92))}
+  .show-txt h2{font-size:clamp(24px,3vw,34px);color:var(--ink);margin-bottom:14px}
+  .show-txt p{color:var(--ink2);margin-bottom:18px}
+  .show-txt li{position:relative;padding:12px 0 12px 34px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink)}
+  .show-txt li:last-child{border-bottom:1px solid var(--rule)}
+  .show-txt li::before{content:"";position:absolute;left:2px;top:1.05em;width:18px;height:18px;border-radius:50%;background:var(--leaf-d)}
+  .show-txt li::after{content:"";position:absolute;left:8px;top:1.38em;width:6px;height:3px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
 
-  /* SHOWCASE (real infra image) */
-  .show-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-  @media(max-width:880px){.show-grid{grid-template-columns:1fr;gap:26px}}
-  .show-img{border-radius:18px;overflow:hidden;border:1px solid var(--card-bd);position:relative;
-    box-shadow:0 18px 50px rgba(0,0,0,.4)}
-  .show-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .7s ease}
-  .show-img:hover img{transform:scale(1.07)}
-  .show-img .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:12px;color:#cfe0f5;
-    background:linear-gradient(transparent,rgba(7,11,20,.85))}
-  .show-txt h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;margin-bottom:14px;line-height:1.3}
-  .show-txt p{color:var(--muted);margin-bottom:16px;font-size:15px}
-  .show-txt ul{list-style:none}
-  .show-txt li{position:relative;padding-left:24px;margin-bottom:10px;font-size:14.5px;color:var(--txt)}
-  .show-txt li::before{content:"●";position:absolute;left:0;color:var(--accent);font-size:10px;top:5px}
+  /* bridge */
+  .parallax{isolation:isolate;overflow:hidden;padding-block:clamp(84px,12vw,150px);text-align:center}
+  .parallax .bg{position:absolute;inset:0;z-index:-2;background:url("images/ts-hero-bangkok.jpg") center/cover no-repeat}
+  .parallax::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--paper2) 0,rgba(5,17,14,.55) 16%,rgba(5,17,14,.62) 70%,var(--paper) 100%)}
+  .parallax .tag,.spotlight .tag{display:inline-block;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(240,180,69,.45);padding:6px 14px;border-radius:999px;margin-bottom:18px;background:rgba(5,17,14,.5)}
+  .parallax h2{font-size:clamp(26px,4vw,46px);color:#fff;margin-bottom:14px;text-wrap:balance;text-shadow:0 2px 22px rgba(0,0,0,.6)}
+  .parallax p{color:#e4efe9;max-width:44em;margin-inline:auto;font-size:clamp(15px,1.6vw,17.5px);text-shadow:0 1px 14px rgba(0,0,0,.7)}
+  .parallax .credit-img{position:absolute;right:16px;bottom:10px;font-family:var(--f-mono);font-size:10.5px;color:rgba(12,31,25,.6)}
 
-  /* PARALLAX BAND (bridge to space) */
-  .parallax{position:relative;padding:110px 0;text-align:center;overflow:hidden;
-    background:url("https://images.unsplash.com/photo-1642998188575-3285ae20adda?auto=format&fit=crop&w=1920&q=80") center/cover fixed}
-  .parallax::before{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(14,21,37,.52),rgba(26,39,64,.74))}
-  .parallax .wrap{text-shadow:0 1px 12px rgba(0,0,0,.45)}
-  .parallax .wrap{position:relative;z-index:2}
-  .parallax .tag{color:var(--accent2);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase}
-  .parallax h2{font-size:clamp(24px,4.4vw,40px);font-weight:800;margin:12px 0 14px;
-    background:linear-gradient(120deg,#fff,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .parallax p{max-width:720px;margin:0 auto;color:#cdd9ec;font-size:16px}
-  @media(max-width:760px){.parallax{background-attachment:scroll;padding:80px 0}}
+  /* policy */
+  .policy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .policy{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:26px 26px 22px;transition:box-shadow .25s,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .policy:hover{box-shadow:0 18px 40px rgba(12,31,25,.12)}
+  .org{display:flex;align-items:center;gap:14px;font-family:var(--f-head);font-weight:600;font-size:19px;color:var(--ink)}
+  .flag{width:46px;height:46px;border-radius:6px 16px 6px 16px;background:var(--deep);color:var(--amber);display:grid;place-items:center;flex-shrink:0}
+  .yr{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--leaf-d);margin:10px 0 12px 60px}
+  .policy li{position:relative;padding:11px 0 11px 18px;border-top:1px solid var(--rule);font-size:14.5px;color:var(--ink)}
+  .policy li::before{content:"";position:absolute;left:0;top:1.42em;width:8px;height:1.5px;background:var(--amber)}
 
-  /* POLICY */
-  .policy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media(max-width:820px){.policy-grid{grid-template-columns:1fr}}
-  .policy{background:linear-gradient(160deg,rgba(56,189,248,.06),rgba(129,140,248,.04));
-    border:1px solid var(--card-bd);border-radius:15px;padding:24px;transition:.25s}
-  .policy:hover{border-color:rgba(56,189,248,.35);transform:translateY(-3px)}
-  .policy .org{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;margin-bottom:4px}
-  .policy .yr{font-size:12px;color:var(--accent2);font-weight:600;letter-spacing:.5px}
-  .policy ul{list-style:none;margin-top:12px}
-  .policy li{padding-left:18px;position:relative;font-size:13.5px;color:var(--muted);margin-bottom:7px}
-  .policy li::before{content:"—";position:absolute;left:0;color:var(--accent)}
-  .flag{font-size:22px}
+  /* projects */
+  .projects{background:var(--deep)}
+  .proj-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .proj{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:18px 20px;background:rgba(255,255,255,.03);transition:border-color .25s,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .proj:hover{border-color:var(--cyan)}
+  .dot{width:44px;height:44px;border-radius:6px 16px 6px 16px;background:rgba(66,211,232,.1);color:var(--cyan);display:grid;place-items:center;flex-shrink:0}
+  .proj b{display:block;font-family:var(--f-head);font-weight:600;font-size:16.5px;color:#fff}
+  .proj b .th,.proj b .en{font:inherit}
+  .proj div>span{font-size:13.8px;color:var(--soft)}
 
-  /* PROJECTS */
-  .proj-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  @media(max-width:820px){.proj-list{grid-template-columns:1fr}}
-  .proj{background:var(--card);border:1px solid var(--card-bd);border-radius:12px;padding:16px 18px;
-    display:flex;gap:13px;align-items:flex-start;transition:.2s}
-  .proj:hover{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.05);transform:translateX(4px)}
-  .proj .dot{flex-shrink:0;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
-    background:var(--pill);font-size:16px}
-  .proj b{font-size:14px;display:block;margin-bottom:2px}
-  .proj span{font-size:12.5px;color:var(--muted)}
+  /* 6G & SAGIN */
+  .future{background:linear-gradient(180deg,var(--deep),var(--void))}
+  .spotlight{border:1px solid var(--line2);border-radius:6px 64px 6px 6px;padding:clamp(22px,4vw,48px);background:radial-gradient(ellipse 70% 60% at 80% 0,rgba(122,156,255,.14),transparent 70%),rgba(255,255,255,.02)}
+  .spotlight h2{font-size:clamp(24px,3.4vw,38px);color:#fff;text-wrap:balance}
+  .h2en{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);margin:8px 0 16px}
+  .spotlight>p{color:var(--soft);max-width:50em}
+  .spotlight>p strong{color:#fff;font-weight:600}
+  .sagin-svg{width:100%;height:auto;display:block;margin:28px 0 6px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,#070d1c 0%,#0a1c2a 40%,#0b2a24 78%,#0c241d 100%)}
+  .sagin-layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+  .layer{--c:var(--violet);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:6px;padding:18px 18px 16px;background:rgba(255,255,255,.03)}
+  .layer:nth-child(2){--c:var(--amber)} .layer:nth-child(3){--c:var(--leaf)}
+  .layer .em{display:grid;place-items:center;width:40px;height:40px;border-radius:6px 14px 6px 14px;background:rgba(255,255,255,.06);color:var(--c);margin-bottom:10px}
+  .layer b{display:block;font-family:var(--f-head);font-weight:600;font-size:17px;color:#fff}
+  .layer b .th,.layer b .en{font:inherit}
+  .layer small{font-size:13.5px;color:var(--soft)}
+  .bridge-note{margin-top:22px;border-left:3px solid var(--amber);background:rgba(240,180,69,.07);padding:16px 18px;border-radius:0 6px 6px 0;font-size:14.5px;color:var(--soft)}
+  .bridge-note strong{color:#fff;font-weight:600}
+  .bridge-note a{color:var(--amber);border-bottom:1px solid rgba(240,180,69,.5)}
+  .research-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .rtag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:6px 12px;border-radius:999px;border:1px solid rgba(66,211,232,.4);color:var(--cyan);background:rgba(66,211,232,.06)}
 
-  /* 6G / SAGIN spotlight */
-  .spotlight{background:
-      radial-gradient(700px 340px at 80% 0%,rgba(129,140,248,.16),transparent 60%),
-      linear-gradient(160deg,rgba(34,211,238,.08),rgba(129,140,248,.05));
-    border:1px solid rgba(56,189,248,.28);border-radius:22px;padding:44px;position:relative;overflow:hidden}
-  .spotlight::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
-    background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none}
-  .spotlight .tag{color:var(--accent2);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase}
-  .spotlight h2{font-size:clamp(24px,4vw,34px);margin:10px 0 6px;font-weight:800}
-  .spotlight .h2en{color:var(--muted);font-size:16px;margin-bottom:18px}
-  .sagin-layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
-  @media(max-width:760px){.sagin-layers{grid-template-columns:1fr}}
-  .layer{background:rgba(7,11,20,.5);border:1px solid var(--card-bd);border-radius:13px;padding:18px;text-align:center;transition:.25s}
-  .layer:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.4)}
-  .layer .em{font-size:30px;display:block;margin-bottom:8px}
-  .layer b{font-size:15px}
-  .layer small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
-  .bridge-note{background:rgba(7,11,20,.45);border:1px solid var(--card-bd);border-radius:12px;
-    padding:18px 20px;margin-top:8px;font-size:14px;color:var(--muted)}
-  .bridge-note a{color:var(--accent2);text-decoration:none;font-weight:600}
-  .bridge-note a:hover{text-decoration:underline}
-  .research-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
-  .rtag{font-size:12.5px;padding:6px 13px;border-radius:999px;background:var(--pill);
-    border:1px solid var(--card-bd);color:var(--txt)}
+  /* publications */
+  .pub-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule);border-radius:6px;background:#fff;overflow:hidden;margin-bottom:26px}
+  .stat{padding:26px 20px;text-align:center;border-left:1px solid var(--rule)}
+  .stat:first-child{border-left:0}
+  .stat .n{font-family:var(--f-mono);font-size:clamp(26px,3.4vw,40px);font-weight:600;color:var(--ink);line-height:1.1;margin-bottom:6px}
+  .stat small{font-size:13px;color:var(--ink2)}
+  .wave{width:100%;height:auto;display:block;margin-bottom:24px}
+  .pub-areas{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .pub-areas .chip{border-color:var(--rule);color:var(--ink);background:#fff}
+  .pub-note{text-align:center;color:var(--ink2);font-size:13.5px;margin-top:22px;max-width:740px;margin-inline:auto}
 
-  /* PUBLICATIONS */
-  .pub-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
-  @media(max-width:760px){.pub-stats{grid-template-columns:repeat(2,1fr)}}
-  .stat{text-align:center;background:var(--card);border:1px solid var(--card-bd);border-radius:14px;padding:22px 12px;transition:.25s}
-  .stat:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.4)}
-  .stat .n{font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .stat small{color:var(--muted);font-size:12.5px;display:block;margin-top:4px}
-  .pub-areas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  /* footer */
+  footer{background:var(--void);border-top:1px solid var(--line);padding-block:48px 34px}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);gap:36px;margin-bottom:26px}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-weight:700;font-size:17px;color:#fff;line-height:1.3}
+  .foot-brand small{display:block;font-family:var(--f-body);font-weight:400;font-size:12.5px;color:var(--muted)}
+  .foot-grid p{color:var(--soft);font-size:13.5px;margin-top:12px}
+  .foot-grid h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px}
+  .foot-grid a{display:flex;align-items:center;gap:9px;font-size:14.5px;color:var(--soft);padding:4px 0}
+  .foot-grid a[href]:hover{color:#fff}
+  .foot-grid a .ico{width:16px;height:16px;color:var(--leaf)}
+  .mission-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .mission-links a{font-size:13.5px;color:var(--soft);border:1px solid var(--line);border-radius:6px;padding:8px 14px;transition:.2s}
+  .mission-links a:hover{color:#fff;border-color:var(--leaf)}
+  .copy{border-top:1px solid var(--line);padding-top:20px;font-size:12.5px;color:var(--muted)}
+  .credit{font-size:11.5px;color:#6d8379;margin-top:8px}
 
-  /* FOOTER */
-  footer{border-top:1px solid var(--card-bd);margin-top:10px;padding:42px 0 30px;background:rgba(7,11,20,.55)}
-  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
-  @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
-  .foot-grid h4{font-size:14px;margin-bottom:12px;color:var(--accent2);letter-spacing:.5px}
-  .foot-grid a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;margin-bottom:8px;transition:.2s}
-  .foot-grid a:hover{color:var(--txt)}
-  .foot-brand{font-weight:700;font-size:17px;margin-bottom:8px;display:flex;align-items:center}
-  .foot-brand small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:4px}
-  .copy{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px;padding-top:20px;border-top:1px solid var(--card-bd)}
-  .mission-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
-  .mission-links a{padding:8px 16px;border-radius:999px;background:var(--card);border:1px solid var(--card-bd);
-    color:var(--txt);text-decoration:none;font-size:13px;transition:.2s}
-  .mission-links a:hover{border-color:var(--accent);color:var(--accent2)}
-  .credit{text-align:center;color:var(--muted);font-size:11px;margin-top:14px;opacity:.7}
+  .dash{stroke-dasharray:5 9;animation:dash 2.4s linear infinite}
+  .pulse{stroke-dasharray:3 46;animation:dash2 2.8s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-56}}
+  @keyframes dash2{to{stroke-dashoffset:-98}}
+  .blink{animation:blink 2.6s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
+  .ring{transform-box:fill-box;transform-origin:center;animation:ring 3s ease-out infinite}
+  @keyframes ring{0%{transform:scale(.3);opacity:.9}100%{transform:scale(1);opacity:0}}
 
-  .reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
+  @media(max-width:1100px){.brand small{display:none}}
+  @media(max-width:960px){
+    .nav-links{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--void);border-bottom:1px solid var(--line);padding:10px 20px 18px}
+    .nav-links.open{display:flex}
+    .nav-links>a{padding:12px 4px;font-size:15px;border-bottom:1px solid var(--line)}
+    .nav-right{margin-left:auto}
+    .burger{display:block}
+    .hero-content{grid-template-columns:1fr}
+    .hero-art{max-width:520px;margin-inline:auto;width:100%}
+    .g3,.show-grid,.policy-grid,.proj-list{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-grid>div:first-child{grid-column:1/-1}
+  }
+  @media(max-width:620px){
+    .sagin-layers{grid-template-columns:1fr}
+    .pub-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .stat:nth-child(odd){border-left:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--rule)}
+    .yr{margin-left:0}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .dash,.pulse,.blink,.ring{animation:none}
+    .ring{opacity:.4}
+    .reveal{transform:none;transition:none}
+    .cta,.card,.policy,.proj{transition:none}
+  }
 </style>
 </head>
 <body class="lang-th">
 
-<nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 40 40">
+    <ellipse cx="20" cy="20" rx="16.5" ry="7.4" transform="rotate(-25 20 20)" stroke="#bfe0ff" stroke-width="1.4" opacity="0.85" fill="none"/>
+    <polygon points="20,11 28,15.5 28,24.5 20,29 12,24.5 12,15.5" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(255,255,255,0.12)"/>
+    <path d="M16.3 20.4 l2.6 2.6 l5 -6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="30.4" cy="9.6" r="2.4" fill="#fff"/>
+    <path d="M27.9 9 q3 -2.3 5 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.9" fill="none"/>
+    <path d="M25.9 7.9 q4.3 -3.3 8 0" stroke="#bfe0ff" stroke-width="1.2" opacity="0.65" fill="none"/>
+  </symbol>
+  <symbol id="sat" viewBox="-16 -9 32 18">
+    <rect x="-4.5" y="-4" width="9" height="8" rx="1.5" fill="#eaf2ee"/>
+    <rect x="-15" y="-3" width="9" height="6" rx="1" fill="#42d3e8"/><rect x="6" y="-3" width="9" height="6" rx="1" fill="#42d3e8"/>
+    <path d="M-10.5 -3v6M10.5 -3v6" stroke="#05110e" stroke-width=".8"/>
+  </symbol>
+  <symbol id="i-fibre" viewBox="0 0 24 24"><path d="M3 12h5"/><path d="M8 8v8"/><path d="M8 9c5 0 5-4 13-4"/><path d="M8 12h13"/><path d="M8 15c5 0 5 4 13 4"/><circle cx="21" cy="5" r=".6"/><circle cx="21" cy="12" r=".6"/><circle cx="21" cy="19" r=".6"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M7 20h10"/><path d="M5 7h14"/><path d="M5 7l-3 7a3 3 0 006 0z"/><path d="M19 7l-3 7a3 3 0 006 0z"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M12 10v11"/><path d="M8 21l4-11 4 11"/><circle cx="12" cy="8" r="1.6"/><path d="M7.5 4.500a6.400 6.400 0 000 7"/><path d="M16.500 4.500a6.400 6.400 0 010 7"/><path d="M4.500 2.500a10 10 0 000 11"/><path d="M19.500 2.500a10 10 0 010 11"/></symbol>
+  <symbol id="i-parl" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6"/><path d="M4 10h16"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/><path d="M3 20h18"/></symbol>
+  <symbol id="i-signal" viewBox="0 0 24 24"><path d="M4 20v-3"/><path d="M9 20v-7"/><path d="M14 20v-11"/><path d="M19 20V4"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.500v3M12 18.500v3M2.500 12h3M18.500 12h3M5.300 5.300l2.100 2.100M16.600 16.600l2.100 2.100M5.300 18.700l2.100-2.100M16.600 7.400l2.100-2.100"/></symbol>
+  <symbol id="i-sat" viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1" transform="rotate(45 12 12)"/><path d="M6.500 6.500L3 3M17.500 17.500L21 21"/><path d="M4 8l4-4M16 20l4-4"/><path d="M15 4a5 5 0 015 5"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 13l8-2 4-7 2 .500-2 6.500 6-1.500 1.500 1.500-7 3-2 6-2-.500.500-5-5 1z"/></symbol>
+  <symbol id="i-city" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="4" y="9" width="6" height="12"/><rect x="12" y="4" width="7" height="17"/><path d="M6.500 12.500h1M6.500 16h1M14.500 8h2M14.500 12h2M14.500 16h2"/></symbol>
+  <symbol id="i-ai" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-traffic" viewBox="0 0 24 24"><rect x="8" y="2.500" width="8" height="16" rx="3"/><circle cx="12" cy="6.500" r="1.300"/><circle cx="12" cy="10.500" r="1.300"/><circle cx="12" cy="14.500" r="1.300"/><path d="M12 18.500V22"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4"/><path d="M4 20h16"/><rect x="7" y="12" width="3" height="5"/><rect x="12" y="8" width="3" height="9"/><rect x="17" y="5" width="3" height="12"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.500" width="14" height="10" rx="2"/><path d="M8 10.500V7.500a4 4 0 018 0v3"/><circle cx="12" cy="15.500" r="1.300"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.500 15a6 6 0 117 0c-.700.700-1 1.500-1 3h-5c0-1.500-.300-2.300-1-3z"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4.500" width="14" height="17" rx="2"/><rect x="9" y="2.500" width="6" height="4" rx="1"/><path d="M9 11h6M9 15h6"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 3l4 4 4-4"/><path d="M8 22h8"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.500 7l8.500 6 8.500-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.200 7-11.500a7 7 0 00-14 0C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></symbol>
+</svg>
+
+<nav class="top">
   <div class="wrap nav-in">
-    <a href="https://chirasil.github.io/CISS/" class="brand" style="text-decoration:none;color:inherit">
-      <span class="logo"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="CISS logo"><defs><linearGradient id="cissBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><rect x="6" y="6" width="88" height="88" rx="22" fill="url(#cissBg)"/><ellipse cx="50" cy="52" rx="40" ry="16" fill="none" stroke="#cfe2fe" stroke-width="2.6" stroke-opacity=".9" transform="rotate(-32 50 52)"/><polygon points="70,52 60,71 40,71 30,52 40,33 60,33" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/><polyline points="40,53 47,61 62,42" fill="none" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="73" cy="30" r="4.6" fill="#ffffff"/><path d="M78 25 a7 7 0 0 1 3 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".9"/><path d="M80 21 a12 12 0 0 1 5 8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".65"/></svg></span>
+    <a href="https://chirasil.github.io/CISS/" class="brand">
+      <span class="logo"><svg aria-label="CISS logo"><use href="#logo"/></svg></span>
       <span>CISS
-        <small class="th">ดิจิทัลและการสื่อสาร</small>
-        <small class="en">Digital &amp; Communications</small>
+        <small><span class="th">ดิจิทัลและการสื่อสาร</span><span class="en">Digital &amp; Communications</span></small>
       </span>
     </a>
-    <div class="nav-links" id="navlinks">
+    <div class="nav-links" id="navlinks" style="margin-left:auto">
       <a href="#pillars"><span class="th">ความเชี่ยวชาญ</span><span class="en">Expertise</span></a>
       <a href="#policy"><span class="th">นโยบาย & กรรมาธิการ</span><span class="en">Policy & Parliament</span></a>
       <a href="#projects"><span class="th">โครงการ</span><span class="en">Projects</span></a>
       <a href="#future"><span class="th">6G & SAGIN</span><span class="en">6G & SAGIN</span></a>
       <a href="#pubs"><span class="th">ผลงานตีพิมพ์</span><span class="en">Publications</span></a>
+    </div>
+    <div class="nav-right">
       <div class="toggle">
         <button id="bth" class="active" onclick="setLang('th')">TH</button>
         <button id="ben" onclick="setLang('en')">EN</button>
       </div>
+      <button class="burger" aria-label="menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
     </div>
-    <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
   <div class="wrap hero-content">
-    <span class="badge">📡 Digital Technology &amp; Communications</span>
-    <h1>
-      <span class="th">เทคโนโลยีดิจิทัลและการสื่อสาร</span>
-      <span class="en">Digital Technology &amp; Communications</span>
-    </h1>
-    <div class="sub-en th">Digital Technology &amp; Communications</div>
-    <div class="sub-en en">เทคโนโลยีดิจิทัลและการสื่อสาร</div>
-    <p class="lead">
-      <span class="th">พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล และนโยบาย เชื่อมโยงงานวิจัยขั้นแนวหน้าเข้ากับการกำกับดูแลและการพัฒนาประเทศ — ตั้งแต่โครงข่ายใยแก้วนำแสง 5G ไปจนถึงเทคโนโลยี 6G และโครงข่ายบูรณาการอวกาศ-อากาศ-ภาคพื้นดินแห่งอนาคต</span>
-      <span class="en">Building communications-network infrastructure, digital systems, and policy capability — connecting frontier research with regulation and national development, from fiber and 5G toward 6G and the future Space-Air-Ground Integrated Network.</span>
-    </p>
-    <div class="chips">
-      <span class="chip">📶 5G / 6G</span>
-      <span class="chip">🛰️ Satellite &amp; SAGIN</span>
-      <span class="chip">🔌 FTTx / Optical</span>
-      <span class="chip">⚖️ Spectrum &amp; Policy</span>
-      <span class="chip">🔐 PDPA / Digital</span>
+    <div>
+      <span class="badge"><i></i>Digital Technology &amp; Communications</span>
+      <h1><span class="th">เทคโนโลยีดิจิทัลและการสื่อสาร</span><span class="en">Digital Technology &amp; Communications</span></h1>
+      <div class="sub-en"><span class="th">Digital Technology &amp; Communications</span><span class="en">เทคโนโลยีดิจิทัลและการสื่อสาร</span></div>
+      <p class="lead"><span class="th">พัฒนาโครงสร้างพื้นฐานและกำลังคนด้านโครงข่ายสื่อสารโทรคมนาคม ระบบดิจิทัล และนโยบาย เชื่อมโยงงานวิจัยขั้นแนวหน้าเข้ากับการกำกับดูแลและการพัฒนาประเทศ — ตั้งแต่โครงข่ายใยแก้วนำแสง 5G ไปจนถึงเทคโนโลยี 6G และโครงข่ายบูรณาการอวกาศ-อากาศ-ภาคพื้นดินแห่งอนาคต</span><span class="en">Building communications-network infrastructure, digital systems, and policy capability — connecting frontier research with regulation and national development, from fiber and 5G toward 6G and the future Space-Air-Ground Integrated Network.</span></p>
+      <div class="chips">
+        <span class="chip">5G / 6G</span>
+        <span class="chip">Satellite &amp; SAGIN</span>
+        <span class="chip">FTTx / Optical</span>
+        <span class="chip">Spectrum &amp; Policy</span>
+        <span class="chip">PDPA / Digital</span>
+      </div>
+      <a href="#future" class="cta"><span class="th">สู่อนาคต 6G & SAGIN →</span><span class="en">Explore 6G &amp; SAGIN →</span></a>
     </div>
-    <a href="#future" class="cta">
-      <span class="th">สู่อนาคต 6G & SAGIN →</span>
-      <span class="en">Explore 6G &amp; SAGIN →</span>
-    </a>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hg" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#0f4a55" stop-opacity=".85"/><stop offset="1" stop-color="#05110e" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hEarth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#05110e"/></linearGradient>
+          <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#42d3e8"/></linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="560" height="480" fill="url(#hg)"/>
+        <!-- orbit and satellite -->
+        <path d="M20 120 Q280 0 540 120" fill="none" stroke="#7a9cff" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="2 7"/>
+        <use href="#sat" x="372" y="52" width="44" height="25" transform="rotate(12 394 64)"/>
+        <use href="#sat" x="120" y="74" width="30" height="17" transform="rotate(-16 135 82)" opacity=".7"/>
+        <text x="280" y="34" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#7a9cff">SATELLITE</text>
+        <!-- spectrum panel -->
+        <g transform="translate(184 150)">
+          <rect x="0" y="0" width="200" height="132" rx="8" fill="#05110e" stroke="#42d3e8" stroke-opacity=".6" stroke-width="1.4"/>
+          <g stroke="#a0d6be" stroke-opacity=".14"><path d="M0 44H200M0 88H200M50 0V132M100 0V132M150 0V132"/></g>
+          <g fill="url(#bar)">
+            <rect x="14" y="92" width="10" height="28"/><rect x="28" y="76" width="10" height="44"/><rect x="42" y="58" width="10" height="62"/><rect class="blink" x="56" y="34" width="10" height="86"/><rect x="70" y="50" width="10" height="70"/><rect x="84" y="80" width="10" height="40"/><rect x="98" y="96" width="10" height="24"/>
+            <rect x="112" y="72" width="10" height="48"/><rect class="blink" x="126" y="26" width="10" height="94" style="animation-delay:-1.2s"/><rect x="140" y="46" width="10" height="74"/><rect x="154" y="70" width="10" height="50"/><rect x="168" y="90" width="10" height="30"/>
+          </g>
+          <path d="M8 104 C40 104 44 28 62 28 S84 100 104 100 S118 18 132 18 S160 96 192 96" fill="none" stroke="#f0b445" stroke-width="2" filter="url(#glow)"/>
+          <text x="100" y="150" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.800" fill="#42d3e8">SPECTRUM</text>
+        </g>
+        <!-- ground -->
+        <path d="M-20 410 Q280 362 580 410 L580 500 L-20 500Z" fill="url(#hEarth)" opacity=".9"/>
+        <path d="M-20 410 Q280 362 580 410" fill="none" stroke="#3ddc97" stroke-opacity=".55" stroke-width="1.2"/>
+        <!-- cell tower with radiating rings -->
+        <g transform="translate(86 250)">
+          <g fill="none" stroke="#42d3e8" stroke-width="1.600"><circle class="ring" cx="0" cy="0" r="62"/><circle class="ring" cx="0" cy="0" r="62" style="animation-delay:-1.5s"/></g>
+          <path d="M0 0 L-22 142 M0 0 L22 142 M-6 40 H6 M-12 80 H12 M-18 118 H18 M-6 40 L12 80 M6 40 L-12 80 M-12 80 L18 118 M12 80 L-18 118" stroke="#eaf2ee" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <circle r="5" fill="#f0b445"/>
+          <g fill="#eaf2ee"><rect x="-13" y="6" width="5" height="18" rx="1.500"/><rect x="8" y="6" width="5" height="18" rx="1.500"/></g>
+          <text x="0" y="-74" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.600" fill="#42d3e8">5G / 6G</text>
+        </g>
+        <!-- ground station dish -->
+        <g transform="translate(468 328)">
+          <path d="M0 62 L0 26" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+          <path d="M-20 64 H20" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+          <g transform="rotate(-32)"><path d="M-34 0 A34 34 0 0 0 34 0Z" fill="#eaf2ee" stroke="#fff"/><path d="M0 0 L0 -20" stroke="#eaf2ee" stroke-width="2.400"/><circle cy="-22" r="3.500" fill="#f0b445"/></g>
+        </g>
+        <path class="dash" d="M454 300 L400 82" fill="none" stroke="#f0b445" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+        <!-- links between tower, spectrum and dish -->
+        <g fill="none" stroke-linecap="round"><path class="dash" d="M104 262 C140 250 150 226 184 220" stroke="#42d3e8" stroke-width="1.500"/><path class="dash" d="M384 232 C420 240 430 290 446 318" stroke="#42d3e8" stroke-width="1.500"/></g>
+        <!-- fibre underground -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M-10 438 C140 438 180 420 280 420 S440 446 570 446" stroke="#42d3e8" stroke-width="3" filter="url(#glow)"/>
+          <path d="M-10 450 C140 450 180 432 280 432 S440 458 570 458" stroke="#3ddc97" stroke-width="3" opacity=".85"/>
+          <path class="pulse" d="M-10 438 C140 438 180 420 280 420 S440 446 570 446" stroke="#fff" stroke-width="3.400"/>
+          <path class="pulse" d="M-10 450 C140 450 180 432 280 432 S440 458 570 458" stroke="#fff" stroke-width="3.400" style="animation-delay:-1.300s"/>
+        </g>
+        <text x="280" y="470" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.600" fill="#3ddc97">FTTx / OPTICAL</text>
+      </svg>
+    </div>
   </div>
 </header>
 
 <!-- PILLARS -->
-<section id="pillars">
+<section class="sec paper" id="pillars">
   <div class="wrap">
     <div class="sec-head reveal">
       <h2><span class="th">ความเชี่ยวชาญหลักที่ขับเคลื่อนภารกิจด้านเทคโนโลยีดิจิทัลและการสื่อสาร</span><span class="en">Core competencies driving the digital and communications mission</span></h2>
     </div>
-    <div class="grid g3">
+    <div class="g3">
       <div class="card reveal">
-        <div class="ic">🔌</div>
-        <h3 class="th">โครงข่ายสื่อสาร & ใยแก้วนำแสง</h3>
-        <h3 class="en">Communications Networks &amp; Optical</h3>
-        <span class="h3-en th">Communications Networks &amp; Optical Fiber</span>
-        <span class="h3-en en">โครงข่ายสื่อสารและใยแก้วนำแสง</span>
+        <div class="ic"><svg class="ico"><use href="#i-fibre"/></svg></div>
+        <h3><span class="th">โครงข่ายสื่อสาร & ใยแก้วนำแสง</span><span class="en">Communications Networks &amp; Optical</span></h3>
+        <span class="h3-en"><span class="th">Communications Networks &amp; Optical Fiber</span><span class="en">โครงข่ายสื่อสารและใยแก้วนำแสง</span></span>
         <ul>
           <li><span class="th">โครงข่ายใยแก้วนำแสง FTTx และระบบสื่อสัญญาณ</span><span class="en">FTTx optical networks and signal-transport systems</span></li>
           <li><span class="th">การวางแผนและจัดการโครงข่ายโทรคมนาคม</span><span class="en">Telecom network planning and management</span></li>
@@ -285,11 +382,9 @@
         </ul>
       </div>
       <div class="card reveal">
-        <div class="ic">⚖️</div>
-        <h3 class="th">การกำกับดูแล & นโยบายโทรคมนาคม</h3>
-        <h3 class="en">Telecom Regulation &amp; Policy</h3>
-        <span class="h3-en th">Telecom Regulation &amp; Policy</span>
-        <span class="h3-en en">การกำกับดูแลและนโยบายโทรคมนาคม</span>
+        <div class="ic"><svg class="ico"><use href="#i-scale"/></svg></div>
+        <h3><span class="th">การกำกับดูแล & นโยบายโทรคมนาคม</span><span class="en">Telecom Regulation &amp; Policy</span></h3>
+        <span class="h3-en"><span class="th">Telecom Regulation &amp; Policy</span><span class="en">การกำกับดูแลและนโยบายโทรคมนาคม</span></span>
         <ul>
           <li><span class="th">การจัดสรรคลื่นความถี่และ Spectrum Management (ITU)</span><span class="en">Spectrum allocation and management (ITU)</span></li>
           <li><span class="th">นิยามตลาดและการกำกับการแข่งขันโทรคมนาคม</span><span class="en">Market definition and competition regulation</span></li>
@@ -298,11 +393,9 @@
         </ul>
       </div>
       <div class="card reveal">
-        <div class="ic">📡</div>
-        <h3 class="th">งานวิจัยสัญญาณ & สื่อสารไร้สาย</h3>
-        <h3 class="en">Signal &amp; Wireless Research</h3>
-        <span class="h3-en th">Signal Processing &amp; Wireless Communications</span>
-        <span class="h3-en en">การประมวลผลสัญญาณและการสื่อสารไร้สาย</span>
+        <div class="ic"><svg class="ico"><use href="#i-wave"/></svg></div>
+        <h3><span class="th">งานวิจัยสัญญาณ & สื่อสารไร้สาย</span><span class="en">Signal &amp; Wireless Research</span></h3>
+        <span class="h3-en"><span class="th">Signal Processing &amp; Wireless Communications</span><span class="en">การประมวลผลสัญญาณและการสื่อสารไร้สาย</span></span>
         <ul>
           <li><span class="th">Diversity combining และ MRC ในช่อง fading</span><span class="en">Diversity combining and MRC in fading channels</span></li>
           <li><span class="th">ระบบ relay หลายช่วงและการรบกวนร่วมช่อง</span><span class="en">Multihop relay systems and co-channel interference</span></li>
@@ -315,19 +408,38 @@
 </section>
 
 <!-- SHOWCASE: real infrastructure -->
-<section>
+<section class="sec paper2">
   <div class="wrap show-grid">
     <div class="show-img reveal">
-      <img loading="lazy" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Network infrastructure cabling">
-      <div class="cap th">โครงข่ายและศูนย์ข้อมูล — รากฐานของบริการสื่อสารยุคใหม่</div>
-      <div class="cap en">Network &amp; data-center infrastructure — the backbone of modern communications</div>
+      <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Network infrastructure cabling">
+        <defs><linearGradient id="rk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f2f3a"/><stop offset="1" stop-color="#081a15"/></linearGradient></defs>
+        <rect width="520" height="380" fill="#05110e"/>
+        <g stroke="#a0d6be" stroke-opacity=".08"><path d="M0 60H520M0 120H520M0 180H520M0 240H520M0 300H520M65 0V380M130 0V380M195 0V380M260 0V380M325 0V380M390 0V380M455 0V380"/></g>
+        <!-- overhead cable tray -->
+        <rect x="0" y="34" width="520" height="12" fill="#0c241d" stroke="#a0d6be" stroke-opacity=".35"/>
+        <!-- racks -->
+        <g id="rack">
+          <rect x="52" y="78" width="112" height="250" rx="5" fill="url(#rk)" stroke="#42d3e8" stroke-opacity=".55" stroke-width="1.400"/>
+          <g fill="#0a2a33" stroke="#42d3e8" stroke-opacity=".3"><rect x="62" y="90" width="92" height="20" rx="2"/><rect x="62" y="116" width="92" height="20" rx="2"/><rect x="62" y="142" width="92" height="20" rx="2"/><rect x="62" y="168" width="92" height="20" rx="2"/><rect x="62" y="194" width="92" height="20" rx="2"/><rect x="62" y="220" width="92" height="20" rx="2"/><rect x="62" y="246" width="92" height="20" rx="2"/><rect x="62" y="272" width="92" height="20" rx="2"/></g>
+          <g fill="#3ddc97"><circle cx="70" cy="100" r="2.200"/><circle cx="78" cy="100" r="2.200"/><circle class="blink" cx="70" cy="126" r="2.200"/><circle cx="78" cy="152" r="2.200"/><circle class="blink" cx="70" cy="178" r="2.200" style="animation-delay:-1s"/><circle cx="70" cy="204" r="2.200"/><circle cx="78" cy="230" r="2.200"/><circle class="blink" cx="70" cy="256" r="2.200" style="animation-delay:-.6s"/><circle cx="70" cy="282" r="2.200"/></g>
+          <g fill="#f0b445"><circle cx="86" cy="126" r="2.200"/><circle class="blink" cx="86" cy="230" r="2.200"/></g>
+          <g stroke="#42d3e8" stroke-opacity=".5" stroke-width="2"><path d="M100 100h46M100 126h46M100 152h46M100 178h46M100 204h46M100 230h46M100 256h46M100 282h46"/></g>
+        </g>
+        <use href="#rack" x="152"/><use href="#rack" x="304"/>
+        <!-- patch cables up to the tray -->
+        <g fill="none" stroke-linecap="round" stroke-width="2.600">
+          <path d="M108 78 C108 60 140 62 140 46" stroke="#42d3e8"/><path d="M124 78 C124 64 180 66 180 46" stroke="#3ddc97"/>
+          <path d="M260 78 C260 60 240 62 240 46" stroke="#f0b445"/><path d="M276 78 C276 62 320 64 320 46" stroke="#7a9cff"/>
+          <path d="M412 78 C412 60 380 62 380 46" stroke="#42d3e8"/><path d="M428 78 C428 64 460 66 460 46" stroke="#3ddc97"/>
+        </g>
+        <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path class="pulse" d="M0 40 H520"/></g>
+        <rect x="0" y="328" width="520" height="52" fill="#081a15"/><path d="M0 328H520" stroke="#3ddc97" stroke-opacity=".5"/>
+      </svg>
+      <div class="cap"><span class="th">โครงข่ายและศูนย์ข้อมูล — รากฐานของบริการสื่อสารยุคใหม่</span><span class="en">Network &amp; data-center infrastructure — the backbone of modern communications</span></div>
     </div>
     <div class="show-txt reveal">
       <h2><span class="th">จากทฤษฎีสู่โครงสร้างพื้นฐานจริง</span><span class="en">From theory to real-world infrastructure</span></h2>
-      <p>
-        <span class="th">ประสบการณ์ครอบคลุมตั้งแต่การออกแบบ ตรวจสอบ และกำกับดูแลโครงข่ายโทรคมนาคมจริง ไปจนถึงการนำ AI มายกระดับการดำเนินงานเครือข่าย</span>
-        <span class="en">Hands-on experience spanning the design, inspection, and regulation of live telecom networks — through to applying AI that elevates network operations.</span>
-      </p>
+      <p><span class="th">ประสบการณ์ครอบคลุมตั้งแต่การออกแบบ ตรวจสอบ และกำกับดูแลโครงข่ายโทรคมนาคมจริง ไปจนถึงการนำ AI มายกระดับการดำเนินงานเครือข่าย</span><span class="en">Hands-on experience spanning the design, inspection, and regulation of live telecom networks — through to applying AI that elevates network operations.</span></p>
       <ul>
         <li><span class="th">ตรวจตราทรัพย์สินโครงสร้างพื้นฐานบรอดแบนด์ FTTx (Site Visit)</span><span class="en">FTTx broadband infrastructure asset inspection (Site Visit)</span></li>
         <li><span class="th">ออกแบบข้อกำหนดและควบคุมการติดตั้งระบบ IMS</span><span class="en">IMS technical specification design and installation oversight</span></li>
@@ -338,33 +450,27 @@
   </div>
 </section>
 
-<!-- PARALLAX BRIDGE -->
+<!-- BRIDGE -->
 <section class="parallax">
+  <div class="bg" role="img" aria-label="Bangkok at night from orbit"></div>
   <div class="wrap">
-    <div class="tag">🛰️ Bridge to Space</div>
+    <div class="tag">Bridge to Space</div>
     <h2><span class="th">จากโครงข่ายภาคพื้นดิน สู่วงโคจร</span><span class="en">From ground networks to orbit</span></h2>
-    <p>
-      <span class="th">โครงข่ายภาคพื้นดิน คลื่นความถี่ และดาวเทียม กำลังหลอมรวมเป็นเครือข่ายเดียว — รากฐานเดียวกันที่นำไปสู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span>
-      <span class="en">Terrestrial networks, spectrum, and satellites are converging into one fabric — the same foundation that leads to 6G and the Space-Air-Ground Integrated Network.</span>
-    </p>
+    <p><span class="th">โครงข่ายภาคพื้นดิน คลื่นความถี่ และดาวเทียม กำลังหลอมรวมเป็นเครือข่ายเดียว — รากฐานเดียวกันที่นำไปสู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span><span class="en">Terrestrial networks, spectrum, and satellites are converging into one fabric — the same foundation that leads to 6G and the Space-Air-Ground Integrated Network.</span></p>
   </div>
 </section>
 
 <!-- POLICY & PARLIAMENT -->
-<section id="policy">
+<section class="sec paper" id="policy">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow th">นโยบาย & กรรมาธิการ</div>
-      <div class="eyebrow en">Policy &amp; Parliament</div>
+      <div class="eyebrow"><span class="th">นโยบาย & กรรมาธิการ</span><span class="en">Policy &amp; Parliament</span></div>
       <h2><span class="th">บทบาทเชิงนโยบายระดับชาติ</span><span class="en">National Policy Leadership</span></h2>
-      <p>
-        <span class="th">ประสบการณ์เชื่อมงานวิชาการเข้ากับการกำหนดนโยบาย การกำกับดูแล และงานนิติบัญญัติด้านดิจิทัลและโทรคมนาคม</span>
-        <span class="en">Bridging academia with policymaking, regulation, and legislation in digital and telecommunications.</span>
-      </p>
+      <p><span class="th">ประสบการณ์เชื่อมงานวิชาการเข้ากับการกำหนดนโยบาย การกำกับดูแล และงานนิติบัญญัติด้านดิจิทัลและโทรคมนาคม</span><span class="en">Bridging academia with policymaking, regulation, and legislation in digital and telecommunications.</span></p>
     </div>
     <div class="policy-grid">
       <div class="policy reveal">
-        <div class="org"><span class="flag">🏛️</span><span class="th">สภาผู้แทนราษฎร</span><span class="en">House of Representatives</span></div>
+        <div class="org"><span class="flag"><svg class="ico"><use href="#i-parl"/></svg></span><span><span class="th">สภาผู้แทนราษฎร</span><span class="en">House of Representatives</span></span></div>
         <div class="yr">2563–2566 · 2020–2023</div>
         <ul>
           <li><span class="th">กรรมาธิการ คณะกรรมาธิการวิสามัญพิจารณาร่าง พ.ร.บ. องค์กรจัดสรรคลื่นความถี่และกำกับกิจการวิทยุกระจายเสียง วิทยุโทรทัศน์ และโทรคมนาคม (กสทช.)</span><span class="en">Member, Extraordinary Committee on the draft Act for the spectrum-allocation and broadcasting/telecom regulator (NBTC)</span></li>
@@ -373,7 +479,7 @@
         </ul>
       </div>
       <div class="policy reveal">
-        <div class="org"><span class="flag">📶</span><span class="th">กสทช. (NBTC)</span><span class="en">NBTC</span></div>
+        <div class="org"><span class="flag"><svg class="ico"><use href="#i-signal"/></svg></span><span><span class="th">กสทช. (NBTC)</span><span class="en">NBTC</span></span></div>
         <div class="yr"><span class="th">ที่ปรึกษา / นักวิจัยเชิงนโยบาย</span><span class="en">Policy advisor / researcher</span></div>
         <ul>
           <li><span class="th">ขับเคลื่อนและติดตามประเมินผลแผนยุทธศาสตร์สำนักงาน กสทช.</span><span class="en">Driving and evaluating NBTC strategic plans</span></li>
@@ -382,7 +488,7 @@
         </ul>
       </div>
       <div class="policy reveal">
-        <div class="org"><span class="flag">⚙️</span><span class="th">สภาวิศวกร & วสท.</span><span class="en">COE &amp; EIT</span></div>
+        <div class="org"><span class="flag"><svg class="ico"><use href="#i-gear"/></svg></span><span><span class="th">สภาวิศวกร & วสท.</span><span class="en">COE &amp; EIT</span></span></div>
         <div class="yr"><span class="th">ปัจจุบัน · Present</span><span class="en">Present</span></div>
         <ul>
           <li><span class="th">ผู้ทรงคุณวุฒิสาขาวิศวกรรมสารสนเทศ · สภาวิศวกร</span><span class="en">Senior expert, Information Engineering · Council of Engineers</span></li>
@@ -391,7 +497,7 @@
         </ul>
       </div>
       <div class="policy reveal">
-        <div class="org"><span class="flag">🛰️</span><span class="th">GISTDA & อวกาศ</span><span class="en">GISTDA &amp; Space</span></div>
+        <div class="org"><span class="flag"><svg class="ico"><use href="#i-sat"/></svg></span><span><span class="th">GISTDA & อวกาศ</span><span class="en">GISTDA &amp; Space</span></span></div>
         <div class="yr"><span class="th">ปัจจุบัน · Present</span><span class="en">Present</span></div>
         <ul>
           <li><span class="th">ประธานคณะกรรมการจัดตั้ง Space Innovation Hub · GISTDA</span><span class="en">Chair, founding committee for the Space Innovation Hub · GISTDA</span></li>
@@ -404,68 +510,100 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
+<section class="sec projects" id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow th">โครงการเด่น</div>
-      <div class="eyebrow en">Featured Projects</div>
+      <div class="eyebrow"><span class="th">โครงการเด่น</span><span class="en">Featured Projects</span></div>
       <h2><span class="th">โครงการด้านโทรคมนาคมและดิจิทัล</span><span class="en">Telecom &amp; Digital Projects</span></h2>
-      <p>
-        <span class="th">คัดเฉพาะโครงการบริการวิชาการและวิจัยที่เกี่ยวข้องกับเทคโนโลยีดิจิทัลและการสื่อสาร</span>
-        <span class="en">Selected academic-service and research projects in digital technology and communications.</span>
-      </p>
+      <p><span class="th">คัดเฉพาะโครงการบริการวิชาการและวิจัยที่เกี่ยวข้องกับเทคโนโลยีดิจิทัลและการสื่อสาร</span><span class="en">Selected academic-service and research projects in digital technology and communications.</span></p>
     </div>
     <div class="proj-list">
-      <div class="proj reveal"><div class="dot">🔌</div><div><b class="th">โครงข่ายใยแก้วนำแสง FTTx</b><b class="en">FTTx Optical Networks</b><span class="th">บัณฑิตพันธุ์ใหม่ ผู้ชำนาญการโครงข่ายใยแก้วนำแสง · อว.</span><span class="en">New-breed graduate program for fiber-optic specialists · MHESI</span></div></div>
-      <div class="proj reveal"><div class="dot">🤖</div><div><b class="th">AI จัดการเหตุขัดข้องเครือข่าย</b><b class="en">AI Network Fault Management</b><span class="th">ต้นแบบระบบจัดการเหตุขัดข้องอุปกรณ์เครือข่ายด้วย AI · มจธ.</span><span class="en">AI-based network-fault management prototype · KMUTT</span></div></div>
-      <div class="proj reveal"><div class="dot">🚦</div><div><b class="th">AI ควบคุมสัญญาณไฟจราจร</b><b class="en">AI Traffic-Signal Control</b><span class="th">ประเมินประสิทธิภาพ AI และระบบประมวลผลภาพ · มจธ. / FirstTech</span><span class="en">AI and computer-vision evaluation for traffic control · KMUTT / FirstTech</span></div></div>
-      <div class="proj reveal"><div class="dot">📊</div><div><b class="th">นิยามตลาดโทรคมนาคมไทย</b><b class="en">Thai Telecom Market Definition</b><span class="th">นิยามตลาดและกำหนดตลาดบริการโทรคมนาคมแบบใหม่ · กสทช.</span><span class="en">Defining new telecom-service markets · NBTC</span></div></div>
-      <div class="proj reveal"><div class="dot">🔐</div><div><b class="th">PDPA & เจ้าหน้าที่คุ้มครองข้อมูล</b><b class="en">PDPA &amp; Data Protection Officer</b><span class="th">ที่ปรึกษา PDPA และอบรม EXIN Certified DPO · สคส. / ภาครัฐ</span><span class="en">PDPA advisory and EXIN Certified DPO training · PDPC / Gov</span></div></div>
-      <div class="proj reveal"><div class="dot">💡</div><div><b class="th">ที่ปรึกษากลยุทธ์ดิจิทัล</b><b class="en">Digital Strategy Consulting</b><span class="th">พัฒนากลยุทธ์ธุรกิจดิจิทัลและที่ปรึกษาด้านดิจิทัล · depa</span><span class="en">Digital business strategy and advisor development · depa</span></div></div>
-      <div class="proj reveal"><div class="dot">📋</div><div><b class="th">แผนแม่บท ICT ภาครัฐ</b><b class="en">Government ICT Master Plans</b><span class="th">แผนแม่บทสารสนเทศ · สำนักนายกรัฐมนตรี / ศาลยุติธรรม</span><span class="en">ICT master plans · PM Office / Court of Justice</span></div></div>
-      <div class="proj reveal"><div class="dot">📺</div><div><b class="th">ประเมินกิจการกระจายเสียง–โทรทัศน์</b><b class="en">Broadcasting Performance Review</b><span class="th">ประเมินประสิทธิภาพและผลสัมฤทธิ์การประกอบกิจการ · กสทช.</span><span class="en">Performance and outcome assessment of broadcasting · NBTC</span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-fibre"/></svg></div><div><b><span class="th">โครงข่ายใยแก้วนำแสง FTTx</span><span class="en">FTTx Optical Networks</span></b><span><span class="th">บัณฑิตพันธุ์ใหม่ ผู้ชำนาญการโครงข่ายใยแก้วนำแสง · อว.</span><span class="en">New-breed graduate program for fiber-optic specialists · MHESI</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-ai"/></svg></div><div><b><span class="th">AI จัดการเหตุขัดข้องเครือข่าย</span><span class="en">AI Network Fault Management</span></b><span><span class="th">ต้นแบบระบบจัดการเหตุขัดข้องอุปกรณ์เครือข่ายด้วย AI · มจธ.</span><span class="en">AI-based network-fault management prototype · KMUTT</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-traffic"/></svg></div><div><b><span class="th">AI ควบคุมสัญญาณไฟจราจร</span><span class="en">AI Traffic-Signal Control</span></b><span><span class="th">ประเมินประสิทธิภาพ AI และระบบประมวลผลภาพ · มจธ. / FirstTech</span><span class="en">AI and computer-vision evaluation for traffic control · KMUTT / FirstTech</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-chart"/></svg></div><div><b><span class="th">นิยามตลาดโทรคมนาคมไทย</span><span class="en">Thai Telecom Market Definition</span></b><span><span class="th">นิยามตลาดและกำหนดตลาดบริการโทรคมนาคมแบบใหม่ · กสทช.</span><span class="en">Defining new telecom-service markets · NBTC</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-lock"/></svg></div><div><b><span class="th">PDPA & เจ้าหน้าที่คุ้มครองข้อมูล</span><span class="en">PDPA &amp; Data Protection Officer</span></b><span><span class="th">ที่ปรึกษา PDPA และอบรม EXIN Certified DPO · สคส. / ภาครัฐ</span><span class="en">PDPA advisory and EXIN Certified DPO training · PDPC / Gov</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-bulb"/></svg></div><div><b><span class="th">ที่ปรึกษากลยุทธ์ดิจิทัล</span><span class="en">Digital Strategy Consulting</span></b><span><span class="th">พัฒนากลยุทธ์ธุรกิจดิจิทัลและที่ปรึกษาด้านดิจิทัล · depa</span><span class="en">Digital business strategy and advisor development · depa</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-clip"/></svg></div><div><b><span class="th">แผนแม่บท ICT ภาครัฐ</span><span class="en">Government ICT Master Plans</span></b><span><span class="th">แผนแม่บทสารสนเทศ · สำนักนายกรัฐมนตรี / ศาลยุติธรรม</span><span class="en">ICT master plans · PM Office / Court of Justice</span></span></div></div>
+      <div class="proj reveal"><div class="dot"><svg class="ico"><use href="#i-tv"/></svg></div><div><b><span class="th">ประเมินกิจการกระจายเสียง–โทรทัศน์</span><span class="en">Broadcasting Performance Review</span></b><span><span class="th">ประเมินประสิทธิภาพและผลสัมฤทธิ์การประกอบกิจการ · กสทช.</span><span class="en">Performance and outcome assessment of broadcasting · NBTC</span></span></div></div>
     </div>
   </div>
 </section>
 
 <!-- 6G & SAGIN SPOTLIGHT -->
-<section id="future">
+<section class="sec future" id="future">
   <div class="wrap">
     <div class="spotlight reveal">
-      <span class="tag">🚀 Future Technology · Bridge to Space</span>
+      <span class="tag">Future Technology · Bridge to Space</span>
       <h2><span class="th">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span><span class="en">Toward 6G &amp; the Space-Air-Ground Integrated Network</span></h2>
-      <div class="h2en th">Toward 6G and the Space-Air-Ground Integrated Network (SAGIN)</div>
-      <div class="h2en en">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</div>
-      <p style="color:var(--muted);max-width:760px">
-        <span class="th">วิสัยทัศน์ของ 6G คือการหลอมรวมโครงข่ายภาคพื้นดิน อากาศยาน และดาวเทียม ให้เป็นเครือข่ายเดียวที่ครอบคลุมทั่วโลก — งานวิจัยด้านการสื่อสารไร้สายและการใช้คลื่นร่วม 5G–ดาวเทียมของภารกิจนี้ คือรากฐานทางเทคนิคที่เชื่อมโดยตรงกับ <strong>Mission 01 · อวกาศบางมด</strong></span>
-        <span class="en">The 6G vision fuses terrestrial, aerial, and satellite networks into one globally seamless fabric. This mission's wireless-communications and 5G–satellite coexistence research forms the technical foundation that connects directly to <strong>Mission 01 · Thonburi Space</strong>.</span>
-      </p>
+      <div class="h2en"><span class="th">Toward 6G and the Space-Air-Ground Integrated Network (SAGIN)</span><span class="en">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span></div>
+      <p><span class="th">วิสัยทัศน์ของ 6G คือการหลอมรวมโครงข่ายภาคพื้นดิน อากาศยาน และดาวเทียม ให้เป็นเครือข่ายเดียวที่ครอบคลุมทั่วโลก — งานวิจัยด้านการสื่อสารไร้สายและการใช้คลื่นร่วม 5G–ดาวเทียมของภารกิจนี้ คือรากฐานทางเทคนิคที่เชื่อมโดยตรงกับ <strong>Mission 01 · อวกาศบางมด</strong></span><span class="en">The 6G vision fuses terrestrial, aerial, and satellite networks into one globally seamless fabric. This mission's wireless-communications and 5G–satellite coexistence research forms the technical foundation that connects directly to <strong>Mission 01 · Thonburi Space</strong>.</span></p>
+
+      <svg class="sagin-svg" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Space, air and ground layers of the integrated network">
+        <g font-family="IBM Plex Mono,monospace" font-size="15" letter-spacing="3"><text x="24" y="38" fill="#7a9cff">SPACE</text><text x="24" y="170" fill="#f0b445">AIR</text><text x="24" y="296" fill="#3ddc97">GROUND</text></g>
+        <g stroke="#a0d6be" stroke-opacity=".16" stroke-dasharray="3 9"><path d="M0 132H1000M0 252H1000"/></g>
+        <g fill="#fff"><circle cx="150" cy="60" r="1.200"/><circle cx="330" cy="26" r="1"/><circle cx="470" cy="96" r="1.200"/><circle cx="610" cy="34" r="1"/><circle cx="760" cy="104" r="1.200"/><circle cx="930" cy="28" r="1"/><circle cx="250" cy="110" r="1"/><circle cx="870" cy="82" r="1"/></g>
+        <!-- space layer -->
+        <path d="M120 112 Q500 6 940 100" fill="none" stroke="#7a9cff" stroke-opacity=".55" stroke-dasharray="2 8"/>
+        <use href="#sat" x="268" y="44" width="52" height="29" transform="rotate(-10 294 58)"/>
+        <use href="#sat" x="560" y="24" width="60" height="34"/>
+        <use href="#sat" x="820" y="56" width="46" height="26" transform="rotate(12 843 69)"/>
+        <rect x="430" y="82" width="16" height="16" rx="2" fill="#eaf2ee" transform="rotate(20 438 90)"/>
+        <!-- air layer: HAPS and drone -->
+        <g transform="translate(360 190)">
+          <path d="M-70 0 Q0 -16 70 0 Q0 8 -70 0Z" fill="#eaf2ee"/><path d="M-6 0 L0 20 L6 0Z" fill="#b9cbc3"/>
+          <g fill="#f0b445"><rect x="-52" y="-5" width="16" height="4"/><rect x="-28" y="-7" width="16" height="4"/><rect x="12" y="-7" width="16" height="4"/><rect x="36" y="-5" width="16" height="4"/></g>
+        </g>
+        <g transform="translate(720 206)">
+          <rect x="-12" y="-5" width="24" height="10" rx="3" fill="#eaf2ee"/>
+          <path d="M-12 -2 L-30 -10 M12 -2 L30 -10 M-12 2 L-30 10 M12 2 L30 10" stroke="#eaf2ee" stroke-width="2.400" stroke-linecap="round"/>
+          <g fill="none" stroke="#f0b445" stroke-width="1.600"><ellipse cx="-30" cy="-11" rx="12" ry="3"/><ellipse cx="30" cy="-11" rx="12" ry="3"/></g>
+        </g>
+        <!-- ground layer -->
+        <path d="M0 340 H1000 V380 H0Z" fill="#0c241d"/><path d="M0 340H1000" stroke="#3ddc97" stroke-opacity=".6"/>
+        <g transform="translate(170 340)">
+          <path d="M0 -84 L-14 0 M0 -84 L14 0 M-5 -54 H5 M-9 -28 H9 M-5 -54 L9 -28 M5 -54 L-9 -28" stroke="#eaf2ee" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cy="-86" r="4" fill="#f0b445"/>
+          <g fill="none" stroke="#42d3e8" stroke-width="1.600"><circle class="ring" cy="-86" r="40"/><circle class="ring" cy="-86" r="40" style="animation-delay:-1.500s"/></g>
+        </g>
+        <g fill="#081a15" stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.600"><rect x="420" y="268" width="40" height="72"/><rect x="466" y="240" width="50" height="100"/><rect x="522" y="286" width="36" height="54"/><path d="M852 316 L886 292 L920 316Z"/><rect x="860" y="316" width="52" height="24"/></g>
+        <g fill="#f0b445" opacity=".85"><rect x="428" y="278" width="8" height="8"/><rect x="444" y="278" width="8" height="8"/><rect x="428" y="296" width="8" height="8"/><rect x="476" y="252" width="9" height="9"/><rect x="494" y="252" width="9" height="9"/><rect x="476" y="272" width="9" height="9"/><rect x="494" y="292" width="9" height="9"/><rect x="530" y="296" width="8" height="8"/><rect x="870" y="322" width="9" height="9"/></g>
+        <g transform="translate(660 340)">
+          <path d="M0 0 L0 -30" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/><path d="M-16 0 H16" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+          <g transform="translate(0 -32) rotate(-24)"><path d="M-28 0 A28 28 0 0 0 28 0Z" fill="#eaf2ee"/><circle cy="-16" r="3" fill="#f0b445"/></g>
+        </g>
+        <g fill="none" stroke-linecap="round"><path d="M0 360 H1000" stroke="#42d3e8" stroke-width="3"/><path class="pulse" d="M0 360 H1000" stroke="#fff" stroke-width="3.400"/></g>
+        <!-- links between layers -->
+        <g fill="none" stroke-linecap="round" stroke-width="2">
+          <path class="dash" d="M590 60 L372 184" stroke="#7a9cff"/>
+          <path class="dash" d="M590 60 L652 296" stroke="#7a9cff"/>
+          <path class="dash" d="M300 74 L352 182" stroke="#7a9cff" opacity=".7"/>
+          <path class="dash" d="M360 204 L176 256" stroke="#f0b445"/>
+          <path class="dash" d="M366 206 L486 240" stroke="#f0b445"/>
+          <path class="dash" d="M722 214 L880 292" stroke="#f0b445"/>
+          <path class="dash" d="M840 78 L728 198" stroke="#7a9cff" opacity=".7"/>
+        </g>
+      </svg>
 
       <div class="sagin-layers">
         <div class="layer">
-          <span class="em">🛰️</span>
-          <b class="th">ชั้นอวกาศ</b><b class="en">Space Layer</b>
-          <small class="th">ดาวเทียม LEO/GEO · CubeSat · การสื่อสารผ่านดาวเทียม</small>
-          <small class="en">LEO/GEO satellites · CubeSat · satellite communications</small>
+          <span class="em"><svg class="ico"><use href="#i-sat"/></svg></span>
+          <b><span class="th">ชั้นอวกาศ</span><span class="en">Space Layer</span></b>
+          <small><span class="th">ดาวเทียม LEO/GEO · CubeSat · การสื่อสารผ่านดาวเทียม</span><span class="en">LEO/GEO satellites · CubeSat · satellite communications</span></small>
         </div>
         <div class="layer">
-          <span class="em">✈️</span>
-          <b class="th">ชั้นอากาศ</b><b class="en">Air Layer</b>
-          <small class="th">HAPS · โดรน · สถานีฐานลอยฟ้าและ relay</small>
-          <small class="en">HAPS · drones · aerial base stations and relays</small>
+          <span class="em"><svg class="ico"><use href="#i-plane"/></svg></span>
+          <b><span class="th">ชั้นอากาศ</span><span class="en">Air Layer</span></b>
+          <small><span class="th">HAPS · โดรน · สถานีฐานลอยฟ้าและ relay</span><span class="en">HAPS · drones · aerial base stations and relays</span></small>
         </div>
         <div class="layer">
-          <span class="em">🏙️</span>
-          <b class="th">ชั้นภาคพื้นดิน</b><b class="en">Ground Layer</b>
-          <small class="th">โครงข่าย 5G/6G · FTTx · สถานีภาคพื้นดิน</small>
-          <small class="en">5G/6G networks · FTTx · ground stations</small>
+          <span class="em"><svg class="ico"><use href="#i-city"/></svg></span>
+          <b><span class="th">ชั้นภาคพื้นดิน</span><span class="en">Ground Layer</span></b>
+          <small><span class="th">โครงข่าย 5G/6G · FTTx · สถานีภาคพื้นดิน</span><span class="en">5G/6G networks · FTTx · ground stations</span></small>
         </div>
       </div>
 
-      <div class="bridge-note">
-        <span class="th">🔗 งานวิจัยที่ปูทางสู่ SAGIN — การประเมินการใช้คลื่นร่วมระหว่าง <strong>5G และกิจการดาวเทียมย่าน 28 GHz</strong>, การประยุกต์ <strong>TV White Space</strong>, การวิเคราะห์ <strong>ระบบ relay หลายช่วง</strong> ที่มีการรบกวนร่วมช่อง และ <strong>AI ตรวจจับการบุกรุกด้วย OFDR</strong> ล้วนเป็นองค์ประกอบเชิงเทคนิคของโครงข่ายบูรณาการในอนาคต เชื่อมต่อกับ <a href="https://chirasil.github.io/thonburi-space/" target="_blank">Thonburi Space Innovation Hub →</a></span>
-        <span class="en">🔗 Research paving the way to SAGIN — <strong>5G–satellite coexistence at 28 GHz</strong>, <strong>TV White Space</strong> applications, <strong>multihop relay</strong> analysis under co-channel interference, and <strong>OFDR-based AI intrusion detection</strong> are all technical building blocks of the future integrated network, connecting to <a href="https://chirasil.github.io/thonburi-space/" target="_blank">Thonburi Space Innovation Hub →</a></span>
-      </div>
+      <div class="bridge-note"><span class="th">🔗 งานวิจัยที่ปูทางสู่ SAGIN — การประเมินการใช้คลื่นร่วมระหว่าง <strong>5G และกิจการดาวเทียมย่าน 28 GHz</strong>, การประยุกต์ <strong>TV White Space</strong>, การวิเคราะห์ <strong>ระบบ relay หลายช่วง</strong> ที่มีการรบกวนร่วมช่อง และ <strong>AI ตรวจจับการบุกรุกด้วย OFDR</strong> ล้วนเป็นองค์ประกอบเชิงเทคนิคของโครงข่ายบูรณาการในอนาคต เชื่อมต่อกับ <a href="https://chirasil.github.io/thonburi-space/" target="_blank">Thonburi Space Economy and Engineering Innovation Center →</a></span><span class="en">🔗 Research paving the way to SAGIN — <strong>5G–satellite coexistence at 28 GHz</strong>, <strong>TV White Space</strong> applications, <strong>multihop relay</strong> analysis under co-channel interference, and <strong>OFDR-based AI intrusion detection</strong> are all technical building blocks of the future integrated network, connecting to <a href="https://chirasil.github.io/thonburi-space/" target="_blank">Thonburi Space Economy and Engineering Innovation Center →</a></span></div>
 
       <div class="research-tags">
         <span class="rtag">5G–Satellite Coexistence · 28 GHz</span>
@@ -480,23 +618,23 @@
 </section>
 
 <!-- PUBLICATIONS -->
-<section id="pubs">
+<section class="sec paper" id="pubs">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="eyebrow th">ผลงานตีพิมพ์</div>
-      <div class="eyebrow en">Publications</div>
+      <div class="eyebrow"><span class="th">ผลงานตีพิมพ์</span><span class="en">Publications</span></div>
       <h2><span class="th">งานวิจัยระดับนานาชาติ</span><span class="en">International Research</span></h2>
-      <p>
-        <span class="th">ตีพิมพ์ในวารสารและการประชุมวิชาการชั้นนำด้านการสื่อสารไร้สาย</span>
-        <span class="en">Published in leading wireless-communications journals and conferences.</span>
-      </p>
+      <p><span class="th">ตีพิมพ์ในวารสารและการประชุมวิชาการชั้นนำด้านการสื่อสารไร้สาย</span><span class="en">Published in leading wireless-communications journals and conferences.</span></p>
     </div>
     <div class="pub-stats">
-      <div class="stat reveal"><div class="n" data-target="40" data-suffix="+">0</div><small class="th">บทความตีพิมพ์</small><small class="en">Publications</small></div>
-      <div class="stat reveal"><div class="n">IEEE</div><small class="th">Trans. & Letters</small><small class="en">Trans. &amp; Letters</small></div>
-      <div class="stat reveal"><div class="n" data-target="25" data-suffix="+">0</div><small class="th">ปีประสบการณ์วิจัย</small><small class="en">Years of research</small></div>
-      <div class="stat reveal"><div class="n" data-target="2026" data-start="2000">2000</div><small class="th">งานวิจัยล่าสุด</small><small class="en">Latest work</small></div>
+      <div class="stat reveal"><div class="n" data-target="40" data-suffix="+">0</div><small><span class="th">บทความตีพิมพ์</span><span class="en">Publications</span></small></div>
+      <div class="stat reveal"><div class="n">IEEE</div><small><span class="th">Trans. & Letters</span><span class="en">Trans. &amp; Letters</span></small></div>
+      <div class="stat reveal"><div class="n" data-target="25" data-suffix="+">0</div><small><span class="th">ปีประสบการณ์วิจัย</span><span class="en">Years of research</span></small></div>
+      <div class="stat reveal"><div class="n" data-target="2026" data-start="2000">2000</div><small><span class="th">งานวิจัยล่าสุด</span><span class="en">Latest work</span></small></div>
     </div>
+    <svg class="wave" viewBox="0 0 1000 90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 45 C40 45 50 12 80 12 S120 78 160 78 S200 30 240 30 S280 62 320 62 S360 6 400 6 S440 84 480 84 S520 36 560 36 S600 58 640 58 S680 16 720 16 S760 74 800 74 S840 40 880 40 S940 52 1000 45" fill="none" stroke="#12805a" stroke-width="2"/>
+      <path d="M0 45 C60 45 70 30 120 30 S180 60 240 60 S300 24 360 24 S420 66 480 66 S540 34 600 34 S660 56 720 56 S780 38 840 38 S940 48 1000 45" fill="none" stroke="#0b6f80" stroke-width="1.400" opacity=".6" stroke-dasharray="4 6"/>
+    </svg>
     <div class="pub-areas">
       <span class="chip">Diversity Combining &amp; MRC</span>
       <span class="chip">Fading Channels</span>
@@ -507,10 +645,7 @@
       <span class="chip">Smart Antennas</span>
       <span class="chip">Geolocation (AOA/TDOA)</span>
     </div>
-    <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-top:22px;max-width:740px;margin-left:auto;margin-right:auto">
-      <span class="th">ตีพิมพ์ใน IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Communications Letters, IEEE Transactions on Vehicular Technology และวารสาร/การประชุมระดับนานาชาติอื่น ๆ</span>
-      <span class="en">Published in IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Communications Letters, IEEE Transactions on Vehicular Technology, and other international journals and conferences.</span>
-    </p>
+    <p class="pub-note"><span class="th">ตีพิมพ์ใน IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Communications Letters, IEEE Transactions on Vehicular Technology และวารสาร/การประชุมระดับนานาชาติอื่น ๆ</span><span class="en">Published in IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Communications Letters, IEEE Transactions on Vehicular Technology, and other international journals and conferences.</span></p>
   </div>
 </section>
 
@@ -519,50 +654,52 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand"><span style="display:inline-block;width:32px;height:32px;vertical-align:middle;margin-right:9px"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="CISS logo" style="width:100%;height:100%;display:block"><defs><linearGradient id="cissBgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><rect x="6" y="6" width="88" height="88" rx="22" fill="url(#cissBgF)"/><ellipse cx="50" cy="52" rx="40" ry="16" fill="none" stroke="#cfe2fe" stroke-width="2.6" stroke-opacity=".9" transform="rotate(-32 50 52)"/><polygon points="70,52 60,71 40,71 30,52 40,33 60,33" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/><polyline points="40,53 47,61 62,42" fill="none" stroke="#ffffff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="73" cy="30" r="4.6" fill="#ffffff"/><path d="M78 25 a7 7 0 0 1 3 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".9"/><path d="M80 21 a12 12 0 0 1 5 8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity=".65"/></svg></span><span>CISS Center of Excellence
-          <small class="th">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</small>
-          <small class="en">Communications &amp; Integrated Services Study Center · KMUTT</small></span>
+        <div class="foot-brand"><span class="logo"><svg aria-label="CISS logo"><use href="#logo"/></svg></span><span>CISS Center of Excellence
+          <small><span class="th">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร · มจธ.</span><span class="en">Communications &amp; Integrated Services Study Center · KMUTT</span></small></span>
         </div>
-        <p style="color:var(--muted);font-size:13px;margin-top:6px">
-          <span class="th">เทคโนโลยีดิจิทัลและการสื่อสาร — หนึ่งในภารกิจของศูนย์ความเป็นเลิศ CISS</span>
-          <span class="en">Digital Technology &amp; Communications — one of the CISS missions.</span>
-        </p>
+        <p><span class="th">เทคโนโลยีดิจิทัลและการสื่อสาร — หนึ่งในภารกิจของศูนย์ความเป็นเลิศ CISS</span><span class="en">Digital Technology &amp; Communications — one of the CISS missions.</span></p>
       </div>
       <div>
         <h4><span class="th">ติดต่อ</span><span class="en">Contact</span></h4>
-        <a href="tel:024709629">📞 02-470-9629</a>
-        <a href="mailto:ciss@mail.kmutt.ac.th">✉️ ciss@mail.kmutt.ac.th</a>
-        <a>📍 <span class="th">ทุ่งครุ กรุงเทพฯ</span><span class="en">Thung Khru, Bangkok</span></a>
+        <a href="tel:024709629"><svg class="ico"><use href="#i-phone"/></svg>02-470-9629</a>
+        <a href="mailto:ciss@mail.kmutt.ac.th"><svg class="ico"><use href="#i-mail"/></svg>ciss@mail.kmutt.ac.th</a>
+        <a><svg class="ico"><use href="#i-pin"/></svg><span><span class="th">ทุ่งครุ กรุงเทพฯ</span><span class="en">Thung Khru, Bangkok</span></span></a>
       </div>
       <div>
         <h4><span class="th">เมนู</span><span class="en">Menu</span></h4>
-        <a href="#pillars"><span class="th">ความเชี่ยวชาญ</span><span class="en">Expertise</span></a>
-        <a href="#policy"><span class="th">นโยบาย & กรรมาธิการ</span><span class="en">Policy &amp; Parliament</span></a>
-        <a href="#future"><span class="th">6G & SAGIN</span><span class="en">6G &amp; SAGIN</span></a>
-        <a href="#pubs"><span class="th">ผลงานตีพิมพ์</span><span class="en">Publications</span></a>
+        <a href="#pillars"><span><span class="th">ความเชี่ยวชาญ</span><span class="en">Expertise</span></span></a>
+        <a href="#policy"><span><span class="th">นโยบาย & กรรมาธิการ</span><span class="en">Policy &amp; Parliament</span></span></a>
+        <a href="#future"><span><span class="th">6G & SAGIN</span><span class="en">6G &amp; SAGIN</span></span></a>
+        <a href="#pubs"><span><span class="th">ผลงานตีพิมพ์</span><span class="en">Publications</span></span></a>
       </div>
     </div>
 
     <div class="mission-links">
-      <a href="https://chirasil.github.io/thonburi-space/" target="_blank">🛰️ Mission 01 · Thonburi Space</a>
-      <a href="https://chirasil.github.io/CISS/ciss" target="_blank">🎓 Mission 02 · Professional Qualification</a>
-      <a href="https://chirasil.github.io/CISS/" target="_blank">📡 Mission 03 · Digital &amp; Communications</a>
+      <a href="https://chirasil.github.io/thonburi-space/" target="_blank" rel="noopener">Mission 01 · Thonburi Space</a>
+      <a href="https://chirasil.github.io/CISS/ciss" target="_blank" rel="noopener">Mission 02 · Professional Qualification</a>
+      <a href="https://chirasil.github.io/CISS/" target="_blank" rel="noopener">Mission 03 · Digital &amp; Communications</a>
     </div>
 
     <div class="copy">
       © 2568 / 2025 <span class="th">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ</span><span class="en">Communications &amp; Integrated Services Study Center (CISS) · linking 3 missions</span>
     </div>
-    <div class="credit">Photos: Unsplash License — Benedek Dezső, Tommy L, Taylor Vick</div>
+    <div class="credit"><span class="th">ภาพกรุงเทพฯ ยามค่ำ: NASA (iss064e037842) ภาพสาธารณสมบัติ · ภาพกราฟิกอื่นเป็นภาพประกอบที่วาดขึ้น ไม่ใช่อุปกรณ์ของศูนย์</span><span class="en">Bangkok at night: NASA (iss064e037842), public domain · Other graphics are original illustrations, not the centre's equipment</span></div>
   </div>
 </footer>
 
 <script>
   function setLang(l){
+    l = l==='en' ? 'en' : 'th';
     document.body.className = 'lang-' + l;
     document.getElementById('bth').classList.toggle('active', l==='th');
     document.getElementById('ben').classList.toggle('active', l==='en');
     document.documentElement.lang = l;
+    try{ localStorage.setItem('ciss-lang', l); }catch(e){}
   }
+  /* language carries over from the CISS hub page */
+  try{ const saved=localStorage.getItem('ciss-lang'); if(saved==='en') setLang('en'); }catch(e){}
+  document.querySelectorAll('#navlinks>a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+
   // reveal on scroll
   const io = new IntersectionObserver((es)=>{
     es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
