@@ -66,7 +66,17 @@
   .chip{font-family:var(--f-mono);font-size:12px;letter-spacing:.03em;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);color:var(--text);background:rgba(255,255,255,.03)}
   .cta{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-head);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:6px;background:var(--cyan);color:#04262c;transition:transform .2s}
   .cta:hover{transform:translateY(-2px)}
-  .hero-art svg{width:100%;height:auto;display:block}
+  .hero-art{margin:0;border:1px solid var(--line2);border-radius:6px 110px 6px 6px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.5);background:var(--deep2)}
+  .hero-art{position:relative}
+  .hero-art img{width:100%;height:auto;display:block}
+  .hero-fx{position:absolute;inset:0;width:100%;height:100%}
+  .hero-fx .dash{stroke-dasharray:18 20;animation:hdash 1.5s linear infinite}
+  .hero-fx .pulse{stroke-dasharray:30 330;animation:hpulse 3.2s linear infinite}
+  .hero-fx .ring{animation-duration:3s}
+  .eq{transform-box:fill-box;transform-origin:50% 100%;animation:eq 1.6s ease-in-out infinite}
+  @keyframes hdash{to{stroke-dashoffset:-76}}
+  @keyframes hpulse{to{stroke-dashoffset:-360}}
+  @keyframes eq{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
 
   /* shared */
   section{position:relative}
@@ -100,7 +110,7 @@
   /* showcase */
   .show-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,60px);align-items:center}
   .show-img{position:relative;border-radius:6px 6px 6px 56px;overflow:hidden;border:1px solid var(--rule);background:var(--deep)}
-  .show-img svg{width:100%;height:auto;display:block}
+  .show-img img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
   .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 18px 14px;font-size:13px;color:#fff;background:linear-gradient(transparent,rgba(5,17,14,.92))}
   .show-txt h2{font-size:clamp(24px,3vw,34px);color:var(--ink);margin-bottom:14px}
   .show-txt p{color:var(--ink2);margin-bottom:18px}
@@ -145,7 +155,7 @@
   .h2en{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);margin:8px 0 16px}
   .spotlight>p{color:var(--soft);max-width:50em}
   .spotlight>p strong{color:#fff;font-weight:600}
-  .sagin-svg{width:100%;height:auto;display:block;margin:28px 0 6px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,#070d1c 0%,#0a1c2a 40%,#0b2a24 78%,#0c241d 100%)}
+  .sagin-svg{width:100%;height:auto;display:block;margin:28px 0 6px;border:1px solid var(--line2);border-radius:6px 48px 6px 6px;background:var(--void)}
   .sagin-layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
   .layer{--c:var(--violet);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:6px;padding:18px 18px 16px;background:rgba(255,255,255,.03)}
   .layer:nth-child(2){--c:var(--amber)} .layer:nth-child(3){--c:var(--leaf)}
@@ -218,7 +228,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .dash,.pulse,.blink,.ring{animation:none}
+    .dash,.pulse,.blink,.ring,.eq,.hero-fx .dash,.hero-fx .pulse{animation:none}
     .ring{opacity:.4}
     .reveal{transform:none;transition:none}
     .cta,.card,.policy,.proj{transition:none}
@@ -305,61 +315,52 @@
       <a href="#future" class="cta"><span class="th">สู่อนาคต 6G & SAGIN →</span><span class="en">Explore 6G &amp; SAGIN →</span></a>
     </div>
 
-    <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg">
+    <figure class="hero-art">
+      <img src="images/dg-hero-base.jpg" alt="" width="1400" height="1340">
+      <svg class="hero-fx" viewBox="0 0 1400 1340" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <radialGradient id="hg" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#0f4a55" stop-opacity=".85"/><stop offset="1" stop-color="#05110e" stop-opacity="0"/></radialGradient>
-          <linearGradient id="hEarth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#05110e"/></linearGradient>
-          <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#42d3e8"/></linearGradient>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="hglow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="hbar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#12805a"/><stop offset="1" stop-color="#42d3e8"/></linearGradient>
         </defs>
-        <rect width="560" height="480" fill="url(#hg)"/>
-        <!-- orbit and satellite -->
-        <path d="M20 120 Q280 0 540 120" fill="none" stroke="#7a9cff" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="2 7"/>
-        <use href="#sat" x="372" y="52" width="44" height="25" transform="rotate(12 394 64)"/>
-        <use href="#sat" x="120" y="74" width="30" height="17" transform="rotate(-16 135 82)" opacity=".7"/>
-        <text x="280" y="34" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2" fill="#7a9cff">SATELLITE</text>
-        <!-- spectrum panel -->
-        <g transform="translate(184 150)">
-          <rect x="0" y="0" width="200" height="132" rx="8" fill="#05110e" stroke="#42d3e8" stroke-opacity=".6" stroke-width="1.4"/>
-          <g stroke="#a0d6be" stroke-opacity=".14"><path d="M0 44H200M0 88H200M50 0V132M100 0V132M150 0V132"/></g>
-          <g fill="url(#bar)">
-            <rect x="14" y="92" width="10" height="28"/><rect x="28" y="76" width="10" height="44"/><rect x="42" y="58" width="10" height="62"/><rect class="blink" x="56" y="34" width="10" height="86"/><rect x="70" y="50" width="10" height="70"/><rect x="84" y="80" width="10" height="40"/><rect x="98" y="96" width="10" height="24"/>
-            <rect x="112" y="72" width="10" height="48"/><rect class="blink" x="126" y="26" width="10" height="94" style="animation-delay:-1.2s"/><rect x="140" y="46" width="10" height="74"/><rect x="154" y="70" width="10" height="50"/><rect x="168" y="90" width="10" height="30"/>
-          </g>
-          <path d="M8 104 C40 104 44 28 62 28 S84 100 104 100 S118 18 132 18 S160 96 192 96" fill="none" stroke="#f0b445" stroke-width="2" filter="url(#glow)"/>
-          <text x="100" y="150" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.800" fill="#42d3e8">SPECTRUM</text>
+        <!-- omni signal from the cell tower -->
+        <g fill="none" stroke="#42d3e8" stroke-width="4" filter="url(#hglow)">
+          <circle class="ring" cx="238" cy="715" r="170"/><circle class="ring" cx="238" cy="715" r="170" style="animation-delay:-1s"/><circle class="ring" cx="238" cy="715" r="170" style="animation-delay:-2s"/>
         </g>
-        <!-- ground -->
-        <path d="M-20 410 Q280 362 580 410 L580 500 L-20 500Z" fill="url(#hEarth)" opacity=".9"/>
-        <path d="M-20 410 Q280 362 580 410" fill="none" stroke="#3ddc97" stroke-opacity=".55" stroke-width="1.2"/>
-        <!-- cell tower with radiating rings -->
-        <g transform="translate(86 250)">
-          <g fill="none" stroke="#42d3e8" stroke-width="1.600"><circle class="ring" cx="0" cy="0" r="62"/><circle class="ring" cx="0" cy="0" r="62" style="animation-delay:-1.5s"/></g>
-          <path d="M0 0 L-22 142 M0 0 L22 142 M-6 40 H6 M-12 80 H12 M-18 118 H18 M-6 40 L12 80 M6 40 L-12 80 M-12 80 L18 118 M12 80 L-18 118" stroke="#eaf2ee" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <circle r="5" fill="#f0b445"/>
-          <g fill="#eaf2ee"><rect x="-13" y="6" width="5" height="18" rx="1.500"/><rect x="8" y="6" width="5" height="18" rx="1.500"/></g>
-          <text x="0" y="-74" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.600" fill="#42d3e8">5G / 6G</text>
+        <!-- dashed links -->
+        <g fill="none" stroke-linecap="round" filter="url(#hglow)">
+          <path class="dash" d="M238 715 Q330 560 440 570" stroke="#42d3e8" stroke-width="4"/>
+          <path class="dash" d="M940 590 Q1050 650 1108 949" stroke="#42d3e8" stroke-width="4"/>
+          <path class="dash" d="M1108 949 L990 190" stroke="#f0b445" stroke-width="5"/>
         </g>
-        <!-- ground station dish -->
-        <g transform="translate(468 328)">
-          <path d="M0 62 L0 26" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-          <path d="M-20 64 H20" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-          <g transform="rotate(-32)"><path d="M-34 0 A34 34 0 0 0 34 0Z" fill="#eaf2ee" stroke="#fff"/><path d="M0 0 L0 -20" stroke="#eaf2ee" stroke-width="2.400"/><circle cy="-22" r="3.500" fill="#f0b445"/></g>
-        </g>
-        <path class="dash" d="M454 300 L400 82" fill="none" stroke="#f0b445" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
-        <!-- links between tower, spectrum and dish -->
-        <g fill="none" stroke-linecap="round"><path class="dash" d="M104 262 C140 250 150 226 184 220" stroke="#42d3e8" stroke-width="1.500"/><path class="dash" d="M384 232 C420 240 430 290 446 318" stroke="#42d3e8" stroke-width="1.500"/></g>
-        <!-- fibre underground -->
+        <!-- spectrum display -->
+        <rect x="440" y="400" width="500" height="330" rx="20" fill="#05110e" fill-opacity=".92" stroke="#42d3e8" stroke-width="3"/>
+        <g stroke="#a0d6be" stroke-opacity=".16"><path d="M440 510H940M440 620H940M565 400V730M690 400V730M815 400V730"/></g>
+        <g fill="url(#hbar)"><rect class="eq" x="474" y="630" width="24" height="70" style="animation-duration:1.30s;animation-delay:-0.00s"/><rect class="eq" x="510" y="590" width="24" height="110" style="animation-duration:1.74s;animation-delay:-0.37s"/><rect class="eq" x="546" y="545" width="24" height="155" style="animation-duration:2.18s;animation-delay:-0.74s"/><rect class="eq" x="582" y="485" width="24" height="215" style="animation-duration:1.52s;animation-delay:-1.11s"/><rect class="eq" x="618" y="525" width="24" height="175" style="animation-duration:1.96s;animation-delay:-1.48s"/><rect class="eq" x="654" y="600" width="24" height="100" style="animation-duration:1.30s;animation-delay:-0.15s"/><rect class="eq" x="690" y="640" width="24" height="60" style="animation-duration:1.74s;animation-delay:-0.52s"/><rect class="eq" x="726" y="580" width="24" height="120" style="animation-duration:2.18s;animation-delay:-0.89s"/><rect class="eq" x="762" y="465" width="24" height="235" style="animation-duration:1.52s;animation-delay:-1.26s"/><rect class="eq" x="798" y="515" width="24" height="185" style="animation-duration:1.96s;animation-delay:-1.63s"/><rect class="eq" x="834" y="575" width="24" height="125" style="animation-duration:1.30s;animation-delay:-0.30s"/><rect class="eq" x="870" y="625" width="24" height="75" style="animation-duration:1.74s;animation-delay:-0.67s"/></g>
+        <path fill="none" stroke="#f0b445" stroke-width="5" stroke-linejoin="round" filter="url(#hglow)" d="M456 678.0 L462 673.0 L468 668.4 L474 664.5 L480 661.6 L486 659.9 L492 659.4 L498 660.0 L504 661.4 L510 662.9 L516 663.9 L522 663.2 L528 659.9 L534 652.9 L540 641.2 L546 624.5 L552 602.9 L558 577.6 L564 550.3 L570 523.8 L576 500.7 L582 483.8 L588 474.9 L594 475.0 L600 483.9 L606 500.1 L612 521.5 L618 545.8 L624 570.6 L630 594.3 L636 615.6 L642 634.1 L648 649.5 L654 662.2 L660 672.5 L666 680.7 L672 687.0 L678 691.5 L684 694.3 L690 695.4 L696 694.6 L702 691.9 L708 687.1 L714 679.8 L720 669.5 L726 655.5 L732 636.9 L738 613.3 L744 584.8 L750 552.3 L756 518.3 L762 486.2 L768 460.1 L774 444.0 L780 440.7 L786 451.2 L792 474.1 L798 506.1 L804 542.8 L810 579.6 L816 612.6 L822 639.6 L828 659.3 L834 672.1 L840 678.9 L846 681.0 L852 679.9 L858 676.8 L864 672.8 L870 668.6 L876 664.8 L882 662.0 L888 660.3 L894 660.1 L900 661.2 L906 663.6 L912 667.2 L918 671.6 L924 676.5"><animate attributeName="d" dur="5s" repeatCount="indefinite" values="M456 678.0 L462 673.0 L468 668.4 L474 664.5 L480 661.6 L486 659.9 L492 659.4 L498 660.0 L504 661.4 L510 662.9 L516 663.9 L522 663.2 L528 659.9 L534 652.9 L540 641.2 L546 624.5 L552 602.9 L558 577.6 L564 550.3 L570 523.8 L576 500.7 L582 483.8 L588 474.9 L594 475.0 L600 483.9 L606 500.1 L612 521.5 L618 545.8 L624 570.6 L630 594.3 L636 615.6 L642 634.1 L648 649.5 L654 662.2 L660 672.5 L666 680.7 L672 687.0 L678 691.5 L684 694.3 L690 695.4 L696 694.6 L702 691.9 L708 687.1 L714 679.8 L720 669.5 L726 655.5 L732 636.9 L738 613.3 L744 584.8 L750 552.3 L756 518.3 L762 486.2 L768 460.1 L774 444.0 L780 440.7 L786 451.2 L792 474.1 L798 506.1 L804 542.8 L810 579.6 L816 612.6 L822 639.6 L828 659.3 L834 672.1 L840 678.9 L846 681.0 L852 679.9 L858 676.8 L864 672.8 L870 668.6 L876 664.8 L882 662.0 L888 660.3 L894 660.1 L900 661.2 L906 663.6 L912 667.2 L918 671.6 L924 676.5;M456 670.8 L462 669.2 L468 668.2 L474 668.0 L480 668.6 L486 669.8 L492 671.7 L498 673.8 L504 676.0 L510 677.8 L516 678.6 L522 677.9 L528 674.7 L534 668.1 L540 657.3 L546 641.5 L552 620.3 L558 593.9 L564 563.4 L570 530.6 L576 498.4 L582 469.9 L588 448.2 L594 436.0 L600 434.8 L606 444.6 L612 464.2 L618 491.1 L624 522.3 L630 554.6 L636 585.4 L642 612.7 L648 635.5 L654 653.3 L660 666.4 L666 675.4 L672 681.0 L678 683.8 L684 684.4 L690 683.3 L696 680.7 L702 676.5 L708 670.6 L714 662.3 L720 651.3 L726 636.8 L732 618.6 L738 597.0 L744 573.1 L750 549.3 L756 528.2 L762 513.0 L768 506.2 L774 509.1 L780 521.5 L786 541.6 L792 566.5 L798 592.8 L804 617.4 L810 638.3 L816 654.2 L822 665.2 L828 671.6 L834 674.6 L840 675.1 L846 674.1 L852 672.5 L858 670.7 L864 669.2 L870 668.2 L876 668.0 L882 668.5 L888 669.7 L894 671.6 L900 674.0 L906 676.7 L912 679.5 L918 682.2 L924 684.6;M456 695.2 L462 689.9 L468 683.6 L474 676.8 L480 670.0 L486 663.6 L492 657.9 L498 653.1 L504 649.1 L510 645.6 L516 642.1 L522 637.8 L528 632.0 L534 624.1 L540 613.6 L546 600.9 L552 586.5 L558 571.9 L564 558.5 L570 548.2 L576 542.4 L582 541.7 L588 546.2 L594 555.2 L600 567.3 L606 580.9 L612 594.6 L618 607.2 L624 618.1 L630 627.3 L636 634.9 L642 641.5 L648 647.8 L654 654.0 L660 660.6 L666 667.5 L672 674.6 L678 681.7 L684 688.2 L690 693.8 L696 698.1 L702 700.6 L708 700.9 L714 698.7 L720 693.5 L726 684.8 L732 671.9 L738 654.0 L744 630.6 L750 601.3 L756 566.8 L762 529.0 L768 491.0 L774 457.2 L780 432.1 L786 419.7 L792 422.1 L798 439.4 L804 469.2 L810 507.2 L816 548.5 L822 588.4 L828 623.2 L834 650.8 L840 670.5 L846 682.9 L852 689.0 L858 690.1 L864 687.8 L870 683.1 L876 677.2 L882 670.9 L888 664.9 L894 659.9 L900 656.2 L906 654.3 L912 654.2 L918 655.9 L924 659.4;M456 672.5 L462 669.2 L468 666.5 L474 664.7 L480 663.9 L486 664.2 L492 665.4 L498 667.4 L504 669.7 L510 671.9 L516 673.2 L522 672.8 L528 669.7 L534 662.9 L540 651.4 L546 634.5 L552 612.2 L558 585.3 L564 555.1 L570 524.2 L576 495.4 L582 471.9 L588 456.5 L594 450.8 L600 455.4 L606 469.7 L612 491.6 L618 518.7 L624 547.9 L630 576.9 L636 603.6 L642 626.8 L648 646.0 L654 661.1 L660 672.6 L666 680.8 L672 686.2 L678 689.4 L684 690.6 L690 690.0 L696 687.7 L702 683.8 L708 677.8 L714 669.6 L720 658.3 L726 643.3 L732 624.0 L738 600.3 L744 572.7 L750 543.0 L756 514.2 L762 489.7 L768 473.3 L774 467.7 L780 474.2 L786 492.0 L792 518.6 L798 550.1 L804 582.5 L810 612.2 L816 636.9 L822 655.3 L828 667.6 L834 674.4 L840 677.1 L846 676.9 L852 674.9 L858 672.1 L864 669.2 L870 666.6 L876 664.8 L882 664.0 L888 664.3 L894 665.6 L900 667.9 L906 671.0 L912 674.6 L918 678.5 L924 682.3;M456 678.0 L462 673.0 L468 668.4 L474 664.5 L480 661.6 L486 659.9 L492 659.4 L498 660.0 L504 661.4 L510 662.9 L516 663.9 L522 663.2 L528 659.9 L534 652.9 L540 641.2 L546 624.5 L552 602.9 L558 577.6 L564 550.3 L570 523.8 L576 500.7 L582 483.8 L588 474.9 L594 475.0 L600 483.9 L606 500.1 L612 521.5 L618 545.8 L624 570.6 L630 594.3 L636 615.6 L642 634.1 L648 649.5 L654 662.2 L660 672.5 L666 680.7 L672 687.0 L678 691.5 L684 694.3 L690 695.4 L696 694.6 L702 691.9 L708 687.1 L714 679.8 L720 669.5 L726 655.5 L732 636.9 L738 613.3 L744 584.8 L750 552.3 L756 518.3 L762 486.2 L768 460.1 L774 444.0 L780 440.7 L786 451.2 L792 474.1 L798 506.1 L804 542.8 L810 579.6 L816 612.6 L822 639.6 L828 659.3 L834 672.1 L840 678.9 L846 681.0 L852 679.9 L858 676.8 L864 672.8 L870 668.6 L876 664.8 L882 662.0 L888 660.3 L894 660.1 L900 661.2 L906 663.6 L912 667.2 L918 671.6 L924 676.5"/></path>
+        <!-- fibre on land -->
         <g fill="none" stroke-linecap="round">
-          <path d="M-10 438 C140 438 180 420 280 420 S440 446 570 446" stroke="#42d3e8" stroke-width="3" filter="url(#glow)"/>
-          <path d="M-10 450 C140 450 180 432 280 432 S440 458 570 458" stroke="#3ddc97" stroke-width="3" opacity=".85"/>
-          <path class="pulse" d="M-10 438 C140 438 180 420 280 420 S440 446 570 446" stroke="#fff" stroke-width="3.400"/>
-          <path class="pulse" d="M-10 450 C140 450 180 432 280 432 S440 458 570 458" stroke="#fff" stroke-width="3.400" style="animation-delay:-1.300s"/>
+          <path d="M-10 1128 Q430 1040 760 1100 T1410 1118" stroke="#42d3e8" stroke-width="6" filter="url(#hglow)"/>
+          <path d="M-10 1144 Q430 1056 760 1116 T1410 1134" stroke="#3ddc97" stroke-width="4"/>
+          <path class="pulse" d="M-10 1128 Q430 1040 760 1100 T1410 1118" stroke="#fff" stroke-width="7"/>
+          <path class="pulse" d="M-10 1144 Q430 1056 760 1116 T1410 1134" stroke="#fff" stroke-width="5" style="animation-delay:-1.6s"/>
         </g>
-        <text x="280" y="470" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.500" letter-spacing="1.600" fill="#3ddc97">FTTx / OPTICAL</text>
+        <!-- submarine cable -->
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1262,1128 1248,1190 1215,1262 1150,1298 1100,1308 1040,1304 980,1304 920,1308 860,1307 800,1300 740,1291 700,1289 640,1292 580,1297 520,1296 460,1294 420,1295 360,1302 300,1310 240,1312 180,1306 120,1302 60,1303 0,1304" stroke="#42d3e8" stroke-opacity=".55" stroke-width="4" filter="url(#hglow)"/>
+          <polyline class="pulse" points="1262,1128 1248,1190 1215,1262 1150,1298 1100,1308 1040,1304 980,1304 920,1308 860,1307 800,1300 740,1291 700,1289 640,1292 580,1297 520,1296 460,1294 420,1295 360,1302 300,1310 240,1312 180,1306 120,1302 60,1303 0,1304" stroke="#fff" stroke-width="6"/>
+          <polyline class="pulse" points="1262,1128 1248,1190 1215,1262 1150,1298 1100,1308 1040,1304 980,1304 920,1308 860,1307 800,1300 740,1291 700,1289 640,1292 580,1297 520,1296 460,1294 420,1295 360,1302 300,1310 240,1312 180,1306 120,1302 60,1303 0,1304" stroke="#f0b445" stroke-width="6" style="animation-delay:-1.6s"/>
+        </g>
+        <g fill="#fff"><circle cx="238" cy="715" r="7"/><circle cx="1108" cy="949" r="7"/><circle cx="990" cy="190" r="7"/></g>
+        <g fill="none" stroke-width="4"><circle cx="238" cy="715" r="20" stroke="#42d3e8"/><circle cx="1108" cy="949" r="20" stroke="#f0b445"/><circle cx="990" cy="190" r="20" stroke="#f0b445"/></g>
+        <g font-family="IBM Plex Mono,monospace" font-size="27" font-weight="500" letter-spacing="3" text-anchor="middle" paint-order="stroke" stroke="#040c0a" stroke-opacity=".75" stroke-width="3" stroke-linejoin="round">
+          <text x="990" y="128" fill="#9db4ff">SATELLITE</text>
+          <text x="690" y="778" fill="#42d3e8">SPECTRUM</text>
+          <text x="238" y="508" fill="#42d3e8">5G / 6G</text>
+          <text x="560" y="1090" fill="#3ddc97">FTTx / OPTICAL</text>
+          <text x="560" y="1262" fill="#42d3e8">SUBMARINE CABLE</text>
+        </g>
       </svg>
-    </div>
+    </figure>
   </div>
 </header>
 
@@ -411,30 +412,7 @@
 <section class="sec paper2">
   <div class="wrap show-grid">
     <div class="show-img reveal">
-      <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Network infrastructure cabling">
-        <defs><linearGradient id="rk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f2f3a"/><stop offset="1" stop-color="#081a15"/></linearGradient></defs>
-        <rect width="520" height="380" fill="#05110e"/>
-        <g stroke="#a0d6be" stroke-opacity=".08"><path d="M0 60H520M0 120H520M0 180H520M0 240H520M0 300H520M65 0V380M130 0V380M195 0V380M260 0V380M325 0V380M390 0V380M455 0V380"/></g>
-        <!-- overhead cable tray -->
-        <rect x="0" y="34" width="520" height="12" fill="#0c241d" stroke="#a0d6be" stroke-opacity=".35"/>
-        <!-- racks -->
-        <g id="rack">
-          <rect x="52" y="78" width="112" height="250" rx="5" fill="url(#rk)" stroke="#42d3e8" stroke-opacity=".55" stroke-width="1.400"/>
-          <g fill="#0a2a33" stroke="#42d3e8" stroke-opacity=".3"><rect x="62" y="90" width="92" height="20" rx="2"/><rect x="62" y="116" width="92" height="20" rx="2"/><rect x="62" y="142" width="92" height="20" rx="2"/><rect x="62" y="168" width="92" height="20" rx="2"/><rect x="62" y="194" width="92" height="20" rx="2"/><rect x="62" y="220" width="92" height="20" rx="2"/><rect x="62" y="246" width="92" height="20" rx="2"/><rect x="62" y="272" width="92" height="20" rx="2"/></g>
-          <g fill="#3ddc97"><circle cx="70" cy="100" r="2.200"/><circle cx="78" cy="100" r="2.200"/><circle class="blink" cx="70" cy="126" r="2.200"/><circle cx="78" cy="152" r="2.200"/><circle class="blink" cx="70" cy="178" r="2.200" style="animation-delay:-1s"/><circle cx="70" cy="204" r="2.200"/><circle cx="78" cy="230" r="2.200"/><circle class="blink" cx="70" cy="256" r="2.200" style="animation-delay:-.6s"/><circle cx="70" cy="282" r="2.200"/></g>
-          <g fill="#f0b445"><circle cx="86" cy="126" r="2.200"/><circle class="blink" cx="86" cy="230" r="2.200"/></g>
-          <g stroke="#42d3e8" stroke-opacity=".5" stroke-width="2"><path d="M100 100h46M100 126h46M100 152h46M100 178h46M100 204h46M100 230h46M100 256h46M100 282h46"/></g>
-        </g>
-        <use href="#rack" x="152"/><use href="#rack" x="304"/>
-        <!-- patch cables up to the tray -->
-        <g fill="none" stroke-linecap="round" stroke-width="2.600">
-          <path d="M108 78 C108 60 140 62 140 46" stroke="#42d3e8"/><path d="M124 78 C124 64 180 66 180 46" stroke="#3ddc97"/>
-          <path d="M260 78 C260 60 240 62 240 46" stroke="#f0b445"/><path d="M276 78 C276 62 320 64 320 46" stroke="#7a9cff"/>
-          <path d="M412 78 C412 60 380 62 380 46" stroke="#42d3e8"/><path d="M428 78 C428 64 460 66 460 46" stroke="#3ddc97"/>
-        </g>
-        <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path class="pulse" d="M0 40 H520"/></g>
-        <rect x="0" y="328" width="520" height="52" fill="#081a15"/><path d="M0 328H520" stroke="#3ddc97" stroke-opacity=".5"/>
-      </svg>
+      <img src="images/ai-compute.jpg" alt="Network infrastructure cabling" loading="lazy" width="800" height="532">
       <div class="cap"><span class="th">โครงข่ายและศูนย์ข้อมูล — รากฐานของบริการสื่อสารยุคใหม่</span><span class="en">Network &amp; data-center infrastructure — the backbone of modern communications</span></div>
     </div>
     <div class="show-txt reveal">
@@ -539,51 +517,7 @@
       <div class="h2en"><span class="th">Toward 6G and the Space-Air-Ground Integrated Network (SAGIN)</span><span class="en">สู่ 6G และโครงข่ายบูรณาการอวกาศ–อากาศ–ภาคพื้นดิน</span></div>
       <p><span class="th">วิสัยทัศน์ของ 6G คือการหลอมรวมโครงข่ายภาคพื้นดิน อากาศยาน และดาวเทียม ให้เป็นเครือข่ายเดียวที่ครอบคลุมทั่วโลก — งานวิจัยด้านการสื่อสารไร้สายและการใช้คลื่นร่วม 5G–ดาวเทียมของภารกิจนี้ คือรากฐานทางเทคนิคที่เชื่อมโดยตรงกับ <strong>Mission 01 · อวกาศบางมด</strong></span><span class="en">The 6G vision fuses terrestrial, aerial, and satellite networks into one globally seamless fabric. This mission's wireless-communications and 5G–satellite coexistence research forms the technical foundation that connects directly to <strong>Mission 01 · Thonburi Space</strong>.</span></p>
 
-      <svg class="sagin-svg" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Space, air and ground layers of the integrated network">
-        <g font-family="IBM Plex Mono,monospace" font-size="15" letter-spacing="3"><text x="24" y="38" fill="#7a9cff">SPACE</text><text x="24" y="170" fill="#f0b445">AIR</text><text x="24" y="296" fill="#3ddc97">GROUND</text></g>
-        <g stroke="#a0d6be" stroke-opacity=".16" stroke-dasharray="3 9"><path d="M0 132H1000M0 252H1000"/></g>
-        <g fill="#fff"><circle cx="150" cy="60" r="1.200"/><circle cx="330" cy="26" r="1"/><circle cx="470" cy="96" r="1.200"/><circle cx="610" cy="34" r="1"/><circle cx="760" cy="104" r="1.200"/><circle cx="930" cy="28" r="1"/><circle cx="250" cy="110" r="1"/><circle cx="870" cy="82" r="1"/></g>
-        <!-- space layer -->
-        <path d="M120 112 Q500 6 940 100" fill="none" stroke="#7a9cff" stroke-opacity=".55" stroke-dasharray="2 8"/>
-        <use href="#sat" x="268" y="44" width="52" height="29" transform="rotate(-10 294 58)"/>
-        <use href="#sat" x="560" y="24" width="60" height="34"/>
-        <use href="#sat" x="820" y="56" width="46" height="26" transform="rotate(12 843 69)"/>
-        <rect x="430" y="82" width="16" height="16" rx="2" fill="#eaf2ee" transform="rotate(20 438 90)"/>
-        <!-- air layer: HAPS and drone -->
-        <g transform="translate(360 190)">
-          <path d="M-70 0 Q0 -16 70 0 Q0 8 -70 0Z" fill="#eaf2ee"/><path d="M-6 0 L0 20 L6 0Z" fill="#b9cbc3"/>
-          <g fill="#f0b445"><rect x="-52" y="-5" width="16" height="4"/><rect x="-28" y="-7" width="16" height="4"/><rect x="12" y="-7" width="16" height="4"/><rect x="36" y="-5" width="16" height="4"/></g>
-        </g>
-        <g transform="translate(720 206)">
-          <rect x="-12" y="-5" width="24" height="10" rx="3" fill="#eaf2ee"/>
-          <path d="M-12 -2 L-30 -10 M12 -2 L30 -10 M-12 2 L-30 10 M12 2 L30 10" stroke="#eaf2ee" stroke-width="2.400" stroke-linecap="round"/>
-          <g fill="none" stroke="#f0b445" stroke-width="1.600"><ellipse cx="-30" cy="-11" rx="12" ry="3"/><ellipse cx="30" cy="-11" rx="12" ry="3"/></g>
-        </g>
-        <!-- ground layer -->
-        <path d="M0 340 H1000 V380 H0Z" fill="#0c241d"/><path d="M0 340H1000" stroke="#3ddc97" stroke-opacity=".6"/>
-        <g transform="translate(170 340)">
-          <path d="M0 -84 L-14 0 M0 -84 L14 0 M-5 -54 H5 M-9 -28 H9 M-5 -54 L9 -28 M5 -54 L-9 -28" stroke="#eaf2ee" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <circle cy="-86" r="4" fill="#f0b445"/>
-          <g fill="none" stroke="#42d3e8" stroke-width="1.600"><circle class="ring" cy="-86" r="40"/><circle class="ring" cy="-86" r="40" style="animation-delay:-1.500s"/></g>
-        </g>
-        <g fill="#081a15" stroke="#a0d6be" stroke-opacity=".6" stroke-width="1.600"><rect x="420" y="268" width="40" height="72"/><rect x="466" y="240" width="50" height="100"/><rect x="522" y="286" width="36" height="54"/><path d="M852 316 L886 292 L920 316Z"/><rect x="860" y="316" width="52" height="24"/></g>
-        <g fill="#f0b445" opacity=".85"><rect x="428" y="278" width="8" height="8"/><rect x="444" y="278" width="8" height="8"/><rect x="428" y="296" width="8" height="8"/><rect x="476" y="252" width="9" height="9"/><rect x="494" y="252" width="9" height="9"/><rect x="476" y="272" width="9" height="9"/><rect x="494" y="292" width="9" height="9"/><rect x="530" y="296" width="8" height="8"/><rect x="870" y="322" width="9" height="9"/></g>
-        <g transform="translate(660 340)">
-          <path d="M0 0 L0 -30" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/><path d="M-16 0 H16" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
-          <g transform="translate(0 -32) rotate(-24)"><path d="M-28 0 A28 28 0 0 0 28 0Z" fill="#eaf2ee"/><circle cy="-16" r="3" fill="#f0b445"/></g>
-        </g>
-        <g fill="none" stroke-linecap="round"><path d="M0 360 H1000" stroke="#42d3e8" stroke-width="3"/><path class="pulse" d="M0 360 H1000" stroke="#fff" stroke-width="3.400"/></g>
-        <!-- links between layers -->
-        <g fill="none" stroke-linecap="round" stroke-width="2">
-          <path class="dash" d="M590 60 L372 184" stroke="#7a9cff"/>
-          <path class="dash" d="M590 60 L652 296" stroke="#7a9cff"/>
-          <path class="dash" d="M300 74 L352 182" stroke="#7a9cff" opacity=".7"/>
-          <path class="dash" d="M360 204 L176 256" stroke="#f0b445"/>
-          <path class="dash" d="M366 206 L486 240" stroke="#f0b445"/>
-          <path class="dash" d="M722 214 L880 292" stroke="#f0b445"/>
-          <path class="dash" d="M840 78 L728 198" stroke="#7a9cff" opacity=".7"/>
-        </g>
-      </svg>
+      <img class="sagin-svg" src="images/dg-sagin.jpg" alt="" loading="lazy" width="2000" height="1000">
 
       <div class="sagin-layers">
         <div class="layer">
@@ -683,7 +617,7 @@
     <div class="copy">
       © 2568 / 2025 <span class="th">ศูนย์การศึกษาด้านการสื่อสารและการบริการครบวงจร (CISS) · เว็บกลางเชื่อมต่อ 3 ภารกิจ</span><span class="en">Communications &amp; Integrated Services Study Center (CISS) · linking 3 missions</span>
     </div>
-    <div class="credit"><span class="th">ภาพกรุงเทพฯ ยามค่ำ: NASA (iss064e037842) ภาพสาธารณสมบัติ · ภาพกราฟิกอื่นเป็นภาพประกอบที่วาดขึ้น ไม่ใช่อุปกรณ์ของศูนย์</span><span class="en">Bangkok at night: NASA (iss064e037842), public domain · Other graphics are original illustrations, not the centre's equipment</span></div>
+    <div class="credit"><span class="th">ภาพ hero และภาพ SAGIN เป็นภาพตัดต่อจากภาพถ่ายจริง (ส่วนใต้น้ำและสายเคเบิลใต้น้ำใน hero เป็นภาพกราฟิก) ใช้ประกอบเนื้อหา ไม่ใช่อุปกรณ์ของศูนย์ ที่มา: NASA (CubeSat iss074e0301636, Helios ED03-0152-32 ลบเครื่องหมาย, กรุงเทพฯ ยามค่ำ iss064e037842) · NASA/JPL-Caltech (จาน DSS-15, PIA26717) · NASA Ames (ซูเปอร์คอมพิวเตอร์ Pleiades) · Sergei Gussev (กรุงเทพฯ ยามสนธยา, CC BY 4.0) · W.carter (เสาโทรคมนาคม, CC0) · BLM Oregon &amp; Washington (โดรน, สาธารณสมบัติ)</span><span class="en">The hero and SAGIN images are composites of real photographs (the underwater section and submarine cable in the hero are drawn graphics), used as illustration and not the centre's equipment. Sources: NASA (CubeSats iss074e0301636, Helios ED03-0152-32 with markings removed, Bangkok at night iss064e037842) · NASA/JPL-Caltech (DSS-15 antenna, PIA26717) · NASA Ames (Pleiades supercomputer) · Sergei Gussev (Bangkok at twilight, CC BY 4.0) · W.carter (telecom mast, CC0) · BLM Oregon &amp; Washington (drone, public domain)</span></div>
   </div>
 </footer>
 
@@ -696,6 +630,7 @@
     document.documentElement.lang = l;
     try{ localStorage.setItem('ciss-lang', l); }catch(e){}
   }
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ document.querySelectorAll('svg.hero-fx').forEach(v=>{ try{ v.pauseAnimations(); }catch(e){} }); }
   /* language carries over from the CISS hub page */
   try{ const saved=localStorage.getItem('ciss-lang'); if(saved==='en') setLang('en'); }catch(e){}
   document.querySelectorAll('#navlinks>a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
