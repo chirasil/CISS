@@ -30,3 +30,7 @@ Each logo is the trademark of its owner.
 | ttt.png | profile picture of the Facebook page https://www.facebook.com/TTTfb/ |
 
 | nt.png | https://www.ntplc.co.th/ResourcePackages/ntplc/assets/dist/images/sub-header-logo.png (cropped to the "nt" mark; the company-name text beside it is left out). Replaces CAT Telecom, now National Telecom (NT). |
+| ericsson.svg | https://www.ericsson.com/en (the inline SVG logo in the site header, saved unchanged in black) |
+| mhesi.png | https://www.mhesi.go.th/templates/yootheme/cache/LogoOfficialTopWeb-fd87ae08.png |
+| opm.png | https://www.opm.go.th/media1/www/logo%20-%20BW%20-%20color.png (the site currently serves a black-and-white emblem) |
+| coj.png | https://www.coj.go.th/cms/s1/u52/banner_coj/cojlogo2020.png |
