@@ -301,6 +301,19 @@
   .dir-group li::before{content:"";width:6px;height:6px;transform:rotate(45deg);background:var(--leaf);margin-top:8px;flex-shrink:0}
 
   /* ---------- footer ---------- */
+  /* ---------- partners (light logo wall) ---------- */
+  .partners{padding:84px 0 92px;background:var(--paper);color:var(--ink)}
+  .partners .eyebrow{color:var(--leaf-d)}
+  .partners .sec-head p{color:var(--ink2)}
+  .pt-grid{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+  .pt{position:relative;min-height:96px;background:#fff;border:1px solid var(--rule);border-radius:10px;display:grid;place-items:center;padding:12px 14px;text-align:center}
+  .pt span{font-family:var(--f-head);font-weight:600;font-size:14px;line-height:1.35;color:var(--ink2);overflow-wrap:anywhere}
+  .pt img{display:none;max-width:100%;max-height:64px;object-fit:contain}
+  .pt.has-logo img{display:block}
+  .pt.has-logo span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  @media(max-width:980px){.pt-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media(max-width:760px){.pt-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.partners{padding:64px 0 70px}}
+  @media(max-width:520px){.pt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pt{min-height:84px}.pt span{font-size:13px}}
   footer{padding:50px 0 30px;background:#030b09}
   .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;margin-bottom:30px}
   .foot-brand{display:flex;align-items:center;gap:13px}
@@ -801,6 +814,43 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS (light) ============ -->
+<section class="partners" id="partners">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-th="พันธมิตร" data-en="Partners">พันธมิตร</div>
+      <h2 data-th="หน่วยงานที่เคยร่วมงาน" data-en="Organisations we have worked with">หน่วยงานที่เคยร่วมงาน</h2>
+      <p data-th="หน่วยงานภาครัฐ รัฐวิสาหกิจ สถาบันการศึกษา และภาคเอกชนที่ศูนย์เคยทำงานร่วมกัน" data-en="Government agencies, state enterprises, universities and companies the centre has worked with.">หน่วยงานภาครัฐ รัฐวิสาหกิจ สถาบันการศึกษา และภาคเอกชนที่ศูนย์เคยทำงานร่วมกัน</p>
+    </div>
+    <ul class="pt-grid">
+      <li class="pt"><img src="images/partners/nbtc.png" alt="NBTC" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="สำนักงาน กสทช." data-en="NBTC">สำนักงาน กสทช.</span></li>
+      <li class="pt"><img src="images/partners/pmuc.png" alt="PMU-C" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="บพข." data-en="PMU-C">บพข.</span></li>
+      <li class="pt"><img src="images/partners/alt.png" alt="ALT Telecom" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="เอแอลที เทเลคอม" data-en="ALT Telecom">เอแอลที เทเลคอม</span></li>
+      <li class="pt"><img src="images/partners/innova.png" alt="Innova Telecom" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="Innova Telecom" data-en="Innova Telecom">Innova Telecom</span></li>
+      <li class="pt"><img src="images/partners/tu.png" alt="Thammasat University" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="มหาวิทยาลัยธรรมศาสตร์" data-en="Thammasat University">มหาวิทยาลัยธรรมศาสตร์</span></li>
+      <li class="pt"><img src="images/partners/nida.png" alt="NIDA" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="นิด้า" data-en="NIDA">นิด้า</span></li>
+      <li class="pt"><img src="images/partners/gistda.png" alt="GISTDA" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="GISTDA" data-en="GISTDA">GISTDA</span></li>
+      <li class="pt"><img src="images/partners/kmutt-sip.png" alt="KMUTT Science and Industrial Park" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="สำนักอุทยานวิทยาศาสตร์และอุตสาหกรรม มจธ." data-en="KMUTT Science and Industrial Park">สำนักอุทยานวิทยาศาสตร์และอุตสาหกรรม มจธ.</span></li>
+      <li class="pt"><img src="images/partners/kmutt.png" alt="KMUTT" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="มจธ." data-en="KMUTT">มจธ.</span></li>
+      <li class="pt"><img src="images/partners/pp-ontime.png" alt="PP Ontime" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="PP Ontime" data-en="PP Ontime">PP Ontime</span></li>
+      <li class="pt"><img src="images/partners/firsttech.png" alt="FirstTech Design" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="FirstTech Design" data-en="FirstTech Design">FirstTech Design</span></li>
+      <li class="pt"><img src="images/partners/pea.png" alt="PEA" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="การไฟฟ้าส่วนภูมิภาค" data-en="PEA">การไฟฟ้าส่วนภูมิภาค</span></li>
+      <li class="pt"><img src="images/partners/mea.png" alt="MEA" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="การไฟฟ้านครหลวง" data-en="MEA">การไฟฟ้านครหลวง</span></li>
+      <li class="pt"><img src="images/partners/pdpc.png" alt="PDPC" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="สคส." data-en="PDPC">สคส.</span></li>
+      <li class="pt"><img src="images/partners/tpqi.png" alt="TPQI" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="สถาบันคุณวุฒิวิชาชีพ" data-en="TPQI">สถาบันคุณวุฒิวิชาชีพ</span></li>
+      <li class="pt"><img src="images/partners/depa.png" alt="depa" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="depa" data-en="depa">depa</span></li>
+      <li class="pt"><img src="images/partners/jasmine.png" alt="Jasmine International" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="จัสมิน อินเตอร์เนชั่นแนล" data-en="Jasmine International">จัสมิน อินเตอร์เนชั่นแนล</span></li>
+      <li class="pt"><img src="images/partners/sodsri.png" alt="Sodsri-Saritwong Foundation" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="มูลนิธิสดศรี-สฤษดิ์วงศ์" data-en="Sodsri-Saritwong Foundation">มูลนิธิสดศรี-สฤษดิ์วงศ์</span></li>
+      <li class="pt"><img src="images/partners/grouptech.png" alt="Group Tech Solutions" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="Group Tech Solutions" data-en="Group Tech Solutions">Group Tech Solutions</span></li>
+      <li class="pt"><img src="images/partners/interlink.png" alt="Interlink" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="Interlink" data-en="Interlink">Interlink</span></li>
+      <li class="pt"><img src="images/partners/ttt.png" alt="TT&amp;T" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="TT&amp;T" data-en="TT&amp;T">TT&amp;T</span></li>
+      <li class="pt"><img src="images/partners/nt.png" alt="National Telecom (NT)" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="โทรคมนาคมแห่งชาติ (NT)" data-en="National Telecom (NT)">โทรคมนาคมแห่งชาติ (NT)</span></li>
+      <li class="pt"><img src="images/partners/nectec.png" alt="NECTEC · NSTDA" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="เนคเทค สวทช." data-en="NECTEC · NSTDA">เนคเทค สวทช.</span></li>
+      <li class="pt"><img src="images/partners/mdes.png" alt="MDES" loading="lazy" onload="this.parentNode.classList.add('has-logo')"><span data-th="กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม" data-en="MDES">กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม</span></li>
+    </ul>
   </div>
 </section>
 
