@@ -2,6 +2,23 @@
   "_comment": "ไฟล์ข่าวกลางของ CISS: ทุกหน้าอ่านจากไฟล์นี้ missions = space (ภารกิจ 01), pq (02), digital (03); เว้นว่าง [] = ข่าวของศูนย์ฯ โดยรวม แสดงเฉพาะหน้าหลัก; iso = วันที่แบบ YYYY-MM-DD ใช้เรียงลำดับ; video/poster = คลิปและภาพปก (path จากโฟลเดอร์ CISS), videoAi = true เมื่อคลิปสร้างด้วย AI จะมีข้อความกำกับใต้คลิป",
   "news": [
     {
+      "date": "28 พ.ย. 2569",
+      "dateEn": "28 Nov 2026",
+      "tag": "บทความ",
+      "tagEn": "Article",
+      "titleTh": "SR-1 Freedom: เมื่อทางเลือกเชิงออกแบบกลายเป็นข้อผูกมัด",
+      "titleEn": "SR-1 Freedom: when design trade-offs become commitments",
+      "bodyTh": "บทเรียนการบริหารโครงการวิศวกรรมสหสาขาสำหรับวิศวกรไทย จากการล็อกสถาปัตยกรรมภารกิจของ NASA",
+      "bodyEn": "Lessons in managing multidisciplinary engineering projects for Thai engineers, from NASA locking the mission architecture. Article in Thai.",
+      "link": "https://chirasil.github.io/thonburi-space/sr1-freedom.html",
+      "missions": [
+        "space"
+      ],
+      "iso": "2026-11-28",
+      "image": "https://chirasil.github.io/thonburi-space/images/sr1-freedom.jpg",
+      "imageAi": true
+    },
+    {
       "date": "6 มิ.ย. 2569",
       "dateEn": "6 Jun 2026",
       "tag": "ทุนวิจัย",
