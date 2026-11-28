@@ -62,14 +62,15 @@
       "tagEn": "Launch",
       "titleTh": "นำเสนออวกาศบางมดต่อผู้บริหาร มจธ.",
       "titleEn": "Thonburi Space presented to KMUTT leadership",
-      "bodyTh": "เปิดตัวทีมงานด้านอวกาศเพื่อขับเคลื่อนงานวิจัยดาวเทียมขนาดเล็กและเศรษฐกิจอวกาศ",
-      "bodyEn": "The space team was introduced to drive small-satellite research and the space economy.",
-      "link": "https://chirasil.github.io/thonburi-space/",
+      "bodyTh": "นำเสนอทิศทางงานด้านอวกาศของ มจธ. ต่อรองอธิการบดีสี่ท่าน ซึ่งหารือเรื่องการจัดตั้ง Space Agile Team และต่อคณะกรรมการส่งเสริมมหาวิทยาลัย ในช่วงไตรมาสที่ 2 ของปี 2569",
+      "bodyEn": "The team presented KMUTT's space direction to four vice presidents, who discussed setting up a Space Agile Team, and to the University Promotion Committee, in the second quarter of 2026. Article in Thai.",
+      "link": "https://chirasil.github.io/thonburi-space/exec-briefing-2026.html",
       "missions": [
         "space"
       ],
       "iso": "2026-05-12",
-      "kind": "news"
+      "kind": "news",
+      "image": "https://chirasil.github.io/thonburi-space/images/exec-briefing-2026-1.jpg"
     },
     {
       "date": "1 มี.ค. 2569",
