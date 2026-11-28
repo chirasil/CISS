@@ -91,6 +91,23 @@
       "kind": "news"
     },
     {
+      "kind": "news",
+      "date": "17 ต.ค. 2568",
+      "dateEn": "17 Oct 2025",
+      "tag": "ความร่วมมือ",
+      "tagEn": "Partnership",
+      "titleTh": "มจธ. ลงนาม MOU กับ GISTDA",
+      "titleEn": "KMUTT signs an MOU with GISTDA",
+      "bodyTh": "ความร่วมมือทางวิชาการและการส่งเสริมการใช้ประโยชน์ด้านเทคโนโลยีอวกาศและภูมิสารสนเทศ ระยะ 5 ปี ครอบคลุมการพัฒนาหลักสูตร การวิจัย และการแลกเปลี่ยนบุคลากร",
+      "bodyEn": "A five-year memorandum on academic cooperation and the use of space technology and geo-informatics, covering curriculum development, research and staff exchange. Article in Thai.",
+      "link": "https://chirasil.github.io/thonburi-space/mou-gistda-2025.html",
+      "missions": [
+        "space"
+      ],
+      "iso": "2025-10-17",
+      "image": "https://chirasil.github.io/thonburi-space/images/mou-gistda-2025-1.jpg"
+    },
+    {
       "date": "18 ก.ค. 2568",
       "dateEn": "18 Jul 2025",
       "tag": "Workshop",
