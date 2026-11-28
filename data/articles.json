@@ -2,6 +2,15 @@
   "articles": [
     {
       "mission": "space",
+      "link": "https://chirasil.github.io/thonburi-space/sr1-freedom.html",
+      "image": "https://chirasil.github.io/thonburi-space/images/sr1-freedom.jpg",
+      "titleTh": "SR-1 Freedom: เมื่อทางเลือกเชิงออกแบบกลายเป็นข้อผูกมัด",
+      "titleEn": "SR-1 Freedom: When Design Trade-offs Become Commitments",
+      "bodyTh": "บทเรียนการบริหารโครงการวิศวกรรมสหสาขาสำหรับวิศวกรไทย",
+      "bodyEn": "Lessons in managing multidisciplinary engineering projects for Thai engineers (article in Thai)."
+    },
+    {
+      "mission": "space",
       "link": "https://chirasil.github.io/thonburi-space/",
       "image": "images/ts-orbit.jpg",
       "titleTh": "ดาวเทียม CubeSat กับโอกาสของอุตสาหกรรมอวกาศไทย",
