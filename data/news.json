@@ -88,62 +88,6 @@
       ],
       "iso": "2025-07-18",
       "kind": "news"
-    },
-    {
-      "kind": "update",
-      "tag": "บทความ",
-      "tagEn": "Article",
-      "titleTh": "ดาวเทียม CubeSat กับโอกาสของอุตสาหกรรมอวกาศไทย",
-      "titleEn": "CubeSats and Thailand’s Space Industry Opportunity",
-      "bodyTh": "ทำความรู้จักดาวเทียมขนาดเล็กที่กำลังเปลี่ยนภูมิทัศน์การวิจัยและธุรกิจอวกาศของไทย",
-      "bodyEn": "How small satellites are reshaping Thailand’s space research and business landscape.",
-      "link": "https://chirasil.github.io/thonburi-space/",
-      "missions": [
-        "space"
-      ],
-      "image": "images/ts-orbit.jpg"
-    },
-    {
-      "kind": "update",
-      "tag": "บทความ",
-      "tagEn": "Article",
-      "titleTh": "6G และ SAGIN: โครงข่ายอวกาศ–อากาศ–ภาคพื้นดิน",
-      "titleEn": "6G and SAGIN: Space–Air–Ground Networks",
-      "bodyTh": "ภาพอนาคตของโครงข่ายสื่อสารไร้รอยต่อที่เชื่อมอวกาศ อากาศ และภาคพื้นดินเข้าด้วยกัน",
-      "bodyEn": "A look at the seamless networks linking space, air, and ground.",
-      "link": "https://chirasil.github.io/CISS/digital",
-      "missions": [
-        "digital"
-      ],
-      "image": "images/sag-hero-v2.jpg"
-    },
-    {
-      "kind": "update",
-      "tag": "บทความ",
-      "tagEn": "Article",
-      "titleTh": "ระบบควบคุมทิศทางดาวเทียม (ADCS) ทำงานอย่างไร",
-      "titleEn": "How Satellite Attitude Control (ADCS) Works",
-      "bodyTh": "หลักการควบคุมการทรงตัวและการชี้ทิศของดาวเทียมในวงโคจร พื้นฐานสำคัญของภารกิจอวกาศ",
-      "bodyEn": "The fundamentals of stabilizing and pointing satellites in orbit.",
-      "link": "https://chirasil.github.io/thonburi-space/",
-      "missions": [
-        "space"
-      ],
-      "image": "images/ts-ground-dish.jpg"
-    },
-    {
-      "kind": "update",
-      "tag": "บทความ",
-      "tagEn": "Article",
-      "titleTh": "การใช้คลื่นความถี่ร่วมระหว่าง 5G และดาวเทียม",
-      "titleEn": "5G–Satellite Spectrum Coexistence",
-      "bodyTh": "ความท้าทายและแนวทางการบริหารคลื่นความถี่เพื่อให้ 5G และดาวเทียมอยู่ร่วมกันได้",
-      "bodyEn": "Challenges and approaches to letting 5G and satellites share spectrum.",
-      "link": "https://chirasil.github.io/CISS/digital",
-      "missions": [
-        "digital"
-      ],
-      "image": "images/ts-hero-bangkok.jpg"
     }
   ]
 }
