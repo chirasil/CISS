@@ -21,6 +21,8 @@
     },
     {
       "kind": "news",
+      "date": "31 ต.ค. 2569",
+      "dateEn": "31 Oct 2026",
       "tag": "กิจกรรม",
       "tagEn": "Event",
       "titleTh": "CISS ร่วมเวทีเสวนา Thailand Space Expo 2026",
@@ -31,7 +33,8 @@
       "missions": [
         "space"
       ],
-      "image": "https://chirasil.github.io/thonburi-space/images/space-expo-2026-1.jpg"
+      "image": "https://chirasil.github.io/thonburi-space/images/space-expo-2026-1.jpg",
+      "iso": "2026-10-31"
     },
     {
       "date": "6 มิ.ย. 2569",
