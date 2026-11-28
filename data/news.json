@@ -20,6 +20,20 @@
       "kind": "update"
     },
     {
+      "kind": "news",
+      "tag": "กิจกรรม",
+      "tagEn": "Event",
+      "titleTh": "CISS ร่วมเวทีเสวนา Thailand Space Expo 2026",
+      "titleEn": "CISS joins the Thailand Space Expo 2026 panel",
+      "bodyTh": "ผศ.ดร.จิรศิลป์ จยาวรรณ ร่วมเสวนาหัวข้อ “Where Government, Industry, and the Next Generation Meet” ว่าด้วยความร่วมมือรัฐ เอกชน และมหาวิทยาลัย โครงการ HAPS และ Space Engineering Track ของ มจธ.",
+      "bodyEn": "Asst. Prof. Dr. Chirasil Chayawan joined the panel “Where Government, Industry, and the Next Generation Meet”, on government–industry–university collaboration, the HAPS project and KMUTT's Space Engineering Track. Article in Thai.",
+      "link": "https://chirasil.github.io/thonburi-space/space-expo-2026.html",
+      "missions": [
+        "space"
+      ],
+      "image": "https://chirasil.github.io/thonburi-space/images/space-expo-2026-1.jpg"
+    },
+    {
       "date": "6 มิ.ย. 2569",
       "dateEn": "6 Jun 2026",
       "tag": "ทุนวิจัย",
