@@ -178,6 +178,9 @@
   .n-vid video{display:block;width:100%;aspect-ratio:16/9;border-radius:3px;background:#000}
   .n-vid small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.03em;opacity:.7}
   .n-img img{width:100%;height:100%;object-fit:cover}
+  .n-card:first-child .n-img{max-width:560px}
+  .n-img:has(+.n-ai){margin-bottom:6px}
+  .n-ai{display:block;margin:0 0 16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.03em;opacity:.7}
   .n-more{font-family:var(--f-mono);display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--leaf-d);transition:.2s}
   .n-more:hover{gap:10px}
   .n-ms{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
@@ -1285,7 +1288,7 @@
       const title=en?(n.titleEn||n.titleTh):(n.titleTh||n.titleEn);
       const body=en?(n.bodyEn||n.bodyTh):(n.bodyTh||n.bodyEn);
       return '<article class="n-card" style="animation-delay:'+(i*0.08)+'s">'+
-        (n.image?'<div class="n-img"><img src="'+esc(n.image)+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>':'')+
+        (n.image?'<div class="n-img"><img src="'+esc(n.image)+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>'+(n.imageAi?'<small class="n-ai">'+(en?'AI-generated illustration, not an actual image':'ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง')+'</small>':''):'')+
         (n.video?'<div class="n-vid"><video controls preload="none" playsinline'+(n.poster?' poster="'+esc(n.poster)+'"':'')+'><source src="'+esc(n.video)+'" type="video/mp4"></video>'+(n.videoAi?'<small>'+(en?'AI-generated illustration, not actual footage':'ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง')+'</small>':'')+'</div>':'')+
         (n.tag?'<span class="n-tag">'+esc(en&&n.tagEn?n.tagEn:n.tag)+'</span>':'')+
         (n.date?'<div class="n-date">📅 '+esc(en&&n.dateEn?n.dateEn:n.date)+'</div>':'')+
