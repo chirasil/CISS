@@ -37,6 +37,22 @@
       "image": "images/ai-network-maintenance.jpg"
     },
     {
+      "kind": "update",
+      "date": "ปีงบประมาณ 2566",
+      "dateEn": "FY2023",
+      "tag": "โครงการ",
+      "tagEn": "Project",
+      "titleTh": "ประเมินระบบปัญญาประดิษฐ์ควบคุมสัญญาณไฟจราจร",
+      "titleEn": "Evaluating an AI traffic-signal control system",
+      "bodyTh": "คณะผู้เชี่ยวชาญ มจธ. ประเมินระบบของบริษัท เฟิร์สเทค ดีไซน์ จำกัด พบว่าแยกประเภทยานพาหนะได้ถูกต้องเกินร้อยละ 95 และทดสอบรอบสัญญาณไฟที่ทางแยกจริงในจังหวัดสุรินทร์",
+      "bodyEn": "KMUTT specialists evaluated FirstTech Design's system: vehicle classification accuracy above 95 per cent in every class, and signal timing tested on a real junction in Surin. Article in Thai.",
+      "link": "https://chirasil.github.io/CISS/ai-traffic-signal.html",
+      "missions": [
+        "digital"
+      ],
+      "image": "images/ai-traffic-signal-1.jpg"
+    },
+    {
       "kind": "news",
       "date": "31 ต.ค. 2569",
       "dateEn": "31 Oct 2026",
