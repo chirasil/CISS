@@ -20,39 +20,6 @@
       "kind": "update"
     },
     {
-      "kind": "update",
-      "date": "30 ก.ย. 2568",
-      "dateEn": "30 Sep 2025",
-      "tag": "โครงการ",
-      "tagEn": "Project",
-      "titleTh": "ปัญญาประดิษฐ์กับงานบำรุงรักษาโครงข่ายใยแก้วนำแสง",
-      "titleEn": "AI for fibre-optic network maintenance",
-      "bodyTh": "CISS และผู้ประกอบการไทยพัฒนาต้นแบบคำนวณพิกัดจุดเสียและทำนายเหตุเสียของโครงข่ายใยแก้วนำแสง ภายใต้แผนงานยกระดับธุรกิจภูมิภาค ปีงบประมาณ 2568",
-      "bodyEn": "CISS and a Thai network company built prototypes that locate fibre faults and anticipate recurring failures, under the FY2025 Regional Entrepreneur Upgrade programme. Article in Thai.",
-      "link": "https://chirasil.github.io/CISS/ai-network-maintenance.html",
-      "missions": [
-        "digital"
-      ],
-      "iso": "2025-09-30",
-      "image": "images/ai-network-maintenance.jpg"
-    },
-    {
-      "kind": "update",
-      "date": "ปีงบประมาณ 2566",
-      "dateEn": "FY2023",
-      "tag": "โครงการ",
-      "tagEn": "Project",
-      "titleTh": "ประเมินระบบปัญญาประดิษฐ์ควบคุมสัญญาณไฟจราจร",
-      "titleEn": "Evaluating an AI traffic-signal control system",
-      "bodyTh": "คณะผู้เชี่ยวชาญ มจธ. ประเมินระบบของบริษัท เฟิร์สเทค ดีไซน์ จำกัด พบว่าแยกประเภทยานพาหนะได้ถูกต้องเกินร้อยละ 95 และทดสอบรอบสัญญาณไฟที่ทางแยกจริงในจังหวัดสุรินทร์",
-      "bodyEn": "KMUTT specialists evaluated FirstTech Design's system: vehicle classification accuracy above 95 per cent in every class, and signal timing tested on a real junction in Surin. Article in Thai.",
-      "link": "https://chirasil.github.io/CISS/ai-traffic-signal.html",
-      "missions": [
-        "digital"
-      ],
-      "image": "images/ai-traffic-signal-1.jpg"
-    },
-    {
       "kind": "news",
       "date": "31 ต.ค. 2569",
       "dateEn": "31 Oct 2026",
@@ -140,6 +107,39 @@
       ],
       "iso": "2025-10-17",
       "image": "https://chirasil.github.io/thonburi-space/images/mou-gistda-2025-1.jpg"
+    },
+    {
+      "kind": "news",
+      "date": "30 ก.ย. 2568",
+      "dateEn": "30 Sep 2025",
+      "tag": "โครงการ",
+      "tagEn": "Project",
+      "titleTh": "ปัญญาประดิษฐ์กับงานบำรุงรักษาโครงข่ายใยแก้วนำแสง",
+      "titleEn": "AI for fibre-optic network maintenance",
+      "bodyTh": "CISS และผู้ประกอบการไทยพัฒนาต้นแบบคำนวณพิกัดจุดเสียและทำนายเหตุเสียของโครงข่ายใยแก้วนำแสง ภายใต้แผนงานยกระดับธุรกิจภูมิภาค ปีงบประมาณ 2568",
+      "bodyEn": "CISS and a Thai network company built prototypes that locate fibre faults and anticipate recurring failures, under the FY2025 Regional Entrepreneur Upgrade programme. Article in Thai.",
+      "link": "https://chirasil.github.io/CISS/ai-network-maintenance.html",
+      "missions": [
+        "digital"
+      ],
+      "iso": "2025-09-30",
+      "image": "images/ai-network-maintenance.jpg"
+    },
+    {
+      "kind": "news",
+      "date": "ปีงบประมาณ 2566",
+      "dateEn": "FY2023",
+      "tag": "โครงการ",
+      "tagEn": "Project",
+      "titleTh": "ประเมินระบบปัญญาประดิษฐ์ควบคุมสัญญาณไฟจราจร",
+      "titleEn": "Evaluating an AI traffic-signal control system",
+      "bodyTh": "คณะผู้เชี่ยวชาญ มจธ. ประเมินระบบของบริษัท เฟิร์สเทค ดีไซน์ จำกัด พบว่าแยกประเภทยานพาหนะได้ถูกต้องเกินร้อยละ 95 และทดสอบรอบสัญญาณไฟที่ทางแยกจริงในจังหวัดสุรินทร์",
+      "bodyEn": "KMUTT specialists evaluated FirstTech Design's system: vehicle classification accuracy above 95 per cent in every class, and signal timing tested on a real junction in Surin. Article in Thai.",
+      "link": "https://chirasil.github.io/CISS/ai-traffic-signal.html",
+      "missions": [
+        "digital"
+      ],
+      "image": "images/ai-traffic-signal-1.jpg"
     }
   ]
 }
