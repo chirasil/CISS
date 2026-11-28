@@ -1281,7 +1281,8 @@
   function renderNews(){
     const grid=document.getElementById('newsGrid'); if(!grid) return;
     const en=curLang()==='en';
-    const LIST=NEWS.filter(n=>n.kind!=='update');
+    const byDate=(a,b)=>String(b.sort||b.iso||'').localeCompare(String(a.sort||a.iso||''));   /* newest first; undated items last */
+    const LIST=NEWS.filter(n=>n.kind!=='update').sort(byDate);
     if(!LIST.length){
       grid.innerHTML='<div class="news-empty">'+(en?'No announcements yet':'ยังไม่มีข่าวประชาสัมพันธ์')+'</div>';
       return;
@@ -1436,7 +1437,7 @@
         const arr=src.filter(n=>n.kind==='update').map(n=>{
           const m=(n.missions||[]).find(x=>x==='space'||x==='digital');
           return m?Object.assign({},n,{mission:m}):null;
-        }).filter(Boolean);
+        }).filter(Boolean).sort((a,b)=>String(b.sort||b.iso||'').localeCompare(String(a.sort||a.iso||'')));
         if(arr.length){ ARTICLES=arr; renderArticles(); return; }
       }
     }catch(e){}

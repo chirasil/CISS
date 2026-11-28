@@ -747,7 +747,7 @@
   function esc(v){ return String(v==null?'':v).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function bi(tag,cls,th,en){ en=en||th; return '<'+tag+(cls?' class="'+cls+'"':'')+' data-th="'+esc(esc(th))+'" data-en="'+esc(esc(en))+'">'+esc(document.documentElement.lang==='en'?en:th)+'</'+tag+'>'; }
   fetch('data/news.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
-    var a=(d.news||d).filter(function(n){ return n.kind!=='update'&&(n.missions||[]).indexOf(M)>=0; }).slice(0,3);
+    var a=(d.news||d).filter(function(n){ return n.kind!=='update'&&(n.missions||[]).indexOf(M)>=0; }).sort(function(a,b){ return String(b.sort||b.iso||'').localeCompare(String(a.sort||a.iso||'')); }).slice(0,3);   /* newest first */
     if(!a.length) return;
     grid.innerHTML=a.map(function(n){
       var vid=n.video?'<div class="mn-vid"><video controls preload="none" playsinline'+(n.poster?' poster="'+esc(n.poster)+'"':'')+'><source src="'+esc(n.video)+'" type="video/mp4"></video>'+(n.videoAi?bi('small','','ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง','AI-generated illustration, not actual footage'):'')+'</div>':'';

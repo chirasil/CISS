@@ -738,7 +738,7 @@
     grid.innerHTML=list.slice(0,3).map(card).join(''); sec.hidden=false;
   }
   fetch('data/news.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
-    var mine=(d.news||d).filter(function(n){ return (n.missions||[]).indexOf(M)>=0; });
+    var mine=(d.news||d).filter(function(n){ return (n.missions||[]).indexOf(M)>=0; }).sort(function(a,b){ return String(b.sort||b.iso||'').localeCompare(String(a.sort||a.iso||'')); });   /* newest first */
     fill('latest','mlatestGrid',mine.filter(function(n){ return n.kind==='update'; }));
     fill('news','mnewsGrid',mine.filter(function(n){ return n.kind!=='update'; }));
   }).catch(function(){});
