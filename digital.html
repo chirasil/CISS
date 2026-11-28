@@ -247,6 +247,7 @@
   .mnews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
   .mn-card{background:#fff;border:1px solid var(--rule);border-radius:6px 44px 6px 6px;padding:26px 26px 28px;display:flex;flex-direction:column;gap:10px;min-width:0;max-width:640px}
   .mn-vid video{display:block;width:100%;aspect-ratio:16/9;border-radius:4px;background:#000}
+  .mn-vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px}
   .mn-vid small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.03em;color:var(--ink2)}
   .mn-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink2)}
   .mn-tag{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:#e3f4ea;color:var(--leaf-d);border:1px solid #bfe3cf}
@@ -384,6 +385,16 @@
     </figure>
   </div>
 </header>
+
+<!-- LATEST (shared data/news.json: this mission's updates, kind "update") -->
+<section class="sec paper2 mnews" id="latest" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2><span class="th">ความเคลื่อนไหวล่าสุด</span><span class="en">Latest</span></h2>
+    </div>
+    <div class="mnews-grid" id="mlatestGrid"></div>
+  </div>
+</section>
 
 <!-- PILLARS -->
 <section class="sec paper" id="pillars">
@@ -623,8 +634,7 @@
 <section class="sec paper2 mnews" id="news" hidden>
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="th">ข่าวและกิจกรรม</span><span class="en">News &amp; events</span></div>
-      <h2><span class="th">ความเคลื่อนไหวของภารกิจดิจิทัลและการสื่อสาร</span><span class="en">Latest from the Digital &amp; Communications mission</span></h2>
+      <h2><span class="th">ข่าวและกิจกรรม</span><span class="en">News &amp; events</span></h2>
     </div>
     <div class="mnews-grid" id="mnewsGrid"></div>
   </div>
@@ -709,21 +719,28 @@
 </script>
 <script>
 /* News: every CISS page reads the hub's data/news.json. This page shows the three latest items
-   tagged for its own mission; the section stays hidden while there are none. */
+   tagged for its own mission in two places: updates (kind "update") right after the hero, and
+   news & events near the foot. Each section stays hidden while it has nothing to show. */
 (function(){
-  var M='digital', sec=document.getElementById('news'), grid=document.getElementById('mnewsGrid'); if(!sec||!grid||!window.fetch) return;
+  var M='digital'; if(!window.fetch) return;
   function esc(v){ return String(v==null?'':v).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function bi(tag,cls,th,en){ en=en||th; return '<'+tag+(cls?' class="'+cls+'"':'')+'><span class="th">'+esc(th)+'</span><span class="en">'+esc(en)+'</span></'+tag+'>'; }
+  function card(n){
+    var vid=n.video?'<div class="mn-vid"><video controls preload="none" playsinline'+(n.poster?' poster="'+esc(n.poster)+'"':'')+'><source src="'+esc(n.video)+'" type="video/mp4"></video>'+(n.videoAi?bi('small','','ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง','AI-generated illustration, not actual footage'):'')+'</div>':'';
+    var img=n.image?'<div class="mn-vid"><img src="'+esc(n.image)+'" alt="" loading="lazy">'+(n.imageAi?bi('small','','ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง','AI-generated illustration, not an actual image'):'')+'</div>':'';
+    var own=/\/CISS\/digital(\.html)?\/?$/.test(n.link||'');   /* a link back to this very page says nothing */
+    return '<article class="mn-card">'+img+vid+'<div class="mn-meta">'+(n.tag?bi('span','mn-tag',n.tag,n.tagEn):'')+(n.date?bi('span','',n.date,n.dateEn):'')+'</div>'+
+      bi('h3','',n.titleTh||n.titleEn,n.titleEn||n.titleTh)+((n.bodyTh||n.bodyEn)?bi('p','',n.bodyTh||n.bodyEn,n.bodyEn||n.bodyTh):'')+
+      (n.link&&!own?'<a class="mn-more" href="'+esc(n.link)+'" target="_blank" rel="noopener">'+bi('span','','อ่านต่อ →','Read more →')+'</a>':'')+'</article>';
+  }
+  function fill(secId,gridId,list){
+    var sec=document.getElementById(secId), grid=document.getElementById(gridId); if(!sec||!grid||!list.length) return;
+    grid.innerHTML=list.slice(0,3).map(card).join(''); sec.hidden=false;
+  }
   fetch('data/news.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
-    var a=(d.news||d).filter(function(n){ return (n.missions||[]).indexOf(M)>=0; }).slice(0,3);
-    if(!a.length) return;
-    grid.innerHTML=a.map(function(n){
-      var vid=n.video?'<div class="mn-vid"><video controls preload="none" playsinline'+(n.poster?' poster="'+esc(n.poster)+'"':'')+'><source src="'+esc(n.video)+'" type="video/mp4"></video>'+(n.videoAi?bi('small','','ภาพประกอบสร้างด้วย AI ไม่ใช่ภาพเหตุการณ์จริง','AI-generated illustration, not actual footage'):'')+'</div>':'';
-      return '<article class="mn-card">'+vid+'<div class="mn-meta">'+(n.tag?bi('span','mn-tag',n.tag,n.tagEn):'')+(n.date?bi('span','',n.date,n.dateEn):'')+'</div>'+
-        bi('h3','',n.titleTh||n.titleEn,n.titleEn||n.titleTh)+((n.bodyTh||n.bodyEn)?bi('p','',n.bodyTh||n.bodyEn,n.bodyEn||n.bodyTh):'')+
-        (n.link?'<a class="mn-more" href="'+esc(n.link)+'" target="_blank" rel="noopener">'+bi('span','','อ่านต่อ →','Read more →')+'</a>':'')+'</article>';
-    }).join('');
-    sec.hidden=false;
+    var mine=(d.news||d).filter(function(n){ return (n.missions||[]).indexOf(M)>=0; });
+    fill('latest','mlatestGrid',mine.filter(function(n){ return n.kind==='update'; }));
+    fill('news','mnewsGrid',mine.filter(function(n){ return n.kind!=='update'; }));
   }).catch(function(){});
 })();
 </script>
